@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-07T02:43:10.019288+08:00",
+  "updated_at": "2026-04-07T02:57:56.657018+08:00",
   "items": {
     "water-spinach": {
       "latest_price": null,
@@ -10,86 +10,56 @@
       "variants": []
     },
     "lotus-root": {
-      "latest_price": 56.05,
-      "latest_date": "2026-04-04",
+      "latest_price": 62.5,
+      "latest_date": "2026-04-05",
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 29.68
+          "price": 63.14
         },
         {
           "date": "2026-04-02",
-          "price": 40.55
+          "price": 44.48
         },
         {
           "date": "2026-04-03",
-          "price": 6.8
+          "price": 47.08
         },
         {
           "date": "2026-04-04",
-          "price": 56.05
+          "price": 49.9
+        },
+        {
+          "date": "2026-04-05",
+          "price": 62.5
         }
       ],
       "top_markets": [
         {
           "market": "高雄市",
-          "price": 60.0,
-          "volume": 630.0
-        },
-        {
-          "market": "三重區",
-          "price": 5.0,
-          "volume": 37.0
-        },
-        {
-          "market": "台中市",
-          "price": 10.0,
-          "volume": 13.0
+          "price": 62.5,
+          "volume": 600.0
         }
       ],
-      "coverage": 17,
+      "coverage": 26,
       "variants": [
         {
           "sub_type": "SN1 蓮藕",
-          "latest_price": 56.05,
-          "latest_date": "2026-04-04",
-          "coverage": 593,
+          "latest_price": 62.5,
+          "latest_date": "2026-04-05",
+          "coverage": 942,
           "raw_latest_rows": [
             {
-              "roc_date": "115/04/04",
-              "date": "2026-04-04",
-              "market_no": "241",
-              "market": "三重區",
-              "product_code": "SN1",
-              "product_main": "蓮藕",
-              "product_sub": "其他",
-              "avg_price": 5.0,
-              "volume": 37.0,
-              "volume_raw": "37"
-            },
-            {
-              "roc_date": "115/04/04",
-              "date": "2026-04-04",
-              "market_no": "400",
-              "market": "台中市",
-              "product_code": "SN1",
-              "product_main": "蓮藕",
-              "product_sub": "其他",
-              "avg_price": 10.0,
-              "volume": 13.0,
-              "volume_raw": "13"
-            },
-            {
-              "roc_date": "115/04/04",
-              "date": "2026-04-04",
+              "roc_date": "115/04/05",
+              "date": "2026-04-05",
               "market_no": "800",
               "market": "高雄市",
               "product_code": "SN1",
               "product_main": "蓮藕",
               "product_sub": "其他",
-              "avg_price": 60.0,
-              "volume": 630.0,
-              "volume_raw": "630"
+              "avg_price": 62.5,
+              "volume": 600.0,
+              "volume_raw": "600"
             }
           ]
         },
@@ -97,7 +67,7 @@
           "sub_type": "SN2 蓮藕 蓮子",
           "latest_price": 450.0,
           "latest_date": "2026-04-02",
-          "coverage": 96,
+          "coverage": 105,
           "raw_latest_rows": [
             {
               "roc_date": "115/04/02",
@@ -123,244 +93,254 @@
       ]
     },
     "chive": {
-      "latest_price": 31.4,
+      "latest_price": 39.42,
       "latest_date": "2026-04-06",
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 46.34
+          "price": 38.39
         },
         {
           "date": "2026-04-02",
-          "price": 48.89
+          "price": 42.49
         },
         {
           "date": "2026-04-03",
-          "price": 52.38
+          "price": 49.88
         },
         {
           "date": "2026-04-04",
-          "price": 52.67
+          "price": 54.49
         },
         {
           "date": "2026-04-05",
-          "price": 67.04
+          "price": 56.85
         },
         {
           "date": "2026-04-06",
-          "price": 31.4
+          "price": 39.42
         }
       ],
       "top_markets": [
         {
           "market": "花蓮市",
           "price": 31.4,
-          "volume": 21.0
+          "volume": 300.0
+        },
+        {
+          "market": "溪湖鎮",
+          "price": 99.6,
+          "volume": 40.0
         }
       ],
-      "coverage": 80,
+      "coverage": 136,
       "variants": [
         {
           "sub_type": "白頭",
           "latest_price": 31.4,
           "latest_date": "2026-04-06",
-          "coverage": 24
+          "coverage": 37
         },
         {
           "sub_type": "青頭",
           "latest_price": 26.4,
           "latest_date": "2026-04-05",
-          "coverage": 18
+          "coverage": 32
         },
         {
           "sub_type": "韭菜花",
-          "latest_price": 76.0,
-          "latest_date": "2026-04-05",
-          "coverage": 24
+          "latest_price": 99.6,
+          "latest_date": "2026-04-06",
+          "coverage": 46
         },
         {
           "sub_type": "韭菜黃",
           "latest_price": 140.0,
           "latest_date": "2026-04-05",
-          "coverage": 14
+          "coverage": 21
         }
       ]
     },
     "scallion": {
-      "latest_price": 26.88,
+      "latest_price": 14.84,
       "latest_date": "2026-04-06",
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 13.91
+          "price": 19.2
         },
         {
           "date": "2026-04-02",
-          "price": 14.61
+          "price": 19.15
         },
         {
           "date": "2026-04-03",
-          "price": 14.54
+          "price": 20.49
         },
         {
           "date": "2026-04-04",
-          "price": 15.18
+          "price": 21.04
         },
         {
           "date": "2026-04-05",
-          "price": 40.38
+          "price": 19.87
         },
         {
           "date": "2026-04-06",
-          "price": 26.88
+          "price": 14.84
         }
       ],
       "top_markets": [
         {
           "market": "溪湖鎮",
-          "price": 26.88,
-          "volume": 5.0
+          "price": 14.83,
+          "volume": 1080.0
+        },
+        {
+          "market": "花蓮市",
+          "price": 15.0,
+          "volume": 17.0
         }
       ],
-      "coverage": 134,
+      "coverage": 229,
       "variants": [
         {
           "sub_type": "北蔥",
-          "latest_price": 8.7,
-          "latest_date": "2026-04-03",
-          "coverage": 5
+          "latest_price": 12.75,
+          "latest_date": "2026-04-04",
+          "coverage": 10
         },
         {
           "sub_type": "大蔥",
-          "latest_price": 9.03,
+          "latest_price": 9.8,
           "latest_date": "2026-04-04",
-          "coverage": 15
+          "coverage": 18
         },
         {
           "sub_type": "日蔥",
-          "latest_price": 12.85,
+          "latest_price": 66.81,
           "latest_date": "2026-04-04",
-          "coverage": 6
+          "coverage": 9
         },
         {
           "sub_type": "本產",
           "latest_price": 14.4,
           "latest_date": "2026-04-06",
-          "coverage": 38
+          "coverage": 57
         },
         {
           "sub_type": "粉蔥",
-          "latest_price": 30.0,
+          "latest_price": 24.57,
           "latest_date": "2026-04-06",
-          "coverage": 33
+          "coverage": 60
         },
         {
           "sub_type": "紅蔥頭",
           "latest_price": 42.5,
           "latest_date": "2026-04-05",
-          "coverage": 13
+          "coverage": 30
         },
         {
           "sub_type": "蔥蒜",
-          "latest_price": 27.6,
+          "latest_price": 35.79,
           "latest_date": "2026-04-04",
-          "coverage": 9
+          "coverage": 16
         },
         {
           "sub_type": "進口",
-          "latest_price": 16.48,
-          "latest_date": "2026-04-04",
-          "coverage": 15
+          "latest_price": 22.6,
+          "latest_date": "2026-04-05",
+          "coverage": 29
         }
       ]
     },
     "asparagus": {
-      "latest_price": 328.69,
+      "latest_price": 315.07,
       "latest_date": "2026-04-05",
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 135.32
+          "price": 127.4
         },
         {
           "date": "2026-04-02",
-          "price": 135.12
+          "price": 121.81
         },
         {
           "date": "2026-04-03",
-          "price": 251.28
+          "price": 132.53
         },
         {
           "date": "2026-04-04",
-          "price": 190.13
+          "price": 136.74
         },
         {
           "date": "2026-04-05",
-          "price": 328.69
+          "price": 315.07
         }
       ],
       "top_markets": [
         {
           "market": "高雄市",
-          "price": 328.69,
-          "volume": 32.0
+          "price": 315.07,
+          "volume": 105.0
         }
       ],
-      "coverage": 51,
+      "coverage": 89,
       "variants": [
         {
           "sub_type": "白蘆筍",
-          "latest_price": 204.05,
+          "latest_price": 179.98,
           "latest_date": "2026-04-04",
-          "coverage": 8
+          "coverage": 16
         },
         {
           "sub_type": "綠蘆筍",
           "latest_price": 330.0,
           "latest_date": "2026-04-05",
-          "coverage": 20
+          "coverage": 37
         },
         {
           "sub_type": "蘆筍花",
-          "latest_price": 91.21,
+          "latest_price": 172.65,
           "latest_date": "2026-04-04",
-          "coverage": 12
+          "coverage": 18
         },
         {
           "sub_type": "進口",
           "latest_price": 309.1,
           "latest_date": "2026-04-05",
-          "coverage": 11
+          "coverage": 18
         }
       ]
     },
     "celery": {
-      "latest_price": 59.0,
+      "latest_price": 56.48,
       "latest_date": "2026-04-06",
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 57.53
+          "price": 39.74
         },
         {
           "date": "2026-04-02",
-          "price": 56.76
+          "price": 41.04
         },
         {
           "date": "2026-04-03",
-          "price": 44.89
+          "price": 44.17
         },
         {
           "date": "2026-04-04",
-          "price": 20.44
+          "price": 44.14
         },
         {
           "date": "2026-04-05",
-          "price": 26.24
+          "price": 34.29
         },
         {
           "date": "2026-04-06",
-          "price": 59.0
+          "price": 56.48
         }
       ],
       "top_markets": [
@@ -368,15 +348,20 @@
           "market": "溪湖鎮",
           "price": 59.0,
           "volume": 600.0
+        },
+        {
+          "market": "花蓮市",
+          "price": 28.0,
+          "volume": 53.0
         }
       ],
-      "coverage": 98,
+      "coverage": 160,
       "variants": [
         {
           "sub_type": "山芹菜",
-          "latest_price": 15.47,
+          "latest_price": 23.17,
           "latest_date": "2026-04-04",
-          "coverage": 12
+          "coverage": 15
         },
         {
           "sub_type": "水耕",
@@ -386,21 +371,21 @@
         },
         {
           "sub_type": "白梗",
-          "latest_price": 59.0,
+          "latest_price": 56.48,
           "latest_date": "2026-04-06",
-          "coverage": 38
+          "coverage": 61
         },
         {
           "sub_type": "芹菜管",
-          "latest_price": 28.6,
-          "latest_date": "2026-04-04",
-          "coverage": 18
+          "latest_price": 44.0,
+          "latest_date": "2026-04-05",
+          "coverage": 34
         },
         {
           "sub_type": "西洋芹菜",
-          "latest_price": 14.0,
-          "latest_date": "2026-04-04",
-          "coverage": 22
+          "latest_price": 23.72,
+          "latest_date": "2026-04-05",
+          "coverage": 42
         },
         {
           "sub_type": "進口",
@@ -417,65 +402,54 @@
       ]
     },
     "carrot": {
-      "latest_price": 11.92,
-      "latest_date": "2026-04-05",
+      "latest_price": 15.5,
+      "latest_date": "2026-04-06",
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 13.23
+          "price": 12.53
         },
         {
           "date": "2026-04-02",
-          "price": 14.48
+          "price": 12.19
         },
         {
           "date": "2026-04-03",
-          "price": 14.72
+          "price": 12.37
         },
         {
           "date": "2026-04-04",
-          "price": 12.22
+          "price": 11.79
         },
         {
           "date": "2026-04-05",
-          "price": 11.92
+          "price": 13.07
+        },
+        {
+          "date": "2026-04-06",
+          "price": 15.5
         }
       ],
       "top_markets": [
         {
-          "market": "豐原區",
-          "price": 11.3,
-          "volume": 20.0
-        },
-        {
-          "market": "高雄市",
-          "price": 13.14,
-          "volume": 8.0
-        },
-        {
-          "market": "鳳山區",
-          "price": 10.5,
-          "volume": 3.0
-        },
-        {
           "market": "溪湖鎮",
-          "price": 15.4,
-          "volume": 2.0
+          "price": 15.5,
+          "volume": 1416.0
         }
       ],
-      "coverage": 66,
+      "coverage": 94,
       "variants": [
         {
           "sub_type": "未洗",
-          "latest_price": 13.53,
-          "latest_date": "2026-04-05",
-          "coverage": 29
+          "latest_price": 15.5,
+          "latest_date": "2026-04-06",
+          "coverage": 41
         },
         {
           "sub_type": "清洗",
-          "latest_price": 11.32,
+          "latest_price": 12.64,
           "latest_date": "2026-04-05",
-          "coverage": 36
+          "coverage": 52
         },
         {
           "sub_type": "進口",
@@ -486,101 +460,95 @@
       ]
     },
     "daikon": {
-      "latest_price": 11.21,
-      "latest_date": "2026-04-05",
+      "latest_price": 13.99,
+      "latest_date": "2026-04-06",
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 10.7
+          "price": 9.64
         },
         {
           "date": "2026-04-02",
-          "price": 13.94
+          "price": 9.36
         },
         {
           "date": "2026-04-03",
-          "price": 13.1
+          "price": 9.64
         },
         {
           "date": "2026-04-04",
-          "price": 12.52
+          "price": 9.93
         },
         {
           "date": "2026-04-05",
-          "price": 11.21
+          "price": 12.14
+        },
+        {
+          "date": "2026-04-06",
+          "price": 13.99
         }
       ],
       "top_markets": [
         {
-          "market": "豐原區",
-          "price": 11.3,
-          "volume": 20.0
-        },
-        {
-          "market": "鳳山區",
-          "price": 8.9,
-          "volume": 11.0
-        },
-        {
-          "market": "高雄市",
-          "price": 13.14,
-          "volume": 8.0
-        },
-        {
           "market": "溪湖鎮",
-          "price": 15.4,
-          "volume": 2.0
+          "price": 15.5,
+          "volume": 1416.0
+        },
+        {
+          "market": "花蓮市",
+          "price": 11.6,
+          "volume": 899.0
         }
       ],
-      "coverage": 148,
+      "coverage": 222,
       "variants": [
         {
           "sub_type": "其他",
-          "latest_price": 33.0,
+          "latest_price": 52.4,
+          "latest_date": "2026-04-05",
+          "coverage": 13
+        },
+        {
+          "sub_type": "未洗",
+          "latest_price": 15.5,
+          "latest_date": "2026-04-06",
+          "coverage": 41
+        },
+        {
+          "sub_type": "梅花",
+          "latest_price": 11.6,
+          "latest_date": "2026-04-06",
+          "coverage": 12
+        },
+        {
+          "sub_type": "櫻桃",
+          "latest_price": 51.98,
           "latest_date": "2026-04-04",
           "coverage": 8
         },
         {
-          "sub_type": "未洗",
-          "latest_price": 13.53,
-          "latest_date": "2026-04-05",
-          "coverage": 29
-        },
-        {
-          "sub_type": "梅花",
-          "latest_price": 8.8,
-          "latest_date": "2026-04-04",
-          "coverage": 7
-        },
-        {
-          "sub_type": "櫻桃",
-          "latest_price": 44.6,
-          "latest_date": "2026-04-04",
-          "coverage": 7
-        },
-        {
           "sub_type": "清洗",
-          "latest_price": 11.32,
+          "latest_price": 12.64,
           "latest_date": "2026-04-05",
-          "coverage": 36
+          "coverage": 52
         },
         {
           "sub_type": "甜菜根",
-          "latest_price": 16.55,
-          "latest_date": "2026-04-04",
-          "coverage": 22
+          "latest_price": 30.0,
+          "latest_date": "2026-04-05",
+          "coverage": 34
         },
         {
           "sub_type": "矸仔",
-          "latest_price": 8.3,
+          "latest_price": 9.41,
           "latest_date": "2026-04-05",
-          "coverage": 28
+          "coverage": 49
         },
         {
           "sub_type": "進口",
-          "latest_price": 18.74,
+          "latest_price": 14.93,
           "latest_date": "2026-04-04",
-          "coverage": 11
+          "coverage": 13
         }
       ]
     },
@@ -601,28 +569,28 @@
       "variants": []
     },
     "shiitake": {
-      "latest_price": 124.7,
+      "latest_price": 111.22,
       "latest_date": "2026-04-05",
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 85.61
+          "price": 82.5
         },
         {
           "date": "2026-04-02",
-          "price": 72.53
+          "price": 85.78
         },
         {
           "date": "2026-04-03",
-          "price": 33.49
+          "price": 92.01
         },
         {
           "date": "2026-04-04",
-          "price": 49.1
+          "price": 86.44
         },
         {
           "date": "2026-04-05",
-          "price": 124.7
+          "price": 111.22
         }
       ],
       "top_markets": [
@@ -634,137 +602,142 @@
         {
           "market": "豐原區",
           "price": 78.3,
-          "volume": 1.0
+          "volume": 96.0
         }
       ],
-      "coverage": 18,
+      "coverage": 35,
       "variants": [
         {
           "sub_type": "其他",
-          "latest_price": 124.7,
+          "latest_price": 111.22,
           "latest_date": "2026-04-05",
-          "coverage": 18
+          "coverage": 35
         }
       ]
     },
     "king-oyster-mushroom": {
-      "latest_price": 29.9,
+      "latest_price": 60.78,
       "latest_date": "2026-04-05",
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 29.69
+          "price": 43.68
         },
         {
           "date": "2026-04-02",
-          "price": 37.19
+          "price": 45.13
         },
         {
           "date": "2026-04-03",
-          "price": 30.53
+          "price": 46.02
         },
         {
           "date": "2026-04-04",
-          "price": 47.03
+          "price": 46.21
         },
         {
           "date": "2026-04-05",
-          "price": 29.9
+          "price": 60.78
         }
       ],
       "top_markets": [
         {
           "market": "豐原區",
           "price": 29.9,
-          "volume": 9.0
+          "volume": 774.0
+        },
+        {
+          "market": "高雄市",
+          "price": 93.7,
+          "volume": 726.0
         }
       ],
-      "coverage": 27,
+      "coverage": 47,
       "variants": [
         {
           "sub_type": "其他",
-          "latest_price": 29.9,
+          "latest_price": 60.78,
           "latest_date": "2026-04-05",
-          "coverage": 19
+          "coverage": 38
         },
         {
           "sub_type": "盒裝",
           "latest_price": 110.0,
           "latest_date": "2026-04-04",
-          "coverage": 8
+          "coverage": 9
         }
       ]
     },
     "cabbage": {
-      "latest_price": 6.09,
+      "latest_price": 8.81,
       "latest_date": "2026-04-06",
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 5.51
+          "price": 5.99
         },
         {
           "date": "2026-04-02",
-          "price": 5.44
+          "price": 5.99
         },
         {
           "date": "2026-04-03",
-          "price": 5.57
+          "price": 6.31
         },
         {
           "date": "2026-04-04",
-          "price": 5.74
+          "price": 6.45
         },
         {
           "date": "2026-04-05",
-          "price": 13.48
+          "price": 7.6
         },
         {
           "date": "2026-04-06",
-          "price": 6.09
+          "price": 8.81
         }
       ],
       "top_markets": [
         {
+          "market": "花蓮市",
+          "price": 11.46,
+          "volume": 17407.0
+        },
+        {
           "market": "溪湖鎮",
           "price": 6.01,
           "volume": 16426.0
-        },
-        {
-          "market": "花蓮市",
-          "price": 25.79,
-          "volume": 63.0
         }
       ],
-      "coverage": 149,
+      "coverage": 240,
       "variants": [
         {
           "sub_type": "其他",
           "latest_price": 10.1,
           "latest_date": "2026-04-06",
-          "coverage": 38
+          "coverage": 54
         },
         {
           "sub_type": "初秋",
-          "latest_price": 6.1,
+          "latest_price": 7.62,
           "latest_date": "2026-04-06",
-          "coverage": 39
+          "coverage": 68
         },
         {
           "sub_type": "改良尖",
-          "latest_price": 5.81,
+          "latest_price": 10.06,
           "latest_date": "2026-04-06",
-          "coverage": 29
+          "coverage": 52
         },
         {
           "sub_type": "改良種",
-          "latest_price": 11.91,
-          "latest_date": "2026-04-03",
-          "coverage": 7
+          "latest_price": 12.0,
+          "latest_date": "2026-04-06",
+          "coverage": 9
         },
         {
           "sub_type": "甘藍心",
-          "latest_price": 16.82,
+          "latest_price": 18.15,
           "latest_date": "2026-04-04",
           "coverage": 11
         },
@@ -772,43 +745,43 @@
           "sub_type": "甘藍芽",
           "latest_price": 31.8,
           "latest_date": "2026-04-06",
-          "coverage": 15
+          "coverage": 32
         },
         {
           "sub_type": "紫色",
-          "latest_price": 6.48,
+          "latest_price": 7.93,
           "latest_date": "2026-04-04",
-          "coverage": 10
+          "coverage": 14
         }
       ]
     },
     "spinach": {
-      "latest_price": 27.1,
+      "latest_price": 27.31,
       "latest_date": "2026-04-06",
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 21.19
+          "price": 24.26
         },
         {
           "date": "2026-04-02",
-          "price": 24.82
+          "price": 27.13
         },
         {
           "date": "2026-04-03",
-          "price": 25.53
+          "price": 29.47
         },
         {
           "date": "2026-04-04",
-          "price": 21.36
+          "price": 31.93
         },
         {
           "date": "2026-04-05",
-          "price": 21.32
+          "price": 27.39
         },
         {
           "date": "2026-04-06",
-          "price": 27.1
+          "price": 27.31
         }
       ],
       "top_markets": [
@@ -816,21 +789,32 @@
           "market": "溪湖鎮",
           "price": 27.1,
           "volume": 599.0
+        },
+        {
+          "market": "花蓮市",
+          "price": 28.3,
+          "volume": 129.0
         }
       ],
-      "coverage": 47,
+      "coverage": 92,
       "variants": [
         {
           "sub_type": "圓葉",
-          "latest_price": 21.32,
-          "latest_date": "2026-04-05",
-          "coverage": 24
+          "latest_price": 28.3,
+          "latest_date": "2026-04-06",
+          "coverage": 53
+        },
+        {
+          "sub_type": "甜菠菜",
+          "latest_price": 16.4,
+          "latest_date": "2026-04-01",
+          "coverage": 1
         },
         {
           "sub_type": "角葉",
           "latest_price": 27.1,
           "latest_date": "2026-04-06",
-          "coverage": 23
+          "coverage": 38
         }
       ]
     },
@@ -840,23 +824,23 @@
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 47.36
+          "price": 50.87
         },
         {
           "date": "2026-04-02",
-          "price": 38.9
+          "price": 49.51
         },
         {
           "date": "2026-04-03",
-          "price": 47.1
+          "price": 51.18
         },
         {
           "date": "2026-04-04",
-          "price": 68.1
+          "price": 52.15
         },
         {
           "date": "2026-04-05",
-          "price": 110.0
+          "price": 71.94
         },
         {
           "date": "2026-04-06",
@@ -867,16 +851,16 @@
         {
           "market": "溪湖鎮",
           "price": 87.5,
-          "volume": 20.0
+          "volume": 4.0
         }
       ],
-      "coverage": 29,
+      "coverage": 53,
       "variants": [
         {
           "sub_type": "白色",
           "latest_price": 87.5,
           "latest_date": "2026-04-06",
-          "coverage": 10
+          "coverage": 15
         },
         {
           "sub_type": "紅色",
@@ -886,72 +870,72 @@
         },
         {
           "sub_type": "青色",
-          "latest_price": 46.18,
-          "latest_date": "2026-04-04",
-          "coverage": 18
+          "latest_price": 70.3,
+          "latest_date": "2026-04-05",
+          "coverage": 37
         }
       ]
     },
     "pea": {
-      "latest_price": 97.6,
+      "latest_price": 121.48,
       "latest_date": "2026-04-06",
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 75.5
+          "price": 74.45
         },
         {
           "date": "2026-04-02",
-          "price": 30.06
+          "price": 53.51
         },
         {
           "date": "2026-04-03",
-          "price": 91.47
+          "price": 86.8
         },
         {
           "date": "2026-04-04",
-          "price": 119.92
+          "price": 83.39
         },
         {
           "date": "2026-04-05",
-          "price": 61.46
+          "price": 53.17
         },
         {
           "date": "2026-04-06",
-          "price": 97.6
+          "price": 121.48
         }
       ],
       "top_markets": [
         {
-          "market": "溪湖鎮",
-          "price": 90.0,
-          "volume": 17.0
-        },
-        {
           "market": "花蓮市",
           "price": 129.9,
-          "volume": 4.0
+          "volume": 101.0
+        },
+        {
+          "market": "溪湖鎮",
+          "price": 90.0,
+          "volume": 27.0
         }
       ],
-      "coverage": 124,
+      "coverage": 198,
       "variants": [
         {
           "sub_type": "甜豌豆",
           "latest_price": 90.0,
           "latest_date": "2026-04-06",
-          "coverage": 26
+          "coverage": 49
         },
         {
           "sub_type": "白花",
-          "latest_price": 10.0,
+          "latest_price": 20.6,
           "latest_date": "2026-04-05",
-          "coverage": 26
+          "coverage": 36
         },
         {
           "sub_type": "紅花",
           "latest_price": 129.9,
           "latest_date": "2026-04-06",
-          "coverage": 19
+          "coverage": 42
         },
         {
           "sub_type": "豆仁",
@@ -961,130 +945,130 @@
         },
         {
           "sub_type": "豆莢",
-          "latest_price": 72.5,
+          "latest_price": 65.0,
           "latest_date": "2026-04-04",
-          "coverage": 7
+          "coverage": 9
         },
         {
           "sub_type": "豌豆芽",
           "latest_price": 80.0,
           "latest_date": "2026-04-05",
-          "coverage": 16
+          "coverage": 19
         },
         {
           "sub_type": "豌豆苗",
-          "latest_price": 129.73,
+          "latest_price": 92.38,
           "latest_date": "2026-04-04",
-          "coverage": 14
+          "coverage": 25
         },
         {
           "sub_type": "進口",
-          "latest_price": 216.04,
+          "latest_price": 202.27,
           "latest_date": "2026-04-04",
-          "coverage": 14
+          "coverage": 16
         }
       ]
     },
     "luffa": {
-      "latest_price": 13.51,
+      "latest_price": 22.27,
       "latest_date": "2026-04-06",
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 26.26
+          "price": 22.2
         },
         {
           "date": "2026-04-02",
-          "price": 22.46
+          "price": 20.92
         },
         {
           "date": "2026-04-03",
-          "price": 22.09
+          "price": 22.85
         },
         {
           "date": "2026-04-04",
-          "price": 24.22
+          "price": 22.71
         },
         {
           "date": "2026-04-05",
-          "price": 28.16
+          "price": 25.16
         },
         {
           "date": "2026-04-06",
-          "price": 13.51
+          "price": 22.27
         }
       ],
       "top_markets": [
         {
           "market": "花蓮市",
-          "price": 12.93,
-          "volume": 114.0
+          "price": 20.99,
+          "volume": 332.0
         },
         {
           "market": "溪湖鎮",
           "price": 30.0,
-          "volume": 4.0
+          "volume": 55.0
         }
       ],
-      "coverage": 65,
+      "coverage": 111,
       "variants": [
         {
           "sub_type": "其他",
-          "latest_price": 13.51,
+          "latest_price": 22.27,
           "latest_date": "2026-04-06",
-          "coverage": 54
+          "coverage": 91
         },
         {
           "sub_type": "角瓜",
-          "latest_price": 147.6,
-          "latest_date": "2026-04-04",
-          "coverage": 11
+          "latest_price": 50.0,
+          "latest_date": "2026-04-05",
+          "coverage": 20
         }
       ]
     },
     "bitter-melon": {
-      "latest_price": 45.0,
+      "latest_price": 74.5,
       "latest_date": "2026-04-06",
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 49.14
+          "price": 49.63
         },
         {
           "date": "2026-04-02",
-          "price": 45.51
+          "price": 47.06
         },
         {
           "date": "2026-04-03",
-          "price": 44.43
+          "price": 48.3
         },
         {
           "date": "2026-04-04",
-          "price": 63.92
+          "price": 44.4
         },
         {
           "date": "2026-04-05",
-          "price": 84.19
+          "price": 41.75
         },
         {
           "date": "2026-04-06",
-          "price": 45.0
+          "price": 74.5
         }
       ],
       "top_markets": [
         {
           "market": "花蓮市",
-          "price": 45.0,
-          "volume": 44.0
+          "price": 74.5,
+          "volume": 70.0
         }
       ],
-      "coverage": 98,
+      "coverage": 135,
       "variants": [
         {
           "sub_type": "其他",
           "latest_price": 45.0,
           "latest_date": "2026-04-06",
-          "coverage": 19
+          "coverage": 26
         },
         {
           "sub_type": "山苦瓜",
@@ -1094,130 +1078,130 @@
         },
         {
           "sub_type": "白大米",
-          "latest_price": 34.63,
+          "latest_price": 39.95,
           "latest_date": "2026-04-05",
-          "coverage": 38
+          "coverage": 55
         },
         {
           "sub_type": "翠綠",
-          "latest_price": 92.7,
-          "latest_date": "2026-04-05",
-          "coverage": 24
+          "latest_price": 86.3,
+          "latest_date": "2026-04-06",
+          "coverage": 33
         },
         {
           "sub_type": "青大米",
           "latest_price": 22.5,
           "latest_date": "2026-04-05",
-          "coverage": 14
+          "coverage": 18
         }
       ]
     },
     "tomato": {
-      "latest_price": 16.59,
+      "latest_price": 15.88,
       "latest_date": "2026-04-06",
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 28.7
+          "price": 20.97
         },
         {
           "date": "2026-04-02",
-          "price": 15.21
+          "price": 18.86
         },
         {
           "date": "2026-04-03",
-          "price": 18.83
+          "price": 22.66
         },
         {
           "date": "2026-04-04",
-          "price": 20.93
+          "price": 21.11
         },
         {
           "date": "2026-04-05",
-          "price": 10.14
+          "price": 27.76
         },
         {
           "date": "2026-04-06",
-          "price": 16.59
+          "price": 15.88
         }
       ],
       "top_markets": [
         {
           "market": "花蓮市",
-          "price": 15.38,
-          "volume": 135.0
+          "price": 15.68,
+          "volume": 5572.0
         },
         {
           "market": "溪湖鎮",
-          "price": 20.0,
-          "volume": 48.0
+          "price": 21.93,
+          "volume": 191.0
         }
       ],
-      "coverage": 86,
+      "coverage": 140,
       "variants": [
         {
           "sub_type": "其他",
           "latest_price": 6.0,
           "latest_date": "2026-04-06",
-          "coverage": 4
+          "coverage": 6
         },
         {
           "sub_type": "牛番茄",
-          "latest_price": 22.2,
+          "latest_price": 22.3,
           "latest_date": "2026-04-06",
-          "coverage": 42
+          "coverage": 65
         },
         {
           "sub_type": "粉柿",
           "latest_price": 30.2,
           "latest_date": "2026-04-06",
-          "coverage": 11
+          "coverage": 16
         },
         {
           "sub_type": "黑柿",
-          "latest_price": 15.13,
+          "latest_price": 10.05,
           "latest_date": "2026-04-06",
-          "coverage": 29
+          "coverage": 53
         }
       ]
     },
     "bell-pepper": {
-      "latest_price": 17.6,
+      "latest_price": 35.99,
       "latest_date": "2026-04-06",
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 35.0
+          "price": 35.01
         },
         {
           "date": "2026-04-02",
-          "price": 31.03
+          "price": 37.22
         },
         {
           "date": "2026-04-03",
-          "price": 37.1
+          "price": 38.99
         },
         {
           "date": "2026-04-04",
-          "price": 73.04
+          "price": 39.79
         },
         {
           "date": "2026-04-05",
-          "price": 75.03
+          "price": 37.78
         },
         {
           "date": "2026-04-06",
-          "price": 17.6
+          "price": 35.99
         }
       ],
       "top_markets": [
         {
           "market": "花蓮市",
-          "price": 17.6,
-          "volume": 24.0
+          "price": 35.99,
+          "volume": 1370.0
         }
       ],
-      "coverage": 87,
+      "coverage": 147,
       "variants": [
         {
           "sub_type": "其他",
@@ -1227,27 +1211,27 @@
         },
         {
           "sub_type": "彩色種",
-          "latest_price": 44.12,
+          "latest_price": 42.39,
           "latest_date": "2026-04-04",
-          "coverage": 17
+          "coverage": 24
         },
         {
           "sub_type": "新香",
           "latest_price": 17.6,
           "latest_date": "2026-04-06",
-          "coverage": 20
+          "coverage": 30
         },
         {
           "sub_type": "水果彩椒",
           "latest_price": 80.0,
           "latest_date": "2026-04-05",
-          "coverage": 18
+          "coverage": 33
         },
         {
           "sub_type": "青椒",
-          "latest_price": 67.94,
-          "latest_date": "2026-04-05",
-          "coverage": 28
+          "latest_price": 38.1,
+          "latest_date": "2026-04-06",
+          "coverage": 56
         }
       ]
     },
@@ -1268,12 +1252,12 @@
       "variants": []
     },
     "peach": {
-      "latest_price": 44.6,
+      "latest_price": 51.98,
       "latest_date": "2026-04-04",
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 36.61
+          "price": 42.56
         },
         {
           "date": "2026-04-02",
@@ -1285,23 +1269,28 @@
         },
         {
           "date": "2026-04-04",
-          "price": 44.6
+          "price": 51.98
         }
       ],
       "top_markets": [
         {
           "market": "台北一",
           "price": 44.6,
-          "volume": 57.0
+          "volume": 190.0
+        },
+        {
+          "market": "台北二",
+          "price": 103.9,
+          "volume": 27.0
         }
       ],
-      "coverage": 7,
+      "coverage": 8,
       "variants": [
         {
           "sub_type": "櫻桃",
-          "latest_price": 44.6,
+          "latest_price": 51.98,
           "latest_date": "2026-04-04",
-          "coverage": 7
+          "coverage": 8
         }
       ]
     },
@@ -1338,12 +1327,12 @@
       "variants": []
     },
     "high-mountain-peach": {
-      "latest_price": 44.6,
+      "latest_price": 51.98,
       "latest_date": "2026-04-04",
       "trend_7d": [
         {
           "date": "2026-04-01",
-          "price": 36.61
+          "price": 42.56
         },
         {
           "date": "2026-04-02",
@@ -1355,23 +1344,28 @@
         },
         {
           "date": "2026-04-04",
-          "price": 44.6
+          "price": 51.98
         }
       ],
       "top_markets": [
         {
           "market": "台北一",
           "price": 44.6,
-          "volume": 57.0
+          "volume": 190.0
+        },
+        {
+          "market": "台北二",
+          "price": 103.9,
+          "volume": 27.0
         }
       ],
-      "coverage": 7,
+      "coverage": 8,
       "variants": [
         {
           "sub_type": "櫻桃",
-          "latest_price": 44.6,
+          "latest_price": 51.98,
           "latest_date": "2026-04-04",
-          "coverage": 7
+          "coverage": 8
         }
       ]
     },
