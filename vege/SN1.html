@@ -54,8 +54,11 @@ fetch('../data/code_SN1.json').then(r=>r.json()).then(d=>{
     },
     options: {
       responsive:true,
+      interaction: { mode:'index', intersect:false },
       plugins: {
         tooltip: {
+          mode:'index',
+          intersect:false,
           callbacks: {
             label: function(ctx) {
               const ds = ctx.dataset.label || '';
