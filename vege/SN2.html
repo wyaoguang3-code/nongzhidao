@@ -48,14 +48,26 @@ fetch('../data/code_SN2.json').then(r=>r.json()).then(d=>{
     data: {
       labels,
       datasets: [
-        {type:'line', label:priceLabel, data:prices, borderColor:'#3b82f6', backgroundColor:'#3b82f6', yAxisID:'y'},
+        {type:'line', label:(priceLabel + ' (NTD/公斤)'), data:prices, borderColor:'#3b82f6', backgroundColor:'#3b82f6', yAxisID:'y'},
         {type:'bar', label:'交易量 (KG)', data:volumes, backgroundColor:'rgba(16,185,129,0.35)', yAxisID:'y1'}
       ]
     },
     options: {
       responsive:true,
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: function(ctx) {
+              const ds = ctx.dataset.label || '';
+              const v = ctx.parsed.y;
+              if (ds.includes('NTD/公斤')) return ds + ': ' + v + ' NTD/公斤';
+              return ds + ': ' + v + ' KG';
+            }
+          }
+        }
+      },
       scales: {
-        y: {type:'linear', position:'left', title:{display:true,text:'價格 (元/公斤)'}},
+        y: {type:'linear', position:'left', title:{display:true,text:'價格 (NTD/公斤)'}},
         y1: {type:'linear', position:'right', grid:{drawOnChartArea:false}, title:{display:true,text:'交易量 (KG)'}}
       }
     }
