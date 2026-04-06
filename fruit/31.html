@@ -1,12 +1,85 @@
-<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>31 釋迦</title><script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<body style="font-family:sans-serif;background:#08122a;color:#eaf0ff;padding:20px">
-<h1>31 釋迦</h1><p><a href="../index.html" style="color:#8bc2ff">回首頁</a></p>
-<div id="panel"></div><canvas id="c"></canvas>
+<!doctype html><html lang="zh-Hant"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>31 釋迦｜農知島</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang TC','Noto Sans TC',sans-serif;background:#08122a;color:#eaf0ff;margin:0}
+.wrap{max-width:1200px;margin:0 auto;padding:20px}
+.card{background:#0f1d3a;border:1px solid #22365f;border-radius:12px;padding:14px;margin:12px 0}
+h1{margin:0 0 8px} h2{margin:0 0 10px;font-size:22px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+canvas{background:#fff;border-radius:8px;padding:6px}
+a{color:#8bc2ff}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+</style>
+</head><body><div class="wrap">
+<h1>31 釋迦</h1>
+<p><a href="../index.html">← 回首頁</a> ｜資料來源：<a href="https://amis.afa.gov.tw/">AMIS</a></p>
+
+<div class="card" id="panel"></div>
+<div class="card" id="retail"></div>
+
+<div class="card"><h2>批發市場行情趨勢圖（每週）</h2><canvas id="c_week"></canvas></div>
+<div class="card"><h2>每日趨勢圖（一年以來）</h2><canvas id="c_day"></canvas></div>
+<div class="grid">
+  <div class="card"><h2>批發市場成交量比較（當月交易日累積）</h2><canvas id="c_vol"></canvas></div>
+  <div class="card"><h2>批發市場價格比較（當月交易量加權均價；可挑價格較佳市場）</h2><canvas id="c_price"></canvas></div>
+</div>
+<div class="card"><h2>每月趨勢圖（5年以來）</h2><canvas id="c_month"></canvas></div>
+<div class="card"><h2>每年趨勢圖（20年以來）</h2><canvas id="c_year"></canvas></div>
+
 <script>
 fetch('../data/fruit_31.json').then(r=>r.json()).then(d=>{
- const L=d.latest;
- document.getElementById('panel').innerHTML = `<p>最新均價：${L?L.price:'暫無資料'} NTD/公斤（${L?L.date:'-'}）</p>`;
- new Chart(document.getElementById('c'), {data:{labels:d.daily.map(x=>x.date),datasets:[{type:'line',label:'價格(NTD/公斤)',data:d.daily.map(x=>x.price),borderColor:'#3b82f6'},{type:'bar',label:'交易量(KG)',data:d.daily.map(x=>x.volume),backgroundColor:'rgba(16,185,129,0.35)'}]},options:{interaction:{mode:'index',intersect:false},plugins:{tooltip:{mode:'index',intersect:false}}}})
-})
-</script></body></html>
+  const L=d.latest;
+  document.getElementById('panel').innerHTML = `<h2>價格面板（AMIS）</h2><ul>
+  <li>最新均價：${L?L.price:'暫無資料'} NTD/公斤（${L?L.date:'-'}）</li>
+  <li>近7日趨勢：${(d.daily.slice(-7).map(x=>`${x.date.slice(5)}:${x.price}`).join('、'))||'暫無資料'}</li>
+  <li>市場比較月份：${d.market_compare.month || '-'}（量比/價比見下方圖）</li>
+  </ul>`;
+
+  if(L && L.price!=null){
+    const kg=Math.round(L.price*2); const jin=Math.round((L.price/1.5)*2);
+    document.getElementById('retail').innerHTML = `<h2>預估零售價（試算）</h2><ul><li>${kg} 元/公斤｜${jin} 元/台斤（口徑A: 批發×2）</li></ul>`;
+  } else {
+    document.getElementById('retail').innerHTML = `<h2>預估零售價（試算）</h2><ul><li>暫無資料</li></ul>`;
+  }
+
+  const mkPriceVol = (id, labels, prices, volumes, label) => new Chart(document.getElementById(id), {
+    data: {
+      labels,
+      datasets: [
+        {type:'line', label:(label + ' (NTD/公斤)'), data:prices, borderColor:'#3b82f6', backgroundColor:'#3b82f6', yAxisID:'y'},
+        {type:'bar', label:'交易量 (KG)', data:volumes, backgroundColor:'rgba(16,185,129,0.35)', yAxisID:'y1'}
+      ]
+    },
+    options: {
+      interaction: {mode:'index',intersect:false},
+      plugins: {tooltip: {mode:'index',intersect:false}},
+      scales: {
+        y: {title: {display:true,text:'價格 (NTD/公斤)'}},
+        y1: {position:'right', grid:{drawOnChartArea:false}, title:{display:true,text:'交易量 (KG)'}}
+      }
+    }
+  });
+
+  mkPriceVol('c_week', d.weekly.map(x=>x.key), d.weekly.map(x=>x.price), d.weekly.map(x=>x.volume), '每週均價');
+  mkPriceVol('c_day', d.daily.map(x=>x.date), d.daily.map(x=>x.price), d.daily.map(x=>x.volume), '每日均價');
+  mkPriceVol('c_month', d.monthly.map(x=>x.key), d.monthly.map(x=>x.price), d.monthly.map(x=>x.volume), '每月均價');
+  mkPriceVol('c_year', d.yearly.map(x=>x.key), d.yearly.map(x=>x.price), d.yearly.map(x=>x.volume), '每年均價');
+
+  new Chart(document.getElementById('c_vol'), {
+    type:'bar',
+    data:{labels:d.market_compare.markets_volume.map(x=>x.market),datasets:[{label:'當月累積成交量 (KG)',data:d.market_compare.markets_volume.map(x=>x.volume),backgroundColor:'#10b981'}]}
+  });
+
+  new Chart(document.getElementById('c_price'), {
+    type:'bar',
+    data:{labels:d.market_compare.markets_price.map(x=>x.market),datasets:[{label:'當月加權均價 (NTD/公斤, 低到高)',data:d.market_compare.markets_price.map(x=>x.price),backgroundColor:'#f59e0b'}]},
+    options:{
+      plugins:{tooltip:{callbacks:{label:(ctx)=> (ctx.dataset.label || '') + ': ' + ctx.parsed.y + ' NTD/公斤'}}},
+      scales:{y:{title:{display:true,text:'價格 (NTD/公斤)'}}}
+    }
+  });
+});
+</script>
+</div></body></html>
