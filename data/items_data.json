@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-07T02:21:23.393705+08:00",
+  "updated_at": "2026-04-07T02:43:10.019288+08:00",
   "items": {
     "water-spinach": {
       "latest_price": null,
@@ -53,19 +53,72 @@
           "sub_type": "SN1 蓮藕",
           "latest_price": 56.05,
           "latest_date": "2026-04-04",
-          "coverage": 593
+          "coverage": 593,
+          "raw_latest_rows": [
+            {
+              "roc_date": "115/04/04",
+              "date": "2026-04-04",
+              "market_no": "241",
+              "market": "三重區",
+              "product_code": "SN1",
+              "product_main": "蓮藕",
+              "product_sub": "其他",
+              "avg_price": 5.0,
+              "volume": 37.0,
+              "volume_raw": "37"
+            },
+            {
+              "roc_date": "115/04/04",
+              "date": "2026-04-04",
+              "market_no": "400",
+              "market": "台中市",
+              "product_code": "SN1",
+              "product_main": "蓮藕",
+              "product_sub": "其他",
+              "avg_price": 10.0,
+              "volume": 13.0,
+              "volume_raw": "13"
+            },
+            {
+              "roc_date": "115/04/04",
+              "date": "2026-04-04",
+              "market_no": "800",
+              "market": "高雄市",
+              "product_code": "SN1",
+              "product_main": "蓮藕",
+              "product_sub": "其他",
+              "avg_price": 60.0,
+              "volume": 630.0,
+              "volume_raw": "630"
+            }
+          ]
         },
         {
           "sub_type": "SN2 蓮藕 蓮子",
           "latest_price": 450.0,
           "latest_date": "2026-04-02",
-          "coverage": 96
+          "coverage": 96,
+          "raw_latest_rows": [
+            {
+              "roc_date": "115/04/02",
+              "date": "2026-04-02",
+              "market_no": "104",
+              "market": "台北二",
+              "product_code": "SN2",
+              "product_main": "蓮藕",
+              "product_sub": "蓮子",
+              "avg_price": 450.0,
+              "volume": 18.0,
+              "volume_raw": "18"
+            }
+          ]
         },
         {
           "sub_type": "SN9 蓮藕 進口",
           "latest_price": null,
           "latest_date": null,
-          "coverage": 0
+          "coverage": 0,
+          "raw_latest_rows": []
         }
       ]
     },
