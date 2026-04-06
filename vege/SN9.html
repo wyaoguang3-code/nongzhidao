@@ -44,30 +44,29 @@ fetch('../data/code_SN9.json').then(r=>r.json()).then(d=>{
     document.getElementById('retail').innerHTML=`<h2>預估零售價（試算）</h2><ul><li>暫無資料</li></ul>`;
   }
 
-  const mk = (id, labels, data, label, color='#3b82f6') => new Chart(document.getElementById(id), {type:'line', data:{labels, datasets:[{label,data,borderColor:color,backgroundColor:color,tension:0.2}]}, options:{responsive:true,plugins:{legend:{display:true}}}});
   const mkPriceVol = (id, labels, prices, volumes, priceLabel) => new Chart(document.getElementById(id), {
     data: {
       labels,
       datasets: [
         {type:'line', label:priceLabel, data:prices, borderColor:'#3b82f6', backgroundColor:'#3b82f6', yAxisID:'y'},
-        {type:'bar', label:'交易量', data:volumes, backgroundColor:'rgba(16,185,129,0.35)', yAxisID:'y1'}
+        {type:'bar', label:'交易量 (KG)', data:volumes, backgroundColor:'rgba(16,185,129,0.35)', yAxisID:'y1'}
       ]
     },
     options: {
       responsive:true,
       scales: {
-        y: {type:'linear', position:'left', title:{display:true,text:'價格'}},
-        y1: {type:'linear', position:'right', grid:{drawOnChartArea:false}, title:{display:true,text:'交易量'}}
+        y: {type:'linear', position:'left', title:{display:true,text:'價格 (元/公斤)'}},
+        y1: {type:'linear', position:'right', grid:{drawOnChartArea:false}, title:{display:true,text:'交易量 (KG)'}}
       }
     }
   });
 
-  mk('c_week', d.weekly.map(x=>x.key), d.weekly.map(x=>x.price), '每週均價');
-  mk('c_day', d.daily.map(x=>x.date), d.daily.map(x=>x.price), '每日均價');
+  mkPriceVol('c_week', d.weekly.map(x=>x.key), d.weekly.map(x=>x.price), d.weekly.map(x=>x.volume), '每週均價');
+  mkPriceVol('c_day', d.daily.map(x=>x.date), d.daily.map(x=>x.price), d.daily.map(x=>x.volume), '每日均價');
   mkPriceVol('c_month', d.monthly.map(x=>x.key), d.monthly.map(x=>x.price), d.monthly.map(x=>x.volume), '每月均價');
   mkPriceVol('c_year', d.yearly.map(x=>x.key), d.yearly.map(x=>x.price), d.yearly.map(x=>x.volume), '每年均價');
 
-  new Chart(document.getElementById('c_vol'), {type:'bar', data:{labels:d.market_compare.markets_volume.map(x=>x.market), datasets:[{label:'當月累積成交量',data:d.market_compare.markets_volume.map(x=>x.volume), backgroundColor:'#10b981'}]}});
+  new Chart(document.getElementById('c_vol'), {type:'bar', data:{labels:d.market_compare.markets_volume.map(x=>x.market), datasets:[{label:'當月累積成交量 (KG)',data:d.market_compare.markets_volume.map(x=>x.volume), backgroundColor:'#10b981'}]}});
   new Chart(document.getElementById('c_price'), {type:'bar', data:{labels:d.market_compare.markets_price.map(x=>x.market), datasets:[{label:'當月加權均價(低到高)',data:d.market_compare.markets_price.map(x=>x.price), backgroundColor:'#f59e0b'}]}});
 })
 </script>
