@@ -8,9 +8,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang TC','Noto Sans TC',s
 .card{background:#0f1d3a;border:1px solid #22365f;border-radius:12px;padding:14px;margin:12px 0}
 h1{margin:0 0 8px} h2{margin:0 0 10px;font-size:22px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-canvas{background:#fff;border-radius:8px;padding:6px}
+canvas{background:#fff;border-radius:8px;padding:6px;width:100% !important;height:320px !important;display:block}
 a{color:#8bc2ff}
-@media (max-width:900px){.grid{grid-template-columns:1fr}}
+@media (max-width:900px){.grid{grid-template-columns:1fr} canvas{height:380px !important;}}
 </style>
 </head><body><div class="wrap">
 <h1>11 椰子</h1>
@@ -30,6 +30,8 @@ a{color:#8bc2ff}
 
 <script>
 fetch('../data/fruit_11.json').then(r=>r.json()).then(d=>{
+  Chart.defaults.responsive = true;
+  Chart.defaults.maintainAspectRatio = false;
   const L=d.latest;
   document.getElementById('panel').innerHTML = `<h2>價格面板（AMIS）</h2><ul>
   <li>最新均價：${L?L.price:'暫無資料'} NTD/公斤（${L?L.date:'-'}）</li>
