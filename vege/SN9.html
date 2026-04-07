@@ -19,6 +19,7 @@ a{color:#8bc2ff}
 
 <div class="card" id="panel"></div>
 <div class="card" id="retail"></div>
+<div class="card" id="signal"></div>
 
 <div class="card"><h2>批發市場行情趨勢圖（每週）</h2><canvas id="c_week"></canvas></div>
 <div class="card"><h2>每日趨勢圖（一年以來）</h2><canvas id="c_day"></canvas></div>
@@ -41,10 +42,26 @@ fetch('../data/code_SN9.json').then(r=>r.json()).then(d=>{
 
   if(latest && latest.price!=null){
     const kg=Math.round(latest.price*2); const jin=Math.round((latest.price/1.5)*2);
-    document.getElementById('retail').innerHTML=`<h2>預估零售價（試算）</h2><ul><li>${kg} 元/公斤｜${jin} 元/台斤（口徑A: 批發×2）</li></ul>`;
+    document.getElementById('retail').innerHTML='<h2>預估零售價（試算）</h2><ul><li>'+kg+' 元/公斤｜'+jin+' 元/台斤（口徑A: 批發×2）</li></ul>';
   } else {
     document.getElementById('retail').innerHTML=`<h2>預估零售價（試算）</h2><ul><li>暫無資料</li></ul>`;
   }
+
+  // 近期買賣指標（試行）
+  const vals = d.daily.map(x=>x.price).filter(x=>x!==null && !Number.isNaN(x));
+  const q = (arr,p)=>{ if(!arr.length) return null; const s=[...arr].sort((a,b)=>a-b); const i=(s.length-1)*p; const lo=Math.floor(i), hi=Math.ceil(i); if(lo===hi) return s[lo]; return s[lo]+(s[hi]-s[lo])*(i-lo); };
+  const p30=q(vals,0.3), p70=q(vals,0.7);
+  const last7 = d.daily.slice(-7).map(x=>x.price).filter(x=>x!==null);
+  let trend=0;
+  if(last7.length>=2) trend = last7[last7.length-1]-last7[0];
+  let buy='普通', sell='普通價格';
+  if(latest && latest.price!=null && p30!=null && p70!=null){
+    if(latest.price < p30){ buy='推薦'; sell='弱勢價格'; }
+    else if(latest.price > p70){ buy='不推薦'; sell='優秀價格'; }
+    if(trend>5){ if(buy==='推薦') buy='普通'; else if(buy==='普通') buy='不推薦'; if(sell==='弱勢價格') sell='普通價格'; else if(sell==='普通價格') sell='優秀價格'; }
+    if(trend<-5){ if(buy==='不推薦') buy='普通'; else if(buy==='普通') buy='推薦'; if(sell==='優秀價格') sell='普通價格'; else if(sell==='普通價格') sell='弱勢價格'; }
+  }
+  document.getElementById('signal').innerHTML = '<h2>近期交易指標（試行）</h2><ul><li>購買建議：<b>'+buy+'</b></li><li>賣出建議：<b>'+sell+'</b></li><li>參考：目前價 '+(latest&&latest.price!=null?latest.price:'-')+' / P30 '+(p30!=null?p30.toFixed(2):'-')+' / P70 '+(p70!=null?p70.toFixed(2):'-')+' / 近7日變化 '+(Number.isFinite(trend)?trend.toFixed(2):'-')+'</li></ul>';
 
   const mkPriceVol = (id, labels, prices, volumes, priceLabel) => new Chart(document.getElementById(id), {
     data: {
