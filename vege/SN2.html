@@ -35,8 +35,9 @@ fetch('../data/code_SN2.json').then(r=>r.json()).then(d=>{
   Chart.defaults.responsive = true;
   Chart.defaults.maintainAspectRatio = false;
   const latest=d.latest_price;
+  const latestJin = (latest && latest.price!=null) ? (latest.price/1.5).toFixed(2) : null;
   document.getElementById('panel').innerHTML=`<h2>價格面板（AMIS）</h2>
-  <ul><li>最新均價：${latest?.price ?? '暫無資料'} 元/公斤（${latest?.date ?? '-'}）</li>
+  <ul><li>最新均價：${latest?.price ?? '暫無資料'} 元/公斤${latestJin?('（'+latestJin+' 元/台斤）'):''}（${latest?.date ?? '-'}）</li>
   <li>近7日趨勢：${(d.daily.slice(-7).map(x=>`${x.date.slice(5)}:${x.price}`).join('、'))||'暫無資料'}</li>
   <li>市場比較月份：${d.market_compare.month || '-'}（量比/價比見下方圖）</li></ul>`;
 
@@ -62,7 +63,10 @@ fetch('../data/code_SN2.json').then(r=>r.json()).then(d=>{
     if(trend<-5){ if(buy==='不推薦') buy='普通'; else if(buy==='普通') buy='推薦'; if(sell==='優秀價格') sell='普通價格'; else if(sell==='普通價格') sell='弱勢價格'; }
   }
   const trendText = Number.isFinite(trend) ? ((trend>0?'+':'') + trend.toFixed(2)) : '-';
-  document.getElementById('signal').innerHTML = '<h2>近期交易指標（試行）</h2><ul><li>購買建議：<b>'+buy+'</b></li><li>賣出建議：<b>'+sell+'</b></li><li>參考：目前價 '+(latest&&latest.price!=null?latest.price:'-')+' / P30 '+(p30!=null?p30.toFixed(2):'-')+'（買偏賺 / 賣偏虧） / P70 '+(p70!=null?p70.toFixed(2):'-')+'（買偏虧 / 賣偏賺） / 近7日變化 '+trendText+'</li></ul>';
+  const curText = (latest&&latest.price!=null) ? (latest.price + ' 元/公斤（' + (latest.price/1.5).toFixed(2) + ' 元/台斤）') : '-';
+  const p30Text = (p30!=null) ? (p30.toFixed(2) + ' 元/公斤（' + (p30/1.5).toFixed(2) + ' 元/台斤）') : '-';
+  const p70Text = (p70!=null) ? (p70.toFixed(2) + ' 元/公斤（' + (p70/1.5).toFixed(2) + ' 元/台斤）') : '-';
+  document.getElementById('signal').innerHTML = '<h2>近期交易指標（試行）</h2><ul><li>購買建議：<b>'+buy+'</b></li><li>賣出建議：<b>'+sell+'</b></li><li>參考：目前價 '+curText+' / P30 '+p30Text+'（買偏賺 / 賣偏虧） / P70 '+p70Text+'（買偏虧 / 賣偏賺） / 近7日變化 '+trendText+'</li></ul>';
 
   const mkPriceVol = (id, labels, prices, volumes, priceLabel) => new Chart(document.getElementById(id), {
     data: {
