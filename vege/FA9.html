@@ -8,9 +8,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang TC','Noto Sans TC',s
 .card{background:#0f1d3a;border:1px solid #22365f;border-radius:12px;padding:14px;margin:12px 0}
 h1{margin:0 0 8px} h2{margin:0 0 10px;font-size:22px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-canvas{background:#fff;border-radius:8px;padding:6px}
+canvas{background:#fff;border-radius:8px;padding:6px;width:100% !important;height:320px !important;display:block}
 a{color:#8bc2ff}
-@media (max-width:900px){.grid{grid-template-columns:1fr}}
+@media (max-width:900px){.grid{grid-template-columns:1fr} canvas{height:380px !important;}}
 </style>
 </head><body><div class="wrap">
 <h1>FA9 百果 進口</h1>
@@ -30,6 +30,8 @@ a{color:#8bc2ff}
 
 <script>
 fetch('../data/veg_FA9.json').then(r=>r.json()).then(d=>{
+  Chart.defaults.responsive = true;
+  Chart.defaults.maintainAspectRatio = false;
   const L=d.latest;
   document.getElementById('panel').innerHTML = `<h2>價格面板（AMIS）</h2><ul>
   <li>最新均價：${L?L.price:'暫無資料'} NTD/公斤（${L?L.date:'-'}）</li>
@@ -69,14 +71,20 @@ fetch('../data/veg_FA9.json').then(r=>r.json()).then(d=>{
 
   new Chart(document.getElementById('c_vol'), {
     type:'bar',
-    data:{labels:d.market_compare.markets_volume.map(x=>x.market),datasets:[{label:'當月累積成交量 (KG)',data:d.market_compare.markets_volume.map(x=>x.volume),backgroundColor:'#10b981'}]}
+    data:{labels:d.market_compare.markets_volume.map(x=>x.market),datasets:[{label:'當月累積成交量 (KG)',data:d.market_compare.markets_volume.map(x=>x.volume),backgroundColor:'#10b981'}]},
+    options:{
+      interaction:{mode:'index',intersect:false},
+      plugins:{tooltip:{enabled:true,mode:'index',intersect:false,callbacks:{label:(ctx)=> (ctx.dataset.label || '') + ': ' + ctx.parsed.y + ' KG'}}},
+      scales:{y:{title:{display:true,text:'交易量 (KG)'}}}
+    }
   });
 
   new Chart(document.getElementById('c_price'), {
     type:'bar',
     data:{labels:d.market_compare.markets_price.map(x=>x.market),datasets:[{label:'當月加權均價 (NTD/公斤, 低到高)',data:d.market_compare.markets_price.map(x=>x.price),backgroundColor:'#f59e0b'}]},
     options:{
-      plugins:{tooltip:{callbacks:{label:(ctx)=> (ctx.dataset.label || '') + ': ' + ctx.parsed.y + ' NTD/公斤'}}},
+      interaction:{mode:'index',intersect:false},
+      plugins:{tooltip:{enabled:true,mode:'index',intersect:false,callbacks:{label:(ctx)=> (ctx.dataset.label || '') + ': ' + ctx.parsed.y + ' NTD/公斤'}}},
       scales:{y:{title:{display:true,text:'價格 (NTD/公斤)'}}}
     }
   });
