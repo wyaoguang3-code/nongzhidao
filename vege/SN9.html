@@ -83,13 +83,24 @@ fetch('../data/code_SN9.json').then(r=>r.json()).then(d=>{
   mkPriceVol('c_month', d.monthly.map(x=>x.key), d.monthly.map(x=>x.price), d.monthly.map(x=>x.volume), '每月均價');
   mkPriceVol('c_year', d.yearly.map(x=>x.key), d.yearly.map(x=>x.price), d.yearly.map(x=>x.volume), '每年均價');
 
-  new Chart(document.getElementById('c_vol'), {type:'bar', data:{labels:d.market_compare.markets_volume.map(x=>x.market), datasets:[{label:'當月累積成交量 (KG)',data:d.market_compare.markets_volume.map(x=>x.volume), backgroundColor:'#10b981'}]}});
+  new Chart(document.getElementById('c_vol'), {
+    type:'bar',
+    data:{labels:d.market_compare.markets_volume.map(x=>x.market), datasets:[{label:'當月累積成交量 (KG)',data:d.market_compare.markets_volume.map(x=>x.volume), backgroundColor:'#10b981'}]},
+    options:{
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        tooltip:{enabled:true,mode:'index',intersect:false,callbacks:{label:(ctx)=> (ctx.dataset.label||'') + ': ' + ctx.parsed.y + ' KG'}}
+      },
+      scales:{y:{title:{display:true,text:'交易量 (KG)'}}}
+    }
+  });
   new Chart(document.getElementById('c_price'), {
     type:'bar',
     data:{labels:d.market_compare.markets_price.map(x=>x.market), datasets:[{label:'當月加權均價 (NTD/公斤, 低到高)',data:d.market_compare.markets_price.map(x=>x.price), backgroundColor:'#f59e0b'}]},
     options:{
+      interaction:{mode:'index',intersect:false},
       plugins:{
-        tooltip:{callbacks:{label:(ctx)=> (ctx.dataset.label || '') + ': ' + ctx.parsed.y + ' NTD/公斤'}}
+        tooltip:{enabled:true,mode:'index',intersect:false,callbacks:{label:(ctx)=> (ctx.dataset.label || '') + ': ' + ctx.parsed.y + ' NTD/公斤'}}
       },
       scales:{y:{title:{display:true,text:'價格 (NTD/公斤)'}}}
     }
