@@ -27,6 +27,17 @@
 <body>
 <div class="wrap">
   <div class="topbar"><h1>🌤️ 農業天氣（視覺版）</h1><a href="./index.html">回首頁</a></div>
+  <div class="card" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+    <span class="muted">地點：</span>
+    <select id="locSel" style="background:#122246;color:#eaf0ff;border:1px solid #2a3f69;border-radius:8px;padding:6px 10px">
+      <option value="24.1477,120.6736,台中市">台中市</option>
+      <option value="25.0330,121.5654,台北市">台北市</option>
+      <option value="22.6273,120.3014,高雄市">高雄市</option>
+      <option value="23.6978,120.9605,南投縣">南投縣</option>
+      <option value="23.4801,120.4491,嘉義縣">嘉義縣</option>
+      <option value="24.8040,120.9714,新竹市">新竹市</option>
+    </select>
+  </div>
   <div class="card hero">
     <div>
       <div id="loc" class="muted">台灣（台中）</div>
@@ -59,6 +70,15 @@
       <div class="kpi"><div class="muted">UV 指數</div><div class="v" id="uv">--</div></div>
       <div class="kpi"><div class="muted">露點</div><div class="v" id="dew">--°C</div></div>
       <div class="kpi"><div class="muted">氣壓</div><div class="v" id="pressure">-- hPa</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>農業風險燈號</h3>
+    <div class="grid">
+      <div class="kpi"><div class="muted">病蟲害風險</div><div class="v" id="pestRisk">--</div></div>
+      <div class="kpi"><div class="muted">灌溉建議（今日）</div><div class="v" id="irrigToday">--</div></div>
+      <div class="kpi"><div class="muted">灌溉建議（明日）</div><div class="v" id="irrigTomorrow">--</div></div>
     </div>
   </div>
 
@@ -101,10 +121,15 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-const LAT=24.1477, LON=120.6736; // Taichung
-const url=`https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code,surface_pressure&hourly=temperature_2m,precipitation_probability,precipitation,weather_code,uv_index,dew_point_2m,surface_pressure&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset&timezone=Asia%2FTaipei`;
 const wtxt=(c)=>({0:'晴朗',1:'大致晴',2:'局部多雲',3:'陰',45:'霧',51:'毛毛雨',61:'小雨',63:'中雨',65:'大雨',80:'陣雨'})[c]||'天氣變化';
-fetch(url).then(r=>r.json()).then(d=>{
+
+function levelText(v){ return v==='高'?'🔴 高':(v==='中'?'🟡 中':'🟢 低'); }
+function irrigText(mm){ if(mm>=12) return '高（可暫緩）'; if(mm>=4) return '中（視田況）'; return '低（建議補水）'; }
+
+async function loadWeather(lat, lon, name){
+const url=`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code,surface_pressure&hourly=temperature_2m,precipitation_probability,precipitation,weather_code,uv_index,dew_point_2m,surface_pressure&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset&timezone=Asia%2FTaipei`;
+const d = await (await fetch(url)).json();
+loc.textContent = '台灣（'+name+'）';
   const cur=d.current;
   tempNow.textContent=Math.round(cur.temperature_2m)+'°';
   desc.textContent=wtxt(cur.weather_code);
@@ -158,6 +183,16 @@ fetch(url).then(r=>r.json()).then(d=>{
   document.getElementById('rain6').textContent = rain6mm.toFixed(1) + ' mm';
   document.getElementById('rainAvg').textContent = rainAvg.toFixed(2) + ' mm/h';
 
+  // 風險燈號
+  const pestHigh = ((ht[0]||0) >= 28 && (cur.relative_humidity_2m||0) >= 78) || ((hp[0]||0) >= 70);
+  const pestMid = ((ht[0]||0) >= 24 && (cur.relative_humidity_2m||0) >= 68) || ((hp[0]||0) >= 40);
+  const pest = pestHigh ? '高' : (pestMid ? '中' : '低');
+  pestRisk.textContent = levelText(pest);
+
+  irrigToday.textContent = irrigText(rain6mm);
+  const tomorrowRain = (d.daily.precipitation_probability_max[1]||0);
+  irrigTomorrow.textContent = tomorrowRain >= 60 ? '高（可暫緩）' : (tomorrowRain >= 35 ? '中（視田況）' : '低（建議補水）');
+
   // 農業建議（含作物類型）
   const cropTypeEl = document.getElementById('cropType');
   const adviceEl = document.getElementById('agriAdvice');
@@ -183,6 +218,13 @@ fetch(url).then(r=>r.json()).then(d=>{
   };
   cropTypeEl.addEventListener('change', renderAdvice);
   renderAdvice();
-}).catch(()=>{desc.textContent='天氣資料暫時無法取得';});
+}
+
+document.getElementById('locSel').addEventListener('change', (e)=>{
+  const [lat,lon,name] = e.target.value.split(',');
+  loadWeather(parseFloat(lat), parseFloat(lon), name);
+});
+const [ilat,ilon,iname] = document.getElementById('locSel').value.split(',');
+loadWeather(parseFloat(ilat), parseFloat(ilon), iname).catch(()=>{desc.textContent='天氣資料暫時無法取得';});
 </script>
 </body></html>
