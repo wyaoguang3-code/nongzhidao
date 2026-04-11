@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>農知島｜農業天氣</title>
+  <style>
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;background:#08122a;color:#eaf0ff}
+    .wrap{max-width:980px;margin:0 auto;padding:14px}
+    .card{background:#0f1d3a;border:1px solid #22365f;border-radius:14px;padding:14px;margin:10px 0}
+    .hero{display:flex;justify-content:space-between;align-items:center}
+    .temp{font-size:56px;font-weight:700}
+    .muted{color:#b9c3f2}
+    .hscroll{display:flex;gap:10px;overflow:auto;padding-bottom:6px}
+    .hour{min-width:84px;background:#122246;border:1px solid #2a3f69;border-radius:10px;padding:8px;text-align:center}
+    .week{display:grid;grid-template-columns:1fr;gap:8px}
+    .row{display:flex;justify-content:space-between;align-items:center;background:#122246;border:1px solid #2a3f69;border-radius:10px;padding:10px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .kpi{background:#122246;border:1px solid #2a3f69;border-radius:10px;padding:10px}
+    .kpi .v{font-size:24px;font-weight:700}
+    canvas{width:100%!important;height:180px!important;background:#fff;border-radius:8px}
+    .topbar{display:flex;justify-content:space-between;align-items:center}
+    a{color:#8bc2ff}
+    @media (max-width:680px){.temp{font-size:46px}.grid{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><h1>🌤️ 農業天氣（視覺版）</h1><a href="./index.html">回首頁</a></div>
+  <div class="card hero">
+    <div>
+      <div id="loc" class="muted">台灣（台中）</div>
+      <div class="temp" id="tempNow">--°</div>
+      <div id="desc" class="muted">載入中...</div>
+    </div>
+    <div style="text-align:right">
+      <div id="todayHiLo" class="muted">-- / --</div>
+      <div id="sun" class="muted">日出 --:--｜日落 --:--</div>
+      <div id="updated" class="muted"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>未來 24 小時</h3>
+    <div class="hscroll" id="hourly"></div>
+  </div>
+
+  <div class="card">
+    <h3>未來 7 天</h3>
+    <div class="week" id="weekly"></div>
+  </div>
+
+  <div class="card">
+    <h3>農業關鍵指標</h3>
+    <div class="grid">
+      <div class="kpi"><div class="muted">濕度</div><div class="v" id="hum">--%</div></div>
+      <div class="kpi"><div class="muted">風速</div><div class="v" id="wind">-- km/h</div></div>
+      <div class="kpi"><div class="muted">降雨機率(今日)</div><div class="v" id="rainp">--%</div></div>
+      <div class="kpi"><div class="muted">UV 指數</div><div class="v" id="uv">--</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>溫度 / 降雨機率曲線（24h）</h3>
+    <canvas id="chart"></canvas>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const LAT=24.1477, LON=120.6736; // Taichung
+const url=`https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&hourly=temperature_2m,precipitation_probability,weather_code,uv_index&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset&timezone=Asia%2FTaipei`;
+const wtxt=(c)=>({0:'晴朗',1:'大致晴',2:'局部多雲',3:'陰',45:'霧',51:'毛毛雨',61:'小雨',63:'中雨',65:'大雨',80:'陣雨'})[c]||'天氣變化';
+fetch(url).then(r=>r.json()).then(d=>{
+  const cur=d.current;
+  tempNow.textContent=Math.round(cur.temperature_2m)+'°';
+  desc.textContent=wtxt(cur.weather_code);
+  hum.textContent=Math.round(cur.relative_humidity_2m)+'%';
+  wind.textContent=Math.round(cur.wind_speed_10m)+' km/h';
+  updated.textContent='更新：'+new Date().toLocaleString('zh-TW',{hour12:false});
+
+  todayHiLo.textContent=`今日 ${Math.round(d.daily.temperature_2m_max[0])}° / ${Math.round(d.daily.temperature_2m_min[0])}°`;
+  sun.textContent=`日出 ${d.daily.sunrise[0].slice(11,16)}｜日落 ${d.daily.sunset[0].slice(11,16)}`;
+  rainp.textContent=Math.round(d.daily.precipitation_probability_max[0])+'%';
+  uv.textContent=(d.hourly.uv_index||[]).slice(0,24).reduce((a,b)=>Math.max(a,b||0),0).toFixed(1);
+
+  const nowIdx=d.hourly.time.findIndex(t=>t.slice(0,13)===new Date().toISOString().slice(0,13));
+  const start=Math.max(0,nowIdx), end=Math.min(d.hourly.time.length,start+24);
+  const hours=d.hourly.time.slice(start,end);
+  const ht=d.hourly.temperature_2m.slice(start,end);
+  const hp=d.hourly.precipitation_probability.slice(start,end);
+  hourly.innerHTML=hours.map((t,i)=>`<div class='hour'><div class='muted'>${t.slice(11,16)}</div><div style='font-size:20px;font-weight:700'>${Math.round(ht[i])}°</div><div class='muted'>雨 ${Math.round(hp[i]||0)}%</div></div>`).join('');
+
+  weekly.innerHTML=d.daily.time.slice(0,7).map((dt,i)=>`<div class='row'><div>${dt.slice(5)}（${['日','一','二','三','四','五','六'][new Date(dt).getDay()]}）</div><div>${Math.round(d.daily.temperature_2m_min[i])}° ~ ${Math.round(d.daily.temperature_2m_max[i])}°</div><div class='muted'>雨 ${Math.round(d.daily.precipitation_probability_max[i]||0)}%</div></div>`).join('');
+
+  new Chart(document.getElementById('chart'),{
+    data:{labels:hours.map(t=>t.slice(11,16)),datasets:[
+      {type:'line',label:'溫度(°C)',data:ht,borderColor:'#3b82f6',tension:.25,yAxisID:'y'},
+      {type:'bar',label:'降雨機率(%)',data:hp,backgroundColor:'rgba(16,185,129,.35)',yAxisID:'y1'}
+    ]},
+    options:{interaction:{mode:'index',intersect:false},plugins:{tooltip:{mode:'index',intersect:false}},scales:{y:{position:'left'},y1:{position:'right',grid:{drawOnChartArea:false}}}}
+  });
+}).catch(()=>{desc.textContent='天氣資料暫時無法取得';});
+</script>
+</body></html>
