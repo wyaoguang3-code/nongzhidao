@@ -64,12 +64,34 @@
 
   <div class="card">
     <h3>農業建議（自動）</h3>
+    <div class="muted" style="margin-bottom:8px">作物類型：
+      <select id="cropType" style="background:#122246;color:#eaf0ff;border:1px solid #2a3f69;border-radius:8px;padding:4px 8px">
+        <option value="leaf">葉菜類</option>
+        <option value="fruit">果菜/瓜果類</option>
+        <option value="fungi">菇類</option>
+        <option value="flower">花卉</option>
+      </select>
+    </div>
     <div id="agriAdvice" class="muted">分析中...</div>
   </div>
 
   <div class="card">
     <h3>溫度 / 降雨機率曲線（24h）</h3>
     <canvas id="chart"></canvas>
+  </div>
+
+  <div class="card">
+    <h3>近6小時降雨量預估</h3>
+    <div class="grid">
+      <div class="kpi"><div class="muted">累積雨量</div><div class="v" id="rain6">-- mm</div></div>
+      <div class="kpi"><div class="muted">平均每小時</div><div class="v" id="rainAvg">-- mm/h</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>即時雷達雲雨圖（台灣）</h3>
+    <img id="radarImg" alt="雷達雲雨圖" style="width:100%;border-radius:10px;border:1px solid #2a3f69;background:#0b1020" />
+    <div class="muted" style="margin-top:6px">來源：中央氣象署雷達圖（若來源暫時不可用將顯示空白）</div>
   </div>
 
   <div class="card">
@@ -80,7 +102,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 const LAT=24.1477, LON=120.6736; // Taichung
-const url=`https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code,surface_pressure&hourly=temperature_2m,precipitation_probability,weather_code,uv_index,dew_point_2m,surface_pressure&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset&timezone=Asia%2FTaipei`;
+const url=`https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code,surface_pressure&hourly=temperature_2m,precipitation_probability,precipitation,weather_code,uv_index,dew_point_2m,surface_pressure&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset&timezone=Asia%2FTaipei`;
 const wtxt=(c)=>({0:'晴朗',1:'大致晴',2:'局部多雲',3:'陰',45:'霧',51:'毛毛雨',61:'小雨',63:'中雨',65:'大雨',80:'陣雨'})[c]||'天氣變化';
 fetch(url).then(r=>r.json()).then(d=>{
   const cur=d.current;
@@ -101,9 +123,10 @@ fetch(url).then(r=>r.json()).then(d=>{
   const hours=d.hourly.time.slice(start,end);
   const ht=d.hourly.temperature_2m.slice(start,end);
   const hp=d.hourly.precipitation_probability.slice(start,end);
+  const hr=d.hourly.precipitation.slice(start,end);
   const hd=d.hourly.dew_point_2m.slice(start,end);
   dew.textContent = (hd.length?Math.round(hd[0]):'--') + '°C';
-  hourly.innerHTML=hours.map((t,i)=>`<div class='hour'><div class='muted'>${t.slice(11,16)}</div><div style='font-size:20px;font-weight:700'>${Math.round(ht[i])}°</div><div class='muted'>雨 ${Math.round(hp[i]||0)}%</div></div>`).join('');
+  hourly.innerHTML=hours.map((t,i)=>`<div class='hour'><div class='muted'>${t.slice(11,16)}</div><div style='font-size:20px;font-weight:700'>${Math.round(ht[i])}°</div><div class='muted'>雨 ${Math.round(hp[i]||0)}%</div><div class='muted'>${(hr[i]||0).toFixed(1)}mm</div></div>`).join('');
 
   weekly.innerHTML=d.daily.time.slice(0,7).map((dt,i)=>`<div class='row'><div>${dt.slice(5)}（${['日','一','二','三','四','五','六'][new Date(dt).getDay()]}）</div><div>${Math.round(d.daily.temperature_2m_min[i])}° ~ ${Math.round(d.daily.temperature_2m_max[i])}°</div><div class='muted'>雨 ${Math.round(d.daily.precipitation_probability_max[i]||0)}%</div></div>`).join('');
 
@@ -125,16 +148,41 @@ fetch(url).then(r=>r.json()).then(d=>{
     options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:(c)=>'約 '+Math.round(c.parsed.y/60)+' 小時'}}}}
   });
 
-  // 農業建議
-  const rain6 = hp.slice(0,6).reduce((a,b)=>a+(b||0),0)/Math.max(1,Math.min(6,hp.length));
-  const hotHumid = (ht[0]||0) >= 28 && (cur.relative_humidity_2m||0) >= 78;
-  let lines = [];
-  if(rain6 >= 50) lines.push('未來6小時降雨機率偏高，建議暫緩噴藥與採收，優先排水巡田。');
-  else if(rain6 >= 30) lines.push('未來6小時有局部降雨風險，建議採收與施作保留彈性。');
-  else lines.push('短時降雨風險低，可安排灌溉、施作與採收窗口。');
-  if(hotHumid) lines.push('高溫高濕條件成立，病蟲害風險上升，建議加密田區巡檢。');
-  if((cur.wind_speed_10m||0) > 22) lines.push('風速偏高，不建議噴藥，避免漂移。');
-  agriAdvice.innerHTML = '<ul>' + lines.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+  // 雷達圖
+  const radar = document.getElementById('radarImg');
+  radar.src = 'https://www.cwa.gov.tw/Data/radar/CV1_3600.png?ts=' + Date.now();
+
+  // 降雨量估算卡
+  const rain6mm = hr.slice(0,6).reduce((a,b)=>a+(b||0),0);
+  const rainAvg = rain6mm / Math.max(1, Math.min(6, hr.length));
+  document.getElementById('rain6').textContent = rain6mm.toFixed(1) + ' mm';
+  document.getElementById('rainAvg').textContent = rainAvg.toFixed(2) + ' mm/h';
+
+  // 農業建議（含作物類型）
+  const cropTypeEl = document.getElementById('cropType');
+  const adviceEl = document.getElementById('agriAdvice');
+  const renderAdvice = () => {
+    const crop = cropTypeEl.value;
+    const rain6 = hp.slice(0,6).reduce((a,b)=>a+(b||0),0)/Math.max(1,Math.min(6,hp.length));
+    const hotHumid = (ht[0]||0) >= 28 && (cur.relative_humidity_2m||0) >= 78;
+    let lines = [];
+
+    if(rain6 >= 50 || rain6mm >= 10) lines.push('未來6小時降雨風險高，建議暫緩噴藥與採收，優先排水巡田。');
+    else if(rain6 >= 30 || rain6mm >= 4) lines.push('未來6小時有局部降雨風險，建議採收與施作保留彈性。');
+    else lines.push('短時降雨風險低，可安排灌溉、施作與採收窗口。');
+
+    if(hotHumid) lines.push('高溫高濕條件成立，病蟲害風險上升，建議加密田區巡檢。');
+    if((cur.wind_speed_10m||0) > 22) lines.push('風速偏高，不建議噴藥，避免漂移。');
+
+    if(crop === 'leaf') lines.push('葉菜類：若清晨露重，建議延後採收以降低儲運失水與病斑風險。');
+    if(crop === 'fruit') lines.push('果菜/瓜果類：高溫日建議分時段採收，避免日灼與果面傷害。');
+    if(crop === 'fungi') lines.push('菇類：濕度過高時加強通風與排濕，避免黴菌交叉感染。');
+    if(crop === 'flower') lines.push('花卉：降雨前建議先行採切外銷等級花，降低花瓣受損。');
+
+    adviceEl.innerHTML = '<ul>' + lines.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+  };
+  cropTypeEl.addEventListener('change', renderAdvice);
+  renderAdvice();
 }).catch(()=>{desc.textContent='天氣資料暫時無法取得';});
 </script>
 </body></html>
