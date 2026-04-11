@@ -57,18 +57,30 @@
       <div class="kpi"><div class="muted">風速</div><div class="v" id="wind">-- km/h</div></div>
       <div class="kpi"><div class="muted">降雨機率(今日)</div><div class="v" id="rainp">--%</div></div>
       <div class="kpi"><div class="muted">UV 指數</div><div class="v" id="uv">--</div></div>
+      <div class="kpi"><div class="muted">露點</div><div class="v" id="dew">--°C</div></div>
+      <div class="kpi"><div class="muted">氣壓</div><div class="v" id="pressure">-- hPa</div></div>
     </div>
+  </div>
+
+  <div class="card">
+    <h3>農業建議（自動）</h3>
+    <div id="agriAdvice" class="muted">分析中...</div>
   </div>
 
   <div class="card">
     <h3>溫度 / 降雨機率曲線（24h）</h3>
     <canvas id="chart"></canvas>
   </div>
+
+  <div class="card">
+    <h3>日出日落作業窗</h3>
+    <canvas id="sunChart"></canvas>
+  </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 const LAT=24.1477, LON=120.6736; // Taichung
-const url=`https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&hourly=temperature_2m,precipitation_probability,weather_code,uv_index&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset&timezone=Asia%2FTaipei`;
+const url=`https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code,surface_pressure&hourly=temperature_2m,precipitation_probability,weather_code,uv_index,dew_point_2m,surface_pressure&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset&timezone=Asia%2FTaipei`;
 const wtxt=(c)=>({0:'晴朗',1:'大致晴',2:'局部多雲',3:'陰',45:'霧',51:'毛毛雨',61:'小雨',63:'中雨',65:'大雨',80:'陣雨'})[c]||'天氣變化';
 fetch(url).then(r=>r.json()).then(d=>{
   const cur=d.current;
@@ -76,6 +88,7 @@ fetch(url).then(r=>r.json()).then(d=>{
   desc.textContent=wtxt(cur.weather_code);
   hum.textContent=Math.round(cur.relative_humidity_2m)+'%';
   wind.textContent=Math.round(cur.wind_speed_10m)+' km/h';
+  pressure.textContent=Math.round((cur.surface_pressure||0))+' hPa';
   updated.textContent='更新：'+new Date().toLocaleString('zh-TW',{hour12:false});
 
   todayHiLo.textContent=`今日 ${Math.round(d.daily.temperature_2m_max[0])}° / ${Math.round(d.daily.temperature_2m_min[0])}°`;
@@ -88,6 +101,8 @@ fetch(url).then(r=>r.json()).then(d=>{
   const hours=d.hourly.time.slice(start,end);
   const ht=d.hourly.temperature_2m.slice(start,end);
   const hp=d.hourly.precipitation_probability.slice(start,end);
+  const hd=d.hourly.dew_point_2m.slice(start,end);
+  dew.textContent = (hd.length?Math.round(hd[0]):'--') + '°C';
   hourly.innerHTML=hours.map((t,i)=>`<div class='hour'><div class='muted'>${t.slice(11,16)}</div><div style='font-size:20px;font-weight:700'>${Math.round(ht[i])}°</div><div class='muted'>雨 ${Math.round(hp[i]||0)}%</div></div>`).join('');
 
   weekly.innerHTML=d.daily.time.slice(0,7).map((dt,i)=>`<div class='row'><div>${dt.slice(5)}（${['日','一','二','三','四','五','六'][new Date(dt).getDay()]}）</div><div>${Math.round(d.daily.temperature_2m_min[i])}° ~ ${Math.round(d.daily.temperature_2m_max[i])}°</div><div class='muted'>雨 ${Math.round(d.daily.precipitation_probability_max[i]||0)}%</div></div>`).join('');
@@ -99,6 +114,27 @@ fetch(url).then(r=>r.json()).then(d=>{
     ]},
     options:{interaction:{mode:'index',intersect:false},plugins:{tooltip:{mode:'index',intersect:false}},scales:{y:{position:'left'},y1:{position:'right',grid:{drawOnChartArea:false}}}}
   });
+
+  // 日出日落作業窗視覺
+  const sr = d.daily.sunrise[0].slice(11,16), ss = d.daily.sunset[0].slice(11,16);
+  const toMin = t=>{ const [h,m]=t.split(':').map(Number); return h*60+m; };
+  const srm=toMin(sr), ssm=toMin(ss);
+  new Chart(document.getElementById('sunChart'),{
+    type:'bar',
+    data:{labels:['凌晨','白天','夜間'],datasets:[{label:'分鐘',data:[srm, Math.max(ssm-srm,0), Math.max(1440-ssm,0)],backgroundColor:['#1e3a8a','#f59e0b','#111827']}]},
+    options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:(c)=>'約 '+Math.round(c.parsed.y/60)+' 小時'}}}}
+  });
+
+  // 農業建議
+  const rain6 = hp.slice(0,6).reduce((a,b)=>a+(b||0),0)/Math.max(1,Math.min(6,hp.length));
+  const hotHumid = (ht[0]||0) >= 28 && (cur.relative_humidity_2m||0) >= 78;
+  let lines = [];
+  if(rain6 >= 50) lines.push('未來6小時降雨機率偏高，建議暫緩噴藥與採收，優先排水巡田。');
+  else if(rain6 >= 30) lines.push('未來6小時有局部降雨風險，建議採收與施作保留彈性。');
+  else lines.push('短時降雨風險低，可安排灌溉、施作與採收窗口。');
+  if(hotHumid) lines.push('高溫高濕條件成立，病蟲害風險上升，建議加密田區巡檢。');
+  if((cur.wind_speed_10m||0) > 22) lines.push('風速偏高，不建議噴藥，避免漂移。');
+  agriAdvice.innerHTML = '<ul>' + lines.map(x=>`<li>${x}</li>`).join('') + '</ul>';
 }).catch(()=>{desc.textContent='天氣資料暫時無法取得';});
 </script>
 </body></html>
