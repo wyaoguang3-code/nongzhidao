@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-07T03:38:08.663736+08:00",
+  "updated_at": "2026-04-18T12:44:21.851233+08:00",
   "items": {
     "water-spinach": {
       "latest_price": null,
@@ -10,28 +10,32 @@
       "variants": []
     },
     "lotus-root": {
-      "latest_price": 62.5,
-      "latest_date": "2026-04-05",
+      "latest_price": 72.37,
+      "latest_date": "2026-04-18",
       "trend_7d": [
         {
-          "date": "2026-04-01",
-          "price": 63.14
+          "date": "2026-04-12",
+          "price": 54.27
         },
         {
-          "date": "2026-04-02",
-          "price": 44.48
+          "date": "2026-04-14",
+          "price": 48.26
         },
         {
-          "date": "2026-04-03",
-          "price": 47.08
+          "date": "2026-04-15",
+          "price": 53.39
         },
         {
-          "date": "2026-04-04",
-          "price": 49.9
+          "date": "2026-04-16",
+          "price": 54.2
         },
         {
-          "date": "2026-04-05",
-          "price": 62.5
+          "date": "2026-04-17",
+          "price": 52.31
+        },
+        {
+          "date": "2026-04-18",
+          "price": 72.37
         }
       ],
       "top_markets": [
@@ -39,19 +43,41 @@
           "market": "高雄市",
           "price": 62.5,
           "volume": 600.0
+        },
+        {
+          "market": "台北一",
+          "price": 77.3,
+          "volume": 282.0
+        },
+        {
+          "market": "台北二",
+          "price": 450.0,
+          "volume": 12.0
         }
       ],
-      "coverage": 26,
+      "coverage": 28,
       "variants": [
         {
           "sub_type": "SN1 蓮藕",
-          "latest_price": 62.5,
-          "latest_date": "2026-04-05",
-          "coverage": 942,
+          "latest_price": 58.72,
+          "latest_date": "2026-04-18",
+          "coverage": 913,
           "raw_latest_rows": [
             {
-              "roc_date": "115/04/05",
-              "date": "2026-04-05",
+              "roc_date": "115/04/18",
+              "date": "2026-04-18",
+              "market_no": "109",
+              "market": "台北一",
+              "product_code": "SN1",
+              "product_main": "蓮藕",
+              "product_sub": "其他",
+              "avg_price": 50.0,
+              "volume": 260.0,
+              "volume_raw": "260"
+            },
+            {
+              "roc_date": "115/04/18",
+              "date": "2026-04-18",
               "market_no": "800",
               "market": "高雄市",
               "product_code": "SN1",
@@ -64,11 +90,23 @@
           ],
           "recent_raw_by_date": [
             {
-              "date": "2026-04-05",
+              "date": "2026-04-18",
               "rows": [
                 {
-                  "roc_date": "115/04/05",
-                  "date": "2026-04-05",
+                  "roc_date": "115/04/18",
+                  "date": "2026-04-18",
+                  "market_no": "109",
+                  "market": "台北一",
+                  "product_code": "SN1",
+                  "product_main": "蓮藕",
+                  "product_sub": "其他",
+                  "avg_price": 50.0,
+                  "volume": 260.0,
+                  "volume_raw": "260"
+                },
+                {
+                  "roc_date": "115/04/18",
+                  "date": "2026-04-18",
                   "market_no": "800",
                   "market": "高雄市",
                   "product_code": "SN1",
@@ -81,108 +119,108 @@
               ]
             },
             {
-              "date": "2026-04-04",
+              "date": "2026-04-17",
               "rows": [
                 {
-                  "roc_date": "115/04/04",
-                  "date": "2026-04-04",
-                  "market_no": "109",
-                  "market": "台北一",
-                  "product_code": "SN1",
-                  "product_main": "蓮藕",
-                  "product_sub": "其他",
-                  "avg_price": 45.0,
-                  "volume": 780.0,
-                  "volume_raw": "780"
-                },
-                {
-                  "roc_date": "115/04/04",
-                  "date": "2026-04-04",
-                  "market_no": "241",
-                  "market": "三重區",
-                  "product_code": "SN1",
-                  "product_main": "蓮藕",
-                  "product_sub": "其他",
-                  "avg_price": 5.0,
-                  "volume": 37.0,
-                  "volume_raw": "37"
-                },
-                {
-                  "roc_date": "115/04/04",
-                  "date": "2026-04-04",
-                  "market_no": "400",
-                  "market": "台中市",
-                  "product_code": "SN1",
-                  "product_main": "蓮藕",
-                  "product_sub": "其他",
-                  "avg_price": 10.0,
-                  "volume": 22.0,
-                  "volume_raw": "22"
-                },
-                {
-                  "roc_date": "115/04/04",
-                  "date": "2026-04-04",
-                  "market_no": "800",
-                  "market": "高雄市",
-                  "product_code": "SN1",
-                  "product_main": "蓮藕",
-                  "product_sub": "其他",
-                  "avg_price": 60.0,
-                  "volume": 630.0,
-                  "volume_raw": "630"
-                }
-              ]
-            },
-            {
-              "date": "2026-04-03",
-              "rows": [
-                {
-                  "roc_date": "115/04/03",
-                  "date": "2026-04-03",
+                  "roc_date": "115/04/17",
+                  "date": "2026-04-17",
                   "market_no": "104",
                   "market": "台北二",
                   "product_code": "SN1",
                   "product_main": "蓮藕",
                   "product_sub": "其他",
-                  "avg_price": 5.0,
-                  "volume": 60.0,
-                  "volume_raw": "60"
+                  "avg_price": 70.0,
+                  "volume": 80.0,
+                  "volume_raw": "80"
                 },
                 {
-                  "roc_date": "115/04/03",
-                  "date": "2026-04-03",
+                  "roc_date": "115/04/17",
+                  "date": "2026-04-17",
                   "market_no": "109",
                   "market": "台北一",
                   "product_code": "SN1",
                   "product_main": "蓮藕",
                   "product_sub": "其他",
-                  "avg_price": 42.1,
-                  "volume": 700.0,
-                  "volume_raw": "700"
+                  "avg_price": 47.6,
+                  "volume": 420.0,
+                  "volume_raw": "420"
                 },
                 {
-                  "roc_date": "115/04/03",
-                  "date": "2026-04-03",
-                  "market_no": "400",
-                  "market": "台中市",
+                  "roc_date": "115/04/17",
+                  "date": "2026-04-17",
+                  "market_no": "220",
+                  "market": "板橋區",
                   "product_code": "SN1",
                   "product_main": "蓮藕",
                   "product_sub": "其他",
-                  "avg_price": 11.5,
-                  "volume": 60.0,
-                  "volume_raw": "60"
+                  "avg_price": 45.0,
+                  "volume": 90.0,
+                  "volume_raw": "90"
                 },
                 {
-                  "roc_date": "115/04/03",
-                  "date": "2026-04-03",
+                  "roc_date": "115/04/17",
+                  "date": "2026-04-17",
+                  "market_no": "241",
+                  "market": "三重區",
+                  "product_code": "SN1",
+                  "product_main": "蓮藕",
+                  "product_sub": "其他",
+                  "avg_price": 10.0,
+                  "volume": 30.0,
+                  "volume_raw": "30"
+                },
+                {
+                  "roc_date": "115/04/17",
+                  "date": "2026-04-17",
                   "market_no": "800",
                   "market": "高雄市",
                   "product_code": "SN1",
                   "product_main": "蓮藕",
                   "product_sub": "其他",
-                  "avg_price": 60.0,
-                  "volume": 630.0,
-                  "volume_raw": "630"
+                  "avg_price": 62.5,
+                  "volume": 600.0,
+                  "volume_raw": "600"
+                },
+                {
+                  "roc_date": "115/04/17",
+                  "date": "2026-04-17",
+                  "market_no": "950",
+                  "market": "花蓮市",
+                  "product_code": "SN1",
+                  "product_main": "蓮藕",
+                  "product_sub": "其他",
+                  "avg_price": 12.0,
+                  "volume": 90.0,
+                  "volume_raw": "90"
+                }
+              ]
+            },
+            {
+              "date": "2026-04-16",
+              "rows": [
+                {
+                  "roc_date": "115/04/16",
+                  "date": "2026-04-16",
+                  "market_no": "109",
+                  "market": "台北一",
+                  "product_code": "SN1",
+                  "product_main": "蓮藕",
+                  "product_sub": "其他",
+                  "avg_price": 43.0,
+                  "volume": 235.0,
+                  "volume_raw": "235"
+                },
+                {
+                  "roc_date": "115/04/16",
+                  "date": "2026-04-16",
+                  "market_no": "800",
+                  "market": "高雄市",
+                  "product_code": "SN1",
+                  "product_main": "蓮藕",
+                  "product_sub": "其他",
+                  "avg_price": 58.2,
+                  "volume": 658.0,
+                  "volume_raw": "658"
                 }
               ]
             }
@@ -190,72 +228,96 @@
         },
         {
           "sub_type": "SN2 蓮藕 蓮子",
-          "latest_price": 450.0,
-          "latest_date": "2026-04-02",
-          "coverage": 105,
+          "latest_price": 417.65,
+          "latest_date": "2026-04-18",
+          "coverage": 102,
           "raw_latest_rows": [
             {
-              "roc_date": "115/04/02",
-              "date": "2026-04-02",
+              "roc_date": "115/04/18",
+              "date": "2026-04-18",
               "market_no": "104",
               "market": "台北二",
               "product_code": "SN2",
               "product_main": "蓮藕",
               "product_sub": "蓮子",
               "avg_price": 450.0,
-              "volume": 18.0,
-              "volume_raw": "18"
+              "volume": 12.0,
+              "volume_raw": "12"
+            },
+            {
+              "roc_date": "115/04/18",
+              "date": "2026-04-18",
+              "market_no": "109",
+              "market": "台北一",
+              "product_code": "SN2",
+              "product_main": "蓮藕",
+              "product_sub": "蓮子",
+              "avg_price": 400.0,
+              "volume": 22.0,
+              "volume_raw": "22"
             }
           ],
           "recent_raw_by_date": [
             {
-              "date": "2026-04-02",
+              "date": "2026-04-18",
               "rows": [
                 {
-                  "roc_date": "115/04/02",
-                  "date": "2026-04-02",
+                  "roc_date": "115/04/18",
+                  "date": "2026-04-18",
                   "market_no": "104",
                   "market": "台北二",
                   "product_code": "SN2",
                   "product_main": "蓮藕",
                   "product_sub": "蓮子",
                   "avg_price": 450.0,
-                  "volume": 18.0,
-                  "volume_raw": "18"
-                }
-              ]
-            },
-            {
-              "date": "2026-04-01",
-              "rows": [
+                  "volume": 12.0,
+                  "volume_raw": "12"
+                },
                 {
-                  "roc_date": "115/04/01",
-                  "date": "2026-04-01",
-                  "market_no": "109",
-                  "market": "台北一",
-                  "product_code": "SN2",
-                  "product_main": "蓮藕",
-                  "product_sub": "蓮子",
-                  "avg_price": 374.1,
-                  "volume": 118.0,
-                  "volume_raw": "118"
-                }
-              ]
-            },
-            {
-              "date": "2026-03-31",
-              "rows": [
-                {
-                  "roc_date": "115/03/31",
-                  "date": "2026-03-31",
+                  "roc_date": "115/04/18",
+                  "date": "2026-04-18",
                   "market_no": "109",
                   "market": "台北一",
                   "product_code": "SN2",
                   "product_main": "蓮藕",
                   "product_sub": "蓮子",
                   "avg_price": 400.0,
-                  "volume": 60.0,
-                  "volume_raw": "60"
+                  "volume": 22.0,
+                  "volume_raw": "22"
+                }
+              ]
+            },
+            {
+              "date": "2026-04-15",
+              "rows": [
+                {
+                  "roc_date": "115/04/15",
+                  "date": "2026-04-15",
+                  "market_no": "109",
+                  "market": "台北一",
+                  "product_code": "SN2",
+                  "product_main": "蓮藕",
+                  "product_sub": "蓮子",
+                  "avg_price": 230.0,
+                  "volume": 18.0,
+                  "volume_raw": "18"
+                }
+              ]
+            },
+            {
+              "date": "2026-04-12",
+              "rows": [
+                {
+                  "roc_date": "115/04/12",
+                  "date": "2026-04-12",
+                  "market_no": "109",
+                  "market": "台北一",
+                  "product_code": "SN2",
+                  "product_main": "蓮藕",
+                  "product_sub": "蓮子",
+                  "avg_price": 230.0,
+                  "volume": 12.0,
+                  "volume_raw": "12"
                 }
               ]
             }
