@@ -169,16 +169,21 @@ fetch('../data/code_SG2.json').then(r=>r.json()).then(d=>{
 
   fetch('../data/tw_crop_disaster_yearly.json').then(r=>r.json()).then(ds=>{
     new Chart(document.getElementById('disaster_year'), {
-      type:'bar',
       data:{
         labels: ds.yearly.map(x=>String(x.year)),
-        datasets:[{label:'災損金額（億元）', data: ds.yearly.map(x=>x.loss_100m_ntd), backgroundColor:'rgba(239,68,68,0.55)', borderColor:'#ef4444', borderWidth:1}]
+        datasets:[
+          {type:'bar', label:'災損金額（億元）', data: ds.yearly.map(x=>x.loss_100m_ntd), backgroundColor:'rgba(239,68,68,0.55)', borderColor:'#ef4444', borderWidth:1, yAxisID:'y'},
+          {type:'line', label:'災損數量（公噸）', data: ds.yearly.map(x=>x.loss_qty_ton), borderColor:'#22d3ee', backgroundColor:'#22d3ee', tension:0.25, yAxisID:'y1'}
+        ]
       },
       options:{
         responsive:true,
         interaction:{mode:'index',intersect:false},
-        plugins:{ tooltip:{ callbacks:{ label:(ctx)=> `${ctx.dataset.label}: ${ctx.parsed.y} 億元` } } },
-        scales:{ y:{ title:{display:true,text:'金額（億元）'} } }
+        plugins:{ tooltip:{ callbacks:{ label:(ctx)=> ctx.dataset.label.includes('金額') ? `${ctx.dataset.label}: ${ctx.parsed.y} 億元` : `${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()} 公噸` } } },
+        scales:{
+          y:{ type:'linear', position:'left', title:{display:true,text:'金額（億元）'} },
+          y1:{ type:'linear', position:'right', grid:{drawOnChartArea:false}, title:{display:true,text:'數量（公噸）'} }
+        }
       }
     });
   });
