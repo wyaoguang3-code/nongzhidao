@@ -33,6 +33,7 @@ a{color:#8bc2ff}
 <div class="card" id="export_panel"></div>
 <div class="card"><h2>外銷每月趨勢圖（5年以來）</h2><canvas id="ex_month"></canvas></div>
 <div class="card"><h2>外銷每年趨勢圖（2016年至今）</h2><canvas id="ex_year"></canvas></div>
+<div class="card"><h2>每年全台農作物災損金額（億元）</h2><canvas id="disaster_year"></canvas></div>
 
 <script>
 fetch('../data/code_SG2.json').then(r=>r.json()).then(d=>{
@@ -164,6 +165,22 @@ fetch('../data/code_SG2.json').then(r=>r.json()).then(d=>{
     mkExport('ex_year', ex.yearly.map(x=>String(x.year)), ex.yearly.map(x=>x.avg_price_ntd_per_ton), ex.yearly.map(x=>x.weight_ton), '每年');
   }).catch(()=>{
     document.getElementById('export_panel').innerHTML = '<h2>外銷面板（農業部貿易統計，出口）</h2><ul><li>外銷資料暫時載入失敗。</li></ul>';
+  });
+
+  fetch('../data/tw_crop_disaster_yearly.json').then(r=>r.json()).then(ds=>{
+    new Chart(document.getElementById('disaster_year'), {
+      type:'bar',
+      data:{
+        labels: ds.yearly.map(x=>String(x.year)),
+        datasets:[{label:'災損金額（億元）', data: ds.yearly.map(x=>x.loss_100m_ntd), backgroundColor:'rgba(239,68,68,0.55)', borderColor:'#ef4444', borderWidth:1}]
+      },
+      options:{
+        responsive:true,
+        interaction:{mode:'index',intersect:false},
+        plugins:{ tooltip:{ callbacks:{ label:(ctx)=> `${ctx.dataset.label}: ${ctx.parsed.y} 億元` } } },
+        scales:{ y:{ title:{display:true,text:'金額（億元）'} } }
+      }
+    });
   });
 })
 </script>
