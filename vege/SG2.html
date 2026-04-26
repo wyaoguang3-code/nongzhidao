@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-Hant"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SG2 大蒜 軟梗｜農知島</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang TC','Noto Sans TC',sans-serif;background:#08122a;color:#eaf0ff;margin:0}
+.wrap{max-width:1200px;margin:0 auto;padding:20px}
+.card{background:#0f1d3a;border:1px solid #22365f;border-radius:12px;padding:14px;margin:12px 0}
+h1{margin:0 0 8px} h2{margin:0 0 10px;font-size:22px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+canvas{background:#fff;border-radius:8px;padding:6px;width:100% !important;height:320px !important;display:block}
+a{color:#8bc2ff}
+@media (max-width:900px){.grid{grid-template-columns:1fr} canvas{height:380px !important;}}
+</style></head>
+<body><div class="wrap">
+<h1>SG2 大蒜 軟梗</h1>
+<p><a href="../index.html">← 回首頁</a> ｜資料來源：<a href="https://amis.afa.gov.tw/veg/VegProdDayTransInfo.aspx">AMIS</a></p>
+
+<div class="card" id="panel"></div>
+<div class="card" id="retail"></div>
+<div class="card" id="signal"></div>
+
+<div class="card"><h2>批發市場行情趨勢圖（每週）</h2><canvas id="c_week"></canvas></div>
+<div class="card"><h2>每日趨勢圖（一年以來）</h2><canvas id="c_day"></canvas></div>
+<div class="grid">
+  <div class="card"><h2>批發市場成交量比較（當月交易日累積）</h2><canvas id="c_vol"></canvas></div>
+  <div class="card"><h2>批發市場價格比較（當月交易量加權均價；可挑價格較佳市場）</h2><canvas id="c_price"></canvas></div>
+</div>
+<div class="card"><h2>每月趨勢圖（5年以來）</h2><canvas id="c_month"></canvas></div>
+<div class="card"><h2>每年趨勢圖（20年以來）</h2><canvas id="c_year"></canvas></div>
+
+<script>
+fetch('../data/code_SG2.json').then(r=>r.json()).then(d=>{
+  Chart.defaults.responsive = true;
+  Chart.defaults.maintainAspectRatio = false;
+  const latest=d.latest_price;
+  const latestJin = (latest && latest.price!=null) ? (latest.price/1.5).toFixed(2) : null;
+  document.getElementById('panel').innerHTML=`<h2>價格面板（AMIS）</h2>
+  <ul><li>最新均價：${latest?.price ?? '暫無資料'} 元/公斤${latestJin?('（'+latestJin+' 元/台斤）'):''}（${latest?.date ?? '-'}）</li>
+  <li>近7日趨勢：${(d.daily.slice(-7).map(x=>`${x.date.slice(5)}:${x.price}`).join('、'))||'暫無資料'}</li>
+  <li>市場比較月份：${d.market_compare.month || '-'}（量比/價比見下方圖）</li></ul>`;
+
+  if(latest && latest.price!=null){
+    const kg=Math.round(latest.price*2); const jin=Math.round((latest.price/1.5)*2);
+    document.getElementById('retail').innerHTML='<h2>預估零售價（試算）</h2><ul><li>'+kg+' 元/公斤｜'+jin+' 元/台斤（口徑A: 批發×2）</li></ul>';
+  } else {
+    document.getElementById('retail').innerHTML=`<h2>預估零售價（試算）</h2><ul><li>暫無資料</li></ul>`;
+  }
+
+  // 近期買賣指標（試行）
+  const vals = d.daily.map(x=>x.price).filter(x=>x!==null && !Number.isNaN(x));
+  const q = (arr,p)=>{ if(!arr.length) return null; const s=[...arr].sort((a,b)=>a-b); const i=(s.length-1)*p; const lo=Math.floor(i), hi=Math.ceil(i); if(lo===hi) return s[lo]; return s[lo]+(s[hi]-s[lo])*(i-lo); };
+  const p30=q(vals,0.3), p70=q(vals,0.7);
+  const last7 = d.daily.slice(-7).map(x=>x.price).filter(x=>x!==null);
+  let trend=0;
+  if(last7.length>=2) trend = last7[last7.length-1]-last7[0];
+  let buy='普通', sell='普通價格';
+  if(latest && latest.price!=null && p30!=null && p70!=null){
+    if(latest.price < p30){ buy='推薦'; sell='弱勢價格'; }
+    else if(latest.price > p70){ buy='不推薦'; sell='優秀價格'; }
+    if(trend>5){ if(buy==='推薦') buy='普通'; else if(buy==='普通') buy='不推薦'; if(sell==='弱勢價格') sell='普通價格'; else if(sell==='普通價格') sell='優秀價格'; }
+    if(trend<-5){ if(buy==='不推薦') buy='普通'; else if(buy==='普通') buy='推薦'; if(sell==='優秀價格') sell='普通價格'; else if(sell==='普通價格') sell='弱勢價格'; }
+  }
+  const trendText = Number.isFinite(trend) ? ((trend>0?'+':'') + trend.toFixed(2)) : '-';
+  const curText = (latest&&latest.price!=null) ? (latest.price + ' 元/公斤（' + (latest.price/1.5).toFixed(2) + ' 元/台斤）') : '-';
+  const p30Text = (p30!=null) ? (p30.toFixed(2) + ' 元/公斤（' + (p30/1.5).toFixed(2) + ' 元/台斤）') : '-';
+  const p70Text = (p70!=null) ? (p70.toFixed(2) + ' 元/公斤（' + (p70/1.5).toFixed(2) + ' 元/台斤）') : '-';
+  document.getElementById('signal').innerHTML = '<h2>近期交易指標（試行）</h2><ul><li>購買建議：<b>'+buy+'</b></li><li>賣出建議：<b>'+sell+'</b></li><li>參考：目前價 '+curText+' / P30 '+p30Text+'（買偏賺 / 賣偏虧） / P70 '+p70Text+'（買偏虧 / 賣偏賺） / 近7日變化 '+trendText+'</li></ul>';
+
+  const mkPriceVol = (id, labels, prices, volumes, priceLabel) => new Chart(document.getElementById(id), {
+    data: {
+      labels,
+      datasets: [
+        {type:'line', label:(priceLabel + ' (NTD/公斤)'), data:prices, borderColor:'#3b82f6', backgroundColor:'#3b82f6', yAxisID:'y'},
+        {type:'bar', label:'交易量 (KG)', data:volumes, backgroundColor:'rgba(16,185,129,0.35)', yAxisID:'y1'}
+      ]
+    },
+    options: {
+      responsive:true,
+      interaction: { mode:'index', intersect:false },
+      plugins: {
+        tooltip: {
+          mode:'index',
+          intersect:false,
+          callbacks: {
+            label: function(ctx) {
+              const ds = ctx.dataset.label || '';
+              const v = ctx.parsed.y;
+              if (ds.includes('NTD/公斤')) return ds + ': ' + v + ' NTD/公斤';
+              return ds + ': ' + v + ' KG';
+            }
+          }
+        }
+      },
+      scales: {
+        y: {type:'linear', position:'left', title:{display:true,text:'價格 (NTD/公斤)'}},
+        y1: {type:'linear', position:'right', grid:{drawOnChartArea:false}, title:{display:true,text:'交易量 (KG)'}}
+      }
+    }
+  });
+
+  mkPriceVol('c_week', d.weekly.map(x=>x.key), d.weekly.map(x=>x.price), d.weekly.map(x=>x.volume), '每週均價');
+  mkPriceVol('c_day', d.daily.map(x=>x.date), d.daily.map(x=>x.price), d.daily.map(x=>x.volume), '每日均價');
+  mkPriceVol('c_month', d.monthly.map(x=>x.key), d.monthly.map(x=>x.price), d.monthly.map(x=>x.volume), '每月均價');
+  mkPriceVol('c_year', d.yearly.map(x=>x.key), d.yearly.map(x=>x.price), d.yearly.map(x=>x.volume), '每年均價');
+
+  new Chart(document.getElementById('c_vol'), {
+    type:'bar',
+    data:{labels:d.market_compare.markets_volume.map(x=>x.market), datasets:[{label:'當月累積成交量 (KG)',data:d.market_compare.markets_volume.map(x=>x.volume), backgroundColor:'#10b981'}]},
+    options:{
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        tooltip:{enabled:true,mode:'index',intersect:false,callbacks:{label:(ctx)=> (ctx.dataset.label||'') + ': ' + ctx.parsed.y + ' KG'}}
+      },
+      scales:{y:{title:{display:true,text:'交易量 (KG)'}}}
+    }
+  });
+  new Chart(document.getElementById('c_price'), {
+    type:'bar',
+    data:{labels:d.market_compare.markets_price.map(x=>x.market), datasets:[{label:'當月加權均價 (NTD/公斤, 低到高)',data:d.market_compare.markets_price.map(x=>x.price), backgroundColor:'#f59e0b'}]},
+    options:{
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        tooltip:{enabled:true,mode:'index',intersect:false,callbacks:{label:(ctx)=> (ctx.dataset.label || '') + ': ' + ctx.parsed.y + ' NTD/公斤'}}
+      },
+      scales:{y:{title:{display:true,text:'價格 (NTD/公斤)'}}}
+    }
+  });
+})
+</script>
+</div></body></html>
