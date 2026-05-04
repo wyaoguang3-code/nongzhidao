@@ -102,7 +102,7 @@ button{cursor:pointer}
 </div>
 
 <div class="card"><h2>灌溉排程 <span class="badge blue">🟢 雛形</span></h2><div class="hint">單位：土壤濕度(%)、雨量(mm/24h)</div><div class="tool-grid"><div class="field"><input id="ir_soil" type="number" value="45" placeholder="土壤濕度"><span class="u">%</span></div><div class="field"><input id="ir_rain" type="number" value="20" placeholder="24h雨量"><span class="u">mm</span></div><button onclick="runIrrigation()">產生建議</button></div><div id="irrigation" class="result">尚未計算</div></div>
-<div class="card"><h2>施肥計畫 <span class="badge red">🔴 雛形</span></h2><div class="hint">欄位說明：生長階段／面積／預計肥料成本</div><div class="tool-grid"><select id="fz_stage"><option>苗期</option><option>開花期</option><option>結果期</option></select><div class="field"><input id="fz_area" type="number" value="1" placeholder="面積"><span class="u">分地</span></div><div class="field"><input id="fz_budget" type="number" value="5000" placeholder="肥料成本"><span class="u">元/分地</span></div><button onclick="runFertilizer()">產生建議</button></div><div id="fert_plan" class="result">尚未計算</div></div>
+<div class="card"><h2>施肥計畫 <span class="badge red">🔴 雛形</span></h2><div class="hint">欄位說明：生長階段／面積／預計肥料成本</div><div class="result"><b>牛蕃茄施肥原則（固定顯示）</b><ul><li><b>苗期</b>：根系建立優先，氮不宜過高避免徒長。</li><li><b>開花期</b>：提高鉀、鈣、硼，提升開花著果率。</li><li><b>結果期</b>：分次追肥，鉀鈣為主，控制氮避免裂果與軟果。</li></ul></div><div class="tool-grid"><select id="fz_stage"><option>苗期</option><option>開花期</option><option>結果期</option></select><div class="field"><input id="fz_area" type="number" value="1" placeholder="面積"><span class="u">分地</span></div><div class="field"><input id="fz_budget" type="number" value="5000" placeholder="肥料成本"><span class="u">元/分地</span></div><button onclick="runFertilizer()">產生建議</button></div><div id="fert_plan" class="result">尚未計算</div></div>
 <div class="card"><h2>病蟲害辨識 <span class="badge red">🔴 雛形</span></h2><div class="result"><b>預設流程（固定顯示）</b><ol><li>拍照：葉片正反面 + 莖部 + 果實（同地塊至少 3 株）</li><li>判讀：症狀分類（葉斑/捲葉/黃化）+ 嚴重度分級</li><li>建議：先做栽培管理，再評估用藥與輪作調整</li></ol><b>牛蕃茄常見對照</b><ul><li><b>葉斑</b>：常見早晚疫病/細菌性斑點</li><li><b>捲葉</b>：常見病毒病或粉蝨壓力</li><li><b>黃化</b>：常見根系受損、缺素或病害前期</li></ul></div><div class="tool-grid"><select id="pest_sym"><option>葉斑</option><option>捲葉</option><option>黃化</option></select><select id="pest_lv"><option>輕度</option><option>中度</option><option>重度</option></select><button onclick="runPestAI()">產生針對建議</button></div><div id="pest_ai" class="result">尚未計算</div></div>
 <div class="card"><h2>氣象預警推播 <span class="badge blue">🟢 雛形</span></h2><div class="hint">單位：風速(級)、溫度(°C)、雨量(mm/24h)</div><div class="result"><b>預設規則總覽（固定顯示）</b><ul><li><b>強風</b>：風速 >= 10 級｜影響：倒伏、落果、設施損傷</li><li><b>高溫</b>：日間高溫 >= 35°C｜影響：日灼、授粉不良、果實品質下降</li><li><b>低溫</b>：最低溫 <= 12°C｜影響：生長停滯、著果率下降、裂果風險增加</li><li><b>暴雨</b>：24h 雨量 >= 80mm｜影響：積水、根腐病與青枯病壓力上升</li></ul></div><div class="tool-grid"><div class="field"><input id="wx_wind" type="number" value="9" placeholder="最大風速"><span class="u">級</span></div><div class="field"><input id="wx_temp" type="number" value="14" placeholder="最低溫"><span class="u">°C</span></div><div class="field"><input id="wx_rain" type="number" value="80" placeholder="24h雨量"><span class="u">mm</span></div><button onclick="runWeatherAlert()">檢查目前是否觸發</button></div><div id="wx_alert" class="result">尚未計算</div></div>
 <div class="card"><h2>連作障礙預防 <span class="badge red">🔴 雛形</span></h2><div class="hint">本頁作物：牛蕃茄（FJ3）。欄位說明：連作季數＝同科作物連續種植幾季；病害次數＝最近一季發病紀錄</div><div class="tool-grid"><div class="field"><input id="cc_seq" type="number" value="2" placeholder="同科連作季數"><span class="u">季</span></div><div class="field"><input id="cc_dis" type="number" value="1" placeholder="最近病害次數"><span class="u">次/季</span></div><button onclick="runContinuousRisk()">產生建議</button></div><div id="continuous_risk" class="result">尚未計算</div></div>
@@ -332,8 +332,16 @@ function runIrrigation(){
 }
 function runFertilizer(){
   const s=document.getElementById('fz_stage').value,a=Number(document.getElementById('fz_area').value||1),b=Number(document.getElementById('fz_budget').value||5000);
-  const plan=s==='苗期'?'高磷低氮':'開花期'===s?'鉀鈣提升':'鉀肥主導、分次追肥';
-  document.getElementById('fert_plan').innerHTML=`${s}建議：${plan}；你填寫肥料成本約 ${Math.round(b*a).toLocaleString()} 元`;
+  const total=Math.round(b*a).toLocaleString();
+  let detail='';
+  if(s==='苗期') detail='重點：促根、壯苗。建議少量多次（7-10天一次），以磷肥與有機質為主，氮肥保守。';
+  if(s==='開花期') detail='重點：保花保果。建議補鉀鈣硼，降低落花落果；保持水分穩定避免生理障礙。';
+  if(s==='結果期') detail='重點：提升果重與品質。建議每5-7天分次追肥，鉀鈣優先，避免氮過高造成軟果裂果。';
+  document.getElementById('fert_plan').innerHTML=`
+    <b>${s}施肥建議</b><br>
+    ${detail}<br>
+    <b>本次預算估算</b>：約 ${total} 元（${a} 分地）
+  `;
 }
 function runPestAI(){
   const sym=document.getElementById('pest_sym').value,lv=document.getElementById('pest_lv').value;
