@@ -93,6 +93,8 @@ jobs:
           ep=Path('data/code_FJ3_export.json')
           ex_old = json.loads(ep.read_text(encoding='utf-8')) if ep.exists() else {}
           ex_new = dict(ex_old)
+          export_ok = False
+          export_msg = 'not_attempted'
           try:
               # Source endpoint occasionally has TLS chain issues; use unverified context in CI.
               ctx = ssl._create_unverified_context()
@@ -142,16 +144,48 @@ jobs:
                       'latest_month': monthly5[-1], 'monthly5': monthly5, 'yearly': yearly
                   })
                   ep.write_text(json.dumps(ex_new, ensure_ascii=False, indent=2), encoding='utf-8')
-          except Exception:
-              pass
+                  export_ok = True
+                  export_msg = f"ok rows={len(monthly5)} latest={monthly5[-1].get('key','-')}"
+              else:
+                  export_msg = 'empty_result_keep_old'
+          except Exception as e:
+              export_msg = f"exception_keep_old: {type(e).__name__}"
+
+          # write status for next step notification
+          Path('data/fj3_update_status.json').write_text(json.dumps({
+              'wholesale_latest': data.get('latest_price'),
+              'export_ok': export_ok,
+              'export_msg': export_msg,
+              'ts': now_tpe().isoformat()
+          }, ensure_ascii=False, indent=2), encoding='utf-8')
 
           print('updated wholesale latest=',data['latest_price'])
+          print('export status=',export_msg)
           PY
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/code_FJ3.json
+          git add data/code_FJ3.json data/code_FJ3_export.json data/fj3_update_status.json
           git diff --cached --quiet || git commit -m "chore: auto-update FJ3 data"
           git push
+
+      - name: Notify export fetch status in run summary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('data/fj3_update_status.json')
+          d=json.loads(p.read_text(encoding='utf-8')) if p.exists() else {}
+          txt = []
+          txt.append('## FJ3 Auto Update Status')
+          txt.append(f"- wholesale_latest: {d.get('wholesale_latest')}")
+          txt.append(f"- export_ok: {d.get('export_ok')}")
+          txt.append(f"- export_msg: {d.get('export_msg')}")
+          txt.append(f"- ts: {d.get('ts')}")
+          summary='\n'.join(txt)+'\n'
+          Path('/tmp/fj3_summary.md').write_text(summary, encoding='utf-8')
+          print(summary)
+          PY
+          cat /tmp/fj3_summary.md >> "$GITHUB_STEP_SUMMARY"
