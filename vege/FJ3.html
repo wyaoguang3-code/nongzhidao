@@ -116,7 +116,7 @@ button{cursor:pointer}
 <div class="card"><h2>採收時機預測 <span class="badge blue">🔵 雛形</span></h2><div class="hint">單位：天數(天)、溫度(°C)</div><div class="result"><b>牛蕃茄採收規則（固定顯示）</b><ul><li>主窗口：約定植後 85~110 天</li><li>高溫（>=27°C）時成熟會提早 5~7 天</li><li>建議分批採收，先採轉色果與成熟度高果</li></ul></div><div class="tool-grid"><div class="field"><input id="hv_days" type="number" value="92" placeholder="定植後天數"><span class="u">天</span></div><div class="field"><input id="hv_temp" type="number" value="24" placeholder="近7日均溫"><span class="u">°C</span></div><button onclick="runHarvestPrediction()">推算</button></div><div id="harvest_pred" class="result">尚未計算</div></div>
 <div class="card"><h2>保鮮 / 儲存建議 <span class="badge red">🔴 雛形</span></h2><div class="hint">單位：溫度(°C)、相對濕度(%)</div><div class="result"><b>牛蕃茄儲存原則（固定顯示）</b><ul><li>建議 10~13°C、85~90%RH</li><li>避免與高乙烯水果（香蕉、蘋果）同倉</li><li>先分級再入庫，可降低交叉損耗</li></ul></div><div class="tool-grid"><div class="field"><input id="st_temp" type="number" value="12" placeholder="儲存溫度"><span class="u">°C</span></div><div class="field"><input id="st_hum" type="number" value="88" placeholder="濕度"><span class="u">%</span></div><button onclick="runStorageAdvice()">產生建議</button></div><div id="storage_advice" class="result">尚未計算</div></div>
 <div class="card"><h2>產量預估 <span class="badge blue">🔵 雛形</span></h2><div class="hint">欄位說明：基準值(噸/分地)可調；季節係數＝倍率（1.0 正常、1.1 偏佳、0.9 偏差）</div><div class="result"><b>估算邏輯（固定顯示）</b><ul><li>總產量 = 面積 × 基準值 × 季節基準倍率 × 季節係數</li><li>春季常較佳、夏季常偏低（以氣候風險折算）</li></ul></div><div class="tool-grid"><div class="field"><input id="yd_area" type="number" value="1" placeholder="面積"><span class="u">分地</span></div><div class="field"><input id="yd_base" type="number" value="3.1" step="0.1" placeholder="基準值"><span class="u">噸/分地</span></div><select id="yd_season"><option>春季</option><option>夏季</option><option>秋季</option><option>冬季</option></select><div class="field"><span class="fl">季節係數</span><input id="yd_factor" type="number" value="1" step="0.1" placeholder="季節係數"><span class="u">倍率</span></div><button onclick="runYieldEstimate()">估算</button></div><div id="yield_est" class="result">尚未計算</div></div>
-<div class="card"><h2>加工建議 <span class="badge blue">🟠 雛形</span></h2><div class="hint">單位：庫存(kg)、價格(元/kg)</div><div class="tool-grid"><div class="field"><input id="pr_stock" type="number" value="800" placeholder="庫存"><span class="u">kg</span></div><div class="field"><input id="pr_price" type="number" value="36" placeholder="現貨價"><span class="u">元/kg</span></div><button onclick="runProcessingAdvice()">產生建議</button></div><div id="processing_advice" class="result">尚未計算</div></div>
+<div class="card"><h2>加工建議 <span class="badge blue">🟠 雛形</span></h2><div class="hint">單位：庫存(kg)、價格(元/kg)</div><div class="result"><b>加工轉單原則（固定顯示）</b><ul><li>高庫存 + 低市價：優先導入加工，降低滯銷與腐耗</li><li>中庫存 + 中價：分級鮮售，次級品加工</li><li>低庫存 + 高價：以鮮售為主，維持現金流</li></ul></div><div class="tool-grid"><div class="field"><input id="pr_stock" type="number" value="800" placeholder="庫存"><span class="u">kg</span></div><div class="field"><input id="pr_price" type="number" value="36" placeholder="現貨價"><span class="u">元/kg</span></div><button onclick="runProcessingAdvice()">產生建議</button></div><div id="processing_advice" class="result">尚未計算</div></div>
 <div class="card"><h2>定價策略建議 <span class="badge red">🔴 雛形</span></h2><div class="hint">欄位說明：A=高品質、B=標準、C=次級；輸出為建議售價(元/kg)</div><div class="tool-grid"><select id="pc_quality"><option>A級（高品質）</option><option>B級（標準）</option><option>C級（次級）</option></select><select id="pc_channel"><option>批發</option><option>直銷</option><option>電商</option></select><button onclick="runPricingStrategy()">產生建議</button></div><div id="pricing_strategy" class="result">尚未計算</div></div>
 <div class="card"><h2>財務損益分析 <span class="badge blue">🟢 雛形</span></h2><div class="hint">欄位說明：產量=每分地可售重量；售價=平均售價；輸出=收入/成本/毛利（元）</div><div class="tool-grid"><div class="field"><input id="pn_yield" type="number" value="3200" placeholder="每分地產量"><span class="u">kg/分</span></div><div class="field"><input id="pn_price" type="number" value="50" placeholder="平均售價"><span class="u">元/kg</span></div><button onclick="runPnL()">試算</button></div><div id="pnl" class="result">尚未計算</div></div>
 <div class="card"><h2>人力排班 <span class="badge blue">🟢 雛形</span></h2><div class="hint">單位：工作天(天)、人力(人)</div><div class="tool-grid"><div class="field"><input id="sh_days" type="number" value="6" placeholder="本週農忙天數"><span class="u">天</span></div><div class="field"><input id="sh_workers" type="number" value="4" placeholder="可用人數"><span class="u">人</span></div><button onclick="runShiftPlan()">產生建議</button></div><div id="shift_plan" class="result">尚未計算</div></div>
@@ -623,8 +623,27 @@ function runYieldEstimate(){
 }
 function runProcessingAdvice(){
   const s=Number(document.getElementById('pr_stock').value||0), p=Number(document.getElementById('pr_price').value||0);
-  const msg=(s>600&&p<40)?'建議轉番茄醬/冷凍切丁':'優先鮮售，次級品再加工';
-  document.getElementById('processing_advice').innerHTML=msg;
+
+  let stage='',plan='',purpose='';
+  if(s>800 && p<40){
+    stage='高庫存低價格';
+    plan='主推番茄醬、冷凍切丁、乾燥番茄；鮮售只留高品質批次。';
+    purpose='快速消化庫存、降低腐耗，避免價格續跌造成更大損失。';
+  }else if(s>400 && p<50){
+    stage='中庫存中低價格';
+    plan='分級出貨：A級鮮售、B/C級轉加工（醬料/料理包原料）。';
+    purpose='兼顧現金流與庫存去化，提升整體變現效率。';
+  }else{
+    stage='低庫存或價格尚可';
+    plan='以鮮售為主，僅將次級品做少量加工備援。';
+    purpose='維持高單價通路，保留加工彈性。';
+  }
+
+  document.getElementById('processing_advice').innerHTML=`
+    <b>情境判定</b>：${stage}<br>
+    <b>加工方向</b>：${plan}<br>
+    <b>策略用意</b>：${purpose}
+  `;
 }
 function runPricingStrategy(){
   const q=document.getElementById('pc_quality').value,c=document.getElementById('pc_channel').value,m=window.fj3Data?.latest_price?.price||50;
