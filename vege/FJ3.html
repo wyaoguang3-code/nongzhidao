@@ -348,10 +348,30 @@ function runContinuousRisk(){
   const seq=Number(document.getElementById('cc_seq').value||0), dis=Number(document.getElementById('cc_dis').value||0);
   const crop='牛蕃茄(FJ3)';
   const risk=seq>=3||dis>=2?'高風險':seq>=2?'中風險':'低風險';
-  let advice='建議與豆科或十字花科輪作 1 季。';
-  if(risk==='中風險') advice='建議至少輪作 1 季，並加強根腐/青枯監測。';
-  if(risk==='高風險') advice='建議立即停茄科連作，連續 1-2 季改種非茄科，搭配土壤消毒與嫁接苗。';
-  document.getElementById('continuous_risk').innerHTML=`作物：${crop}<br>判定：${risk}<br>${advice}`;
+
+  let detail='';
+  if(risk==='低風險'){
+    detail=`<ul>
+      <li><b>豆科綠肥（如太陽麻）</b>：補充土壤有機質與氮循環，提升下季牛蕃茄根系活力。</li>
+      <li><b>短期葉菜</b>：快速周轉、降低同科病原累積。</li>
+      <li>用意：維持地力，避免連作障礙起點。</li>
+    </ul>`;
+  } else if(risk==='中風險'){
+    detail=`<ul>
+      <li><b>十字花科（芥菜/蘿蔔）</b>：可壓低部分土傳病原密度。</li>
+      <li><b>豆科綠肥 + 翻耕還田</b>：改善團粒結構，降低根腐壓力。</li>
+      <li>用意：用 1 季非茄科打斷病蟲循環，再回種牛蕃茄。</li>
+    </ul>`;
+  } else {
+    detail=`<ul>
+      <li><b>連續 1-2 季非茄科輪作</b>（玉米/蔥蒜/豆科）：明顯降低青枯病、萎凋病風險。</li>
+      <li><b>土壤處理</b>：高溫悶棚或生物性資材，降低病原基數。</li>
+      <li><b>回種時用嫁接苗</b>：提升抗病性，降低連作造成的減產幅度。</li>
+      <li>用意：先降病原壓力，再恢復牛蕃茄穩定產量。</li>
+    </ul>`;
+  }
+
+  document.getElementById('continuous_risk').innerHTML=`作物：${crop}<br>判定：${risk}${detail}`;
 }
 function runHarvestPrediction(){
   const d=Number(document.getElementById('hv_days').value||0), t=Number(document.getElementById('hv_temp').value||24);
