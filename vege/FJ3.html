@@ -93,6 +93,7 @@ button{cursor:pointer}
 <div class="card">
   <h2>土壤 / 地力分析 <span class="badge red">🔴 雛形</span></h2>
   <div class="hint">單位：pH(無單位)、有機質(等級)</div>
+  <div class="result"><b>牛蕃茄土壤建議區間（固定顯示）</b><ul><li>pH 建議：6.0 ~ 6.8</li><li>有機質：以「適中」為佳，過低補有機質、過高防氮過剩</li><li>重點：排水、通氣、根系健康比單次施肥更關鍵</li></ul></div>
   <div class="tool-grid">
     <div class="field"><input id="ph" type="number" step="0.1" placeholder="pH" value="6.2"/><span class="u">pH</span></div>
     <select id="om"><option value="low">有機質偏低</option><option value="ok" selected>有機質適中</option><option value="high">有機質偏高</option></select>
@@ -316,13 +317,33 @@ function runCostEstimate(){
 function runSoilAnalysis(){
   const ph=Number(document.getElementById('ph').value);
   const om=document.getElementById('om').value;
-  const msgs=[];
-  if(ph<5.8) msgs.push('pH偏酸，建議施用石灰資材調整。');
-  else if(ph>7.2) msgs.push('pH偏鹼，建議有機質與酸性資材微調。');
-  else msgs.push('pH區間適合番茄。');
-  if(om==='low') msgs.push('有機質偏低，建議補充堆肥/綠肥。');
-  if(om==='high') msgs.push('有機質偏高，留意氮素過剩徒長。');
-  document.getElementById('soil_analysis').innerHTML=msgs.join('<br>');
+
+  let phLevel='',phAction='';
+  if(ph<5.8){
+    phLevel='偏酸';
+    phAction='建議分次補充石灰質資材，並避免一次大量施用酸性肥。';
+  }else if(ph>7.2){
+    phLevel='偏鹼';
+    phAction='建議增加有機質、搭配酸性資材微調，避免微量元素鎖定。';
+  }else{
+    phLevel='適中';
+    phAction='目前 pH 適合牛蕃茄，可維持現行管理。';
+  }
+
+  let omAction='';
+  if(om==='low') omAction='有機質偏低：建議補堆肥、綠肥作物（如太陽麻）並提升保水保肥能力。';
+  if(om==='ok') omAction='有機質適中：維持輪作與定期補充即可。';
+  if(om==='high') omAction='有機質偏高：留意氮素過剩，避免徒長與延遲轉色。';
+
+  const ready = (ph>=6.0 && ph<=6.8 && om!=='low');
+  const readyText = ready ? '地力條件可直接進入牛蕃茄生產。' : '建議先做 1 個管理週期調整（pH/有機質）再擴大種植。';
+
+  document.getElementById('soil_analysis').innerHTML=`
+    <b>pH 判定</b>：${phLevel}（${ph}）<br>
+    <b>pH 建議</b>：${phAction}<br>
+    <b>有機質建議</b>：${omAction}<br>
+    <b>是否建議立即擴種</b>：${readyText}
+  `;
 }
 
 function runIrrigation(){
