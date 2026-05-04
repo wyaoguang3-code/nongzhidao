@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Update data/code_FJ3.json
+      - name: Update FJ3 data (wholesale + keep export safe)
         run: |
           python - <<'PY'
           import json,re,urllib.parse,urllib.request
@@ -88,7 +88,16 @@ jobs:
           data['latest_price']={'date':daily[-1]['date'],'price':daily[-1]['price']} if daily else None
           data['daily']=daily
           p.write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')
-          print('updated latest=',data['latest_price'])
+
+          # Export safeguard: never overwrite export file with empty structure in automation.
+          ep=Path('data/code_FJ3_export.json')
+          if ep.exists():
+              ex=json.loads(ep.read_text(encoding='utf-8'))
+              ex.setdefault('updated_at', now_tpe().isoformat())
+              if ex.get('monthly5') and ex.get('yearly'):
+                  ex['updated_at']=now_tpe().isoformat()
+                  ep.write_text(json.dumps(ex,ensure_ascii=False,indent=2),encoding='utf-8')
+          print('updated wholesale latest=',data['latest_price'])
           PY
 
       - name: Commit and push if changed
