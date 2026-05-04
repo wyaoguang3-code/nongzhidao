@@ -2,7 +2,8 @@ name: Update FJ3 daily
 
 on:
   schedule:
-    - cron: '10 0 * * *' # 08:10 Asia/Taipei
+    - cron: '*/15 0-4 * * *' # 08:00-12:45 Asia/Taipei, every 15 min
+    - cron: '0 5 * * *'      # 13:00 Asia/Taipei
   workflow_dispatch:
 
 permissions:
