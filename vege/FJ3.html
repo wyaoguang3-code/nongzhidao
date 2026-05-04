@@ -69,6 +69,7 @@ button{cursor:pointer}
 <div class="card">
   <h2>最佳播種時機 <span class="badge blue">🔵 雛形</span></h2>
   <div class="hint">單位：溫度(°C)、雨量(mm/7日)</div>
+  <div class="result"><b>牛蕃茄播種窗口規則（固定顯示）</b><ul><li>理想：20~30°C 且雨量 < 60mm/7日</li><li>可播但需管理：16~20°C 或 60~120mm/7日</li><li>不建議：<16°C、>32°C 或雨量 >120mm/7日</li></ul></div>
   <div class="tool-grid">
     <div class="field"><input id="temp" type="number" placeholder="未來7日均溫" value="24"/><span class="u">°C</span></div>
     <div class="field"><input id="rain" type="number" placeholder="未來7日累積雨量" value="18"/><span class="u">mm</span></div>
@@ -301,10 +302,24 @@ function runRotationPlan(){
 function runSowingWindow(){
   const t=Number(document.getElementById('temp').value);
   const r=Number(document.getElementById('rain').value);
-  let level='可播種';
-  if(t<16||t>32||r>120) level='不建議播種';
-  else if((t>=16&&t<20)||(r>60)) level='條件普通，建議觀望2-3天';
-  document.getElementById('sowing_window').innerHTML=`判斷：<b>${level}</b><br>依據：均溫 ${t}°C、雨量 ${r}mm（規則雛形）`;
+  let level='理想播種窗口',impact='發芽整齊、苗勢穩定。',action='可安排播種與育苗。';
+
+  if(t<16||t>32||r>120){
+    level='不建議播種';
+    impact='低溫/高溫或過量降雨會造成發芽不整、病害風險提升。';
+    action='建議延後 3-5 天並重新評估；先處理排水或保溫條件。';
+  } else if((t>=16&&t<20)||(t>30&&t<=32)||(r>60)){
+    level='可播但需加強管理';
+    impact='發芽與苗勢可能不均，後續管理成本上升。';
+    action='可小面積先播，搭配遮陰/保溫與病害預防。';
+  }
+
+  document.getElementById('sowing_window').innerHTML=`
+    <b>判斷</b>：${level}<br>
+    <b>條件</b>：均溫 ${t}°C、雨量 ${r}mm/7日<br>
+    <b>可能影響</b>：${impact}<br>
+    <b>建議動作</b>：${action}
+  `;
 }
 
 function runCostEstimate(){
