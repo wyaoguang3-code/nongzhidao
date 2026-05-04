@@ -11,7 +11,13 @@ h1{margin:0 0 8px} h2{margin:0 0 10px;font-size:22px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 canvas{background:#fff;border-radius:8px;padding:6px;width:100% !important;height:320px !important;display:block}
 a{color:#8bc2ff}
-@media (max-width:900px){.grid{grid-template-columns:1fr} canvas{height:380px !important;}}
+input,select,button,textarea{background:#0b1730;color:#eaf0ff;border:1px solid #2d4474;border-radius:8px;padding:8px}
+button{cursor:pointer}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;margin-left:6px}
+.badge.red{background:#7f1d1d;color:#fecaca}.badge.blue{background:#1e3a8a;color:#bfdbfe}
+.result{margin-top:8px;line-height:1.6}
+@media (max-width:900px){.grid,.tool-grid{grid-template-columns:1fr} canvas{height:380px !important;}}
 </style></head>
 <body><div class="wrap">
 <h1>FJ3 番茄 牛蕃茄</h1>
@@ -35,8 +41,62 @@ a{color:#8bc2ff}
 <div class="card"><h2>外銷每年趨勢圖（2016年至今）</h2><canvas id="ex_year"></canvas></div>
 <div class="card"><h2>每年全台農作物災損金額（億元）</h2><canvas id="disaster_year"></canvas></div>
 
+<div class="card">
+  <h2>作物選種建議 <span class="badge red">🔴 雛形</span></h2>
+  <div class="tool-grid">
+    <select id="loc"><option>中部</option><option>北部</option><option>南部</option><option>東部</option></select>
+    <select id="climate"><option>高溫潮濕</option><option>溫和</option><option>日夜溫差大</option></select>
+    <select id="soil"><option>壤土</option><option>黏土</option><option>砂質土</option></select>
+    <button onclick="runCropAdvice()">產生建議</button>
+  </div>
+  <div id="crop_advice" class="result">尚未計算</div>
+</div>
+
+<div class="card">
+  <h2>輪作 / 間作規劃 <span class="badge red">🔴 雛形</span></h2>
+  <div class="tool-grid">
+    <select id="seasonCount"><option value="2">2 季</option><option value="3" selected>3 季</option><option value="4">4 季</option></select>
+    <select id="goal"><option>穩定收益</option><option>土壤恢復優先</option><option>病蟲害風險降低</option></select>
+    <button onclick="runRotationPlan()">生成規劃</button>
+  </div>
+  <div id="rotation_plan" class="result">尚未計算</div>
+</div>
+
+<div class="card">
+  <h2>最佳播種時機 <span class="badge blue">🔵 雛形</span></h2>
+  <div class="tool-grid">
+    <input id="temp" type="number" placeholder="未來7日均溫(°C)" value="24"/>
+    <input id="rain" type="number" placeholder="未來7日累積雨量(mm)" value="18"/>
+    <button onclick="runSowingWindow()">推算窗口</button>
+  </div>
+  <div id="sowing_window" class="result">尚未計算</div>
+</div>
+
+<div class="card">
+  <h2>成本試算 <span class="badge red">🔴 雛形</span></h2>
+  <div class="tool-grid">
+    <input id="area" type="number" placeholder="面積(分地)" value="1"/>
+    <input id="seedling" type="number" placeholder="種苗單價(元/株)" value="8"/>
+    <input id="fert" type="number" placeholder="肥料預算(元/分地)" value="6000"/>
+    <input id="labor" type="number" placeholder="人力預算(元/分地)" value="18000"/>
+    <button onclick="runCostEstimate()">計算成本</button>
+  </div>
+  <div id="cost_est" class="result">尚未計算</div>
+</div>
+
+<div class="card">
+  <h2>土壤 / 地力分析 <span class="badge red">🔴 雛形</span></h2>
+  <div class="tool-grid">
+    <input id="ph" type="number" step="0.1" placeholder="pH" value="6.2"/>
+    <select id="om"><option value="low">有機質偏低</option><option value="ok" selected>有機質適中</option><option value="high">有機質偏高</option></select>
+    <button onclick="runSoilAnalysis()">分析</button>
+  </div>
+  <div id="soil_analysis" class="result">尚未計算</div>
+</div>
+
 <script>
 fetch('../data/code_FJ3.json').then(r=>r.json()).then(d=>{
+  window.fj3Data=d;
   Chart.defaults.responsive = true;
   Chart.defaults.maintainAspectRatio = false;
   const latest=d.latest_price;
@@ -188,5 +248,60 @@ fetch('../data/code_FJ3.json').then(r=>r.json()).then(d=>{
     });
   });
 })
+
+function runCropAdvice(){
+  const loc=document.getElementById('loc').value;
+  const climate=document.getElementById('climate').value;
+  const soil=document.getElementById('soil').value;
+  const picks=[];
+  if(climate==='高溫潮濕') picks.push('耐熱抗病型番茄');
+  if(climate==='日夜溫差大') picks.push('高糖度鮮食型番茄');
+  if(soil==='黏土') picks.push('根系較強、耐積水砧木嫁接苗');
+  if(!picks.length) picks.push('標準牛番茄主力品種');
+  document.getElementById('crop_advice').innerHTML=`建議地區：${loc}<br>推薦：${picks.join('、')}<br>備註：此為規則雛形，後續可接真實氣象/土壤資料。`;
+}
+
+function runRotationPlan(){
+  const n=Number(document.getElementById('seasonCount').value);
+  const goal=document.getElementById('goal').value;
+  const base=['番茄','豆科綠肥','葉菜類','短期瓜類'];
+  const seq=base.slice(0,n);
+  let tip='';
+  if(goal==='土壤恢復優先') tip='番茄後接豆科綠肥，提升氮循環。';
+  else if(goal==='病蟲害風險降低') tip='避免連作茄科，至少間隔1季。';
+  else tip='主作物與現金流作物交錯，降低波動。';
+  document.getElementById('rotation_plan').innerHTML=`${n}季建議：${seq.join(' → ')}<br>${tip}`;
+}
+
+function runSowingWindow(){
+  const t=Number(document.getElementById('temp').value);
+  const r=Number(document.getElementById('rain').value);
+  let level='可播種';
+  if(t<16||t>32||r>120) level='不建議播種';
+  else if((t>=16&&t<20)||(r>60)) level='條件普通，建議觀望2-3天';
+  document.getElementById('sowing_window').innerHTML=`判斷：<b>${level}</b><br>依據：均溫 ${t}°C、雨量 ${r}mm（規則雛形）`;
+}
+
+function runCostEstimate(){
+  const area=Number(document.getElementById('area').value)||0;
+  const seed=Number(document.getElementById('seedling').value)||0;
+  const fert=Number(document.getElementById('fert').value)||0;
+  const labor=Number(document.getElementById('labor').value)||0;
+  const seedlings=area*1800*seed;
+  const total=seedlings+(fert*area)+(labor*area);
+  document.getElementById('cost_est').innerHTML=`種苗：約 ${Math.round(seedlings).toLocaleString()} 元<br>肥料：約 ${Math.round(fert*area).toLocaleString()} 元<br>人力：約 ${Math.round(labor*area).toLocaleString()} 元<br><b>總成本：約 ${Math.round(total).toLocaleString()} 元</b>`;
+}
+
+function runSoilAnalysis(){
+  const ph=Number(document.getElementById('ph').value);
+  const om=document.getElementById('om').value;
+  const msgs=[];
+  if(ph<5.8) msgs.push('pH偏酸，建議施用石灰資材調整。');
+  else if(ph>7.2) msgs.push('pH偏鹼，建議有機質與酸性資材微調。');
+  else msgs.push('pH區間適合番茄。');
+  if(om==='low') msgs.push('有機質偏低，建議補充堆肥/綠肥。');
+  if(om==='high') msgs.push('有機質偏高，留意氮素過剩徒長。');
+  document.getElementById('soil_analysis').innerHTML=msgs.join('<br>');
+}
 </script>
 </div></body></html>
