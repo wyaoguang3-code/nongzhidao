@@ -128,7 +128,7 @@ button{cursor:pointer}
 <div class="card"><h2>作業日誌記錄 <span class="badge blue">🟢 雛形</span></h2><div class="result">可直接對機器人發語音或文字：例如「今天 16:30 灌溉 20 分鐘，番茄區 B 有黃葉」。</div><button onclick="runLogGuide()">查看記錄格式</button><div id="log_guide" class="result">尚未計算</div></div>
 <div class="card"><h2>IoT 感測器整合 <span class="badge blue">🔵 雛形</span></h2><button onclick="runIotAlert()">檢查異常規則</button><div id="iot_alert" class="result">尚未計算</div></div>
 <div class="card"><h2>無人機影像分析 <span class="badge blue">🔵 雛形</span></h2><button onclick="runDroneAnalysis()">查看分析流程</button><div id="drone_analysis" class="result">尚未計算</div></div>
-<div class="card"><h2>產品分級建議 <span class="badge red">🔴 雛形</span></h2><button onclick="runGradingAdvice()">產生分級規則</button><div id="grading_advice" class="result">尚未計算</div></div>
+<div class="card"><h2>產品分級建議 <span class="badge red">🔴 雛形</span></h2><div class="result"><b>分級邏輯（固定顯示）</b><ul><li>A級：果形完整、色澤均勻、無明顯外傷</li><li>B級：輕微瑕疵，不影響食用品質</li><li>C級：外觀或硬度不足，建議加工或促銷</li></ul></div><div class="tool-grid"><select id="gd_color"><option>色澤佳</option><option>色澤普通</option><option>色澤不均</option></select><select id="gd_defect"><option>無瑕疵</option><option>輕微瑕疵</option><option>明顯瑕疵</option></select><button onclick="runGradingAdvice()">產生分級規則</button></div><div id="grading_advice" class="result">尚未計算</div></div>
 <div class="card"><h2>買家媒合 <span class="badge blue">🟠 雛形</span></h2><button onclick="runBuyerMatch()">推薦買家類型</button><div id="buyer_match" class="result">尚未計算</div></div>
 <div class="card"><h2>行銷文案生成 <span class="badge blue">🟠 雛形</span></h2><div class="result">可直接問機器人：例如「幫我寫 IG 貼文：今日牛蕃茄採收」。</div><button onclick="runCopyGuide()">查看文案模板</button><div id="copy_guide" class="result">尚未計算</div></div>
 <div class="card"><h2>出口文件輔助 <span class="badge blue">🟢 雛形</span></h2><button onclick="runExportDocs()">查看文件清單</button><div id="export_docs" class="result">尚未計算</div></div>
@@ -740,7 +740,20 @@ function runSubsidyAssist(){ document.getElementById('subsidy_assist').innerHTML
 function runLogGuide(){ document.getElementById('log_guide').innerHTML='建議格式：日期/地塊/作業內容/投入人力/異常狀況（支援語音轉文字）。'; }
 function runIotAlert(){ document.getElementById('iot_alert').innerHTML='異常門檻範例：土壤濕度<30%、棚內>35°C、濕度>90%持續2小時即告警。'; }
 function runDroneAnalysis(){ document.getElementById('drone_analysis').innerHTML='流程：空拍影像→區塊分割→異常熱點標記→回傳巡田優先順序。'; }
-function runGradingAdvice(){ document.getElementById('grading_advice').innerHTML='分級雛形：A(外觀完整/色澤佳)、B(輕微瑕疵)、C(加工級)，對應不同定價。'; }
+function runGradingAdvice(){
+  const color=document.getElementById('gd_color').value;
+  const defect=document.getElementById('gd_defect').value;
+  let grade='B級',price='中價帶',action='標準通路販售';
+
+  if(color==='色澤佳' && defect==='無瑕疵'){ grade='A級'; price='高價帶（可加價 10~20%）'; action='優先供精品/直銷通路'; }
+  else if(defect==='明顯瑕疵' || color==='色澤不均'){ grade='C級'; price='低價帶（或加工價）'; action='建議轉加工、組合促銷或快速出清'; }
+
+  document.getElementById('grading_advice').innerHTML=`
+    <b>判定分級</b>：${grade}<br>
+    <b>建議價格帶</b>：${price}<br>
+    <b>建議去化方式</b>：${action}
+  `;
+}
 function runBuyerMatch(){ document.getElementById('buyer_match').innerHTML='媒合方向：高品質→餐廳/精品通路；量大穩定→超市；規格一致→出口商。'; }
 function runCopyGuide(){ document.getElementById('copy_guide').innerHTML='文案模板：今日採收亮點＋產地故事＋料理建議＋下單連結。'; }
 function runExportDocs(){ document.getElementById('export_docs').innerHTML='文件清單：商業發票、裝箱單、產地證明、檢疫/報關相關文件。'; }
