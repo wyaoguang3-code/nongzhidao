@@ -2,15 +2,448 @@
   "code": "FJ3",
   "name": "番茄 牛蕃茄",
   "type": "export",
-  "range": "-",
-  "country_codes": "-",
-  "product_code": "-",
-  "currency": "TWD",
-  "unit_weight": "公噸",
-  "unit_value": "新台幣",
+  "range": "2016-01 to latest",
+  "country_codes": "G0,G1,G2,G3,G4,G5,G6,G7,G8,G9",
+  "product_code": "103##13",
+  "currency": "NTD",
+  "unit_weight": "ton",
+  "unit_value": "NTD",
   "source": "https://agrstat.moa.gov.tw/sdweb/public/trade/TradeCoa.aspx",
-  "updated_at": "2026-04-29T14:45:00+08:00",
-  "latest_month": {},
-  "yearly": [],
-  "monthly5": []
+  "updated_at": "2026-05-04T13:32:44.785188+08:00",
+  "latest_month": {
+    "key": "2026-03",
+    "weight_ton": 160.053,
+    "value_ntd": 8082400,
+    "avg_price_ntd_per_ton": 50498.27
+  },
+  "monthly5": [
+    {
+      "key": "2021-04",
+      "weight_ton": 46.977,
+      "value_ntd": 4465100,
+      "avg_price_ntd_per_ton": 95048.64
+    },
+    {
+      "key": "2021-05",
+      "weight_ton": 58.622,
+      "value_ntd": 3910900,
+      "avg_price_ntd_per_ton": 66713.86
+    },
+    {
+      "key": "2021-06",
+      "weight_ton": 429.255,
+      "value_ntd": 12922300,
+      "avg_price_ntd_per_ton": 30104.02
+    },
+    {
+      "key": "2021-07",
+      "weight_ton": 415.594,
+      "value_ntd": 12251000,
+      "avg_price_ntd_per_ton": 29478.29
+    },
+    {
+      "key": "2021-08",
+      "weight_ton": 14.287,
+      "value_ntd": 1474200,
+      "avg_price_ntd_per_ton": 103184.71
+    },
+    {
+      "key": "2021-09",
+      "weight_ton": 806.978,
+      "value_ntd": 24519300,
+      "avg_price_ntd_per_ton": 30384.1
+    },
+    {
+      "key": "2021-10",
+      "weight_ton": 414.017,
+      "value_ntd": 12340600,
+      "avg_price_ntd_per_ton": 29806.99
+    },
+    {
+      "key": "2021-11",
+      "weight_ton": 548.969,
+      "value_ntd": 16549800,
+      "avg_price_ntd_per_ton": 30147.06
+    },
+    {
+      "key": "2021-12",
+      "weight_ton": 402.016,
+      "value_ntd": 14653100,
+      "avg_price_ntd_per_ton": 36449.05
+    },
+    {
+      "key": "2022-01",
+      "weight_ton": 71.417,
+      "value_ntd": 6322000,
+      "avg_price_ntd_per_ton": 88522.34
+    },
+    {
+      "key": "2022-02",
+      "weight_ton": 55.132,
+      "value_ntd": 3561600,
+      "avg_price_ntd_per_ton": 64601.32
+    },
+    {
+      "key": "2022-03",
+      "weight_ton": 32.41,
+      "value_ntd": 4572300,
+      "avg_price_ntd_per_ton": 141076.83
+    },
+    {
+      "key": "2022-04",
+      "weight_ton": 28.64,
+      "value_ntd": 4946000,
+      "avg_price_ntd_per_ton": 172695.53
+    },
+    {
+      "key": "2022-05",
+      "weight_ton": 47.982,
+      "value_ntd": 5038900,
+      "avg_price_ntd_per_ton": 105016.46
+    },
+    {
+      "key": "2022-06",
+      "weight_ton": 3.662,
+      "value_ntd": 458800,
+      "avg_price_ntd_per_ton": 125286.73
+    },
+    {
+      "key": "2022-07",
+      "weight_ton": 14.454,
+      "value_ntd": 743400,
+      "avg_price_ntd_per_ton": 51432.13
+    },
+    {
+      "key": "2022-08",
+      "weight_ton": 17.849,
+      "value_ntd": 1138700,
+      "avg_price_ntd_per_ton": 63796.29
+    },
+    {
+      "key": "2022-09",
+      "weight_ton": 37.59,
+      "value_ntd": 1188600,
+      "avg_price_ntd_per_ton": 31620.11
+    },
+    {
+      "key": "2022-10",
+      "weight_ton": 18.322,
+      "value_ntd": 1664400,
+      "avg_price_ntd_per_ton": 90841.61
+    },
+    {
+      "key": "2022-11",
+      "weight_ton": 6.63,
+      "value_ntd": 454700,
+      "avg_price_ntd_per_ton": 68582.2
+    },
+    {
+      "key": "2022-12",
+      "weight_ton": 15.55,
+      "value_ntd": 3018200,
+      "avg_price_ntd_per_ton": 194096.46
+    },
+    {
+      "key": "2023-01",
+      "weight_ton": 12.404,
+      "value_ntd": 1570300,
+      "avg_price_ntd_per_ton": 126596.26
+    },
+    {
+      "key": "2023-02",
+      "weight_ton": 26.403,
+      "value_ntd": 2721100,
+      "avg_price_ntd_per_ton": 103060.26
+    },
+    {
+      "key": "2023-03",
+      "weight_ton": 38.577,
+      "value_ntd": 4602400,
+      "avg_price_ntd_per_ton": 119304.25
+    },
+    {
+      "key": "2023-04",
+      "weight_ton": 26.704,
+      "value_ntd": 3017800,
+      "avg_price_ntd_per_ton": 113009.29
+    },
+    {
+      "key": "2023-05",
+      "weight_ton": 15.433,
+      "value_ntd": 2281700,
+      "avg_price_ntd_per_ton": 147845.53
+    },
+    {
+      "key": "2023-06",
+      "weight_ton": 144.703,
+      "value_ntd": 5717500,
+      "avg_price_ntd_per_ton": 39511.97
+    },
+    {
+      "key": "2023-07",
+      "weight_ton": 287.524,
+      "value_ntd": 13110100,
+      "avg_price_ntd_per_ton": 45596.54
+    },
+    {
+      "key": "2023-08",
+      "weight_ton": 21.285,
+      "value_ntd": 1372500,
+      "avg_price_ntd_per_ton": 64482.03
+    },
+    {
+      "key": "2023-09",
+      "weight_ton": 19.876,
+      "value_ntd": 897600,
+      "avg_price_ntd_per_ton": 45159.99
+    },
+    {
+      "key": "2023-10",
+      "weight_ton": 21.399,
+      "value_ntd": 1292300,
+      "avg_price_ntd_per_ton": 60390.67
+    },
+    {
+      "key": "2023-11",
+      "weight_ton": 14.802,
+      "value_ntd": 1009700,
+      "avg_price_ntd_per_ton": 68213.75
+    },
+    {
+      "key": "2023-12",
+      "weight_ton": 273.012,
+      "value_ntd": 11855000,
+      "avg_price_ntd_per_ton": 43423.0
+    },
+    {
+      "key": "2024-01",
+      "weight_ton": 272.884,
+      "value_ntd": 12497800,
+      "avg_price_ntd_per_ton": 45798.95
+    },
+    {
+      "key": "2024-02",
+      "weight_ton": 17.471,
+      "value_ntd": 2043200,
+      "avg_price_ntd_per_ton": 116948.09
+    },
+    {
+      "key": "2024-03",
+      "weight_ton": 44.374,
+      "value_ntd": 5131200,
+      "avg_price_ntd_per_ton": 115635.28
+    },
+    {
+      "key": "2024-04",
+      "weight_ton": 22.422,
+      "value_ntd": 2841300,
+      "avg_price_ntd_per_ton": 126719.29
+    },
+    {
+      "key": "2024-05",
+      "weight_ton": 15.618,
+      "value_ntd": 774300,
+      "avg_price_ntd_per_ton": 49577.41
+    },
+    {
+      "key": "2024-06",
+      "weight_ton": 151.416,
+      "value_ntd": 7384700,
+      "avg_price_ntd_per_ton": 48770.94
+    },
+    {
+      "key": "2024-07",
+      "weight_ton": 150.903,
+      "value_ntd": 7580900,
+      "avg_price_ntd_per_ton": 50236.91
+    },
+    {
+      "key": "2024-08",
+      "weight_ton": 182.768,
+      "value_ntd": 8413700,
+      "avg_price_ntd_per_ton": 46034.86
+    },
+    {
+      "key": "2024-09",
+      "weight_ton": 153.113,
+      "value_ntd": 6269600,
+      "avg_price_ntd_per_ton": 40947.54
+    },
+    {
+      "key": "2024-10",
+      "weight_ton": 51.84,
+      "value_ntd": 6721800,
+      "avg_price_ntd_per_ton": 129664.35
+    },
+    {
+      "key": "2024-11",
+      "weight_ton": 156.518,
+      "value_ntd": 6716600,
+      "avg_price_ntd_per_ton": 42912.64
+    },
+    {
+      "key": "2024-12",
+      "weight_ton": 7.401,
+      "value_ntd": 812500,
+      "avg_price_ntd_per_ton": 109782.46
+    },
+    {
+      "key": "2025-01",
+      "weight_ton": 166.392,
+      "value_ntd": 7439200,
+      "avg_price_ntd_per_ton": 44708.88
+    },
+    {
+      "key": "2025-02",
+      "weight_ton": 15.318,
+      "value_ntd": 1975000,
+      "avg_price_ntd_per_ton": 128933.28
+    },
+    {
+      "key": "2025-03",
+      "weight_ton": 169.934,
+      "value_ntd": 9275900,
+      "avg_price_ntd_per_ton": 54585.31
+    },
+    {
+      "key": "2025-04",
+      "weight_ton": 149.937,
+      "value_ntd": 7650200,
+      "avg_price_ntd_per_ton": 51022.76
+    },
+    {
+      "key": "2025-05",
+      "weight_ton": 36.15,
+      "value_ntd": 2498900,
+      "avg_price_ntd_per_ton": 69125.86
+    },
+    {
+      "key": "2025-06",
+      "weight_ton": 34.762,
+      "value_ntd": 1872500,
+      "avg_price_ntd_per_ton": 53866.29
+    },
+    {
+      "key": "2025-07",
+      "weight_ton": 175.489,
+      "value_ntd": 7218100,
+      "avg_price_ntd_per_ton": 41131.35
+    },
+    {
+      "key": "2025-08",
+      "weight_ton": 72.274,
+      "value_ntd": 3468500,
+      "avg_price_ntd_per_ton": 47990.98
+    },
+    {
+      "key": "2025-09",
+      "weight_ton": 170.696,
+      "value_ntd": 7019700,
+      "avg_price_ntd_per_ton": 41123.99
+    },
+    {
+      "key": "2025-10",
+      "weight_ton": 160.46,
+      "value_ntd": 6081900,
+      "avg_price_ntd_per_ton": 37902.9
+    },
+    {
+      "key": "2025-11",
+      "weight_ton": 38.234,
+      "value_ntd": 3463900,
+      "avg_price_ntd_per_ton": 90597.37
+    },
+    {
+      "key": "2025-12",
+      "weight_ton": 24.172,
+      "value_ntd": 1395100,
+      "avg_price_ntd_per_ton": 57715.54
+    },
+    {
+      "key": "2026-01",
+      "weight_ton": 152.574,
+      "value_ntd": 7000500,
+      "avg_price_ntd_per_ton": 45882.65
+    },
+    {
+      "key": "2026-02",
+      "weight_ton": 42.078,
+      "value_ntd": 2118700,
+      "avg_price_ntd_per_ton": 50351.73
+    },
+    {
+      "key": "2026-03",
+      "weight_ton": 160.053,
+      "value_ntd": 8082400,
+      "avg_price_ntd_per_ton": 50498.27
+    }
+  ],
+  "yearly": [
+    {
+      "year": 2016,
+      "weight_ton": 2694.982,
+      "value_ntd": 112944400,
+      "avg_price_ntd_per_ton": 41909.15
+    },
+    {
+      "year": 2017,
+      "weight_ton": 2110.334,
+      "value_ntd": 85034300,
+      "avg_price_ntd_per_ton": 40294.24
+    },
+    {
+      "year": 2018,
+      "weight_ton": 1995.384,
+      "value_ntd": 82193900,
+      "avg_price_ntd_per_ton": 41192.02
+    },
+    {
+      "year": 2019,
+      "weight_ton": 1088.946,
+      "value_ntd": 62314800,
+      "avg_price_ntd_per_ton": 57224.88
+    },
+    {
+      "year": 2020,
+      "weight_ton": 1419.73,
+      "value_ntd": 72401700,
+      "avg_price_ntd_per_ton": 50996.81
+    },
+    {
+      "year": 2021,
+      "weight_ton": 3564.359,
+      "value_ntd": 125927300,
+      "avg_price_ntd_per_ton": 35329.58
+    },
+    {
+      "year": 2022,
+      "weight_ton": 349.638,
+      "value_ntd": 33107600,
+      "avg_price_ntd_per_ton": 94691.08
+    },
+    {
+      "year": 2023,
+      "weight_ton": 902.122,
+      "value_ntd": 49448000,
+      "avg_price_ntd_per_ton": 54812.99
+    },
+    {
+      "year": 2024,
+      "weight_ton": 1226.728,
+      "value_ntd": 67187600,
+      "avg_price_ntd_per_ton": 54769.76
+    },
+    {
+      "year": 2025,
+      "weight_ton": 1213.818,
+      "value_ntd": 59358900,
+      "avg_price_ntd_per_ton": 48902.64
+    },
+    {
+      "year": 2026,
+      "weight_ton": 354.705,
+      "value_ntd": 17201600,
+      "avg_price_ntd_per_ton": 48495.51
+    }
+  ]
 }
