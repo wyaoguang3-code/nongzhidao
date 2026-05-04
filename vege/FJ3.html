@@ -121,7 +121,7 @@ button{cursor:pointer}
 <div class="card"><h2>定價策略建議 <span class="badge red">🔴 雛形</span></h2><div class="hint">欄位說明：A=外觀完整/糖度佳；B=標準可售；C=次級果。輸出為建議售價(元/kg)</div><div class="result"><b>定價規則（固定顯示）</b><ul><li>品質係數：A 1.15、B 1.00、C 0.85</li><li>通路係數：批發 1.00、直銷 1.10、電商 1.20</li><li>行情判讀：低價 < 40、中價 40~55、高價 > 55 元/kg</li></ul></div><div class="tool-grid"><select id="pc_quality"><option>A級（高品質）</option><option>B級（標準）</option><option>C級（次級）</option></select><select id="pc_channel"><option>批發</option><option>直銷</option><option>電商</option></select><button onclick="runPricingStrategy()">產生建議</button></div><div id="pricing_strategy" class="result">尚未計算</div></div>
 <div class="card"><h2>財務損益分析 <span class="badge blue">🟢 雛形</span></h2><div class="hint">欄位說明：產量=每分地可售重量；售價=平均售價；輸出=收入/成本/毛利（元）</div><div class="result"><b>分析邏輯（固定顯示）</b><ul><li>總收入 = 產量 × 售價 × 面積</li><li>總成本沿用成本試算（種苗+肥料+人力）</li><li>輸出毛利、毛利率與損平售價，方便判斷是否值得種</li></ul></div><div class="tool-grid"><div class="field"><input id="pn_yield" type="number" value="3200" placeholder="每分地產量"><span class="u">kg/分</span></div><div class="field"><input id="pn_price" type="number" value="50" placeholder="平均售價"><span class="u">元/kg</span></div><button onclick="runPnL()">試算</button></div><div id="pnl" class="result">尚未計算</div></div>
 <div class="card"><h2>人力排班 <span class="badge blue">🟢 雛形</span></h2><div class="hint">單位：工作天(天)、人力(人)</div><div class="result"><b>排班原則（固定顯示）</b><ul><li>採收日優先配足人力，避免過熟與損耗</li><li>包裝/分級可次高配置，田間管理採彈性班</li><li>連續高工時時需安排輪休，避免品質與安全下降</li></ul><b>各生長期常態數據（1 分地，每週）</b><ul><li><b>育苗/定植期</b>：10~14 人天（整地、定植、支架）</li><li><b>營養生長期</b>：12~16 人天（整枝、綁蔓、病蟲巡田）</li><li><b>開花著果期</b>：14~18 人天（水肥精細管理、病害防治）</li><li><b>採收高峰期</b>：20~28 人天（採收、分級、包裝、出貨）</li><li><b>採後整理期</b>：8~12 人天（清園、設備維護、下季準備）</li></ul></div><div class="tool-grid"><div class="field"><input id="sh_days" type="number" value="6" placeholder="本週農忙天數"><span class="u">天</span></div><div class="field"><input id="sh_workers" type="number" value="4" placeholder="可用人數"><span class="u">人</span></div><button onclick="runShiftPlan()">產生建議</button></div><div id="shift_plan" class="result">尚未計算</div></div>
-<div class="card"><h2>跨季績效比較 <span class="badge blue">🔵 雛形</span></h2><div class="hint">單位：產量(噸/分)、變化率(%)</div><div class="tool-grid"><div class="field"><span class="fl">上一季</span><input id="sc_y_prev" type="number" value="2.9" placeholder="上一季產量"><span class="u">噸/分</span></div><div class="field"><span class="fl">本季</span><input id="sc_y_now" type="number" value="3.2" placeholder="本季產量"><span class="u">噸/分</span></div><button onclick="runSeasonCompare()">比較</button></div><div id="season_compare" class="result">尚未計算</div></div>
+<div class="card"><h2>跨季績效比較 <span class="badge blue">🔵 雛形</span></h2><div class="hint">單位：產量(噸/分)、成本(元/分)、售價(元/kg)、變化率(%)</div><div class="result"><b>比較邏輯（固定顯示）</b><ul><li>看產量是否提升</li><li>看單位成本是否下降</li><li>看平均售價是否提升</li></ul></div><div class="tool-grid"><div class="field"><span class="fl">上一季產量</span><input id="sc_y_prev" type="number" value="2.9"><span class="u">噸/分</span></div><div class="field"><span class="fl">本季產量</span><input id="sc_y_now" type="number" value="3.2"><span class="u">噸/分</span></div><div class="field"><span class="fl">上一季成本</span><input id="sc_c_prev" type="number" value="52000"><span class="u">元/分</span></div><div class="field"><span class="fl">本季成本</span><input id="sc_c_now" type="number" value="48000"><span class="u">元/分</span></div><div class="field"><span class="fl">上一季售價</span><input id="sc_p_prev" type="number" value="46"><span class="u">元/kg</span></div><div class="field"><span class="fl">本季售價</span><input id="sc_p_now" type="number" value="50"><span class="u">元/kg</span></div><button onclick="runSeasonCompare()">比較</button></div><div id="season_compare" class="result">尚未計算</div></div>
 
 <script>
 fetch('../data/code_FJ3.json').then(r=>r.json()).then(d=>{
@@ -696,9 +696,23 @@ function runShiftPlan(){
   `;
 }
 function runSeasonCompare(){
-  const n=Number(document.getElementById('sc_y_now').value||0), p=Number(document.getElementById('sc_y_prev').value||1);
-  const diff=((n-p)/p*100).toFixed(1);
-  document.getElementById('season_compare').innerHTML=`本季較前季 ${diff}%（產量：${n} vs ${p} 噸/分）`;
+  const yNow=Number(document.getElementById('sc_y_now').value||0), yPrev=Number(document.getElementById('sc_y_prev').value||1);
+  const cNow=Number(document.getElementById('sc_c_now').value||0), cPrev=Number(document.getElementById('sc_c_prev').value||1);
+  const pNow=Number(document.getElementById('sc_p_now').value||0), pPrev=Number(document.getElementById('sc_p_prev').value||1);
+
+  const yDiff=((yNow-yPrev)/yPrev*100).toFixed(1);
+  const cDiff=((cNow-cPrev)/cPrev*100).toFixed(1);
+  const pDiff=((pNow-pPrev)/pPrev*100).toFixed(1);
+
+  const score = (Number(yDiff)>0?1:0) + (Number(cDiff)<0?1:0) + (Number(pDiff)>0?1:0);
+  const overall = score===3?'整體明顯進步':score===2?'整體小幅進步':score===1?'表現持平偏弱':'整體退步，需調整策略';
+
+  document.getElementById('season_compare').innerHTML=`
+    <b>產量變化</b>：${yDiff}%（${yPrev} → ${yNow} 噸/分）<br>
+    <b>成本變化</b>：${cDiff}%（${cPrev.toLocaleString()} → ${cNow.toLocaleString()} 元/分）<br>
+    <b>售價變化</b>：${pDiff}%（${pPrev} → ${pNow} 元/kg）<br>
+    <b>整體判讀</b>：${overall}
+  `;
 }
 </script>
 </div></body></html>
