@@ -94,24 +94,19 @@ button{cursor:pointer}
   <div id="soil_analysis" class="result">尚未計算</div>
 </div>
 
-<div class="card">
-  <h2>進階農務工具箱（第二批雛形）</h2>
-  <div class="tool-grid">
-    <button onclick="runIrrigation()">灌溉排程 🟢</button><div id="irrigation" class="result">尚未計算</div>
-    <button onclick="runFertilizer()">施肥計畫 🔴</button><div id="fert_plan" class="result">尚未計算</div>
-    <button onclick="runPestAI()">病蟲害辨識 🔴</button><div id="pest_ai" class="result">尚未計算</div>
-    <button onclick="runWeatherAlert()">氣象預警推播 🟢</button><div id="wx_alert" class="result">尚未計算</div>
-    <button onclick="runContinuousRisk()">連作障礙預防 🔴</button><div id="continuous_risk" class="result">尚未計算</div>
-    <button onclick="runHarvestPrediction()">採收時機預測 🔵</button><div id="harvest_pred" class="result">尚未計算</div>
-    <button onclick="runStorageAdvice()">保鮮 / 儲存建議 🔴</button><div id="storage_advice" class="result">尚未計算</div>
-    <button onclick="runYieldEstimate()">產量預估 🔵</button><div id="yield_est" class="result">尚未計算</div>
-    <button onclick="runProcessingAdvice()">加工建議 🟠</button><div id="processing_advice" class="result">尚未計算</div>
-    <button onclick="runPricingStrategy()">定價策略建議 🔴</button><div id="pricing_strategy" class="result">尚未計算</div>
-    <button onclick="runPnL()">財務損益分析 🟢</button><div id="pnl" class="result">尚未計算</div>
-    <button onclick="runShiftPlan()">人力排班 🟢</button><div id="shift_plan" class="result">尚未計算</div>
-    <button onclick="runSeasonCompare()">跨季績效比較 🔵</button><div id="season_compare" class="result">尚未計算</div>
-  </div>
-</div>
+<div class="card"><h2>灌溉排程 <span class="badge blue">🟢 雛形</span></h2><button onclick="runIrrigation()">產生建議</button><div id="irrigation" class="result">尚未計算</div></div>
+<div class="card"><h2>施肥計畫 <span class="badge red">🔴 雛形</span></h2><button onclick="runFertilizer()">產生建議</button><div id="fert_plan" class="result">尚未計算</div></div>
+<div class="card"><h2>病蟲害辨識 <span class="badge red">🔴 雛形</span></h2><button onclick="runPestAI()">查看流程</button><div id="pest_ai" class="result">尚未計算</div></div>
+<div class="card"><h2>氣象預警推播 <span class="badge blue">🟢 雛形</span></h2><button onclick="runWeatherAlert()">檢查規則</button><div id="wx_alert" class="result">尚未計算</div></div>
+<div class="card"><h2>連作障礙預防 <span class="badge red">🔴 雛形</span></h2><button onclick="runContinuousRisk()">產生建議</button><div id="continuous_risk" class="result">尚未計算</div></div>
+<div class="card"><h2>採收時機預測 <span class="badge blue">🔵 雛形</span></h2><button onclick="runHarvestPrediction()">推算</button><div id="harvest_pred" class="result">尚未計算</div></div>
+<div class="card"><h2>保鮮 / 儲存建議 <span class="badge red">🔴 雛形</span></h2><button onclick="runStorageAdvice()">產生建議</button><div id="storage_advice" class="result">尚未計算</div></div>
+<div class="card"><h2>產量預估 <span class="badge blue">🔵 雛形</span></h2><button onclick="runYieldEstimate()">估算</button><div id="yield_est" class="result">尚未計算</div></div>
+<div class="card"><h2>加工建議 <span class="badge blue">🟠 雛形</span></h2><button onclick="runProcessingAdvice()">產生建議</button><div id="processing_advice" class="result">尚未計算</div></div>
+<div class="card"><h2>定價策略建議 <span class="badge red">🔴 雛形</span></h2><button onclick="runPricingStrategy()">產生建議</button><div id="pricing_strategy" class="result">尚未計算</div></div>
+<div class="card"><h2>財務損益分析 <span class="badge blue">🟢 雛形</span></h2><button onclick="runPnL()">試算</button><div id="pnl" class="result">尚未計算</div></div>
+<div class="card"><h2>人力排班 <span class="badge blue">🟢 雛形</span></h2><button onclick="runShiftPlan()">產生建議</button><div id="shift_plan" class="result">尚未計算</div></div>
+<div class="card"><h2>跨季績效比較 <span class="badge blue">🔵 雛形</span></h2><button onclick="runSeasonCompare()">比較</button><div id="season_compare" class="result">尚未計算</div></div>
 
 <script>
 fetch('../data/code_FJ3.json').then(r=>r.json()).then(d=>{
