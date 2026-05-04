@@ -58,6 +58,7 @@ button{cursor:pointer}
 
 <div class="card">
   <h2>輪作 / 間作規劃 <span class="badge red">🔴 雛形</span></h2>
+  <div class="result"><b>牛蕃茄輪作原則（固定顯示）</b><ul><li>避免茄科連作超過 2 季</li><li>至少插入 1 季非茄科（豆科/十字花科/禾本科）</li><li>間作可用短期葉菜或香草作物分散病蟲壓力</li></ul></div>
   <div class="tool-grid">
     <select id="seasonCount"><option value="2">2 季</option><option value="3" selected>3 季</option><option value="4">4 季</option></select>
     <select id="goal"><option>穩定收益</option><option>土壤恢復優先</option><option>病蟲害風險降低</option></select>
@@ -290,13 +291,20 @@ function runCropAdvice(){
 function runRotationPlan(){
   const n=Number(document.getElementById('seasonCount').value);
   const goal=document.getElementById('goal').value;
-  const base=['番茄','豆科綠肥','葉菜類','短期瓜類'];
-  const seq=base.slice(0,n);
-  let tip='';
-  if(goal==='土壤恢復優先') tip='番茄後接豆科綠肥，提升氮循環。';
-  else if(goal==='病蟲害風險降低') tip='避免連作茄科，至少間隔1季。';
-  else tip='主作物與現金流作物交錯，降低波動。';
-  document.getElementById('rotation_plan').innerHTML=`${n}季建議：${seq.join(' → ')}<br>${tip}`;
+
+  let seq=['牛蕃茄','豆科綠肥','葉菜類','玉米/蔥蒜'];
+  if(goal==='穩定收益') seq=['牛蕃茄','小白菜/青江菜','牛蕃茄（分區）','萵苣/菠菜'];
+  if(goal==='土壤恢復優先') seq=['牛蕃茄','太陽麻/田菁（綠肥）','蘿蔔/芥菜','牛蕃茄（嫁接苗）'];
+  if(goal==='病蟲害風險降低') seq=['牛蕃茄','玉米/蔥蒜','豆科綠肥','牛蕃茄（小面積回種）'];
+
+  const plan=seq.slice(0,n).map((x,i)=>`第${i+1}季：${x}`).join('<br>');
+  let inter='';
+  if(goal==='穩定收益') inter='間作建議：田埂可搭配九層塔/蔥，增加現金流與分散病蟲。';
+  if(goal==='土壤恢復優先') inter='間作建議：綠肥季可混播豆科，提升有機質回補效率。';
+  if(goal==='病蟲害風險降低') inter='間作建議：非茄科季可搭配短期葉菜，降低單一病蟲壓力。';
+
+  const back='回種條件：連續一季病害低檔、土壤排水正常後，再恢復牛蕃茄主作。';
+  document.getElementById('rotation_plan').innerHTML=`<b>${goal}</b><br>${plan}<br>${inter}<br>${back}`;
 }
 
 function runSowingWindow(){
