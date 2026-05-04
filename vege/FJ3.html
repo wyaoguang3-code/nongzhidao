@@ -94,19 +94,19 @@ button{cursor:pointer}
   <div id="soil_analysis" class="result">尚未計算</div>
 </div>
 
-<div class="card"><h2>灌溉排程 <span class="badge blue">🟢 雛形</span></h2><button onclick="runIrrigation()">產生建議</button><div id="irrigation" class="result">尚未計算</div></div>
-<div class="card"><h2>施肥計畫 <span class="badge red">🔴 雛形</span></h2><button onclick="runFertilizer()">產生建議</button><div id="fert_plan" class="result">尚未計算</div></div>
-<div class="card"><h2>病蟲害辨識 <span class="badge red">🔴 雛形</span></h2><button onclick="runPestAI()">查看流程</button><div id="pest_ai" class="result">尚未計算</div></div>
-<div class="card"><h2>氣象預警推播 <span class="badge blue">🟢 雛形</span></h2><button onclick="runWeatherAlert()">檢查規則</button><div id="wx_alert" class="result">尚未計算</div></div>
-<div class="card"><h2>連作障礙預防 <span class="badge red">🔴 雛形</span></h2><button onclick="runContinuousRisk()">產生建議</button><div id="continuous_risk" class="result">尚未計算</div></div>
-<div class="card"><h2>採收時機預測 <span class="badge blue">🔵 雛形</span></h2><button onclick="runHarvestPrediction()">推算</button><div id="harvest_pred" class="result">尚未計算</div></div>
-<div class="card"><h2>保鮮 / 儲存建議 <span class="badge red">🔴 雛形</span></h2><button onclick="runStorageAdvice()">產生建議</button><div id="storage_advice" class="result">尚未計算</div></div>
-<div class="card"><h2>產量預估 <span class="badge blue">🔵 雛形</span></h2><button onclick="runYieldEstimate()">估算</button><div id="yield_est" class="result">尚未計算</div></div>
-<div class="card"><h2>加工建議 <span class="badge blue">🟠 雛形</span></h2><button onclick="runProcessingAdvice()">產生建議</button><div id="processing_advice" class="result">尚未計算</div></div>
-<div class="card"><h2>定價策略建議 <span class="badge red">🔴 雛形</span></h2><button onclick="runPricingStrategy()">產生建議</button><div id="pricing_strategy" class="result">尚未計算</div></div>
-<div class="card"><h2>財務損益分析 <span class="badge blue">🟢 雛形</span></h2><button onclick="runPnL()">試算</button><div id="pnl" class="result">尚未計算</div></div>
-<div class="card"><h2>人力排班 <span class="badge blue">🟢 雛形</span></h2><button onclick="runShiftPlan()">產生建議</button><div id="shift_plan" class="result">尚未計算</div></div>
-<div class="card"><h2>跨季績效比較 <span class="badge blue">🔵 雛形</span></h2><button onclick="runSeasonCompare()">比較</button><div id="season_compare" class="result">尚未計算</div></div>
+<div class="card"><h2>灌溉排程 <span class="badge blue">🟢 雛形</span></h2><div class="tool-grid"><input id="ir_soil" type="number" value="45" placeholder="土壤濕度%"><input id="ir_rain" type="number" value="20" placeholder="24h雨量mm"><button onclick="runIrrigation()">產生建議</button></div><div id="irrigation" class="result">尚未計算</div></div>
+<div class="card"><h2>施肥計畫 <span class="badge red">🔴 雛形</span></h2><div class="tool-grid"><select id="fz_stage"><option>苗期</option><option>開花期</option><option>結果期</option></select><input id="fz_area" type="number" value="1" placeholder="面積(分地)"><button onclick="runFertilizer()">產生建議</button></div><div id="fert_plan" class="result">尚未計算</div></div>
+<div class="card"><h2>病蟲害辨識 <span class="badge red">🔴 雛形</span></h2><div class="tool-grid"><select id="pest_sym"><option>葉斑</option><option>捲葉</option><option>黃化</option></select><select id="pest_lv"><option>輕度</option><option>中度</option><option>重度</option></select><button onclick="runPestAI()">查看流程</button></div><div id="pest_ai" class="result">尚未計算</div></div>
+<div class="card"><h2>氣象預警推播 <span class="badge blue">🟢 雛形</span></h2><div class="tool-grid"><input id="wx_wind" type="number" value="9" placeholder="最大風速級"><input id="wx_temp" type="number" value="14" placeholder="最低溫°C"><button onclick="runWeatherAlert()">檢查規則</button></div><div id="wx_alert" class="result">尚未計算</div></div>
+<div class="card"><h2>連作障礙預防 <span class="badge red">🔴 雛形</span></h2><div class="tool-grid"><input id="cc_seq" type="number" value="2" placeholder="連作季數"><input id="cc_dis" type="number" value="1" placeholder="近季病害次數"><button onclick="runContinuousRisk()">產生建議</button></div><div id="continuous_risk" class="result">尚未計算</div></div>
+<div class="card"><h2>採收時機預測 <span class="badge blue">🔵 雛形</span></h2><div class="tool-grid"><input id="hv_days" type="number" value="92" placeholder="定植後天數"><input id="hv_temp" type="number" value="24" placeholder="近7日均溫°C"><button onclick="runHarvestPrediction()">推算</button></div><div id="harvest_pred" class="result">尚未計算</div></div>
+<div class="card"><h2>保鮮 / 儲存建議 <span class="badge red">🔴 雛形</span></h2><div class="tool-grid"><input id="st_temp" type="number" value="12" placeholder="儲存溫度°C"><input id="st_hum" type="number" value="88" placeholder="濕度%"><button onclick="runStorageAdvice()">產生建議</button></div><div id="storage_advice" class="result">尚未計算</div></div>
+<div class="card"><h2>產量預估 <span class="badge blue">🔵 雛形</span></h2><div class="tool-grid"><input id="yd_area" type="number" value="1" placeholder="面積(分地)"><input id="yd_factor" type="number" value="1" step="0.1" placeholder="季節係數"><button onclick="runYieldEstimate()">估算</button></div><div id="yield_est" class="result">尚未計算</div></div>
+<div class="card"><h2>加工建議 <span class="badge blue">🟠 雛形</span></h2><div class="tool-grid"><input id="pr_stock" type="number" value="800" placeholder="庫存kg"><input id="pr_price" type="number" value="36" placeholder="現貨價元/kg"><button onclick="runProcessingAdvice()">產生建議</button></div><div id="processing_advice" class="result">尚未計算</div></div>
+<div class="card"><h2>定價策略建議 <span class="badge red">🔴 雛形</span></h2><div class="tool-grid"><select id="pc_quality"><option>A</option><option>B</option><option>C</option></select><select id="pc_channel"><option>批發</option><option>直銷</option><option>電商</option></select><button onclick="runPricingStrategy()">產生建議</button></div><div id="pricing_strategy" class="result">尚未計算</div></div>
+<div class="card"><h2>財務損益分析 <span class="badge blue">🟢 雛形</span></h2><div class="tool-grid"><input id="pn_yield" type="number" value="3200" placeholder="產量kg/分"><input id="pn_price" type="number" value="50" placeholder="售價元/kg"><button onclick="runPnL()">試算</button></div><div id="pnl" class="result">尚未計算</div></div>
+<div class="card"><h2>人力排班 <span class="badge blue">🟢 雛形</span></h2><div class="tool-grid"><input id="sh_days" type="number" value="6" placeholder="本週農忙天數"><input id="sh_workers" type="number" value="4" placeholder="可用人數"><button onclick="runShiftPlan()">產生建議</button></div><div id="shift_plan" class="result">尚未計算</div></div>
+<div class="card"><h2>跨季績效比較 <span class="badge blue">🔵 雛形</span></h2><div class="tool-grid"><input id="sc_y_now" type="number" value="3.2" placeholder="本季噸/分"><input id="sc_y_prev" type="number" value="2.9" placeholder="前季噸/分"><button onclick="runSeasonCompare()">比較</button></div><div id="season_compare" class="result">尚未計算</div></div>
 
 <script>
 fetch('../data/code_FJ3.json').then(r=>r.json()).then(d=>{
@@ -319,30 +319,68 @@ function runSoilAnalysis(){
 }
 
 function runIrrigation(){
-  const rain=Number(document.getElementById('rain')?.value||0);
-  const msg=rain>50?'未來雨量偏高，今日停灌，48h後再評估。':'建議清晨滴灌 20-30 分鐘，傍晚補水 10 分鐘。';
+  const soil=Number(document.getElementById('ir_soil').value||0), rain=Number(document.getElementById('ir_rain').value||0);
+  const msg=(soil>65||rain>50)?'含水偏高，今日停灌，48h 後複測。':(soil<35?'土壤偏乾，建議早晚各 20 分鐘滴灌。':'水分適中，建議每日清晨維持灌溉 15 分鐘。');
   document.getElementById('irrigation').innerHTML=msg;
 }
-function runFertilizer(){ document.getElementById('fert_plan').innerHTML='苗期:高磷、開花期:鉀鈣提升、結果期:分次追肥（每7-10天）'; }
-function runPestAI(){ document.getElementById('pest_ai').innerHTML='雛形流程：上傳照片 → 葉斑/捲葉分類 → 回傳防治建議（待接影像模型）'; }
-function runWeatherAlert(){ document.getElementById('wx_alert').innerHTML='已建立雛形規則：豪雨/低溫/強風門檻觸發 Telegram 推播（待串即時氣象 API）'; }
-function runContinuousRisk(){ document.getElementById('continuous_risk').innerHTML='若茄科連作 >=2 季，風險升高；建議插入豆科綠肥或十字花科作物。'; }
-function runHarvestPrediction(){ document.getElementById('harvest_pred').innerHTML='以定植後 85-110 天為主窗口；高溫期可提早 5-7 天。'; }
-function runStorageAdvice(){ document.getElementById('storage_advice').innerHTML='建議 10-13°C、相對濕度 85-90%，避免與乙烯高釋放水果同放。'; }
-function runYieldEstimate(){ document.getElementById('yield_est').innerHTML='雛形估算：每分地 2.8-3.6 噸（依天氣、管理與病蟲害波動）。'; }
-function runProcessingAdvice(){ document.getElementById('processing_advice').innerHTML='滯銷時優先：番茄醬/乾燥番茄/冷凍切丁，降低即期壓力。'; }
+function runFertilizer(){
+  const s=document.getElementById('fz_stage').value,a=Number(document.getElementById('fz_area').value||1);
+  const plan=s==='苗期'?'高磷低氮':'開花期'===s?'鉀鈣提升':'鉀肥主導、分次追肥';
+  document.getElementById('fert_plan').innerHTML=`${s}建議：${plan}；預估每分地 ${Math.round(3500*a)}~${Math.round(5500*a)} 元`;
+}
+function runPestAI(){
+  const sym=document.getElementById('pest_sym').value,lv=document.getElementById('pest_lv').value;
+  document.getElementById('pest_ai').innerHTML=`症狀 ${sym} / ${lv}：雛形流程「拍照→分類→建議藥劑與栽培管理」`;
+}
+function runWeatherAlert(){
+  const w=Number(document.getElementById('wx_wind').value||0), t=Number(document.getElementById('wx_temp').value||99);
+  const alerts=[]; if(w>=10) alerts.push('強風'); if(t<=12) alerts.push('低溫');
+  document.getElementById('wx_alert').innerHTML=alerts.length?`觸發預警：${alerts.join('、')}（可推播）`:'未達預警門檻';
+}
+function runContinuousRisk(){
+  const seq=Number(document.getElementById('cc_seq').value||0), dis=Number(document.getElementById('cc_dis').value||0);
+  const risk=seq>=3||dis>=2?'高風險':seq>=2?'中風險':'低風險';
+  document.getElementById('continuous_risk').innerHTML=`判定：${risk}；建議加入豆科綠肥並做土壤消毒輪替。`;
+}
+function runHarvestPrediction(){
+  const d=Number(document.getElementById('hv_days').value||0), t=Number(document.getElementById('hv_temp').value||24);
+  const ready=(d>=85&&d<=110)||(d>=80&&t>=27);
+  document.getElementById('harvest_pred').innerHTML=ready?'進入採收窗口（建議分批採）':'尚未到主採收窗口';
+}
+function runStorageAdvice(){
+  const t=Number(document.getElementById('st_temp').value||0), h=Number(document.getElementById('st_hum').value||0);
+  const ok=(t>=10&&t<=13&&h>=85&&h<=90);
+  document.getElementById('storage_advice').innerHTML=ok?'條件理想：可保鮮儲放。':'建議調整到 10-13°C、85-90%RH。';
+}
+function runYieldEstimate(){
+  const a=Number(document.getElementById('yd_area').value||1), f=Number(document.getElementById('yd_factor').value||1);
+  const ton=(3.1*a*f).toFixed(2);
+  document.getElementById('yield_est').innerHTML=`預估產量：約 ${ton} 噸（雛形模型）`;
+}
+function runProcessingAdvice(){
+  const s=Number(document.getElementById('pr_stock').value||0), p=Number(document.getElementById('pr_price').value||0);
+  const msg=(s>600&&p<40)?'建議轉番茄醬/冷凍切丁':'優先鮮售，次級品再加工';
+  document.getElementById('processing_advice').innerHTML=msg;
+}
 function runPricingStrategy(){
-  const p=window.fj3Data?.latest_price?.price;
-  const msg=(p&&p>55)?'現貨偏強，可走高品質分級 + 直供通路。':(p&&p<40)?'現貨偏弱，建議促銷組合或轉加工。':'現貨中性，建議分批出貨。';
-  document.getElementById('pricing_strategy').innerHTML=`最新批發參考 ${p??'-'} 元/公斤；${msg}`;
+  const q=document.getElementById('pc_quality').value,c=document.getElementById('pc_channel').value,m=window.fj3Data?.latest_price?.price||50;
+  const base=q==='A'?1.15:q==='B'?1.0:0.85; const ch=c==='直銷'?1.1:c==='電商'?1.2:1.0;
+  document.getElementById('pricing_strategy').innerHTML=`建議售價：約 ${(m*base*ch).toFixed(1)} 元/kg（基準 ${m}）`;
 }
 function runPnL(){
-  const area=Number(document.getElementById('area')?.value||1);
+  const area=Number(document.getElementById('area')?.value||1), y=Number(document.getElementById('pn_yield').value||3200), p=Number(document.getElementById('pn_price').value||50);
   const cost=(area*1800*(Number(document.getElementById('seedling')?.value||8)))+(Number(document.getElementById('fert')?.value||6000)*area)+(Number(document.getElementById('labor')?.value||18000)*area);
-  const revenue=area*3200*(window.fj3Data?.latest_price?.price||50);
-  document.getElementById('pnl').innerHTML=`收入估算 ${Math.round(revenue).toLocaleString()} 元｜成本估算 ${Math.round(cost).toLocaleString()} 元｜毛利 ${Math.round(revenue-cost).toLocaleString()} 元`;
+  const revenue=area*y*p;
+  document.getElementById('pnl').innerHTML=`收入 ${Math.round(revenue).toLocaleString()}｜成本 ${Math.round(cost).toLocaleString()}｜毛利 ${Math.round(revenue-cost).toLocaleString()} 元`;
 }
-function runShiftPlan(){ document.getElementById('shift_plan').innerHTML='農忙期建議：採收日 4 人、包裝日 3 人、田間維護日 2 人（可再接行事曆排程）。'; }
-function runSeasonCompare(){ document.getElementById('season_compare').innerHTML='雛形指標：本季成本率、單位產量、單位售價，與前2季同比。'; }
+function runShiftPlan(){
+  const d=Number(document.getElementById('sh_days').value||0), w=Number(document.getElementById('sh_workers').value||1);
+  document.getElementById('shift_plan').innerHTML=`建議班表：採收 ${Math.min(w,4)} 人×${d} 天；包裝 ${Math.max(1,w-1)} 人×${Math.max(2,d-2)} 天`;
+}
+function runSeasonCompare(){
+  const n=Number(document.getElementById('sc_y_now').value||0), p=Number(document.getElementById('sc_y_prev').value||1);
+  const diff=((n-p)/p*100).toFixed(1);
+  document.getElementById('season_compare').innerHTML=`本季較前季 ${diff}%（產量：${n} vs ${p} 噸/分）`;
+}
 </script>
 </div></body></html>
