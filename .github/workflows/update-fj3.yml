@@ -21,10 +21,10 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Update FJ3 data (wholesale + keep export safe)
+      - name: Update FJ3 data (wholesale + export auto-fetch)
         run: |
           python - <<'PY'
-          import json,re,urllib.parse,urllib.request
+          import json,re,urllib.parse,urllib.request,ssl
           from collections import defaultdict
           from datetime import datetime,timedelta,timezone
           from pathlib import Path
@@ -89,14 +89,62 @@ jobs:
           data['daily']=daily
           p.write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')
 
-          # Export safeguard: never overwrite export file with empty structure in automation.
+          # Export auto-fetch (best-effort). If fetch/parse fails, keep old file unchanged.
           ep=Path('data/code_FJ3_export.json')
-          if ep.exists():
-              ex=json.loads(ep.read_text(encoding='utf-8'))
-              ex.setdefault('updated_at', now_tpe().isoformat())
-              if ex.get('monthly5') and ex.get('yearly'):
-                  ex['updated_at']=now_tpe().isoformat()
-                  ep.write_text(json.dumps(ex,ensure_ascii=False,indent=2),encoding='utf-8')
+          ex_old = json.loads(ep.read_text(encoding='utf-8')) if ep.exists() else {}
+          ex_new = dict(ex_old)
+          try:
+              # Source endpoint occasionally has TLS chain issues; use unverified context in CI.
+              ctx = ssl._create_unverified_context()
+              src = 'https://agrstat.moa.gov.tw/OpenData/TradeByMonth.ashx?format=json'
+              req = urllib.request.Request(src, headers={'User-Agent':'Mozilla/5.0'})
+              raw = urllib.request.urlopen(req, timeout=40, context=ctx).read().decode('utf-8','ignore')
+              arr = json.loads(raw)
+
+              # Flexible key mapping for unknown schema variants
+              def g(o, keys):
+                  for k in keys:
+                      if k in o and o[k] not in (None, ''):
+                          return o[k]
+                  return None
+
+              rows = []
+              for r in (arr if isinstance(arr, list) else []):
+                  code = str(g(r, ['prod_code','product_code','品別代號','產品代號']) or '')
+                  name = str(g(r, ['prod_name','product_name','品名','產品名稱']) or '')
+                  if not (('FJ3' in code) or ('番茄' in name)):
+                      continue
+                  ym = str(g(r, ['ym','year_month','月份','年月']) or '')
+                  wt = float(g(r, ['weight_ton','重量公噸','數量']) or 0)
+                  val = float(g(r, ['value_ntd','價值新台幣','價值']) or 0)
+                  if not ym:
+                      continue
+                  avg = round(val / wt, 2) if wt > 0 else 0
+                  rows.append({'key': ym, 'weight_ton': wt, 'value_ntd': int(val), 'avg_price_ntd_per_ton': avg})
+
+              rows.sort(key=lambda x: x['key'])
+              monthly5 = rows[-60:]
+              by_year = {}
+              for r in rows:
+                  y = str(r['key'])[:4]
+                  by_year.setdefault(y, {'w':0.0, 'v':0.0})
+                  by_year[y]['w'] += r['weight_ton']
+                  by_year[y]['v'] += r['value_ntd']
+              yearly = []
+              for y in sorted(by_year):
+                  w = by_year[y]['w']; v = by_year[y]['v']
+                  yearly.append({'year': int(y), 'weight_ton': round(w,2), 'value_ntd': int(v), 'avg_price_ntd_per_ton': round(v/w,2) if w>0 else 0})
+
+              if monthly5 and yearly:
+                  ex_new.update({
+                      'code':'FJ3','name':'番茄 牛蕃茄','type':'export','currency':'NTD','unit_weight':'ton','unit_value':'NTD',
+                      'source':'https://agrstat.moa.gov.tw','updated_at': now_tpe().isoformat(),
+                      'latest_month': monthly5[-1], 'monthly5': monthly5, 'yearly': yearly
+                  })
+                  ep.write_text(json.dumps(ex_new, ensure_ascii=False, indent=2), encoding='utf-8')
+          except Exception:
+              pass
+
           print('updated wholesale latest=',data['latest_price'])
           PY
 
