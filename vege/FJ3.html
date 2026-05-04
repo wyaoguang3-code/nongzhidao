@@ -123,6 +123,18 @@ button{cursor:pointer}
 <div class="card"><h2>人力排班 <span class="badge blue">🟢 雛形</span></h2><div class="hint">單位：工作天(天)、人力(人)</div><div class="result"><b>排班原則（固定顯示）</b><ul><li>採收日優先配足人力，避免過熟與損耗</li><li>包裝/分級可次高配置，田間管理採彈性班</li><li>連續高工時時需安排輪休，避免品質與安全下降</li></ul><b>各生長期常態數據（1 分地，每週）</b><ul><li><b>育苗/定植期</b>：10~14 人天（約每天 2 人）</li><li><b>營養生長期</b>：12~16 人天（約每天 2~3 人）</li><li><b>開花著果期</b>：14~18 人天（約每天 3 人）</li><li><b>採收高峰期</b>：20~28 人天（約每天 4~5 人）</li><li><b>採後整理期</b>：8~12 人天（約每天 2 人）</li></ul></div><div class="tool-grid"><div class="field"><input id="sh_days" type="number" value="6" placeholder="本週農忙天數"><span class="u">天</span></div><div class="field"><input id="sh_workers" type="number" value="4" placeholder="可用人數"><span class="u">人</span></div><button onclick="runShiftPlan()">產生建議</button></div><div id="shift_plan" class="result">尚未計算</div></div>
 <div class="card"><h2>跨季績效比較 <span class="badge blue">🔵 雛形</span></h2><div class="hint">單位：產量(噸/分地)、成本(元/分地)、售價(元/kg)、變化率(%)</div><div class="result"><b>比較邏輯（固定顯示）</b><ul><li>看產量是否提升</li><li>看單位成本是否下降</li><li>看平均售價是否提升</li></ul></div><div class="tool-grid"><div class="field"><span class="fl">上一季產量</span><input id="sc_y_prev" type="number" value="2.9"><span class="u">噸/分地</span></div><div class="field"><span class="fl">本季產量</span><input id="sc_y_now" type="number" value="3.2"><span class="u">噸/分地</span></div><div class="field"><span class="fl">上一季成本</span><input id="sc_c_prev" type="number" value="52000"><span class="u">元/分地</span></div><div class="field"><span class="fl">本季成本</span><input id="sc_c_now" type="number" value="48000"><span class="u">元/分地</span></div><div class="field"><span class="fl">上一季售價</span><input id="sc_p_prev" type="number" value="46"><span class="u">元/kg</span></div><div class="field"><span class="fl">本季售價</span><input id="sc_p_now" type="number" value="50"><span class="u">元/kg</span></div><button onclick="runSeasonCompare()">比較</button></div><div id="season_compare" class="result">尚未計算</div></div>
 
+<div class="card"><h2>補助申請助理 <span class="badge blue">🔵 雛形</span></h2><button onclick="runSubsidyAssist()">媒合方案</button><div id="subsidy_assist" class="result">尚未計算</div></div>
+<div class="card"><h2>作業日誌記錄 <span class="badge blue">🟢 雛形</span></h2><div class="result">可直接對機器人發語音或文字：例如「今天 16:30 灌溉 20 分鐘，番茄區 B 有黃葉」。</div><button onclick="runLogGuide()">查看記錄格式</button><div id="log_guide" class="result">尚未計算</div></div>
+<div class="card"><h2>IoT 感測器整合 <span class="badge blue">🔵 雛形</span></h2><button onclick="runIotAlert()">檢查異常規則</button><div id="iot_alert" class="result">尚未計算</div></div>
+<div class="card"><h2>無人機影像分析 <span class="badge blue">🔵 雛形</span></h2><button onclick="runDroneAnalysis()">查看分析流程</button><div id="drone_analysis" class="result">尚未計算</div></div>
+<div class="card"><h2>產品分級建議 <span class="badge red">🔴 雛形</span></h2><button onclick="runGradingAdvice()">產生分級規則</button><div id="grading_advice" class="result">尚未計算</div></div>
+<div class="card"><h2>買家媒合 <span class="badge blue">🟠 雛形</span></h2><button onclick="runBuyerMatch()">推薦買家類型</button><div id="buyer_match" class="result">尚未計算</div></div>
+<div class="card"><h2>行銷文案生成 <span class="badge blue">🟠 雛形</span></h2><div class="result">可直接問機器人：例如「幫我寫 IG 貼文：今日牛蕃茄採收」。</div><button onclick="runCopyGuide()">查看文案模板</button><div id="copy_guide" class="result">尚未計算</div></div>
+<div class="card"><h2>出口文件輔助 <span class="badge blue">🟢 雛形</span></h2><button onclick="runExportDocs()">查看文件清單</button><div id="export_docs" class="result">尚未計算</div></div>
+<div class="card"><h2>碳足跡計算 <span class="badge blue">🔵 雛形</span></h2><button onclick="runCarbonCalc()">查看計算項目</button><div id="carbon_calc" class="result">尚未計算</div></div>
+<div class="card"><h2>學習資源推薦 <span class="badge blue">🟠 雛形</span></h2><button onclick="runLearningResources()">推薦學習方向</button><div id="learning_resources" class="result">尚未計算</div></div>
+<div class="card"><h2>農業保險諮詢 <span class="badge blue">🟠 雛形</span></h2><button onclick="runInsuranceAdvice()">查看保險建議</button><div id="insurance_advice" class="result">尚未計算</div></div>
+
 <script>
 fetch('../data/code_FJ3.json').then(r=>r.json()).then(d=>{
   window.fj3Data=d;
@@ -722,5 +734,17 @@ function runSeasonCompare(){
     <b>整體判讀</b>：${overall}
   `;
 }
+
+function runSubsidyAssist(){ document.getElementById('subsidy_assist').innerHTML='可媒合：設施補助、智慧農業設備、青農貸款；並提供填表欄位對照清單。'; }
+function runLogGuide(){ document.getElementById('log_guide').innerHTML='建議格式：日期/地塊/作業內容/投入人力/異常狀況（支援語音轉文字）。'; }
+function runIotAlert(){ document.getElementById('iot_alert').innerHTML='異常門檻範例：土壤濕度<30%、棚內>35°C、濕度>90%持續2小時即告警。'; }
+function runDroneAnalysis(){ document.getElementById('drone_analysis').innerHTML='流程：空拍影像→區塊分割→異常熱點標記→回傳巡田優先順序。'; }
+function runGradingAdvice(){ document.getElementById('grading_advice').innerHTML='分級雛形：A(外觀完整/色澤佳)、B(輕微瑕疵)、C(加工級)，對應不同定價。'; }
+function runBuyerMatch(){ document.getElementById('buyer_match').innerHTML='媒合方向：高品質→餐廳/精品通路；量大穩定→超市；規格一致→出口商。'; }
+function runCopyGuide(){ document.getElementById('copy_guide').innerHTML='文案模板：今日採收亮點＋產地故事＋料理建議＋下單連結。'; }
+function runExportDocs(){ document.getElementById('export_docs').innerHTML='文件清單：商業發票、裝箱單、產地證明、檢疫/報關相關文件。'; }
+function runCarbonCalc(){ document.getElementById('carbon_calc').innerHTML='計算項目：肥料、用電、用水、運輸里程；輸出每公斤產品碳排估值。'; }
+function runLearningResources(){ document.getElementById('learning_resources').innerHTML='推薦主題：病蟲害整合管理、精準灌溉、採後處理、農產品牌行銷。'; }
+function runInsuranceAdvice(){ document.getElementById('insurance_advice').innerHTML='建議先評估颱風豪雨與病害風險，再比對天災保險與收入保險方案。'; }
 </script>
 </div></body></html>
