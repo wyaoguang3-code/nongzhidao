@@ -78,7 +78,7 @@ button{cursor:pointer}
 
 <div class="card">
   <h2>成本試算 <span class="badge red">🔴 雛形</span></h2>
-  <div class="hint">單位：面積(分地)、金額(新台幣元)</div>
+  <div class="hint">欄位說明：面積(種植面積)／種苗單價(每株成本)／肥料預算(每分地)／人力預算(每分地)</div>
   <div class="tool-grid">
     <div class="field"><input id="area" type="number" placeholder="面積" value="1"/><span class="u">分地</span></div>
     <div class="field"><input id="seedling" type="number" placeholder="種苗單價" value="8"/><span class="u">元/株</span></div>
@@ -101,18 +101,18 @@ button{cursor:pointer}
 </div>
 
 <div class="card"><h2>灌溉排程 <span class="badge blue">🟢 雛形</span></h2><div class="hint">單位：土壤濕度(%)、雨量(mm/24h)</div><div class="tool-grid"><div class="field"><input id="ir_soil" type="number" value="45" placeholder="土壤濕度"><span class="u">%</span></div><div class="field"><input id="ir_rain" type="number" value="20" placeholder="24h雨量"><span class="u">mm</span></div><button onclick="runIrrigation()">產生建議</button></div><div id="irrigation" class="result">尚未計算</div></div>
-<div class="card"><h2>施肥計畫 <span class="badge red">🔴 雛形</span></h2><div class="hint">單位：面積(分地)、肥料成本(元)</div><div class="tool-grid"><select id="fz_stage"><option>苗期</option><option>開花期</option><option>結果期</option></select><div class="field"><input id="fz_area" type="number" value="1" placeholder="面積"><span class="u">分地</span></div><button onclick="runFertilizer()">產生建議</button></div><div id="fert_plan" class="result">尚未計算</div></div>
+<div class="card"><h2>施肥計畫 <span class="badge red">🔴 雛形</span></h2><div class="hint">欄位說明：生長階段／面積／預計肥料成本</div><div class="tool-grid"><select id="fz_stage"><option>苗期</option><option>開花期</option><option>結果期</option></select><div class="field"><input id="fz_area" type="number" value="1" placeholder="面積"><span class="u">分地</span></div><div class="field"><input id="fz_budget" type="number" value="5000" placeholder="肥料成本"><span class="u">元/分地</span></div><button onclick="runFertilizer()">產生建議</button></div><div id="fert_plan" class="result">尚未計算</div></div>
 <div class="card"><h2>病蟲害辨識 <span class="badge red">🔴 雛形</span></h2><div class="tool-grid"><select id="pest_sym"><option>葉斑</option><option>捲葉</option><option>黃化</option></select><select id="pest_lv"><option>輕度</option><option>中度</option><option>重度</option></select><button onclick="runPestAI()">查看流程</button></div><div id="pest_ai" class="result">尚未計算</div></div>
 <div class="card"><h2>氣象預警推播 <span class="badge blue">🟢 雛形</span></h2><div class="hint">單位：風速(級)、溫度(°C)</div><div class="tool-grid"><div class="field"><input id="wx_wind" type="number" value="9" placeholder="最大風速"><span class="u">級</span></div><div class="field"><input id="wx_temp" type="number" value="14" placeholder="最低溫"><span class="u">°C</span></div><button onclick="runWeatherAlert()">檢查規則</button></div><div id="wx_alert" class="result">尚未計算</div></div>
-<div class="card"><h2>連作障礙預防 <span class="badge red">🔴 雛形</span></h2><div class="hint">單位：連作(季)、病害(次/季)</div><div class="tool-grid"><div class="field"><input id="cc_seq" type="number" value="2" placeholder="連作季數"><span class="u">季</span></div><div class="field"><input id="cc_dis" type="number" value="1" placeholder="病害次數"><span class="u">次/季</span></div><button onclick="runContinuousRisk()">產生建議</button></div><div id="continuous_risk" class="result">尚未計算</div></div>
+<div class="card"><h2>連作障礙預防 <span class="badge red">🔴 雛形</span></h2><div class="hint">欄位說明：連作季數＝同科作物連續種植幾季；病害次數＝最近一季發病紀錄</div><div class="tool-grid"><div class="field"><input id="cc_seq" type="number" value="2" placeholder="同科連作季數"><span class="u">季</span></div><div class="field"><input id="cc_dis" type="number" value="1" placeholder="最近病害次數"><span class="u">次/季</span></div><button onclick="runContinuousRisk()">產生建議</button></div><div id="continuous_risk" class="result">尚未計算</div></div>
 <div class="card"><h2>採收時機預測 <span class="badge blue">🔵 雛形</span></h2><div class="hint">單位：天數(天)、溫度(°C)</div><div class="tool-grid"><div class="field"><input id="hv_days" type="number" value="92" placeholder="定植後天數"><span class="u">天</span></div><div class="field"><input id="hv_temp" type="number" value="24" placeholder="近7日均溫"><span class="u">°C</span></div><button onclick="runHarvestPrediction()">推算</button></div><div id="harvest_pred" class="result">尚未計算</div></div>
 <div class="card"><h2>保鮮 / 儲存建議 <span class="badge red">🔴 雛形</span></h2><div class="hint">單位：溫度(°C)、相對濕度(%)</div><div class="tool-grid"><div class="field"><input id="st_temp" type="number" value="12" placeholder="儲存溫度"><span class="u">°C</span></div><div class="field"><input id="st_hum" type="number" value="88" placeholder="濕度"><span class="u">%</span></div><button onclick="runStorageAdvice()">產生建議</button></div><div id="storage_advice" class="result">尚未計算</div></div>
-<div class="card"><h2>產量預估 <span class="badge blue">🔵 雛形</span></h2><div class="hint">單位：面積(分地)、產量(噸)</div><div class="tool-grid"><div class="field"><input id="yd_area" type="number" value="1" placeholder="面積"><span class="u">分地</span></div><div class="field"><input id="yd_factor" type="number" value="1" step="0.1" placeholder="季節係數"><span class="u">x</span></div><button onclick="runYieldEstimate()">估算</button></div><div id="yield_est" class="result">尚未計算</div></div>
+<div class="card"><h2>產量預估 <span class="badge blue">🔵 雛形</span></h2><div class="hint">欄位說明：季節係數＝倍率（1.0 正常、1.1 偏佳、0.9 偏差）</div><div class="tool-grid"><div class="field"><input id="yd_area" type="number" value="1" placeholder="面積"><span class="u">分地</span></div><div class="field"><input id="yd_factor" type="number" value="1" step="0.1" placeholder="季節係數"><span class="u">倍率</span></div><button onclick="runYieldEstimate()">估算</button></div><div id="yield_est" class="result">尚未計算</div></div>
 <div class="card"><h2>加工建議 <span class="badge blue">🟠 雛形</span></h2><div class="hint">單位：庫存(kg)、價格(元/kg)</div><div class="tool-grid"><div class="field"><input id="pr_stock" type="number" value="800" placeholder="庫存"><span class="u">kg</span></div><div class="field"><input id="pr_price" type="number" value="36" placeholder="現貨價"><span class="u">元/kg</span></div><button onclick="runProcessingAdvice()">產生建議</button></div><div id="processing_advice" class="result">尚未計算</div></div>
-<div class="card"><h2>定價策略建議 <span class="badge red">🔴 雛形</span></h2><div class="hint">單位：建議售價(元/kg)</div><div class="tool-grid"><select id="pc_quality"><option>A</option><option>B</option><option>C</option></select><select id="pc_channel"><option>批發</option><option>直銷</option><option>電商</option></select><button onclick="runPricingStrategy()">產生建議</button></div><div id="pricing_strategy" class="result">尚未計算</div></div>
-<div class="card"><h2>財務損益分析 <span class="badge blue">🟢 雛形</span></h2><div class="hint">單位：產量(kg/分)、售價(元/kg)、金額(元)</div><div class="tool-grid"><div class="field"><input id="pn_yield" type="number" value="3200" placeholder="產量"><span class="u">kg/分</span></div><div class="field"><input id="pn_price" type="number" value="50" placeholder="售價"><span class="u">元/kg</span></div><button onclick="runPnL()">試算</button></div><div id="pnl" class="result">尚未計算</div></div>
+<div class="card"><h2>定價策略建議 <span class="badge red">🔴 雛形</span></h2><div class="hint">欄位說明：A=高品質、B=標準、C=次級；輸出為建議售價(元/kg)</div><div class="tool-grid"><select id="pc_quality"><option>A級（高品質）</option><option>B級（標準）</option><option>C級（次級）</option></select><select id="pc_channel"><option>批發</option><option>直銷</option><option>電商</option></select><button onclick="runPricingStrategy()">產生建議</button></div><div id="pricing_strategy" class="result">尚未計算</div></div>
+<div class="card"><h2>財務損益分析 <span class="badge blue">🟢 雛形</span></h2><div class="hint">欄位說明：產量=每分地可售重量；售價=平均售價；輸出=收入/成本/毛利（元）</div><div class="tool-grid"><div class="field"><input id="pn_yield" type="number" value="3200" placeholder="每分地產量"><span class="u">kg/分</span></div><div class="field"><input id="pn_price" type="number" value="50" placeholder="平均售價"><span class="u">元/kg</span></div><button onclick="runPnL()">試算</button></div><div id="pnl" class="result">尚未計算</div></div>
 <div class="card"><h2>人力排班 <span class="badge blue">🟢 雛形</span></h2><div class="hint">單位：工作天(天)、人力(人)</div><div class="tool-grid"><div class="field"><input id="sh_days" type="number" value="6" placeholder="本週農忙天數"><span class="u">天</span></div><div class="field"><input id="sh_workers" type="number" value="4" placeholder="可用人數"><span class="u">人</span></div><button onclick="runShiftPlan()">產生建議</button></div><div id="shift_plan" class="result">尚未計算</div></div>
-<div class="card"><h2>跨季績效比較 <span class="badge blue">🔵 雛形</span></h2><div class="hint">單位：產量(噸/分)、變化率(%)</div><div class="tool-grid"><div class="field"><input id="sc_y_now" type="number" value="3.2" placeholder="本季產量"><span class="u">噸/分</span></div><div class="field"><input id="sc_y_prev" type="number" value="2.9" placeholder="前季產量"><span class="u">噸/分</span></div><button onclick="runSeasonCompare()">比較</button></div><div id="season_compare" class="result">尚未計算</div></div>
+<div class="card"><h2>跨季績效比較 <span class="badge blue">🔵 雛形</span></h2><div class="hint">單位：產量(噸/分)、變化率(%)</div><div class="tool-grid"><div class="field"><input id="sc_y_prev" type="number" value="2.9" placeholder="上一季產量"><span class="u">噸/分</span></div><div class="field"><input id="sc_y_now" type="number" value="3.2" placeholder="本季產量"><span class="u">噸/分</span></div><button onclick="runSeasonCompare()">比較</button></div><div id="season_compare" class="result">尚未計算</div></div>
 
 <script>
 fetch('../data/code_FJ3.json').then(r=>r.json()).then(d=>{
@@ -330,9 +330,9 @@ function runIrrigation(){
   document.getElementById('irrigation').innerHTML=msg;
 }
 function runFertilizer(){
-  const s=document.getElementById('fz_stage').value,a=Number(document.getElementById('fz_area').value||1);
+  const s=document.getElementById('fz_stage').value,a=Number(document.getElementById('fz_area').value||1),b=Number(document.getElementById('fz_budget').value||5000);
   const plan=s==='苗期'?'高磷低氮':'開花期'===s?'鉀鈣提升':'鉀肥主導、分次追肥';
-  document.getElementById('fert_plan').innerHTML=`${s}建議：${plan}；預估每分地 ${Math.round(3500*a)}~${Math.round(5500*a)} 元`;
+  document.getElementById('fert_plan').innerHTML=`${s}建議：${plan}；你填寫肥料成本約 ${Math.round(b*a).toLocaleString()} 元`;
 }
 function runPestAI(){
   const sym=document.getElementById('pest_sym').value,lv=document.getElementById('pest_lv').value;
@@ -370,7 +370,7 @@ function runProcessingAdvice(){
 }
 function runPricingStrategy(){
   const q=document.getElementById('pc_quality').value,c=document.getElementById('pc_channel').value,m=window.fj3Data?.latest_price?.price||50;
-  const base=q==='A'?1.15:q==='B'?1.0:0.85; const ch=c==='直銷'?1.1:c==='電商'?1.2:1.0;
+  const base=q.includes('A級')?1.15:q.includes('B級')?1.0:0.85; const ch=c==='直銷'?1.1:c==='電商'?1.2:1.0;
   document.getElementById('pricing_strategy').innerHTML=`建議售價：約 ${(m*base*ch).toFixed(1)} 元/kg（基準 ${m}）`;
 }
 function runPnL(){
