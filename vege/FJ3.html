@@ -101,7 +101,7 @@ button{cursor:pointer}
   <div id="soil_analysis" class="result">尚未計算</div>
 </div>
 
-<div class="card"><h2>灌溉排程 <span class="badge blue">🟢 雛形</span></h2><div class="hint">單位：土壤濕度(%)、雨量(mm/24h)</div><div class="tool-grid"><div class="field"><input id="ir_soil" type="number" value="45" placeholder="土壤濕度"><span class="u">%</span></div><div class="field"><input id="ir_rain" type="number" value="20" placeholder="24h雨量"><span class="u">mm</span></div><button onclick="runIrrigation()">產生建議</button></div><div id="irrigation" class="result">尚未計算</div></div>
+<div class="card"><h2>灌溉排程 <span class="badge blue">🟢 雛形</span></h2><div class="hint">單位：土壤濕度(%)、雨量(mm/24h)</div><div class="result"><b>牛蕃茄灌溉原則（固定顯示）</b><ul><li>土壤濕度目標區間：約 40%~60%</li><li>建議時段：清晨為主，必要時傍晚補水，避免中午高溫灌溉</li><li>豪雨後優先排水，再評估是否補灌</li></ul></div><div class="tool-grid"><div class="field"><input id="ir_soil" type="number" value="45" placeholder="土壤濕度"><span class="u">%</span></div><div class="field"><input id="ir_rain" type="number" value="20" placeholder="24h雨量"><span class="u">mm</span></div><button onclick="runIrrigation()">產生建議</button></div><div id="irrigation" class="result">尚未計算</div></div>
 <div class="card"><h2>施肥計畫 <span class="badge red">🔴 雛形</span></h2><div class="hint">欄位說明：生長階段／面積／預計肥料成本</div><div class="result"><b>牛蕃茄施肥原則（固定顯示）</b><ul><li><b>苗期</b>：根系建立優先，氮不宜過高避免徒長。</li><li><b>開花期</b>：提高鉀、鈣、硼，提升開花著果率。</li><li><b>結果期</b>：分次追肥，鉀鈣為主，控制氮避免裂果與軟果。</li></ul></div><div class="tool-grid"><select id="fz_stage"><option>苗期</option><option>開花期</option><option>結果期</option></select><div class="field"><input id="fz_area" type="number" value="1" placeholder="面積"><span class="u">分地</span></div><div class="field"><input id="fz_budget" type="number" value="5000" placeholder="肥料成本"><span class="u">元/分地</span></div><button onclick="runFertilizer()">產生建議</button></div><div id="fert_plan" class="result">尚未計算</div></div>
 <div class="card"><h2>病蟲害辨識 <span class="badge red">🔴 雛形</span></h2><div class="result"><b>預設流程（固定顯示）</b><ol><li>拍照：葉片正反面 + 莖部 + 果實（同地塊至少 3 株）</li><li>判讀：症狀分類（葉斑/捲葉/黃化）+ 嚴重度分級</li><li>建議：先做栽培管理，再評估用藥與輪作調整</li></ol><b>牛蕃茄常見對照</b><ul><li><b>葉斑</b>：常見早晚疫病/細菌性斑點</li><li><b>捲葉</b>：常見病毒病或粉蝨壓力</li><li><b>黃化</b>：常見根系受損、缺素或病害前期</li></ul></div><div class="tool-grid"><select id="pest_sym"><option>葉斑</option><option>捲葉</option><option>黃化</option></select><select id="pest_lv"><option>輕度</option><option>中度</option><option>重度</option></select><button onclick="runPestAI()">產生針對建議</button></div><div id="pest_ai" class="result">尚未計算</div></div>
 <div class="card"><h2>氣象預警推播 <span class="badge blue">🟢 雛形</span></h2><div class="hint">單位：風速(級)、溫度(°C)、雨量(mm/24h)</div><div class="result"><b>預設規則總覽（固定顯示）</b><ul><li><b>強風</b>：風速 >= 10 級｜影響：倒伏、落果、設施損傷</li><li><b>高溫</b>：日間高溫 >= 35°C｜影響：日灼、授粉不良、果實品質下降</li><li><b>低溫</b>：最低溫 <= 12°C｜影響：生長停滯、著果率下降、裂果風險增加</li><li><b>暴雨</b>：24h 雨量 >= 80mm｜影響：積水、根腐病與青枯病壓力上升</li></ul></div><div class="tool-grid"><div class="field"><input id="wx_wind" type="number" value="9" placeholder="最大風速"><span class="u">級</span></div><div class="field"><input id="wx_temp" type="number" value="14" placeholder="最低溫"><span class="u">°C</span></div><div class="field"><input id="wx_rain" type="number" value="80" placeholder="24h雨量"><span class="u">mm</span></div><button onclick="runWeatherAlert()">檢查目前是否觸發</button></div><div id="wx_alert" class="result">尚未計算</div></div>
@@ -327,8 +327,31 @@ function runSoilAnalysis(){
 
 function runIrrigation(){
   const soil=Number(document.getElementById('ir_soil').value||0), rain=Number(document.getElementById('ir_rain').value||0);
-  const msg=(soil>65||rain>50)?'含水偏高，今日停灌，48h 後複測。':(soil<35?'土壤偏乾，建議早晚各 20 分鐘滴灌。':'水分適中，建議每日清晨維持灌溉 15 分鐘。');
-  document.getElementById('irrigation').innerHTML=msg;
+  let level='',plan='',purpose='';
+
+  if(rain>=80 || soil>=70){
+    level='高含水/豪雨情境';
+    plan='今日停灌，先清排水溝；24-48 小時後再量測含水。';
+    purpose='避免根系缺氧與根腐病、青枯病風險上升。';
+  } else if(soil<35){
+    level='偏乾情境';
+    plan='清晨滴灌 20-30 分鐘，傍晚視萎凋再補 10-15 分鐘。';
+    purpose='迅速回補水分，降低落花落果與果實膨大受阻。';
+  } else if(soil>=35 && soil<=60){
+    level='適中情境';
+    plan='每日清晨維持 10-15 分鐘滴灌；連晴高溫日可微幅加量。';
+    purpose='維持根域穩定含水，降低裂果與品質波動。';
+  } else {
+    level='偏濕情境';
+    plan='隔日短灌或暫停 1 天，優先通風與土表乾燥。';
+    purpose='避免長時間高濕造成病害壓力。';
+  }
+
+  document.getElementById('irrigation').innerHTML=`
+    <b>判定</b>：${level}<br>
+    <b>建議排程</b>：${plan}<br>
+    <b>用意</b>：${purpose}
+  `;
 }
 function runFertilizer(){
   const s=document.getElementById('fz_stage').value,a=Number(document.getElementById('fz_area').value||1),b=Number(document.getElementById('fz_budget').value||5000);
