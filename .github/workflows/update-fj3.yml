@@ -81,13 +81,20 @@ jobs:
                   v=by[d]['v']; s.append({'date':d,'price':round(by[d]['pxv']/v,2) if v>0 else None,'volume':round(v,2)})
               return s
 
-          rows=fetch_rows(); daily=weighted(rows)
           p=Path('data/code_FJ3.json')
           data=json.loads(p.read_text(encoding='utf-8'))
-          data['updated_at']=now_tpe().isoformat()
-          data['latest_price']={'date':daily[-1]['date'],'price':daily[-1]['price']} if daily else None
-          data['daily']=daily
-          p.write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')
+          try:
+              rows=fetch_rows(); daily=weighted(rows)
+              if daily:
+                  data['updated_at']=now_tpe().isoformat()
+                  data['latest_price']={'date':daily[-1]['date'],'price':daily[-1]['price']}
+                  data['daily']=daily
+                  p.write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')
+                  wholesale_msg='ok'
+              else:
+                  wholesale_msg='empty_keep_old'
+          except Exception as e:
+              wholesale_msg=f'exception_keep_old: {type(e).__name__}'
 
           # Export auto-fetch (best-effort). If fetch/parse fails, keep old file unchanged.
           ep=Path('data/code_FJ3_export.json')
@@ -154,12 +161,14 @@ jobs:
           # write status for next step notification
           Path('data/fj3_update_status.json').write_text(json.dumps({
               'wholesale_latest': data.get('latest_price'),
+              'wholesale_msg': wholesale_msg,
               'export_ok': export_ok,
               'export_msg': export_msg,
               'ts': now_tpe().isoformat()
           }, ensure_ascii=False, indent=2), encoding='utf-8')
 
-          print('updated wholesale latest=',data['latest_price'])
+          print('updated wholesale latest=',data.get('latest_price'))
+          print('wholesale status=',wholesale_msg)
           print('export status=',export_msg)
           PY
 
