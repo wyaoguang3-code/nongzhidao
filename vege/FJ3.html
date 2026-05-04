@@ -47,6 +47,7 @@ button{cursor:pointer}
 
 <div class="card">
   <h2>作物選種建議 <span class="badge red">🔴 雛形</span></h2>
+  <div class="result"><b>牛蕃茄選種原則（固定顯示）</b><ul><li>高溫潮濕：優先耐熱、抗病（青枯/葉斑）型</li><li>日夜溫差大：可選高糖度與果色穩定型</li><li>黏土：建議嫁接苗或強根系砧木，降低積水風險</li></ul></div>
   <div class="tool-grid">
     <select id="loc"><option>中部</option><option>北部</option><option>南部</option><option>東部</option></select>
     <select id="climate"><option>高溫潮濕</option><option>溫和</option><option>日夜溫差大</option></select>
@@ -280,12 +281,42 @@ function runCropAdvice(){
   const loc=document.getElementById('loc').value;
   const climate=document.getElementById('climate').value;
   const soil=document.getElementById('soil').value;
+
   const picks=[];
-  if(climate==='高溫潮濕') picks.push('耐熱抗病型番茄');
-  if(climate==='日夜溫差大') picks.push('高糖度鮮食型番茄');
-  if(soil==='黏土') picks.push('根系較強、耐積水砧木嫁接苗');
-  if(!picks.length) picks.push('標準牛番茄主力品種');
-  document.getElementById('crop_advice').innerHTML=`建議地區：${loc}<br>推薦：${picks.join('、')}<br>備註：此為規則雛形，後續可接真實氣象/土壤資料。`;
+  const why=[];
+  const risk=[];
+
+  if(climate==='高溫潮濕'){
+    picks.push('耐熱抗病型牛蕃茄（含抗青枯/葉斑方向）');
+    why.push('高溫高濕季可降低病害爆發與落果風險');
+    risk.push('注意雨後病害巡田與通風管理');
+  }
+  if(climate==='日夜溫差大'){
+    picks.push('高糖度、果色穩定型牛蕃茄');
+    why.push('溫差條件有利糖度與品質表現');
+    risk.push('早晚溫差大時留意裂果');
+  }
+  if(soil==='黏土'){
+    picks.push('嫁接苗（強根系砧木）');
+    why.push('提升耐濕與根系活力，減少根腐風險');
+    risk.push('排水不良時先改善畦面與側溝');
+  }
+  if(soil==='砂質土'){
+    picks.push('耐旱與果形穩定型');
+    why.push('降低水分波動造成的品質不穩');
+    risk.push('需提高灌溉頻率與有機質補充');
+  }
+  if(!picks.length){
+    picks.push('標準主力牛蕃茄品系');
+    why.push('在一般條件下兼顧產量與品質');
+  }
+
+  document.getElementById('crop_advice').innerHTML=`
+    <b>地區條件</b>：${loc} / ${climate} / ${soil}<br>
+    <b>建議品種方向</b>：${picks.join('、')}<br>
+    <b>建議用意</b>：${why.join('；')}<br>
+    <b>風險提醒</b>：${risk.length?risk.join('；'):'維持例行巡田即可'}
+  `;
 }
 
 function runRotationPlan(){
