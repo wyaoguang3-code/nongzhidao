@@ -120,7 +120,7 @@ button{cursor:pointer}
 <div class="card"><h2>加工建議 <span class="badge blue">🟠 雛形</span></h2><div class="hint">單位：庫存(kg)、價格(元/kg)</div><div class="result"><b>加工轉單原則（固定顯示）</b><ul><li><b>庫存門檻</b>：高庫存 > 800kg；中庫存 400~800kg；低庫存 < 400kg</li><li><b>價格門檻</b>：低價 < 40 元/kg；中價 40~50 元/kg；高價 > 50 元/kg</li><li>高庫存+低價優先加工；低庫存+高價優先鮮售</li></ul></div><div class="tool-grid"><div class="field"><input id="pr_stock" type="number" value="800" placeholder="庫存"><span class="u">kg</span></div><div class="field"><input id="pr_price" type="number" value="36" placeholder="現貨價"><span class="u">元/kg</span></div><button onclick="runProcessingAdvice()">產生建議</button></div><div id="processing_advice" class="result">尚未計算</div></div>
 <div class="card"><h2>定價策略建議 <span class="badge red">🔴 雛形</span></h2><div class="hint">欄位說明：A=外觀完整/糖度佳；B=標準可售；C=次級果。輸出為建議售價(元/kg)</div><div class="result"><b>定價規則（固定顯示）</b><ul><li>品質係數：A 1.15、B 1.00、C 0.85</li><li>通路係數：批發 1.00、直銷 1.10、電商 1.20</li><li>行情判讀：低價 < 40、中價 40~55、高價 > 55 元/kg</li></ul></div><div class="tool-grid"><select id="pc_quality"><option>A級（高品質）</option><option>B級（標準）</option><option>C級（次級）</option></select><select id="pc_channel"><option>批發</option><option>直銷</option><option>電商</option></select><button onclick="runPricingStrategy()">產生建議</button></div><div id="pricing_strategy" class="result">尚未計算</div></div>
 <div class="card"><h2>財務損益分析 <span class="badge blue">🟢 雛形</span></h2><div class="hint">欄位說明：產量=每分地可售重量；售價=平均售價；輸出=收入/成本/毛利（元）</div><div class="result"><b>分析邏輯（固定顯示）</b><ul><li>總收入 = 產量 × 售價 × 面積</li><li>總成本沿用成本試算（種苗+肥料+人力）</li><li>輸出毛利、毛利率與損平售價，方便判斷是否值得種</li></ul></div><div class="tool-grid"><div class="field"><input id="pn_yield" type="number" value="3200" placeholder="每分地產量"><span class="u">kg/分</span></div><div class="field"><input id="pn_price" type="number" value="50" placeholder="平均售價"><span class="u">元/kg</span></div><button onclick="runPnL()">試算</button></div><div id="pnl" class="result">尚未計算</div></div>
-<div class="card"><h2>人力排班 <span class="badge blue">🟢 雛形</span></h2><div class="hint">單位：工作天(天)、人力(人)</div><div class="tool-grid"><div class="field"><input id="sh_days" type="number" value="6" placeholder="本週農忙天數"><span class="u">天</span></div><div class="field"><input id="sh_workers" type="number" value="4" placeholder="可用人數"><span class="u">人</span></div><button onclick="runShiftPlan()">產生建議</button></div><div id="shift_plan" class="result">尚未計算</div></div>
+<div class="card"><h2>人力排班 <span class="badge blue">🟢 雛形</span></h2><div class="hint">單位：工作天(天)、人力(人)</div><div class="result"><b>排班原則（固定顯示）</b><ul><li>採收日優先配足人力，避免過熟與損耗</li><li>包裝/分級可次高配置，田間管理採彈性班</li><li>連續高工時時需安排輪休，避免品質與安全下降</li></ul></div><div class="tool-grid"><div class="field"><input id="sh_days" type="number" value="6" placeholder="本週農忙天數"><span class="u">天</span></div><div class="field"><input id="sh_workers" type="number" value="4" placeholder="可用人數"><span class="u">人</span></div><button onclick="runShiftPlan()">產生建議</button></div><div id="shift_plan" class="result">尚未計算</div></div>
 <div class="card"><h2>跨季績效比較 <span class="badge blue">🔵 雛形</span></h2><div class="hint">單位：產量(噸/分)、變化率(%)</div><div class="tool-grid"><div class="field"><span class="fl">上一季</span><input id="sc_y_prev" type="number" value="2.9" placeholder="上一季產量"><span class="u">噸/分</span></div><div class="field"><span class="fl">本季</span><input id="sc_y_now" type="number" value="3.2" placeholder="本季產量"><span class="u">噸/分</span></div><button onclick="runSeasonCompare()">比較</button></div><div id="season_compare" class="result">尚未計算</div></div>
 
 <script>
@@ -682,7 +682,18 @@ function runPnL(){
 }
 function runShiftPlan(){
   const d=Number(document.getElementById('sh_days').value||0), w=Number(document.getElementById('sh_workers').value||1);
-  document.getElementById('shift_plan').innerHTML=`建議班表：採收 ${Math.min(w,4)} 人×${d} 天；包裝 ${Math.max(1,w-1)} 人×${Math.max(2,d-2)} 天`;
+  const harvest=Math.min(w,4), pack=Math.max(1,w-1), field=Math.max(1,w-2);
+  const totalManDay=w*d;
+  const load = totalManDay>=30?'高負載週':totalManDay>=18?'中負載週':'低負載週';
+
+  document.getElementById('shift_plan').innerHTML=`
+    <b>排班建議</b><br>
+    採收：${harvest} 人 × ${d} 天（優先）<br>
+    包裝分級：${pack} 人 × ${Math.max(2,d-2)} 天<br>
+    田間管理：${field} 人 × ${Math.max(2,d-3)} 天<br>
+    <b>總人天</b>：${totalManDay} 人天（${load}）<br>
+    <b>提醒</b>：高負載週建議安排輪休與備援人力，避免採後品質下滑。
+  `;
 }
 function runSeasonCompare(){
   const n=Number(document.getElementById('sc_y_now').value||0), p=Number(document.getElementById('sc_y_prev').value||1);
