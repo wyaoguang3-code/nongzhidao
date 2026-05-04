@@ -303,8 +303,13 @@ function runRotationPlan(){
   if(goal==='土壤恢復優先') inter='間作建議：綠肥季可混播豆科，提升有機質回補效率。';
   if(goal==='病蟲害風險降低') inter='間作建議：非茄科季可搭配短期葉菜，降低單一病蟲壓力。';
 
+  let green='';
+  if(goal==='病蟲害風險降低' && n>=3){
+    green='第3季豆科綠肥建議：可種 <b>太陽麻、田菁、豇豆</b>；生育約 45-60 天後翻耕還田。用意是提升有機質、改善土壤團粒，並降低土傳病害壓力。';
+  }
+
   const back='回種條件：連續一季病害低檔、土壤排水正常後，再恢復牛蕃茄主作。';
-  document.getElementById('rotation_plan').innerHTML=`<b>${goal}</b><br>${plan}<br>${inter}<br>${back}`;
+  document.getElementById('rotation_plan').innerHTML=`<b>${goal}</b><br>${plan}<br>${inter}<br>${green}<br>${back}`;
 }
 
 function runSowingWindow(){
