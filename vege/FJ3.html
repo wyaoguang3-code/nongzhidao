@@ -85,6 +85,9 @@ button{cursor:pointer}
     <div class="field"><input id="seedling" type="number" placeholder="種苗單價" value="8"/><span class="u">元/株</span></div>
     <div class="field"><input id="fert" type="number" placeholder="肥料預算" value="6000"/><span class="u">元/分地</span></div>
     <div class="field"><input id="labor" type="number" placeholder="人力預算" value="18000"/><span class="u">元/分地</span></div>
+    <div class="field"><input id="cost_yield" type="number" placeholder="預估產量" value="3200"/><span class="u">kg/分</span></div>
+    <div class="field"><input id="cost_price" type="number" placeholder="預估售價" value="50"/><span class="u">元/kg</span></div>
+    <div class="field"><input id="cost_margin" type="number" placeholder="目標毛利率" value="20"/><span class="u">%</span></div>
     <button onclick="runCostEstimate()">計算成本</button>
   </div>
   <div id="cost_est" class="result">尚未計算</div>
@@ -309,9 +312,29 @@ function runCostEstimate(){
   const seed=Number(document.getElementById('seedling').value)||0;
   const fert=Number(document.getElementById('fert').value)||0;
   const labor=Number(document.getElementById('labor').value)||0;
+  const y=Number(document.getElementById('cost_yield').value)||3200;
+  const p=Number(document.getElementById('cost_price').value)||50;
+  const m=(Number(document.getElementById('cost_margin').value)||20)/100;
+
   const seedlings=area*1800*seed;
   const total=seedlings+(fert*area)+(labor*area);
-  document.getElementById('cost_est').innerHTML=`種苗：約 ${Math.round(seedlings).toLocaleString()} 元<br>肥料：約 ${Math.round(fert*area).toLocaleString()} 元<br>人力：約 ${Math.round(labor*area).toLocaleString()} 元<br><b>總成本：約 ${Math.round(total).toLocaleString()} 元</b>`;
+  const totalYield=Math.max(1, area*y);
+  const costPerKg=total/totalYield;
+  const revenue=totalYield*p;
+  const gross=revenue-total;
+  const breakEvenPrice=total/totalYield;
+  const maxCostForMargin=revenue*(1-m);
+
+  document.getElementById('cost_est').innerHTML=`
+    種苗：約 ${Math.round(seedlings).toLocaleString()} 元<br>
+    肥料：約 ${Math.round(fert*area).toLocaleString()} 元<br>
+    人力：約 ${Math.round(labor*area).toLocaleString()} 元<br>
+    <b>總成本：約 ${Math.round(total).toLocaleString()} 元</b><br>
+    每公斤成本：約 ${costPerKg.toFixed(2)} 元/kg<br>
+    損平售價（Break-even）：約 ${breakEvenPrice.toFixed(2)} 元/kg<br>
+    以售價 ${p} 元/kg 計，毛利約 ${Math.round(gross).toLocaleString()} 元<br>
+    若目標毛利率 ${Math.round(m*100)}%，總成本需壓在 <b>${Math.round(maxCostForMargin).toLocaleString()} 元以下</b>
+  `;
 }
 
 function runSoilAnalysis(){
