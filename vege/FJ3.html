@@ -81,13 +81,13 @@ button{cursor:pointer}
   <h2>成本試算 <span class="badge red">🔴 雛形</span></h2>
   <div class="hint">欄位說明：面積(種植面積)／種苗單價(每株成本)／肥料預算(每分地)／人力預算(每分地)</div>
   <div class="tool-grid">
-    <div class="field"><input id="area" type="number" placeholder="面積" value="1"/><span class="u">分地</span></div>
-    <div class="field"><input id="seedling" type="number" placeholder="種苗單價" value="8"/><span class="u">元/株</span></div>
-    <div class="field"><input id="fert" type="number" placeholder="肥料預算" value="6000"/><span class="u">元/分地</span></div>
-    <div class="field"><input id="labor" type="number" placeholder="人力預算" value="18000"/><span class="u">元/分地</span></div>
-    <div class="field"><input id="cost_yield" type="number" placeholder="預估產量" value="3200"/><span class="u">kg/分</span></div>
-    <div class="field"><input id="cost_price" type="number" placeholder="預估售價" value="50"/><span class="u">元/kg</span></div>
-    <div class="field"><input id="cost_margin" type="number" placeholder="目標毛利率" value="20"/><span class="u">%</span></div>
+    <div class="field"><span class="fl">種植面積</span><input id="area" type="number" value="1"/><span class="u">分地</span></div>
+    <div class="field"><span class="fl">種苗單價</span><input id="seedling" type="number" value="8"/><span class="u">元/株</span></div>
+    <div class="field"><span class="fl">肥料成本</span><input id="fert" type="number" value="6000"/><span class="u">元/分地</span></div>
+    <div class="field"><span class="fl">人力預算</span><input id="labor" type="number" value="18000"/><span class="u">元/分地</span></div>
+    <div class="field"><span class="fl">預估產量</span><input id="cost_yield" type="number" value="3200"/><span class="u">kg/分</span></div>
+    <div class="field"><span class="fl">預估售價</span><input id="cost_price" type="number" value="50"/><span class="u">元/kg</span></div>
+    <div class="field"><span class="fl">目標毛利</span><input id="cost_margin" type="number" value="20"/><span class="u">%</span></div>
     <button onclick="runCostEstimate()">計算成本</button>
   </div>
   <div id="cost_est" class="result">尚未計算</div>
