@@ -1,9 +1,13 @@
 name: Update FJ3 daily
 
 on:
-  schedule:
-    - cron: '*/15 0-4 * * *' # 08:00-12:45 Asia/Taipei, every 15 min
-    - cron: '0 5 * * *'      # 13:00 Asia/Taipei
+  # 2026-05-08：schedule 停用 — 改由本地 launchd (com.openclaw.tomato.update) 觸發。
+  # 原因：GitHub Actions runner IP 被 AMIS 擋 (URLError)，5/4 起資料一直 keep_old。
+  # 本地走台灣家用 IP 抓得到 AMIS 5/8+ 最新資料。
+  # 要恢復 GH 自動排程就把下面 cron 反註解。
+  # schedule:
+  #   - cron: '*/15 0-4 * * *' # 08:00-12:45 Asia/Taipei, every 15 min
+  #   - cron: '0 5 * * *'      # 13:00 Asia/Taipei
   workflow_dispatch:
 
 permissions:
