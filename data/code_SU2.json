@@ -1,17 +1,12 @@
 {
   "code": "SU2",
   "name": "山藥 (白薯蕷)",
-  "updated_at": "2026-06-04T14:07:07.949881+08:00",
+  "updated_at": "2026-06-05T14:05:49.219721+08:00",
   "latest_price": {
-    "date": "2026-06-04",
-    "price": 63.23
+    "date": "2026-06-05",
+    "price": 65.62
   },
   "daily": [
-    {
-      "date": "2006-06-10",
-      "price": 42.21,
-      "volume": 1037.0
-    },
     {
       "date": "2006-06-11",
       "price": 48.16,
@@ -31821,13 +31816,18 @@
       "date": "2026-06-04",
       "price": 63.23,
       "volume": 1038.0
+    },
+    {
+      "date": "2026-06-05",
+      "price": 65.62,
+      "volume": 1625.0
     }
   ],
   "weekly": [
     {
       "key": "2006-W23",
-      "price": 43.93,
-      "volume": 1457.0
+      "price": 48.16,
+      "volume": 420.0
     },
     {
       "key": "2006-W24",
@@ -37041,15 +37041,15 @@
     },
     {
       "key": "2026-W23",
-      "price": 56.8,
-      "volume": 4605.0
+      "price": 59.1,
+      "volume": 6230.0
     }
   ],
   "monthly": [
     {
       "key": "2006-06",
-      "price": 48.36,
-      "volume": 17740.0
+      "price": 48.74,
+      "volume": 16703.0
     },
     {
       "key": "2006-07",
@@ -38248,15 +38248,15 @@
     },
     {
       "key": "2026-06",
-      "price": 56.8,
-      "volume": 4605.0
+      "price": 59.1,
+      "volume": 6230.0
     }
   ],
   "yearly": [
     {
       "key": "2006",
-      "price": 28.09,
-      "volume": 546416.0
+      "price": 28.06,
+      "volume": 545379.0
     },
     {
       "key": "2007",
@@ -38355,8 +38355,8 @@
     },
     {
       "key": "2026",
-      "price": 63.74,
-      "volume": 357090.0
+      "price": 63.75,
+      "volume": 358715.0
     }
   ],
   "market_compare": {
@@ -38364,18 +38364,23 @@
     "markets_volume": [
       {
         "market": "高雄市",
-        "price": 62.13,
-        "volume": 1723.0
+        "price": 64.18,
+        "volume": 2333.0
       },
       {
         "market": "屏東市",
-        "price": 30.55,
-        "volume": 1046.0
+        "price": 31.38,
+        "volume": 1417.0
       },
       {
         "market": "台北一",
-        "price": 84.57,
-        "volume": 655.0
+        "price": 84.73,
+        "volume": 879.0
+      },
+      {
+        "market": "桃 農",
+        "price": 81.85,
+        "volume": 352.0
       },
       {
         "market": "花蓮市",
@@ -38383,14 +38388,14 @@
         "volume": 350.0
       },
       {
-        "market": "台北二",
-        "price": 69.64,
-        "volume": 258.0
+        "market": "溪湖鎮",
+        "price": 74.39,
+        "volume": 326.0
       },
       {
-        "market": "桃 農",
-        "price": 89.08,
-        "volume": 208.0
+        "market": "台北二",
+        "price": 73.97,
+        "volume": 294.0
       },
       {
         "market": "三重區",
@@ -38398,14 +38403,9 @@
         "volume": 155.0
       },
       {
-        "market": "溪湖鎮",
-        "price": 75.0,
-        "volume": 146.0
-      },
-      {
         "market": "板橋區",
-        "price": 42.5,
-        "volume": 40.0
+        "price": 66.8,
+        "volume": 100.0
       },
       {
         "market": "台中市",
@@ -38426,13 +38426,8 @@
       },
       {
         "market": "屏東市",
-        "price": 30.55,
-        "volume": 1046.0
-      },
-      {
-        "market": "板橋區",
-        "price": 42.5,
-        "volume": 40.0
+        "price": 31.38,
+        "volume": 1417.0
       },
       {
         "market": "花蓮市",
@@ -38441,28 +38436,33 @@
       },
       {
         "market": "高雄市",
-        "price": 62.13,
-        "volume": 1723.0
+        "price": 64.18,
+        "volume": 2333.0
+      },
+      {
+        "market": "板橋區",
+        "price": 66.8,
+        "volume": 100.0
       },
       {
         "market": "台北二",
-        "price": 69.64,
-        "volume": 258.0
+        "price": 73.97,
+        "volume": 294.0
       },
       {
         "market": "溪湖鎮",
-        "price": 75.0,
-        "volume": 146.0
-      },
-      {
-        "market": "台北一",
-        "price": 84.57,
-        "volume": 655.0
+        "price": 74.39,
+        "volume": 326.0
       },
       {
         "market": "桃 農",
-        "price": 89.08,
-        "volume": 208.0
+        "price": 81.85,
+        "volume": 352.0
+      },
+      {
+        "market": "台北一",
+        "price": 84.73,
+        "volume": 879.0
       }
     ]
   }
