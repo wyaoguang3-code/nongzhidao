@@ -1,10 +1,10 @@
 {
   "code": "O10",
   "name": "寶島甘露梨",
-  "updated_at": "2026-06-06T14:25:28.071300+08:00",
+  "updated_at": "2026-06-07T14:12:52.594382+08:00",
   "latest_price": {
-    "date": "2026-05-31",
-    "price": 85.0
+    "date": "2026-06-07",
+    "price": 57.1
   },
   "daily": [
     {
@@ -5286,6 +5286,11 @@
       "date": "2026-05-31",
       "price": 85.0,
       "volume": 732.0
+    },
+    {
+      "date": "2026-06-07",
+      "price": 57.1,
+      "volume": 160.0
     }
   ],
   "weekly": [
@@ -6273,6 +6278,11 @@
       "key": "2026-W22",
       "price": 85.0,
       "volume": 1164.0
+    },
+    {
+      "key": "2026-W23",
+      "price": 57.1,
+      "volume": 160.0
     }
   ],
   "monthly": [
@@ -6545,6 +6555,11 @@
       "key": "2026-05",
       "price": 87.67,
       "volume": 1235.0
+    },
+    {
+      "key": "2026-06",
+      "price": 57.1,
+      "volume": 160.0
     }
   ],
   "yearly": [
@@ -6575,34 +6590,24 @@
     },
     {
       "key": "2026",
-      "price": 60.92,
-      "volume": 56930.0
+      "price": 60.91,
+      "volume": 57090.0
     }
   ],
   "market_compare": {
-    "month": "2026-05",
+    "month": "2026-06",
     "markets_volume": [
       {
-        "market": "三重區",
-        "price": 85.0,
-        "volume": 1164.0
-      },
-      {
-        "market": "台北二",
-        "price": 131.5,
-        "volume": 71.0
+        "market": "台北一",
+        "price": 57.1,
+        "volume": 160.0
       }
     ],
     "markets_price": [
       {
-        "market": "三重區",
-        "price": 85.0,
-        "volume": 1164.0
-      },
-      {
-        "market": "台北二",
-        "price": 131.5,
-        "volume": 71.0
+        "market": "台北一",
+        "price": 57.1,
+        "volume": 160.0
       }
     ]
   }
