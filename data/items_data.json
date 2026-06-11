@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-11T10:30:58.826703+08:00",
+  "updated_at": "2026-06-11T10:46:14.083972+08:00",
   "items": {
     "water-spinach": {
       "latest_price": null,
@@ -14000,7 +14000,7 @@
       ]
     },
     "tomato": {
-      "latest_price": 37.47,
+      "latest_price": 37.51,
       "latest_date": "2026-06-11",
       "trend_7d": [
         {
@@ -14029,7 +14029,7 @@
         },
         {
           "date": "2026-06-11",
-          "price": 37.47
+          "price": 37.51
         }
       ],
       "top_markets": [
@@ -14047,15 +14047,20 @@
           "market": "鳳山區",
           "price": 26.6,
           "volume": 640.0
+        },
+        {
+          "market": "台東市",
+          "price": 39.0,
+          "volume": 274.0
         }
       ],
-      "coverage": 103,
+      "coverage": 104,
       "variants": [
         {
           "sub_type": "牛番茄",
-          "latest_price": 33.7,
+          "latest_price": 33.85,
           "latest_date": "2026-06-11",
-          "coverage": 76,
+          "coverage": 77,
           "raw_latest_rows": [
             {
               "roc_date": "115/06/11",
@@ -14092,6 +14097,18 @@
               "avg_price": 26.6,
               "volume": 640.0,
               "volume_raw": "640"
+            },
+            {
+              "roc_date": "115/06/11",
+              "date": "2026-06-11",
+              "market_no": "930",
+              "market": "台東市",
+              "product_code": "FJ3",
+              "product_main": "番茄",
+              "product_sub": "牛番茄",
+              "avg_price": 39.0,
+              "volume": 274.0,
+              "volume_raw": "274"
             }
           ],
           "recent_raw_by_date": [
@@ -14133,6 +14150,18 @@
                   "avg_price": 26.6,
                   "volume": 640.0,
                   "volume_raw": "640"
+                },
+                {
+                  "roc_date": "115/06/11",
+                  "date": "2026-06-11",
+                  "market_no": "930",
+                  "market": "台東市",
+                  "product_code": "FJ3",
+                  "product_main": "番茄",
+                  "product_sub": "牛番茄",
+                  "avg_price": 39.0,
+                  "volume": 274.0,
+                  "volume_raw": "274"
                 }
               ]
             },
