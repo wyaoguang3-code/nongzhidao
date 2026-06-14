@@ -1,10 +1,10 @@
 {
   "code": "45",
   "name": "草莓",
-  "updated_at": "2026-06-13T14:25:21.260689+08:00",
+  "updated_at": "2026-06-14T14:23:17.195180+08:00",
   "latest_price": {
-    "date": "2026-05-08",
-    "price": 131.79
+    "date": "2026-06-14",
+    "price": 65.6
   },
   "daily": [
     {
@@ -17006,6 +17006,11 @@
       "date": "2026-05-08",
       "price": 131.79,
       "volume": 710.0
+    },
+    {
+      "date": "2026-06-14",
+      "price": 65.6,
+      "volume": 5.0
     }
   ],
   "weekly": [
@@ -20238,6 +20243,11 @@
       "key": "2026-W19",
       "price": 131.28,
       "volume": 2126.0
+    },
+    {
+      "key": "2026-W24",
+      "price": 65.6,
+      "volume": 5.0
     }
   ],
   "monthly": [
@@ -21115,6 +21125,11 @@
       "key": "2026-05",
       "price": 132.97,
       "volume": 3157.0
+    },
+    {
+      "key": "2026-06",
+      "price": 65.6,
+      "volume": 5.0
     }
   ],
   "yearly": [
@@ -21221,63 +21236,23 @@
     {
       "key": "2026",
       "price": 130.65,
-      "volume": 1539268.0
+      "volume": 1539273.0
     }
   ],
   "market_compare": {
-    "month": "2026-05",
+    "month": "2026-06",
     "markets_volume": [
       {
         "market": "台中市",
-        "price": 132.79,
-        "volume": 3038.0
-      },
-      {
-        "market": "台北一",
-        "price": 161.86,
-        "volume": 76.0
-      },
-      {
-        "market": "台北二",
-        "price": 68.2,
-        "volume": 22.0
-      },
-      {
-        "market": "三重區",
-        "price": 141.47,
-        "volume": 17.0
-      },
-      {
-        "market": "板橋區",
-        "price": 45.0,
-        "volume": 4.0
+        "price": 65.6,
+        "volume": 5.0
       }
     ],
     "markets_price": [
       {
-        "market": "板橋區",
-        "price": 45.0,
-        "volume": 4.0
-      },
-      {
-        "market": "台北二",
-        "price": 68.2,
-        "volume": 22.0
-      },
-      {
         "market": "台中市",
-        "price": 132.79,
-        "volume": 3038.0
-      },
-      {
-        "market": "三重區",
-        "price": 141.47,
-        "volume": 17.0
-      },
-      {
-        "market": "台北一",
-        "price": 161.86,
-        "volume": 76.0
+        "price": 65.6,
+        "volume": 5.0
       }
     ]
   }
