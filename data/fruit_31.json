@@ -1,10 +1,10 @@
 {
   "code": "31",
   "name": "釋迦",
-  "updated_at": "2026-06-18T14:48:37.618781+08:00",
+  "updated_at": "2026-06-19T14:19:23.486022+08:00",
   "latest_price": {
-    "date": "2026-05-24",
-    "price": 68.6
+    "date": "2026-06-19",
+    "price": 50.91
   },
   "daily": [
     {
@@ -30136,6 +30136,11 @@
       "date": "2026-05-24",
       "price": 68.6,
       "volume": 66.0
+    },
+    {
+      "date": "2026-06-19",
+      "price": 50.91,
+      "volume": 87.0
     }
   ],
   "weekly": [
@@ -34973,6 +34978,11 @@
       "key": "2026-W21",
       "price": 68.6,
       "volume": 66.0
+    },
+    {
+      "key": "2026-W25",
+      "price": 50.91,
+      "volume": 87.0
     }
   ],
   "monthly": [
@@ -36150,6 +36160,11 @@
       "key": "2026-05",
       "price": 122.04,
       "volume": 4841.0
+    },
+    {
+      "key": "2026-06",
+      "price": 50.91,
+      "volume": 87.0
     }
   ],
   "yearly": [
@@ -36256,83 +36271,33 @@
     {
       "key": "2026",
       "price": 70.86,
-      "volume": 1701235.0
+      "volume": 1701322.0
     }
   ],
   "market_compare": {
-    "month": "2026-05",
+    "month": "2026-06",
     "markets_volume": [
       {
-        "market": "嘉義市",
-        "price": 105.44,
-        "volume": 2120.0
-      },
-      {
         "market": "台北一",
-        "price": 164.96,
-        "volume": 1238.0
+        "price": 50.2,
+        "volume": 59.0
       },
       {
         "market": "三重區",
-        "price": 86.63,
-        "volume": 789.0
-      },
-      {
-        "market": "台北二",
-        "price": 146.38,
-        "volume": 514.0
-      },
-      {
-        "market": "台中市",
-        "price": 120.0,
-        "volume": 78.0
-      },
-      {
-        "market": "豐原區",
-        "price": 97.6,
-        "volume": 62.0
-      },
-      {
-        "market": "板橋區",
-        "price": 101.5,
-        "volume": 40.0
+        "price": 52.4,
+        "volume": 28.0
       }
     ],
     "markets_price": [
       {
-        "market": "三重區",
-        "price": 86.63,
-        "volume": 789.0
-      },
-      {
-        "market": "豐原區",
-        "price": 97.6,
-        "volume": 62.0
-      },
-      {
-        "market": "板橋區",
-        "price": 101.5,
-        "volume": 40.0
-      },
-      {
-        "market": "嘉義市",
-        "price": 105.44,
-        "volume": 2120.0
-      },
-      {
-        "market": "台中市",
-        "price": 120.0,
-        "volume": 78.0
-      },
-      {
-        "market": "台北二",
-        "price": 146.38,
-        "volume": 514.0
-      },
-      {
         "market": "台北一",
-        "price": 164.96,
-        "volume": 1238.0
+        "price": 50.2,
+        "volume": 59.0
+      },
+      {
+        "market": "三重區",
+        "price": 52.4,
+        "volume": 28.0
       }
     ]
   }
