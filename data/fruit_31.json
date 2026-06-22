@@ -1,10 +1,10 @@
 {
   "code": "31",
   "name": "釋迦",
-  "updated_at": "2026-06-21T14:38:21.884685+08:00",
+  "updated_at": "2026-06-22T14:48:56.583003+08:00",
   "latest_price": {
-    "date": "2026-06-19",
-    "price": 50.91
+    "date": "2026-06-22",
+    "price": 50.0
   },
   "daily": [
     {
@@ -30141,6 +30141,11 @@
       "date": "2026-06-19",
       "price": 50.91,
       "volume": 87.0
+    },
+    {
+      "date": "2026-06-22",
+      "price": 50.0,
+      "volume": 36.0
     }
   ],
   "weekly": [
@@ -34983,6 +34988,11 @@
       "key": "2026-W25",
       "price": 50.91,
       "volume": 87.0
+    },
+    {
+      "key": "2026-W26",
+      "price": 50.0,
+      "volume": 36.0
     }
   ],
   "monthly": [
@@ -36163,8 +36173,8 @@
     },
     {
       "key": "2026-06",
-      "price": 50.91,
-      "volume": 87.0
+      "price": 50.64,
+      "volume": 123.0
     }
   ],
   "yearly": [
@@ -36271,21 +36281,21 @@
     {
       "key": "2026",
       "price": 70.86,
-      "volume": 1701322.0
+      "volume": 1701358.0
     }
   ],
   "market_compare": {
     "month": "2026-06",
     "markets_volume": [
       {
+        "market": "三重區",
+        "price": 51.05,
+        "volume": 64.0
+      },
+      {
         "market": "台北一",
         "price": 50.2,
         "volume": 59.0
-      },
-      {
-        "market": "三重區",
-        "price": 52.4,
-        "volume": 28.0
       }
     ],
     "markets_price": [
@@ -36296,8 +36306,8 @@
       },
       {
         "market": "三重區",
-        "price": 52.4,
-        "volume": 28.0
+        "price": 51.05,
+        "volume": 64.0
       }
     ]
   }
