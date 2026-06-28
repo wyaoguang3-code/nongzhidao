@@ -1,10 +1,10 @@
 {
   "code": "31",
   "name": "釋迦",
-  "updated_at": "2026-06-27T15:16:47.757530+08:00",
+  "updated_at": "2026-06-28T15:01:07.814534+08:00",
   "latest_price": {
-    "date": "2026-06-27",
-    "price": 48.03
+    "date": "2026-06-28",
+    "price": 54.74
   },
   "daily": [
     {
@@ -30161,6 +30161,11 @@
       "date": "2026-06-27",
       "price": 48.03,
       "volume": 391.0
+    },
+    {
+      "date": "2026-06-28",
+      "price": 54.74,
+      "volume": 335.0
     }
   ],
   "weekly": [
@@ -35001,8 +35006,8 @@
     },
     {
       "key": "2026-W26",
-      "price": 59.28,
-      "volume": 1806.0
+      "price": 58.57,
+      "volume": 2141.0
     }
   ],
   "monthly": [
@@ -36183,8 +36188,8 @@
     },
     {
       "key": "2026-06",
-      "price": 58.89,
-      "volume": 1893.0
+      "price": 58.27,
+      "volume": 2228.0
     }
   ],
   "yearly": [
@@ -36291,7 +36296,7 @@
     {
       "key": "2026",
       "price": 70.85,
-      "volume": 1703128.0
+      "volume": 1703463.0
     }
   ],
   "market_compare": {
@@ -36299,25 +36304,35 @@
     "markets_volume": [
       {
         "market": "三重區",
-        "price": 47.01,
-        "volume": 1128.0
+        "price": 48.23,
+        "volume": 1343.0
       },
       {
         "market": "台中市",
-        "price": 90.0,
-        "volume": 468.0
+        "price": 90.93,
+        "volume": 516.0
       },
       {
         "market": "台北一",
         "price": 55.02,
         "volume": 297.0
+      },
+      {
+        "market": "高雄市",
+        "price": 25.0,
+        "volume": 72.0
       }
     ],
     "markets_price": [
       {
+        "market": "高雄市",
+        "price": 25.0,
+        "volume": 72.0
+      },
+      {
         "market": "三重區",
-        "price": 47.01,
-        "volume": 1128.0
+        "price": 48.23,
+        "volume": 1343.0
       },
       {
         "market": "台北一",
@@ -36326,8 +36341,8 @@
       },
       {
         "market": "台中市",
-        "price": 90.0,
-        "volume": 468.0
+        "price": 90.93,
+        "volume": 516.0
       }
     ]
   }

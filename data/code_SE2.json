@@ -1,17 +1,12 @@
 {
   "code": "SE2",
   "name": "青蔥-北蔥 (三星蔥)",
-  "updated_at": "2026-06-27T14:24:40.708513+08:00",
+  "updated_at": "2026-06-28T14:18:35.421221+08:00",
   "latest_price": {
-    "date": "2026-06-27",
-    "price": 28.57
+    "date": "2026-06-28",
+    "price": 38.24
   },
   "daily": [
-    {
-      "date": "2006-07-03",
-      "price": 42.5,
-      "volume": 1312.0
-    },
     {
       "date": "2006-07-04",
       "price": 67.13,
@@ -33371,13 +33366,18 @@
       "date": "2026-06-27",
       "price": 28.57,
       "volume": 4463.0
+    },
+    {
+      "date": "2026-06-28",
+      "price": 38.24,
+      "volume": 2152.0
     }
   ],
   "weekly": [
     {
       "key": "2006-W27",
-      "price": 69.42,
-      "volume": 46907.0
+      "price": 70.2,
+      "volume": 45595.0
     },
     {
       "key": "2006-W28",
@@ -38586,15 +38586,15 @@
     },
     {
       "key": "2026-W26",
-      "price": 28.1,
-      "volume": 18526.0
+      "price": 29.16,
+      "volume": 20678.0
     }
   ],
   "monthly": [
     {
       "key": "2006-07",
-      "price": 94.39,
-      "volume": 267413.0
+      "price": 94.65,
+      "volume": 266101.0
     },
     {
       "key": "2006-08",
@@ -39788,15 +39788,15 @@
     },
     {
       "key": "2026-06",
-      "price": 34.77,
-      "volume": 37314.0
+      "price": 34.96,
+      "volume": 39466.0
     }
   ],
   "yearly": [
     {
       "key": "2006",
       "price": 33.52,
-      "volume": 5922573.0
+      "volume": 5921261.0
     },
     {
       "key": "2007",
@@ -39895,8 +39895,8 @@
     },
     {
       "key": "2026",
-      "price": 19.82,
-      "volume": 1154455.0
+      "price": 19.85,
+      "volume": 1156607.0
     }
   ],
   "market_compare": {
@@ -39904,33 +39904,38 @@
     "markets_volume": [
       {
         "market": "屏東市",
-        "price": 20.34,
-        "volume": 16615.0
+        "price": 20.33,
+        "volume": 17085.0
       },
       {
         "market": "板橋區",
-        "price": 46.55,
-        "volume": 13351.0
+        "price": 46.41,
+        "volume": 14571.0
       },
       {
         "market": "台北一",
-        "price": 48.08,
-        "volume": 5521.0
+        "price": 47.78,
+        "volume": 5722.0
       },
       {
         "market": "三重區",
-        "price": 41.62,
-        "volume": 944.0
+        "price": 41.58,
+        "volume": 965.0
       },
       {
         "market": "桃 農",
-        "price": 39.32,
-        "volume": 419.0
+        "price": 38.55,
+        "volume": 541.0
       },
       {
         "market": "台北二",
-        "price": 34.58,
-        "volume": 166.0
+        "price": 34.9,
+        "volume": 183.0
+      },
+      {
+        "market": "台中市",
+        "price": 43.87,
+        "volume": 147.0
       },
       {
         "market": "花蓮市",
@@ -39941,18 +39946,13 @@
         "market": "鳳山區",
         "price": 26.2,
         "volume": 105.0
-      },
-      {
-        "market": "台中市",
-        "price": 44.24,
-        "volume": 46.0
       }
     ],
     "markets_price": [
       {
         "market": "屏東市",
-        "price": 20.34,
-        "volume": 16615.0
+        "price": 20.33,
+        "volume": 17085.0
       },
       {
         "market": "鳳山區",
@@ -39961,18 +39961,18 @@
       },
       {
         "market": "台北二",
-        "price": 34.58,
-        "volume": 166.0
+        "price": 34.9,
+        "volume": 183.0
       },
       {
         "market": "桃 農",
-        "price": 39.32,
-        "volume": 419.0
+        "price": 38.55,
+        "volume": 541.0
       },
       {
         "market": "三重區",
-        "price": 41.62,
-        "volume": 944.0
+        "price": 41.58,
+        "volume": 965.0
       },
       {
         "market": "花蓮市",
@@ -39981,18 +39981,18 @@
       },
       {
         "market": "台中市",
-        "price": 44.24,
-        "volume": 46.0
+        "price": 43.87,
+        "volume": 147.0
       },
       {
         "market": "板橋區",
-        "price": 46.55,
-        "volume": 13351.0
+        "price": 46.41,
+        "volume": 14571.0
       },
       {
         "market": "台北一",
-        "price": 48.08,
-        "volume": 5521.0
+        "price": 47.78,
+        "volume": 5722.0
       }
     ]
   }
