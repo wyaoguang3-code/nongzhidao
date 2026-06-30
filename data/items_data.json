@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-29T13:00:59.870631+08:00",
+  "updated_at": "2026-06-30T08:01:26.907986+08:00",
   "items": {
     "water-spinach": {
       "latest_price": null,
@@ -14000,13 +14000,9 @@
       ]
     },
     "tomato": {
-      "latest_price": 74.98,
-      "latest_date": "2026-06-28",
+      "latest_price": 65.64,
+      "latest_date": "2026-06-30",
       "trend_7d": [
-        {
-          "date": "2026-06-23",
-          "price": 54.02
-        },
         {
           "date": "2026-06-24",
           "price": 58.77
@@ -14026,57 +14022,77 @@
         {
           "date": "2026-06-28",
           "price": 74.98
+        },
+        {
+          "date": "2026-06-29",
+          "price": 97.46
+        },
+        {
+          "date": "2026-06-30",
+          "price": 65.64
         }
       ],
       "top_markets": [
         {
           "market": "台北一",
-          "price": 75.57,
-          "volume": 21006.0
+          "price": 66.06,
+          "volume": 41619.0
         },
         {
           "market": "台北二",
-          "price": 82.24,
-          "volume": 12310.0
+          "price": 63.29,
+          "volume": 18171.0
         },
         {
           "market": "高雄市",
-          "price": 82.0,
-          "volume": 4432.0
+          "price": 76.44,
+          "volume": 8095.0
         },
         {
-          "market": "台中市",
-          "price": 54.36,
-          "volume": 4057.0
-        },
-        {
-          "market": "桃 農",
-          "price": 82.7,
-          "volume": 3950.0
+          "market": "屏東市",
+          "price": 52.59,
+          "volume": 4755.0
         }
       ],
-      "coverage": 124,
+      "coverage": 115,
       "variants": [
         {
           "sub_type": "其他",
-          "latest_price": 95.0,
-          "latest_date": "2026-06-25",
-          "coverage": 1,
+          "latest_price": 45.0,
+          "latest_date": "2026-06-30",
+          "coverage": 2,
           "raw_latest_rows": [
             {
-              "roc_date": "115/06/25",
-              "date": "2026-06-25",
+              "roc_date": "115/06/30",
+              "date": "2026-06-30",
               "market_no": "109",
               "market": "台北一",
               "product_code": "FJ0",
               "product_main": "番茄",
               "product_sub": "其他",
-              "avg_price": 95.0,
-              "volume": 30.0,
-              "volume_raw": "30"
+              "avg_price": 45.0,
+              "volume": 40.0,
+              "volume_raw": "40"
             }
           ],
           "recent_raw_by_date": [
+            {
+              "date": "2026-06-30",
+              "rows": [
+                {
+                  "roc_date": "115/06/30",
+                  "date": "2026-06-30",
+                  "market_no": "109",
+                  "market": "台北一",
+                  "product_code": "FJ0",
+                  "product_main": "番茄",
+                  "product_sub": "其他",
+                  "avg_price": 45.0,
+                  "volume": 40.0,
+                  "volume_raw": "40"
+                }
+              ]
+            },
             {
               "date": "2026-06-25",
               "rows": [
@@ -14098,144 +14114,130 @@
         },
         {
           "sub_type": "牛番茄",
-          "latest_price": 75.45,
-          "latest_date": "2026-06-28",
-          "coverage": 81,
+          "latest_price": 68.54,
+          "latest_date": "2026-06-30",
+          "coverage": 72,
           "raw_latest_rows": [
             {
-              "roc_date": "115/06/28",
-              "date": "2026-06-28",
+              "roc_date": "115/06/30",
+              "date": "2026-06-30",
               "market_no": "104",
               "market": "台北二",
               "product_code": "FJ3",
               "product_main": "番茄",
               "product_sub": "牛番茄",
-              "avg_price": 82.6,
-              "volume": 12160.0,
-              "volume_raw": "12,160"
+              "avg_price": 65.3,
+              "volume": 17330.0,
+              "volume_raw": "17,330"
             },
             {
-              "roc_date": "115/06/28",
-              "date": "2026-06-28",
+              "roc_date": "115/06/30",
+              "date": "2026-06-30",
               "market_no": "109",
               "market": "台北一",
               "product_code": "FJ3",
               "product_main": "番茄",
               "product_sub": "牛番茄",
-              "avg_price": 75.9,
-              "volume": 19656.0,
-              "volume_raw": "19,656"
+              "avg_price": 70.2,
+              "volume": 34136.0,
+              "volume_raw": "34,136"
             },
             {
-              "roc_date": "115/06/28",
-              "date": "2026-06-28",
-              "market_no": "220",
-              "market": "板橋區",
-              "product_code": "FJ3",
-              "product_main": "番茄",
-              "product_sub": "牛番茄",
-              "avg_price": 75.8,
-              "volume": 2450.0,
-              "volume_raw": "2,450"
-            },
-            {
-              "roc_date": "115/06/28",
-              "date": "2026-06-28",
-              "market_no": "241",
-              "market": "三重區",
-              "product_code": "FJ3",
-              "product_main": "番茄",
-              "product_sub": "牛番茄",
-              "avg_price": 64.7,
-              "volume": 3333.0,
-              "volume_raw": "3,333"
-            },
-            {
-              "roc_date": "115/06/28",
-              "date": "2026-06-28",
-              "market_no": "338",
-              "market": "桃 農",
-              "product_code": "FJ3",
-              "product_main": "番茄",
-              "product_sub": "牛番茄",
-              "avg_price": 82.7,
-              "volume": 3950.0,
-              "volume_raw": "3,950"
-            },
-            {
-              "roc_date": "115/06/28",
-              "date": "2026-06-28",
-              "market_no": "400",
-              "market": "台中市",
-              "product_code": "FJ3",
-              "product_main": "番茄",
-              "product_sub": "牛番茄",
-              "avg_price": 55.1,
-              "volume": 3982.0,
-              "volume_raw": "3,982"
-            },
-            {
-              "roc_date": "115/06/28",
-              "date": "2026-06-28",
-              "market_no": "420",
-              "market": "豐原區",
-              "product_code": "FJ3",
-              "product_main": "番茄",
-              "product_sub": "牛番茄",
-              "avg_price": 47.1,
-              "volume": 1010.0,
-              "volume_raw": "1,010"
-            },
-            {
-              "roc_date": "115/06/28",
-              "date": "2026-06-28",
+              "roc_date": "115/06/30",
+              "date": "2026-06-30",
               "market_no": "800",
               "market": "高雄市",
               "product_code": "FJ3",
               "product_main": "番茄",
               "product_sub": "牛番茄",
-              "avg_price": 85.4,
-              "volume": 3721.0,
-              "volume_raw": "3,721"
+              "avg_price": 78.1,
+              "volume": 7539.0,
+              "volume_raw": "7,539"
             },
             {
-              "roc_date": "115/06/28",
-              "date": "2026-06-28",
-              "market_no": "830",
-              "market": "鳳山區",
-              "product_code": "FJ3",
-              "product_main": "番茄",
-              "product_sub": "牛番茄",
-              "avg_price": 56.3,
-              "volume": 580.0,
-              "volume_raw": "580"
-            },
-            {
-              "roc_date": "115/06/28",
-              "date": "2026-06-28",
+              "roc_date": "115/06/30",
+              "date": "2026-06-30",
               "market_no": "900",
               "market": "屏東市",
               "product_code": "FJ3",
               "product_main": "番茄",
               "product_sub": "牛番茄",
-              "avg_price": 70.0,
-              "volume": 1460.0,
-              "volume_raw": "1,460"
-            },
-            {
-              "roc_date": "115/06/28",
-              "date": "2026-06-28",
-              "market_no": "930",
-              "market": "台東市",
-              "product_code": "FJ3",
-              "product_main": "番茄",
-              "product_sub": "牛番茄",
-              "avg_price": 80.0,
-              "volume": 551.0,
-              "volume_raw": "551"
+              "avg_price": 53.0,
+              "volume": 4680.0,
+              "volume_raw": "4,680"
             }
           ],
           "recent_raw_by_date": [
+            {
+              "date": "2026-06-30",
+              "rows": [
+                {
+                  "roc_date": "115/06/30",
+                  "date": "2026-06-30",
+                  "market_no": "104",
+                  "market": "台北二",
+                  "product_code": "FJ3",
+                  "product_main": "番茄",
+                  "product_sub": "牛番茄",
+                  "avg_price": 65.3,
+                  "volume": 17330.0,
+                  "volume_raw": "17,330"
+                },
+                {
+                  "roc_date": "115/06/30",
+                  "date": "2026-06-30",
+                  "market_no": "109",
+                  "market": "台北一",
+                  "product_code": "FJ3",
+                  "product_main": "番茄",
+                  "product_sub": "牛番茄",
+                  "avg_price": 70.2,
+                  "volume": 34136.0,
+                  "volume_raw": "34,136"
+                },
+                {
+                  "roc_date": "115/06/30",
+                  "date": "2026-06-30",
+                  "market_no": "800",
+                  "market": "高雄市",
+                  "product_code": "FJ3",
+                  "product_main": "番茄",
+                  "product_sub": "牛番茄",
+                  "avg_price": 78.1,
+                  "volume": 7539.0,
+                  "volume_raw": "7,539"
+                },
+                {
+                  "roc_date": "115/06/30",
+                  "date": "2026-06-30",
+                  "market_no": "900",
+                  "market": "屏東市",
+                  "product_code": "FJ3",
+                  "product_main": "番茄",
+                  "product_sub": "牛番茄",
+                  "avg_price": 53.0,
+                  "volume": 4680.0,
+                  "volume_raw": "4,680"
+                }
+              ]
+            },
+            {
+              "date": "2026-06-29",
+              "rows": [
+                {
+                  "roc_date": "115/06/29",
+                  "date": "2026-06-29",
+                  "market_no": "950",
+                  "market": "花蓮市",
+                  "product_code": "FJ3",
+                  "product_main": "番茄",
+                  "product_sub": "牛番茄",
+                  "avg_price": 106.6,
+                  "volume": 723.0,
+                  "volume_raw": "723"
+                }
+              ]
+            },
             {
               "date": "2026-06-28",
               "rows": [
@@ -14372,387 +14374,46 @@
                   "volume_raw": "551"
                 }
               ]
-            },
-            {
-              "date": "2026-06-27",
-              "rows": [
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "104",
-                  "market": "台北二",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 89.0,
-                  "volume": 11060.0,
-                  "volume_raw": "11,060"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "109",
-                  "market": "台北一",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 76.7,
-                  "volume": 26160.0,
-                  "volume_raw": "26,160"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "220",
-                  "market": "板橋區",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 65.9,
-                  "volume": 3350.0,
-                  "volume_raw": "3,350"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "241",
-                  "market": "三重區",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 52.9,
-                  "volume": 3520.0,
-                  "volume_raw": "3,520"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "260",
-                  "market": "宜蘭市",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 80.0,
-                  "volume": 2650.0,
-                  "volume_raw": "2,650"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "338",
-                  "market": "桃 農",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 75.4,
-                  "volume": 3850.0,
-                  "volume_raw": "3,850"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "400",
-                  "market": "台中市",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 46.8,
-                  "volume": 4292.0,
-                  "volume_raw": "4,292"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "420",
-                  "market": "豐原區",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 39.5,
-                  "volume": 1440.0,
-                  "volume_raw": "1,440"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "648",
-                  "market": "西螺鎮",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 99.1,
-                  "volume": 23368.0,
-                  "volume_raw": "23,368"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "800",
-                  "market": "高雄市",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 83.7,
-                  "volume": 4552.0,
-                  "volume_raw": "4,552"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "830",
-                  "market": "鳳山區",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 57.7,
-                  "volume": 350.0,
-                  "volume_raw": "350"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "900",
-                  "market": "屏東市",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 61.6,
-                  "volume": 4318.0,
-                  "volume_raw": "4,318"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "930",
-                  "market": "台東市",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 77.0,
-                  "volume": 368.0,
-                  "volume_raw": "368"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "950",
-                  "market": "花蓮市",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 102.0,
-                  "volume": 904.0,
-                  "volume_raw": "904"
-                }
-              ]
-            },
-            {
-              "date": "2026-06-26",
-              "rows": [
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "104",
-                  "market": "台北二",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 81.3,
-                  "volume": 10060.0,
-                  "volume_raw": "10,060"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "109",
-                  "market": "台北一",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 90.9,
-                  "volume": 15517.0,
-                  "volume_raw": "15,517"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "220",
-                  "market": "板橋區",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 57.3,
-                  "volume": 3360.0,
-                  "volume_raw": "3,360"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "241",
-                  "market": "三重區",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 54.8,
-                  "volume": 3391.0,
-                  "volume_raw": "3,391"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "260",
-                  "market": "宜蘭市",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 80.0,
-                  "volume": 2650.0,
-                  "volume_raw": "2,650"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "338",
-                  "market": "桃 農",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 84.0,
-                  "volume": 4240.0,
-                  "volume_raw": "4,240"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "400",
-                  "market": "台中市",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 44.3,
-                  "volume": 4454.0,
-                  "volume_raw": "4,454"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "420",
-                  "market": "豐原區",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 45.5,
-                  "volume": 1776.0,
-                  "volume_raw": "1,776"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "648",
-                  "market": "西螺鎮",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 99.2,
-                  "volume": 24636.0,
-                  "volume_raw": "24,636"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "800",
-                  "market": "高雄市",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 80.5,
-                  "volume": 4631.0,
-                  "volume_raw": "4,631"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "830",
-                  "market": "鳳山區",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 52.0,
-                  "volume": 150.0,
-                  "volume_raw": "150"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "900",
-                  "market": "屏東市",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 59.5,
-                  "volume": 4804.0,
-                  "volume_raw": "4,804"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "930",
-                  "market": "台東市",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 71.0,
-                  "volume": 510.0,
-                  "volume_raw": "510"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "950",
-                  "market": "花蓮市",
-                  "product_code": "FJ3",
-                  "product_main": "番茄",
-                  "product_sub": "牛番茄",
-                  "avg_price": 82.3,
-                  "volume": 373.0,
-                  "volume_raw": "373"
-                }
-              ]
             }
           ]
         },
         {
           "sub_type": "粉柿",
-          "latest_price": 20.0,
-          "latest_date": "2026-06-27",
-          "coverage": 2,
+          "latest_price": 34.5,
+          "latest_date": "2026-06-30",
+          "coverage": 3,
           "raw_latest_rows": [
             {
-              "roc_date": "115/06/27",
-              "date": "2026-06-27",
+              "roc_date": "115/06/30",
+              "date": "2026-06-30",
               "market_no": "109",
               "market": "台北一",
               "product_code": "FJ2",
               "product_main": "番茄",
               "product_sub": "粉柿",
-              "avg_price": 20.0,
-              "volume": 40.0,
-              "volume_raw": "40"
-            },
-            {
-              "roc_date": "115/06/27",
-              "date": "2026-06-27",
-              "market_no": "241",
-              "market": "三重區",
-              "product_code": "FJ2",
-              "product_main": "番茄",
-              "product_sub": "粉柿",
-              "avg_price": 20.0,
-              "volume": 30.0,
-              "volume_raw": "30"
+              "avg_price": 34.5,
+              "volume": 130.0,
+              "volume_raw": "130"
             }
           ],
           "recent_raw_by_date": [
+            {
+              "date": "2026-06-30",
+              "rows": [
+                {
+                  "roc_date": "115/06/30",
+                  "date": "2026-06-30",
+                  "market_no": "109",
+                  "market": "台北一",
+                  "product_code": "FJ2",
+                  "product_main": "番茄",
+                  "product_sub": "粉柿",
+                  "avg_price": 34.5,
+                  "volume": 130.0,
+                  "volume_raw": "130"
+                }
+              ]
+            },
             {
               "date": "2026-06-27",
               "rows": [
@@ -14786,84 +14447,130 @@
         },
         {
           "sub_type": "黑柿",
-          "latest_price": 64.47,
-          "latest_date": "2026-06-28",
-          "coverage": 40,
+          "latest_price": 45.2,
+          "latest_date": "2026-06-30",
+          "coverage": 38,
           "raw_latest_rows": [
             {
-              "roc_date": "115/06/28",
-              "date": "2026-06-28",
+              "roc_date": "115/06/30",
+              "date": "2026-06-30",
               "market_no": "104",
               "market": "台北二",
               "product_code": "FJ1",
               "product_main": "番茄",
               "product_sub": "黑柿",
-              "avg_price": 52.9,
-              "volume": 150.0,
-              "volume_raw": "150"
+              "avg_price": 21.9,
+              "volume": 841.0,
+              "volume_raw": "841"
             },
             {
-              "roc_date": "115/06/28",
-              "date": "2026-06-28",
+              "roc_date": "115/06/30",
+              "date": "2026-06-30",
               "market_no": "109",
               "market": "台北一",
               "product_code": "FJ1",
               "product_main": "番茄",
               "product_sub": "黑柿",
-              "avg_price": 70.7,
-              "volume": 1350.0,
-              "volume_raw": "1,350"
+              "avg_price": 47.4,
+              "volume": 7313.0,
+              "volume_raw": "7,313"
             },
             {
-              "roc_date": "115/06/28",
-              "date": "2026-06-28",
-              "market_no": "220",
-              "market": "板橋區",
-              "product_code": "FJ1",
-              "product_main": "番茄",
-              "product_sub": "黑柿",
-              "avg_price": 44.0,
-              "volume": 105.0,
-              "volume_raw": "105"
-            },
-            {
-              "roc_date": "115/06/28",
-              "date": "2026-06-28",
-              "market_no": "400",
-              "market": "台中市",
-              "product_code": "FJ1",
-              "product_main": "番茄",
-              "product_sub": "黑柿",
-              "avg_price": 15.0,
-              "volume": 75.0,
-              "volume_raw": "75"
-            },
-            {
-              "roc_date": "115/06/28",
-              "date": "2026-06-28",
+              "roc_date": "115/06/30",
+              "date": "2026-06-30",
               "market_no": "800",
               "market": "高雄市",
               "product_code": "FJ1",
               "product_main": "番茄",
               "product_sub": "黑柿",
-              "avg_price": 64.2,
-              "volume": 711.0,
-              "volume_raw": "711"
+              "avg_price": 54.0,
+              "volume": 556.0,
+              "volume_raw": "556"
             },
             {
-              "roc_date": "115/06/28",
-              "date": "2026-06-28",
+              "roc_date": "115/06/30",
+              "date": "2026-06-30",
               "market_no": "900",
               "market": "屏東市",
               "product_code": "FJ1",
               "product_main": "番茄",
               "product_sub": "黑柿",
-              "avg_price": 23.3,
-              "volume": 15.0,
-              "volume_raw": "15"
+              "avg_price": 27.3,
+              "volume": 75.0,
+              "volume_raw": "75"
             }
           ],
           "recent_raw_by_date": [
+            {
+              "date": "2026-06-30",
+              "rows": [
+                {
+                  "roc_date": "115/06/30",
+                  "date": "2026-06-30",
+                  "market_no": "104",
+                  "market": "台北二",
+                  "product_code": "FJ1",
+                  "product_main": "番茄",
+                  "product_sub": "黑柿",
+                  "avg_price": 21.9,
+                  "volume": 841.0,
+                  "volume_raw": "841"
+                },
+                {
+                  "roc_date": "115/06/30",
+                  "date": "2026-06-30",
+                  "market_no": "109",
+                  "market": "台北一",
+                  "product_code": "FJ1",
+                  "product_main": "番茄",
+                  "product_sub": "黑柿",
+                  "avg_price": 47.4,
+                  "volume": 7313.0,
+                  "volume_raw": "7,313"
+                },
+                {
+                  "roc_date": "115/06/30",
+                  "date": "2026-06-30",
+                  "market_no": "800",
+                  "market": "高雄市",
+                  "product_code": "FJ1",
+                  "product_main": "番茄",
+                  "product_sub": "黑柿",
+                  "avg_price": 54.0,
+                  "volume": 556.0,
+                  "volume_raw": "556"
+                },
+                {
+                  "roc_date": "115/06/30",
+                  "date": "2026-06-30",
+                  "market_no": "900",
+                  "market": "屏東市",
+                  "product_code": "FJ1",
+                  "product_main": "番茄",
+                  "product_sub": "黑柿",
+                  "avg_price": 27.3,
+                  "volume": 75.0,
+                  "volume_raw": "75"
+                }
+              ]
+            },
+            {
+              "date": "2026-06-29",
+              "rows": [
+                {
+                  "roc_date": "115/06/29",
+                  "date": "2026-06-29",
+                  "market_no": "950",
+                  "market": "花蓮市",
+                  "product_code": "FJ1",
+                  "product_main": "番茄",
+                  "product_sub": "黑柿",
+                  "avg_price": 31.4,
+                  "volume": 100.0,
+                  "volume_raw": "100"
+                }
+              ]
+            },
             {
               "date": "2026-06-28",
               "rows": [
@@ -14938,184 +14645,6 @@
                   "avg_price": 23.3,
                   "volume": 15.0,
                   "volume_raw": "15"
-                }
-              ]
-            },
-            {
-              "date": "2026-06-27",
-              "rows": [
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "104",
-                  "market": "台北二",
-                  "product_code": "FJ1",
-                  "product_main": "番茄",
-                  "product_sub": "黑柿",
-                  "avg_price": 46.0,
-                  "volume": 195.0,
-                  "volume_raw": "195"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "109",
-                  "market": "台北一",
-                  "product_code": "FJ1",
-                  "product_main": "番茄",
-                  "product_sub": "黑柿",
-                  "avg_price": 62.4,
-                  "volume": 2655.0,
-                  "volume_raw": "2,655"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "220",
-                  "market": "板橋區",
-                  "product_code": "FJ1",
-                  "product_main": "番茄",
-                  "product_sub": "黑柿",
-                  "avg_price": 40.0,
-                  "volume": 45.0,
-                  "volume_raw": "45"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "241",
-                  "market": "三重區",
-                  "product_code": "FJ1",
-                  "product_main": "番茄",
-                  "product_sub": "黑柿",
-                  "avg_price": 32.0,
-                  "volume": 15.0,
-                  "volume_raw": "15"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "400",
-                  "market": "台中市",
-                  "product_code": "FJ1",
-                  "product_main": "番茄",
-                  "product_sub": "黑柿",
-                  "avg_price": 17.8,
-                  "volume": 60.0,
-                  "volume_raw": "60"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "800",
-                  "market": "高雄市",
-                  "product_code": "FJ1",
-                  "product_main": "番茄",
-                  "product_sub": "黑柿",
-                  "avg_price": 65.8,
-                  "volume": 666.0,
-                  "volume_raw": "666"
-                },
-                {
-                  "roc_date": "115/06/27",
-                  "date": "2026-06-27",
-                  "market_no": "950",
-                  "market": "花蓮市",
-                  "product_code": "FJ1",
-                  "product_main": "番茄",
-                  "product_sub": "黑柿",
-                  "avg_price": 55.0,
-                  "volume": 15.0,
-                  "volume_raw": "15"
-                }
-              ]
-            },
-            {
-              "date": "2026-06-26",
-              "rows": [
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "104",
-                  "market": "台北二",
-                  "product_code": "FJ1",
-                  "product_main": "番茄",
-                  "product_sub": "黑柿",
-                  "avg_price": 47.8,
-                  "volume": 603.0,
-                  "volume_raw": "603"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "109",
-                  "market": "台北一",
-                  "product_code": "FJ1",
-                  "product_main": "番茄",
-                  "product_sub": "黑柿",
-                  "avg_price": 48.9,
-                  "volume": 3511.0,
-                  "volume_raw": "3,511"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "220",
-                  "market": "板橋區",
-                  "product_code": "FJ1",
-                  "product_main": "番茄",
-                  "product_sub": "黑柿",
-                  "avg_price": 45.0,
-                  "volume": 75.0,
-                  "volume_raw": "75"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "400",
-                  "market": "台中市",
-                  "product_code": "FJ1",
-                  "product_main": "番茄",
-                  "product_sub": "黑柿",
-                  "avg_price": 22.5,
-                  "volume": 60.0,
-                  "volume_raw": "60"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "800",
-                  "market": "高雄市",
-                  "product_code": "FJ1",
-                  "product_main": "番茄",
-                  "product_sub": "黑柿",
-                  "avg_price": 67.3,
-                  "volume": 676.0,
-                  "volume_raw": "676"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "830",
-                  "market": "鳳山區",
-                  "product_code": "FJ1",
-                  "product_main": "番茄",
-                  "product_sub": "黑柿",
-                  "avg_price": 60.0,
-                  "volume": 80.0,
-                  "volume_raw": "80"
-                },
-                {
-                  "roc_date": "115/06/26",
-                  "date": "2026-06-26",
-                  "market_no": "950",
-                  "market": "花蓮市",
-                  "product_code": "FJ1",
-                  "product_main": "番茄",
-                  "product_sub": "黑柿",
-                  "avg_price": 28.3,
-                  "volume": 137.0,
-                  "volume_raw": "137"
                 }
               ]
             }
