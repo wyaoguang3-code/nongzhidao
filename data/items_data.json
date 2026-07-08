@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-08T08:01:26.112451+08:00",
+  "updated_at": "2026-07-08T08:16:19.604889+08:00",
   "items": {
     "water-spinach": {
       "latest_price": null,
@@ -14000,7 +14000,7 @@
       ]
     },
     "tomato": {
-      "latest_price": 92.74,
+      "latest_price": 91.2,
       "latest_date": "2026-07-08",
       "trend_7d": [
         {
@@ -14025,11 +14025,11 @@
         },
         {
           "date": "2026-07-07",
-          "price": 74.52
+          "price": 78.15
         },
         {
           "date": "2026-07-08",
-          "price": 92.74
+          "price": 91.2
         }
       ],
       "top_markets": [
@@ -14044,6 +14044,11 @@
           "volume": 14946.0
         },
         {
+          "market": "高雄市",
+          "price": 76.09,
+          "volume": 5579.0
+        },
+        {
           "market": "屏東市",
           "price": 68.1,
           "volume": 3261.0
@@ -14054,7 +14059,7 @@
           "volume": 936.0
         }
       ],
-      "coverage": 104,
+      "coverage": 107,
       "variants": [
         {
           "sub_type": "其他",
@@ -14097,9 +14102,9 @@
         },
         {
           "sub_type": "牛番茄",
-          "latest_price": 94.28,
+          "latest_price": 92.68,
           "latest_date": "2026-07-08",
-          "coverage": 69,
+          "coverage": 71,
           "raw_latest_rows": [
             {
               "roc_date": "115/07/08",
@@ -14136,6 +14141,18 @@
               "avg_price": 57.2,
               "volume": 936.0,
               "volume_raw": "936"
+            },
+            {
+              "roc_date": "115/07/08",
+              "date": "2026-07-08",
+              "market_no": "800",
+              "market": "高雄市",
+              "product_code": "FJ3",
+              "product_main": "番茄",
+              "product_sub": "牛番茄",
+              "avg_price": 75.6,
+              "volume": 4841.0,
+              "volume_raw": "4,841"
             },
             {
               "roc_date": "115/07/08",
@@ -14189,6 +14206,18 @@
                   "avg_price": 57.2,
                   "volume": 936.0,
                   "volume_raw": "936"
+                },
+                {
+                  "roc_date": "115/07/08",
+                  "date": "2026-07-08",
+                  "market_no": "800",
+                  "market": "高雄市",
+                  "product_code": "FJ3",
+                  "product_main": "番茄",
+                  "product_sub": "牛番茄",
+                  "avg_price": 75.6,
+                  "volume": 4841.0,
+                  "volume_raw": "4,841"
                 },
                 {
                   "roc_date": "115/07/08",
@@ -14290,6 +14319,18 @@
                   "avg_price": 36.3,
                   "volume": 470.0,
                   "volume_raw": "470"
+                },
+                {
+                  "roc_date": "115/07/07",
+                  "date": "2026-07-07",
+                  "market_no": "648",
+                  "market": "西螺鎮",
+                  "product_code": "FJ3",
+                  "product_main": "番茄",
+                  "product_sub": "牛番茄",
+                  "avg_price": 92.1,
+                  "volume": 24374.0,
+                  "volume_raw": "24,374"
                 },
                 {
                   "roc_date": "115/07/07",
@@ -14447,9 +14488,9 @@
         },
         {
           "sub_type": "黑柿",
-          "latest_price": 64.43,
+          "latest_price": 67.51,
           "latest_date": "2026-07-08",
-          "coverage": 31,
+          "coverage": 32,
           "raw_latest_rows": [
             {
               "roc_date": "115/07/08",
@@ -14474,6 +14515,18 @@
               "avg_price": 64.4,
               "volume": 2635.0,
               "volume_raw": "2,635"
+            },
+            {
+              "roc_date": "115/07/08",
+              "date": "2026-07-08",
+              "market_no": "800",
+              "market": "高雄市",
+              "product_code": "FJ1",
+              "product_main": "番茄",
+              "product_sub": "黑柿",
+              "avg_price": 79.3,
+              "volume": 738.0,
+              "volume_raw": "738"
             }
           ],
           "recent_raw_by_date": [
@@ -14503,6 +14556,18 @@
                   "avg_price": 64.4,
                   "volume": 2635.0,
                   "volume_raw": "2,635"
+                },
+                {
+                  "roc_date": "115/07/08",
+                  "date": "2026-07-08",
+                  "market_no": "800",
+                  "market": "高雄市",
+                  "product_code": "FJ1",
+                  "product_main": "番茄",
+                  "product_sub": "黑柿",
+                  "avg_price": 79.3,
+                  "volume": 738.0,
+                  "volume_raw": "738"
                 }
               ]
             },
