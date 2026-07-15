@@ -1,10 +1,10 @@
 {
   "code": "104##24",
   "name": "柚子",
-  "updated_at": "2026-06-24T14:05:46.498163+08:00",
+  "updated_at": "2026-07-15T14:00:40.634389+08:00",
   "source": "https://agrstat.moa.gov.tw/sdweb/public/trade/TradeCoa.aspx",
   "params": {
-    "date_range": "105/01 - 115/05",
+    "date_range": "105/01 - 115/06",
     "cycle": "年月",
     "ie_type": "出口",
     "currency": "新台幣",
@@ -1858,6 +1858,10 @@
         "115-05": {
           "w": 1.0,
           "v": 161.0
+        },
+        "115-06": {
+          "w": 0.0,
+          "v": 9.0
         }
       }
     },
