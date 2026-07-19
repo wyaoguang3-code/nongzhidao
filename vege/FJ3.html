@@ -11,7 +11,17 @@ h1{margin:0 0 8px} h2{margin:0 0 10px;font-size:22px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 canvas{background:#fff;border-radius:8px;padding:6px;width:100% !important;height:320px !important;display:block}
 a{color:#8bc2ff}
-@media (max-width:900px){.grid{grid-template-columns:1fr} canvas{height:380px !important;}}
+input,select,button,textarea{background:#0b1730;color:#eaf0ff;border:1px solid #2d4474;border-radius:8px;padding:8px}
+.field{display:flex;align-items:center;gap:6px}
+.fl{font-size:12px;opacity:.9;min-width:52px}
+.u{font-size:12px;opacity:.85;white-space:nowrap}
+button{cursor:pointer}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;margin-left:6px}
+.badge.red{background:#7f1d1d;color:#fecaca}.badge.blue{background:#1e3a8a;color:#bfdbfe}
+.result{margin-top:8px;line-height:1.6}
+.hint{opacity:.85;font-size:13px;margin:6px 0}
+@media (max-width:900px){.grid,.tool-grid{grid-template-columns:1fr} canvas{height:380px !important;}}
 </style></head>
 <body><div class="wrap">
 <h1>FJ3 番茄 牛蕃茄</h1>
@@ -35,8 +45,100 @@ a{color:#8bc2ff}
 <div class="card"><h2>外銷每年趨勢圖（2016年至今）</h2><canvas id="ex_year"></canvas></div>
 <div class="card"><h2>每年全台農作物災損金額（億元）</h2><canvas id="disaster_year"></canvas></div>
 
+<div class="card">
+  <h2>作物選種建議 <span class="badge red">🔴 雛形</span></h2>
+  <div class="result"><b>牛蕃茄選種原則（固定顯示）</b><ul><li>高溫潮濕：優先耐熱、抗病（青枯/葉斑）型</li><li>日夜溫差大：可選高糖度與果色穩定型</li><li>黏土：建議嫁接苗或強根系砧木，降低積水風險</li></ul></div>
+  <div class="tool-grid">
+    <select id="loc"><option>中部</option><option>北部</option><option>南部</option><option>東部</option></select>
+    <select id="climate"><option>高溫潮濕</option><option>溫和</option><option>日夜溫差大</option></select>
+    <select id="soil"><option>壤土</option><option>黏土</option><option>砂質土</option></select>
+    <button onclick="runCropAdvice()">產生建議</button>
+  </div>
+  <div id="crop_advice" class="result">尚未計算</div>
+</div>
+
+<div class="card">
+  <h2>輪作 / 間作規劃 <span class="badge red">🔴 雛形</span></h2>
+  <div class="result"><b>牛蕃茄輪作原則（固定顯示）</b><ul><li>避免茄科連作超過 2 季</li><li>至少插入 1 季非茄科（豆科/十字花科/禾本科）</li><li>間作可用短期葉菜或香草作物分散病蟲壓力</li></ul></div>
+  <div class="tool-grid">
+    <select id="seasonCount"><option value="2">2 季</option><option value="3" selected>3 季</option><option value="4">4 季</option></select>
+    <select id="goal"><option>穩定收益</option><option>土壤恢復優先</option><option>病蟲害風險降低</option></select>
+    <button onclick="runRotationPlan()">生成規劃</button>
+  </div>
+  <div id="rotation_plan" class="result">尚未計算</div>
+</div>
+
+<div class="card">
+  <h2>最佳播種時機 <span class="badge blue">🔵 雛形</span></h2>
+  <div class="hint">單位：溫度(°C)、雨量(mm/7日)</div>
+  <div class="result"><b>牛蕃茄播種窗口規則（固定顯示）</b><ul><li>理想：20~30°C 且雨量 < 60mm/7日</li><li>可播但需管理：16~20°C 或 60~120mm/7日</li><li>不建議：<16°C、>32°C 或雨量 >120mm/7日</li></ul></div>
+  <div class="tool-grid">
+    <div class="field"><input id="temp" type="number" placeholder="未來7日均溫" value="24"/><span class="u">°C</span></div>
+    <div class="field"><input id="rain" type="number" placeholder="未來7日累積雨量" value="18"/><span class="u">mm</span></div>
+    <button onclick="runSowingWindow()">推算窗口</button>
+  </div>
+  <div id="sowing_window" class="result">尚未計算</div>
+</div>
+
+<div class="card">
+  <h2>成本試算 <span class="badge red">🔴 雛形</span></h2>
+  <div class="hint">欄位說明：面積(種植面積)／種苗單價(每株成本)／肥料預算(每分地)／人力預算(每分地)</div>
+  <div class="result"><b>常態範例（牛蕃茄 1 分地）</b><br>假設：產量 3,200 kg/分、售價 40~50 元/kg、總成本約 3.8~5.5 萬元。<br>則毛收入約 12.8~16.0 萬元，毛利常見落點約 <b>7.3~12.2 萬元/分地</b>（依實際病害、品質、通路而波動）。</div>
+  <div class="tool-grid">
+    <div class="field"><span class="fl">種植面積</span><input id="area" type="number" value="1"/><span class="u">分地</span></div>
+    <div class="field"><span class="fl">種苗單價</span><input id="seedling" type="number" value="8"/><span class="u">元/株</span></div>
+    <div class="field"><span class="fl">肥料成本</span><input id="fert" type="number" value="6000"/><span class="u">元/分地</span></div>
+    <div class="field"><span class="fl">人力預算</span><input id="labor" type="number" value="18000"/><span class="u">元/分地</span></div>
+    <div class="field"><span class="fl">預估產量</span><input id="cost_yield" type="number" value="3200"/><span class="u">kg/分</span></div>
+    <div class="field"><span class="fl">預估售價</span><input id="cost_price" type="number" value="50"/><span class="u">元/kg</span></div>
+    <div class="field"><span class="fl">目標毛利</span><input id="cost_margin" type="number" value="20"/><span class="u">%</span></div>
+    <button onclick="runCostEstimate()">計算成本</button>
+  </div>
+  <div id="cost_est" class="result">尚未計算</div>
+</div>
+
+<div class="card">
+  <h2>土壤 / 地力分析 <span class="badge red">🔴 雛形</span></h2>
+  <div class="hint">單位：pH(無單位)、有機質(等級)</div>
+  <div class="result"><b>牛蕃茄土壤建議區間（固定顯示）</b><ul><li>pH 建議：6.0 ~ 6.8</li><li>有機質：以「適中」為佳，過低補有機質、過高防氮過剩</li><li>重點：排水、通氣、根系健康比單次施肥更關鍵</li></ul></div>
+  <div class="tool-grid">
+    <div class="field"><input id="ph" type="number" step="0.1" placeholder="pH" value="6.2"/><span class="u">pH</span></div>
+    <select id="om"><option value="low">有機質偏低</option><option value="ok" selected>有機質適中</option><option value="high">有機質偏高</option></select>
+    <button onclick="runSoilAnalysis()">分析</button>
+  </div>
+  <div id="soil_analysis" class="result">尚未計算</div>
+</div>
+
+<div class="card"><h2>灌溉排程 <span class="badge blue">🟢 雛形</span></h2><div class="hint">單位：土壤濕度(%)、雨量(mm/24h)</div><div class="result"><b>牛蕃茄灌溉原則（固定顯示）</b><ul><li>土壤濕度目標區間：約 40%~60%</li><li>建議時段：清晨為主，必要時傍晚補水，避免中午高溫灌溉</li><li>豪雨後優先排水，再評估是否補灌</li></ul></div><div class="tool-grid"><div class="field"><input id="ir_soil" type="number" value="45" placeholder="土壤濕度"><span class="u">%</span></div><div class="field"><input id="ir_rain" type="number" value="20" placeholder="24h雨量"><span class="u">mm</span></div><button onclick="runIrrigation()">產生建議</button></div><div id="irrigation" class="result">尚未計算</div></div>
+<div class="card"><h2>施肥計畫 <span class="badge red">🔴 雛形</span></h2><div class="hint">欄位說明：生長階段／面積／預計肥料成本</div><div class="result"><b>牛蕃茄施肥原則（固定顯示）</b><ul><li><b>苗期</b>：根系建立優先，氮不宜過高避免徒長。</li><li><b>開花期</b>：提高鉀、鈣、硼，提升開花著果率。</li><li><b>結果期</b>：分次追肥，鉀鈣為主，控制氮避免裂果與軟果。</li></ul></div><div class="tool-grid"><select id="fz_stage"><option>苗期</option><option>開花期</option><option>結果期</option></select><div class="field"><input id="fz_area" type="number" value="1" placeholder="面積"><span class="u">分地</span></div><div class="field"><input id="fz_budget" type="number" value="5000" placeholder="肥料成本"><span class="u">元/分地</span></div><button onclick="runFertilizer()">產生建議</button></div><div id="fert_plan" class="result">尚未計算</div></div>
+<div class="card"><h2>病蟲害辨識 <span class="badge red">🔴 雛形</span></h2><div class="result"><b>預設流程（固定顯示）</b><ol><li>拍照：葉片正反面 + 莖部 + 果實（同地塊至少 3 株）</li><li>判讀：症狀分類（葉斑/捲葉/黃化）+ 嚴重度分級</li><li>建議：先做栽培管理，再評估用藥與輪作調整</li></ol><b>牛蕃茄常見對照</b><ul><li><b>葉斑</b>：常見早晚疫病/細菌性斑點</li><li><b>捲葉</b>：常見病毒病或粉蝨壓力</li><li><b>黃化</b>：常見根系受損、缺素或病害前期</li></ul></div><div class="tool-grid"><select id="pest_sym"><option>葉斑</option><option>捲葉</option><option>黃化</option></select><select id="pest_lv"><option>輕度</option><option>中度</option><option>重度</option></select><button onclick="runPestAI()">產生針對建議</button></div><div id="pest_ai" class="result">尚未計算</div></div>
+<div class="card"><h2>氣象預警推播 <span class="badge blue">🟢 雛形</span></h2><div class="hint">單位：風速(級)、溫度(°C)、雨量(mm/24h)</div><div class="result"><b>預設規則總覽（固定顯示）</b><ul><li><b>強風</b>：風速 >= 10 級｜影響：倒伏、落果、設施損傷</li><li><b>高溫</b>：日間高溫 >= 35°C｜影響：日灼、授粉不良、果實品質下降</li><li><b>低溫</b>：最低溫 <= 12°C｜影響：生長停滯、著果率下降、裂果風險增加</li><li><b>暴雨</b>：24h 雨量 >= 80mm｜影響：積水、根腐病與青枯病壓力上升</li></ul></div><div class="tool-grid"><div class="field"><input id="wx_wind" type="number" value="9" placeholder="最大風速"><span class="u">級</span></div><div class="field"><input id="wx_temp" type="number" value="14" placeholder="最低溫"><span class="u">°C</span></div><div class="field"><input id="wx_rain" type="number" value="80" placeholder="24h雨量"><span class="u">mm</span></div><button onclick="runWeatherAlert()">檢查目前是否觸發</button></div><div id="wx_alert" class="result">尚未計算</div></div>
+<div class="card"><h2>連作障礙預防 <span class="badge red">🔴 雛形</span></h2><div class="hint">本頁作物：牛蕃茄（FJ3）。欄位說明：連作季數＝同科作物連續種植幾季；病害次數＝最近一季發病紀錄</div><div class="result"><b>風險門檻（固定顯示）</b><ul><li>低風險：連作 < 2 季 且 病害 <=1 次</li><li>中風險：連作 2 季 或 病害 1~2 次</li><li>高風險：連作 >=3 季 或 病害 >=2 次</li></ul></div><div class="tool-grid"><div class="field"><input id="cc_seq" type="number" value="2" placeholder="同科連作季數"><span class="u">季</span></div><div class="field"><input id="cc_dis" type="number" value="1" placeholder="最近病害次數"><span class="u">次/季</span></div><button onclick="runContinuousRisk()">產生建議</button></div><div id="continuous_risk" class="result">尚未計算</div></div>
+<div class="card"><h2>採收時機預測 <span class="badge blue">🔵 雛形</span></h2><div class="hint">單位：天數(天)、溫度(°C)</div><div class="result"><b>牛蕃茄採收規則（固定顯示）</b><ul><li>主窗口：約定植後 85~110 天</li><li>高溫（>=27°C）時成熟會提早 5~7 天</li><li>建議分批採收，先採轉色果與成熟度高果</li></ul></div><div class="tool-grid"><div class="field"><input id="hv_days" type="number" value="92" placeholder="定植後天數"><span class="u">天</span></div><div class="field"><input id="hv_temp" type="number" value="24" placeholder="近7日均溫"><span class="u">°C</span></div><button onclick="runHarvestPrediction()">推算</button></div><div id="harvest_pred" class="result">尚未計算</div></div>
+<div class="card"><h2>保鮮 / 儲存建議 <span class="badge red">🔴 雛形</span></h2><div class="hint">單位：溫度(°C)、相對濕度(%)</div><div class="result"><b>牛蕃茄儲存原則（固定顯示）</b><ul><li>建議 10~13°C、85~90%RH</li><li>避免與高乙烯水果（香蕉、蘋果）同倉</li><li>先分級再入庫，可降低交叉損耗</li></ul></div><div class="tool-grid"><div class="field"><input id="st_temp" type="number" value="12" placeholder="儲存溫度"><span class="u">°C</span></div><div class="field"><input id="st_hum" type="number" value="88" placeholder="濕度"><span class="u">%</span></div><button onclick="runStorageAdvice()">產生建議</button></div><div id="storage_advice" class="result">尚未計算</div></div>
+<div class="card"><h2>產量預估 <span class="badge blue">🔵 雛形</span></h2><div class="hint">欄位說明：基準值(噸/分地)可調；季節係數＝倍率（1.0 正常、1.1 偏佳、0.9 偏差）</div><div class="result"><b>估算邏輯（固定顯示）</b><ul><li>總產量 = 面積 × 基準值 × 季節基準倍率 × 季節係數</li><li>春季常較佳、夏季常偏低（以氣候風險折算）</li></ul></div><div class="tool-grid"><div class="field"><input id="yd_area" type="number" value="1" placeholder="面積"><span class="u">分地</span></div><div class="field"><input id="yd_base" type="number" value="3.1" step="0.1" placeholder="基準值"><span class="u">噸/分地</span></div><select id="yd_season"><option>春季</option><option>夏季</option><option>秋季</option><option>冬季</option></select><div class="field"><span class="fl">季節係數</span><input id="yd_factor" type="number" value="1" step="0.1" placeholder="季節係數"><span class="u">倍率</span></div><button onclick="runYieldEstimate()">估算</button></div><div id="yield_est" class="result">尚未計算</div></div>
+<div class="card"><h2>加工建議 <span class="badge blue">🟠 雛形</span></h2><div class="hint">單位：庫存(kg)、價格(元/kg)</div><div class="result"><b>加工轉單原則（固定顯示）</b><ul><li><b>庫存門檻</b>：高庫存 > 800kg；中庫存 400~800kg；低庫存 < 400kg</li><li><b>價格門檻</b>：低價 < 40 元/kg；中價 40~50 元/kg；高價 > 50 元/kg</li><li>高庫存+低價優先加工；低庫存+高價優先鮮售</li></ul></div><div class="tool-grid"><div class="field"><input id="pr_stock" type="number" value="800" placeholder="庫存"><span class="u">kg</span></div><div class="field"><input id="pr_price" type="number" value="36" placeholder="現貨價"><span class="u">元/kg</span></div><button onclick="runProcessingAdvice()">產生建議</button></div><div id="processing_advice" class="result">尚未計算</div></div>
+<div class="card"><h2>定價策略建議 <span class="badge red">🔴 雛形</span></h2><div class="hint">欄位說明：A=外觀完整/糖度佳；B=標準可售；C=次級果。輸出為建議售價(元/kg)</div><div class="result"><b>定價規則（固定顯示）</b><ul><li>品質係數：A 1.15、B 1.00、C 0.85</li><li>通路係數：批發 1.00、直銷 1.10、電商 1.20</li><li>行情判讀：低價 < 40、中價 40~55、高價 > 55 元/kg</li></ul></div><div class="tool-grid"><select id="pc_quality"><option>A級（高品質）</option><option>B級（標準）</option><option>C級（次級）</option></select><select id="pc_channel"><option>批發</option><option>直銷</option><option>電商</option></select><button onclick="runPricingStrategy()">產生建議</button></div><div id="pricing_strategy" class="result">尚未計算</div></div>
+<div class="card"><h2>溯源履歷生成 <span class="badge blue">🟢 雛形</span></h2><button onclick="runTraceability()">生成溯源摘要</button><div id="traceability" class="result">尚未計算</div></div>
+<div class="card"><h2>財務損益分析 <span class="badge blue">🟢 雛形</span></h2><div class="hint">欄位說明：產量=每分地可售重量；售價=平均售價；輸出=收入/成本/毛利（元）</div><div class="result"><b>分析邏輯（固定顯示）</b><ul><li>總收入 = 產量 × 售價 × 面積</li><li>總成本沿用成本試算（種苗+肥料+人力）</li><li>輸出毛利、毛利率與損平售價，方便判斷是否值得種</li></ul></div><div class="tool-grid"><div class="field"><input id="pn_yield" type="number" value="3200" placeholder="每分地產量"><span class="u">kg/分</span></div><div class="field"><input id="pn_price" type="number" value="50" placeholder="平均售價"><span class="u">元/kg</span></div><button onclick="runPnL()">試算</button></div><div id="pnl" class="result">尚未計算</div></div>
+<div class="card"><h2>人力排班 <span class="badge blue">🟢 雛形</span></h2><div class="hint">單位：工作天(天)、人力(人)</div><div class="result"><b>排班原則（固定顯示）</b><ul><li>採收日優先配足人力，避免過熟與損耗</li><li>包裝/分級可次高配置，田間管理採彈性班</li><li>連續高工時時需安排輪休，避免品質與安全下降</li></ul><b>各生長期常態數據（1 分地，每週）</b><ul><li><b>育苗/定植期</b>：10~14 人天（約每天 2 人）</li><li><b>營養生長期</b>：12~16 人天（約每天 2~3 人）</li><li><b>開花著果期</b>：14~18 人天（約每天 3 人）</li><li><b>採收高峰期</b>：20~28 人天（約每天 4~5 人）</li><li><b>採後整理期</b>：8~12 人天（約每天 2 人）</li></ul></div><div class="tool-grid"><div class="field"><input id="sh_days" type="number" value="6" placeholder="本週農忙天數"><span class="u">天</span></div><div class="field"><input id="sh_workers" type="number" value="4" placeholder="可用人數"><span class="u">人</span></div><button onclick="runShiftPlan()">產生建議</button></div><div id="shift_plan" class="result">尚未計算</div></div>
+<div class="card"><h2>跨季績效比較 <span class="badge blue">🔵 雛形</span></h2><div class="hint">單位：產量(噸/分地)、成本(元/分地)、售價(元/kg)、變化率(%)</div><div class="result"><b>比較邏輯（固定顯示）</b><ul><li>看產量是否提升</li><li>看單位成本是否下降</li><li>看平均售價是否提升</li></ul></div><div class="tool-grid"><div class="field"><span class="fl">上一季產量</span><input id="sc_y_prev" type="number" value="2.9"><span class="u">噸/分地</span></div><div class="field"><span class="fl">本季產量</span><input id="sc_y_now" type="number" value="3.2"><span class="u">噸/分地</span></div><div class="field"><span class="fl">上一季成本</span><input id="sc_c_prev" type="number" value="52000"><span class="u">元/分地</span></div><div class="field"><span class="fl">本季成本</span><input id="sc_c_now" type="number" value="48000"><span class="u">元/分地</span></div><div class="field"><span class="fl">上一季售價</span><input id="sc_p_prev" type="number" value="46"><span class="u">元/kg</span></div><div class="field"><span class="fl">本季售價</span><input id="sc_p_now" type="number" value="50"><span class="u">元/kg</span></div><button onclick="runSeasonCompare()">比較</button></div><div id="season_compare" class="result">尚未計算</div></div>
+
+<div class="card"><h2>補助申請助理 <span class="badge blue">🔵 雛形</span></h2><div class="result">可直接問機器人：例如「我有 2 分地牛蕃茄，想申請灌溉設備補助，幫我整理可申請方案與所需文件」。</div><button onclick="runSubsidyAssist()">媒合方案</button><div id="subsidy_assist" class="result">尚未計算</div></div>
+<div class="card"><h2>作業日誌記錄 <span class="badge blue">🟢 雛形</span></h2><div class="result">可直接對機器人發語音或文字：例如「今天 16:30 灌溉 20 分鐘，番茄區 B 有黃葉」。</div><button onclick="runLogGuide()">查看記錄格式</button><div id="log_guide" class="result">尚未計算</div></div>
+<div class="card"><h2>IoT 感測器整合 <span class="badge blue">🔵 雛形</span></h2><button onclick="runIotAlert()">檢查異常規則</button><div id="iot_alert" class="result">尚未計算</div></div>
+<div class="card"><h2>無人機影像分析 <span class="badge blue">🔵 雛形</span></h2><button onclick="runDroneAnalysis()">查看分析流程</button><div id="drone_analysis" class="result">尚未計算</div></div>
+<div class="card"><h2>產品分級建議 <span class="badge red">🔴 雛形</span></h2><div class="result"><b>分級邏輯（固定顯示）</b><ul><li>A級：果形完整、色澤均勻、無明顯外傷</li><li>B級：輕微瑕疵，不影響食用品質</li><li>C級：外觀或硬度不足，建議加工或促銷</li></ul></div><div class="tool-grid"><select id="gd_color"><option>色澤佳</option><option>色澤普通</option><option>色澤不均</option></select><select id="gd_defect"><option>無瑕疵</option><option>輕微瑕疵</option><option>明顯瑕疵</option></select><button onclick="runGradingAdvice()">產生分級規則</button></div><div id="grading_advice" class="result">尚未計算</div></div>
+<div class="card"><h2>買家媒合 <span class="badge blue">🟠 雛形</span></h2><button onclick="runBuyerMatch()">推薦買家類型</button><div id="buyer_match" class="result">尚未計算</div></div>
+<div class="card"><h2>行銷文案生成 <span class="badge blue">🟠 雛形</span></h2><div class="result">可直接問機器人：例如「幫我寫 IG 貼文：今日牛蕃茄採收」。</div><button onclick="runCopyGuide()">查看文案模板</button><div id="copy_guide" class="result">尚未計算</div></div>
+<div class="card"><h2>出口文件輔助 <span class="badge blue">🟢 雛形</span></h2><button onclick="runExportDocs()">查看文件清單</button><div id="export_docs" class="result">尚未計算</div></div>
+<div class="card"><h2>碳足跡計算 <span class="badge blue">🔵 雛形</span></h2><button onclick="runCarbonCalc()">查看計算項目</button><div id="carbon_calc" class="result">尚未計算</div></div>
+<div class="card"><h2>學習資源推薦 <span class="badge blue">🟠 雛形</span></h2><button onclick="runLearningResources()">推薦學習方向</button><div id="learning_resources" class="result">尚未計算</div></div>
+<div class="card"><h2>農業保險諮詢 <span class="badge blue">🟠 雛形</span></h2><button onclick="runInsuranceAdvice()">查看保險建議</button><div id="insurance_advice" class="result">尚未計算</div></div>
+
 <script>
 fetch('../data/code_FJ3.json').then(r=>r.json()).then(d=>{
+  window.fj3Data=d;
   Chart.defaults.responsive = true;
   Chart.defaults.maintainAspectRatio = false;
   const latest=d.latest_price;
@@ -188,5 +290,489 @@ fetch('../data/code_FJ3.json').then(r=>r.json()).then(d=>{
     });
   });
 })
+
+function runCropAdvice(){
+  const loc=document.getElementById('loc').value;
+  const climate=document.getElementById('climate').value;
+  const soil=document.getElementById('soil').value;
+
+  const picks=[];
+  const why=[];
+  const risk=[];
+
+  if(climate==='高溫潮濕'){
+    picks.push('耐熱抗病型牛蕃茄（含抗青枯/葉斑方向）');
+    why.push('高溫高濕季可降低病害爆發與落果風險');
+    risk.push('注意雨後病害巡田與通風管理');
+  }
+  if(climate==='日夜溫差大'){
+    picks.push('高糖度、果色穩定型牛蕃茄');
+    why.push('溫差條件有利糖度與品質表現');
+    risk.push('早晚溫差大時留意裂果');
+  }
+  if(soil==='黏土'){
+    picks.push('嫁接苗（強根系砧木）');
+    why.push('提升耐濕與根系活力，減少根腐風險');
+    risk.push('排水不良時先改善畦面與側溝');
+  }
+  if(soil==='砂質土'){
+    picks.push('耐旱與果形穩定型');
+    why.push('降低水分波動造成的品質不穩');
+    risk.push('需提高灌溉頻率與有機質補充');
+  }
+  if(!picks.length){
+    picks.push('標準主力牛蕃茄品系');
+    why.push('在一般條件下兼顧產量與品質');
+  }
+
+  document.getElementById('crop_advice').innerHTML=`
+    <b>地區條件</b>：${loc} / ${climate} / ${soil}<br>
+    <b>建議品種方向</b>：${picks.join('、')}<br>
+    <b>建議用意</b>：${why.join('；')}<br>
+    <b>風險提醒</b>：${risk.length?risk.join('；'):'維持例行巡田即可'}
+  `;
+}
+
+function runRotationPlan(){
+  const n=Number(document.getElementById('seasonCount').value);
+  const goal=document.getElementById('goal').value;
+
+  let seq=['牛蕃茄','豆科綠肥','葉菜類','玉米/蔥蒜'];
+  if(goal==='穩定收益') seq=['牛蕃茄','小白菜/青江菜','牛蕃茄（分區）','萵苣/菠菜'];
+  if(goal==='土壤恢復優先') seq=['牛蕃茄','太陽麻/田菁（綠肥）','蘿蔔/芥菜','牛蕃茄（嫁接苗）'];
+  if(goal==='病蟲害風險降低') seq=['牛蕃茄','玉米/蔥蒜','豆科綠肥','牛蕃茄（小面積回種）'];
+
+  const plan=seq.slice(0,n).map((x,i)=>`第${i+1}季：${x}`).join('<br>');
+  let inter='';
+  if(goal==='穩定收益') inter='間作建議：田埂可搭配九層塔/蔥，增加現金流與分散病蟲。';
+  if(goal==='土壤恢復優先') inter='間作建議：綠肥季可混播豆科，提升有機質回補效率。';
+  if(goal==='病蟲害風險降低') inter='間作建議：非茄科季可搭配短期葉菜，降低單一病蟲壓力。';
+
+  let green='';
+  if(goal==='病蟲害風險降低' && n>=3){
+    green='第3季豆科綠肥建議：可種 <b>太陽麻、田菁、豇豆</b>；生育約 45-60 天後翻耕還田。用意是提升有機質、改善土壤團粒，並降低土傳病害壓力。';
+  }
+
+  const back='回種條件：連續一季病害低檔、土壤排水正常後，再恢復牛蕃茄主作。';
+  document.getElementById('rotation_plan').innerHTML=`<b>${goal}</b><br>${plan}<br>${inter}<br>${green}<br>${back}`;
+}
+
+function runSowingWindow(){
+  const t=Number(document.getElementById('temp').value);
+  const r=Number(document.getElementById('rain').value);
+  let level='理想播種窗口',impact='發芽整齊、苗勢穩定。',action='可安排播種與育苗。';
+
+  if(t<16||t>32||r>120){
+    level='不建議播種';
+    impact='低溫/高溫或過量降雨會造成發芽不整、病害風險提升。';
+    action='建議延後 3-5 天並重新評估；先處理排水或保溫條件。';
+  } else if((t>=16&&t<20)||(t>30&&t<=32)||(r>60)){
+    level='可播但需加強管理';
+    impact='發芽與苗勢可能不均，後續管理成本上升。';
+    action='可小面積先播，搭配遮陰/保溫與病害預防。';
+  }
+
+  document.getElementById('sowing_window').innerHTML=`
+    <b>判斷</b>：${level}<br>
+    <b>條件</b>：均溫 ${t}°C、雨量 ${r}mm/7日<br>
+    <b>可能影響</b>：${impact}<br>
+    <b>建議動作</b>：${action}
+  `;
+}
+
+function runCostEstimate(){
+  const area=Number(document.getElementById('area').value)||0;
+  const seed=Number(document.getElementById('seedling').value)||0;
+  const fert=Number(document.getElementById('fert').value)||0;
+  const labor=Number(document.getElementById('labor').value)||0;
+  const y=Number(document.getElementById('cost_yield').value)||3200;
+  const p=Number(document.getElementById('cost_price').value)||50;
+  const m=(Number(document.getElementById('cost_margin').value)||20)/100;
+
+  const seedlings=area*1800*seed;
+  const total=seedlings+(fert*area)+(labor*area);
+  const totalYield=Math.max(1, area*y);
+  const costPerKg=total/totalYield;
+  const revenue=totalYield*p;
+  const gross=revenue-total;
+  const breakEvenPrice=total/totalYield;
+  const maxCostForMargin=revenue*(1-m);
+
+  document.getElementById('cost_est').innerHTML=`
+    種苗：約 ${Math.round(seedlings).toLocaleString()} 元<br>
+    肥料：約 ${Math.round(fert*area).toLocaleString()} 元<br>
+    人力：約 ${Math.round(labor*area).toLocaleString()} 元<br>
+    <b>總成本：約 ${Math.round(total).toLocaleString()} 元</b><br>
+    每公斤成本：約 ${costPerKg.toFixed(2)} 元/kg<br>
+    損平售價（Break-even）：約 ${breakEvenPrice.toFixed(2)} 元/kg<br>
+    以售價 ${p} 元/kg 計，毛利約 ${Math.round(gross).toLocaleString()} 元<br>
+    若目標毛利率 ${Math.round(m*100)}%，總成本需壓在 <b>${Math.round(maxCostForMargin).toLocaleString()} 元以下</b>
+  `;
+}
+
+function runSoilAnalysis(){
+  const ph=Number(document.getElementById('ph').value);
+  const om=document.getElementById('om').value;
+
+  let phLevel='',phAction='';
+  if(ph<5.8){
+    phLevel='偏酸';
+    phAction='建議分次補充石灰質資材，並避免一次大量施用酸性肥。';
+  }else if(ph>7.2){
+    phLevel='偏鹼';
+    phAction='建議增加有機質、搭配酸性資材微調，避免微量元素鎖定。';
+  }else{
+    phLevel='適中';
+    phAction='目前 pH 適合牛蕃茄，可維持現行管理。';
+  }
+
+  let omAction='';
+  if(om==='low') omAction='有機質偏低：建議補堆肥、綠肥作物（如太陽麻）並提升保水保肥能力。';
+  if(om==='ok') omAction='有機質適中：維持輪作與定期補充即可。';
+  if(om==='high') omAction='有機質偏高：留意氮素過剩，避免徒長與延遲轉色。';
+
+  const ready = (ph>=6.0 && ph<=6.8 && om!=='low');
+  const readyText = ready ? '地力條件可直接進入牛蕃茄生產。' : '建議先做 1 個管理週期調整（pH/有機質）再擴大種植。';
+
+  document.getElementById('soil_analysis').innerHTML=`
+    <b>pH 判定</b>：${phLevel}（${ph}）<br>
+    <b>pH 建議</b>：${phAction}<br>
+    <b>有機質建議</b>：${omAction}<br>
+    <b>是否建議立即擴種</b>：${readyText}
+  `;
+}
+
+function runIrrigation(){
+  const soil=Number(document.getElementById('ir_soil').value||0), rain=Number(document.getElementById('ir_rain').value||0);
+  let level='',plan='',purpose='';
+
+  if(rain>=80 || soil>=70){
+    level='高含水/豪雨情境';
+    plan='今日停灌，先清排水溝；24-48 小時後再量測含水。';
+    purpose='避免根系缺氧與根腐病、青枯病風險上升。';
+  } else if(soil<35){
+    level='偏乾情境';
+    plan='清晨滴灌 20-30 分鐘，傍晚視萎凋再補 10-15 分鐘。';
+    purpose='迅速回補水分，降低落花落果與果實膨大受阻。';
+  } else if(soil>=35 && soil<=60){
+    level='適中情境';
+    plan='每日清晨維持 10-15 分鐘滴灌；連晴高溫日可微幅加量。';
+    purpose='維持根域穩定含水，降低裂果與品質波動。';
+  } else {
+    level='偏濕情境';
+    plan='隔日短灌或暫停 1 天，優先通風與土表乾燥。';
+    purpose='避免長時間高濕造成病害壓力。';
+  }
+
+  document.getElementById('irrigation').innerHTML=`
+    <b>判定</b>：${level}<br>
+    <b>建議排程</b>：${plan}<br>
+    <b>用意</b>：${purpose}
+  `;
+}
+function runFertilizer(){
+  const s=document.getElementById('fz_stage').value,a=Number(document.getElementById('fz_area').value||1),b=Number(document.getElementById('fz_budget').value||5000);
+  const total=Math.round(b*a).toLocaleString();
+  let detail='';
+  if(s==='苗期') detail='重點：促根、壯苗。建議少量多次（7-10天一次），以磷肥與有機質為主，氮肥保守。';
+  if(s==='開花期') detail='重點：保花保果。建議補鉀鈣硼，降低落花落果；保持水分穩定避免生理障礙。';
+  if(s==='結果期') detail='重點：提升果重與品質。建議每5-7天分次追肥，鉀鈣優先，避免氮過高造成軟果裂果。';
+  document.getElementById('fert_plan').innerHTML=`
+    <b>${s}施肥建議</b><br>
+    ${detail}<br>
+    <b>本次預算估算</b>：約 ${total} 元（${a} 分地）
+  `;
+}
+function runPestAI(){
+  const sym=document.getElementById('pest_sym').value,lv=document.getElementById('pest_lv').value;
+  let likely='',manage='';
+  if(sym==='葉斑'){
+    likely='疑似早疫病/晚疫病/細菌性斑點';
+    manage='先移除病葉、降低葉面潮濕時間、避免夜間噴灌。';
+  }else if(sym==='捲葉'){
+    likely='疑似病毒壓力或粉蝨危害';
+    manage='優先防治媒介昆蟲（粉蝨/蚜蟲），清除明顯病株避免擴散。';
+  }else{
+    likely='疑似根系逆境、缺素或病害前期';
+    manage='先查排水與根系狀態，再做葉面/土壤養分檢查。';
+  }
+  const action = lv==='重度' ? '立即分區隔離、停採疑似病區，必要時啟動整區防治。' : lv==='中度' ? '48 小時內完成巡田 + 局部處置，追蹤是否擴散。' : '持續觀察並做預防性管理。';
+  document.getElementById('pest_ai').innerHTML=`
+    <b>判讀</b>：${sym} / ${lv}<br>
+    <b>可能問題</b>：${likely}<br>
+    <b>優先處置</b>：${manage}<br>
+    <b>嚴重度動作</b>：${action}
+  `;
+}
+function runWeatherAlert(){
+  const w=Number(document.getElementById('wx_wind').value||0), t=Number(document.getElementById('wx_temp').value||99), r=Number(document.getElementById('wx_rain').value||0);
+  const hit=[];
+  if(w>=10) hit.push('強風預警（>=10級）');
+  if(t>=35) hit.push('高溫預警（>=35°C）');
+  if(t<=12) hit.push('低溫預警（<=12°C）');
+  if(r>=80) hit.push('豪雨預警（24h >=80mm）');
+
+  if(!hit.length){
+    document.getElementById('wx_alert').innerHTML='未達預警門檻：風速<10級、低溫>12°C、雨量<80mm。';
+    return;
+  }
+
+  const impact=[];
+  if(w>=10) impact.push('枝條倒伏、落花落果、設施受損風險上升');
+  if(t>=35) impact.push('高溫日灼、花器受損、著果率下降');
+  if(t<=12) impact.push('授粉不良、生長停滯、裂果風險增加');
+  if(r>=80) impact.push('田區積水、根腐病與青枯病壓力上升');
+
+  const action=[];
+  if(w>=10) action.push('加固棚架與支柱、提前採收成熟果');
+  if(t>=35) action.push('中午遮陰降溫、增加微噴降溫與補水');
+  if(t<=12) action.push('夜間覆蓋保溫、清晨避免灌溉過量');
+  if(r>=80) action.push('先清排水溝、雨後 24h 內做病害巡田');
+
+  document.getElementById('wx_alert').innerHTML=`
+    <b>觸發條件</b>：${hit.join('、')}<br>
+    <b>可能影響</b>：${impact.join('；')}<br>
+    <b>建議動作</b>：${action.join('；')}<br>
+    <b>推播內容</b>：已可依上述條件產生對應告警訊息。
+  `;
+}
+function runContinuousRisk(){
+  const seq=Number(document.getElementById('cc_seq').value||0), dis=Number(document.getElementById('cc_dis').value||0);
+  const crop='牛蕃茄(FJ3)';
+  const risk=seq>=3||dis>=2?'高風險':seq>=2?'中風險':'低風險';
+
+  let detail='';
+  if(risk==='高風險'){
+    detail=`
+    <ol>
+      <li><b>接下來先不要種蕃茄（至少 1-2 季）</b>，改種以下作物：</li>
+      <li><b>建議作物</b>：玉米、高粱、蔥、蒜、太陽麻、田菁。<br>用意：皆為非茄科，能強力中斷青枯病、萎凋病、根腐病循環。</li>
+      <li><b>搭配做法</b>：高溫悶棚 / 太陽能消毒 + 病株殘體清除 + 排水溝整理。<br>效果：降低土壤病原基數，讓下季回種失敗率下降。</li>
+      <li><b>回種條件</b>：連續一季病株率維持低檔、土壤排水與根系狀態穩定後，再以嫁接苗小面積回種。</li>
+    </ol>`;
+  } else if(risk==='中風險'){
+    detail=`
+    <ol>
+      <li>下一季先不要連續種牛蕃茄，改種以下任一組：</li>
+      <li><b>建議作物</b>：芥菜、蘿蔔、白菜（十字花科）或豇豆、毛豆（豆科）。</li>
+      <li><b>搭配做法</b>：翻耕還田 + 有機質補充（堆肥/綠肥）。<br>效果：改善土壤結構、降低病原壓力，為下一季回種鋪路。</li>
+      <li><b>回種條件</b>：病害次數下降、田間發病不擴散後，可回種牛蕃茄（先半面積）。</li>
+    </ol>`;
+  } else {
+    detail=`
+    <ol>
+      <li>可維持牛蕃茄生產，並穿插以下作物做預防性輪作：</li>
+      <li><b>豆科綠肥</b>：太陽麻、田菁、豇豆（用來補有機質與改善地力）。</li>
+      <li><b>短期葉菜</b>：小白菜、青江菜、萵苣、菠菜（生育期短、可快速換茬）。</li>
+      <li>持續監測病株與土壤含水，避免風險累積成中高風險。</li>
+    </ol>`;
+  }
+
+  const checkpoints = risk==='高風險'
+    ? '回種前檢查：病株率連續下降、排水正常、試種區無擴散。'
+    : risk==='中風險'
+    ? '回種前檢查：至少完成 1 季非茄科輪作，病害未擴散。'
+    : '持續監測：每週巡田，異常株即時拔除。';
+
+  document.getElementById('continuous_risk').innerHTML=`作物：${crop}<br>判定：${risk}${detail}<b>檢查點</b>：${checkpoints}`;
+}
+function runHarvestPrediction(){
+  const d=Number(document.getElementById('hv_days').value||0), t=Number(document.getElementById('hv_temp').value||24);
+  let stage='尚未進入採收窗口',why='果實可能尚未達穩定成熟度。',action='先維持水肥穩定，3-5 天後再評估。';
+
+  if((d>=85&&d<=110)||(d>=80&&t>=27)){
+    stage='進入主採收窗口';
+    why='成熟度與果實品質通常較穩定。';
+    action='建議分批採收：先採轉色果與成熟度高果，提升整體品質與售價。';
+  }
+  if(d>110){
+    stage='偏晚採收區間';
+    why='過熟風險上升，裂果與軟果機率提高。';
+    action='加快採收節奏，優先處理成熟度高果，避免品質下滑。';
+  }
+
+  document.getElementById('harvest_pred').innerHTML=`
+    <b>判定階段</b>：${stage}<br>
+    <b>判定依據</b>：定植後 ${d} 天、近7日均溫 ${t}°C<br>
+    <b>原因</b>：${why}<br>
+    <b>建議動作</b>：${action}
+  `;
+}
+function runStorageAdvice(){
+  const t=Number(document.getElementById('st_temp').value||0), h=Number(document.getElementById('st_hum').value||0);
+  const ok=(t>=10&&t<=13&&h>=85&&h<=90);
+
+  let risk='',action='';
+  if(ok){
+    risk='失水與軟化風險較低，適合短中期保鮮。';
+    action='維持現況，先出貨高成熟度批次，低成熟度批次後出。';
+  }else if(t<10){
+    risk='低溫傷害風險上升（表皮異常、風味下降）。';
+    action='提高到 10°C 以上，避免過冷造成品質受損。';
+  }else if(t>13){
+    risk='熟化加快、軟果與腐損率提高。';
+    action='降溫至 10~13°C，並加速出貨節奏。';
+  }else if(h<85){
+    risk='失水皺縮、重量損失加快。';
+    action='提升濕度至 85% 以上，並減少風直吹。';
+  }else{
+    risk='表面結露與病害風險升高。';
+    action='降濕至 90% 以下並加強通風。';
+  }
+
+  document.getElementById('storage_advice').innerHTML=`
+    <b>條件判定</b>：${ok?'理想區間':'需調整'}（${t}°C / ${h}%RH）<br>
+    <b>可能影響</b>：${risk}<br>
+    <b>建議作法</b>：${action}
+  `;
+}
+function runYieldEstimate(){
+  const a=Number(document.getElementById('yd_area').value||1), b=Number(document.getElementById('yd_base').value||3.1), f=Number(document.getElementById('yd_factor').value||1);
+  const season=document.getElementById('yd_season').value;
+  const seasonBase = season==='春季'?1.05:season==='夏季'?0.85:season==='秋季'?1.0:0.9;
+  const ton=(b*a*seasonBase*f);
+  const low=(ton*0.9).toFixed(2), high=(ton*1.1).toFixed(2);
+  const level=f>=1.1?'偏佳年景':f<=0.9?'偏差年景':'一般年景';
+
+  document.getElementById('yield_est').innerHTML=`
+    <b>季節常見區間（含倍率）</b>：${low} ~ ${high} 噸<br>
+    <b>本次預估總產量</b>：約 ${ton.toFixed(2)} 噸<br>
+    <b>年景判讀</b>：${level}<br>
+    <b>公式</b>：面積 × 基準值 × 季節基準倍率 × 季節係數 = ${a} × ${b} × ${seasonBase} × ${f}
+  `;
+}
+function runProcessingAdvice(){
+  const s=Number(document.getElementById('pr_stock').value||0), p=Number(document.getElementById('pr_price').value||0);
+
+  let stage='',plan='',purpose='';
+  if(s>800 && p<40){
+    stage='高庫存低價格';
+    plan='主推番茄醬、冷凍切丁、乾燥番茄；鮮售只留高品質批次。';
+    purpose='快速消化庫存、降低腐耗，避免價格續跌造成更大損失。';
+  }else if(s>400 && p<50){
+    stage='中庫存中低價格';
+    plan='分級出貨：A級鮮售、B/C級轉加工（醬料/料理包原料）。';
+    purpose='兼顧現金流與庫存去化，提升整體變現效率。';
+  }else{
+    stage='低庫存或價格尚可';
+    plan='以鮮售為主，僅將次級品做少量加工備援。';
+    purpose='維持高單價通路，保留加工彈性。';
+  }
+
+  document.getElementById('processing_advice').innerHTML=`
+    <b>門檻判讀</b>：庫存 ${s}kg（高>800 / 中400-800 / 低<400），價格 ${p}元/kg（低<40 / 中40-50 / 高>50）<br>
+    <b>情境判定</b>：${stage}<br>
+    <b>加工方向</b>：${plan}<br>
+    <b>策略用意</b>：${purpose}
+  `;
+}
+function runPricingStrategy(){
+  const q=document.getElementById('pc_quality').value,c=document.getElementById('pc_channel').value,m=window.fj3Data?.latest_price?.price||50;
+  const base=q.includes('A級')?1.15:q.includes('B級')?1.0:0.85;
+  const ch=c==='直銷'?1.1:c==='電商'?1.2:1.0;
+  const p=(m*base*ch);
+  const low=(p*0.95).toFixed(1), high=(p*1.05).toFixed(1);
+  const market=m<40?'低價盤':m>55?'高價盤':'中價盤';
+  const strategy = market==='低價盤' ? '建議以分級與組合包守價，避免全面降價。' : market==='高價盤' ? '可優先供高價通路並加速成熟果出貨。' : '採穩定分批出貨，維持價格帶一致。';
+  document.getElementById('pricing_strategy').innerHTML=`
+    <b>市場判讀</b>：${market}（基準 ${m} 元/kg）<br>
+    <b>建議售價</b>：${p.toFixed(1)} 元/kg（建議區間 ${low}~${high}）<br>
+    <b>計算式</b>：基準價 × 品質係數 × 通路係數 = ${m} × ${base} × ${ch}<br>
+    <b>策略建議</b>：${strategy}
+  `;
+}
+function runPnL(){
+  const area=Number(document.getElementById('area')?.value||1), y=Number(document.getElementById('pn_yield').value||3200), p=Number(document.getElementById('pn_price').value||50);
+  const cost=(area*1800*(Number(document.getElementById('seedling')?.value||8)))+(Number(document.getElementById('fert')?.value||6000)*area)+(Number(document.getElementById('labor')?.value||18000)*area);
+  const revenue=area*y*p;
+  const gross=revenue-cost;
+  const margin = revenue>0 ? (gross/revenue*100) : 0;
+  const be = (cost/Math.max(1,area*y));
+  const evalText = margin>=30?'利潤空間佳':margin>=15?'可接受，需控成本':'利潤偏薄，建議調整策略';
+
+  document.getElementById('pnl').innerHTML=`
+    <b>總收入</b>：${Math.round(revenue).toLocaleString()} 元<br>
+    <b>總成本</b>：${Math.round(cost).toLocaleString()} 元<br>
+    <b>毛利</b>：${Math.round(gross).toLocaleString()} 元<br>
+    <b>毛利率</b>：${margin.toFixed(1)}%<br>
+    <b>損平售價</b>：${be.toFixed(2)} 元/kg<br>
+    <b>判讀</b>：${evalText}
+  `;
+}
+function runShiftPlan(){
+  const d=Number(document.getElementById('sh_days').value||0), w=Number(document.getElementById('sh_workers').value||1);
+  const harvest=Math.min(w,4), pack=Math.max(1,w-1), field=Math.max(1,w-2);
+  const totalManDay=w*d;
+  const minPerDay = Math.max(2, Math.ceil(totalManDay/Math.max(1,d) * 0.7));
+  const load = totalManDay>=30?'高負載週':totalManDay>=18?'中負載週':'低負載週';
+
+  document.getElementById('shift_plan').innerHTML=`
+    <b>每天最少建議人力</b>：${minPerDay} 人/天<br>
+    <b>排班建議</b><br>
+    採收：${harvest} 人 × ${d} 天（優先）<br>
+    包裝分級：${pack} 人 × ${Math.max(2,d-2)} 天<br>
+    田間管理：${field} 人 × ${Math.max(2,d-3)} 天<br>
+    <b>總人天</b>：${totalManDay} 人天（${load}）<br>
+    <b>提醒</b>：若可用人力低於 ${minPerDay} 人/天，建議減少當日採收量或增加臨時工。
+  `;
+}
+function runSeasonCompare(){
+  const yNow=Number(document.getElementById('sc_y_now').value||0), yPrev=Number(document.getElementById('sc_y_prev').value||1);
+  const cNow=Number(document.getElementById('sc_c_now').value||0), cPrev=Number(document.getElementById('sc_c_prev').value||1);
+  const pNow=Number(document.getElementById('sc_p_now').value||0), pPrev=Number(document.getElementById('sc_p_prev').value||1);
+
+  const yDiff=((yNow-yPrev)/yPrev*100).toFixed(1);
+  const cDiff=((cNow-cPrev)/cPrev*100).toFixed(1);
+  const pDiff=((pNow-pPrev)/pPrev*100).toFixed(1);
+
+  const score = (Number(yDiff)>0?1:0) + (Number(cDiff)<0?1:0) + (Number(pDiff)>0?1:0);
+  const overall = score===3?'整體明顯進步':score===2?'整體小幅進步':score===1?'表現持平偏弱':'整體退步，需調整策略';
+
+  document.getElementById('season_compare').innerHTML=`
+    <b>產量變化</b>：${yDiff}%（${yPrev} → ${yNow} 噸/分地）<br>
+    <b>成本變化</b>：${cDiff}%（${cPrev.toLocaleString()} → ${cNow.toLocaleString()} 元/分地）<br>
+    <b>售價變化</b>：${pDiff}%（${pPrev} → ${pNow} 元/kg）<br>
+    <b>整體判讀</b>：${overall}
+  `;
+}
+
+function runSubsidyAssist(){ document.getElementById('subsidy_assist').innerHTML='可媒合：設施補助、智慧農業設備、青農貸款；並提供填表欄位對照清單。'; }
+function runLogGuide(){ document.getElementById('log_guide').innerHTML='建議格式：日期/地塊/作業內容/投入人力/異常狀況（支援語音轉文字）。'; }
+function runIotAlert(){ document.getElementById('iot_alert').innerHTML='異常門檻範例：土壤濕度<30%、棚內>35°C、濕度>90%持續2小時即告警。'; }
+function runDroneAnalysis(){ document.getElementById('drone_analysis').innerHTML='流程：空拍影像→區塊分割→異常熱點標記→回傳巡田優先順序。'; }
+function runGradingAdvice(){
+  const color=document.getElementById('gd_color').value;
+  const defect=document.getElementById('gd_defect').value;
+  let grade='B級',price='中價帶',action='標準通路販售';
+
+  if(color==='色澤佳' && defect==='無瑕疵'){ grade='A級'; price='高價帶（可加價 10~20%）'; action='優先供精品/直銷通路'; }
+  else if(defect==='明顯瑕疵' || color==='色澤不均'){ grade='C級'; price='低價帶（或加工價）'; action='建議轉加工、組合促銷或快速出清'; }
+
+  document.getElementById('grading_advice').innerHTML=`
+    <b>判定分級</b>：${grade}<br>
+    <b>建議價格帶</b>：${price}<br>
+    <b>建議去化方式</b>：${action}
+  `;
+}
+function runBuyerMatch(){ document.getElementById('buyer_match').innerHTML='媒合方向：高品質→餐廳/精品通路；量大穩定→超市；規格一致→出口商。'; }
+function runCopyGuide(){ document.getElementById('copy_guide').innerHTML='文案模板：今日採收亮點＋產地故事＋料理建議＋下單連結。'; }
+function runExportDocs(){ document.getElementById('export_docs').innerHTML='文件清單：商業發票、裝箱單、產地證明、檢疫/報關相關文件。'; }
+function runCarbonCalc(){ document.getElementById('carbon_calc').innerHTML='計算項目：肥料、用電、用水、運輸里程；輸出每公斤產品碳排估值。'; }
+function runLearningResources(){ document.getElementById('learning_resources').innerHTML='推薦主題：病蟲害整合管理、精準灌溉、採後處理、農產品牌行銷。'; }
+function runInsuranceAdvice(){ document.getElementById('insurance_advice').innerHTML='建議先評估颱風豪雨與病害風險，再比對天災保險與收入保險方案。'; }
+function runTraceability(){ document.getElementById('traceability').innerHTML='可輸出：產地、採收日、批次、用藥/施肥紀錄、QR 連結。'; }
+
+(function reorderCards(){
+  const wrap=document.querySelector('.wrap');
+  if(!wrap) return;
+  const order=['作物選種建議','輪作 / 間作規劃','最佳播種時機','成本試算','土壤 / 地力分析','補助申請助理','灌溉排程','施肥計畫','病蟲害辨識','氣象預警推播','作業日誌記錄','IoT 感測器整合','無人機影像分析','連作障礙預防','採收時機預測','產品分級建議','保鮮 / 儲存建議','產量預估','加工建議','定價策略建議','溯源履歷生成','買家媒合','行銷文案生成','出口文件輔助','財務損益分析','人力排班','跨季績效比較','碳足跡計算','學習資源推薦','農業保險諮詢'];
+  const cards=[...wrap.querySelectorAll(':scope > .card')];
+  const byTitle=new Map();
+  cards.forEach(c=>{ const h=c.querySelector('h2'); if(h){ byTitle.set(h.textContent.trim().split(' ')[0].includes('輪作')?'輪作 / 間作規劃':h.textContent.trim().replace(/\s+🔴.*|\s+🔵.*|\s+🟢.*|\s+🟠.*/,'').trim(), c);} });
+  const anchor=[...wrap.querySelectorAll(':scope > .card')].find(c=>c.querySelector('h2')?.textContent.includes('每年全台農作物災損金額'));
+  if(!anchor) return;
+  let ref=anchor;
+  order.forEach(name=>{ const card=cards.find(c=>c.querySelector('h2')&&c.querySelector('h2').textContent.includes(name)); if(card){ ref.after(card); ref=card; } });
+})();
 </script>
 </div></body></html>
