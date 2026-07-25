@@ -1,17 +1,12 @@
 {
   "code": "H1",
   "name": "柚子",
-  "updated_at": "2026-07-24T15:19:04.074463+08:00",
+  "updated_at": "2026-07-25T15:08:00.249772+08:00",
   "latest_price": {
-    "date": "2025-11-30",
-    "price": 6.22
+    "date": "2026-07-25",
+    "price": 35.14
   },
   "daily": [
-    {
-      "date": "2006-07-30",
-      "price": 21.0,
-      "volume": 602.0
-    },
     {
       "date": "2006-08-01",
       "price": 25.1,
@@ -10341,14 +10336,14 @@
       "date": "2025-11-30",
       "price": 6.22,
       "volume": 540.0
+    },
+    {
+      "date": "2026-07-25",
+      "price": 35.14,
+      "volume": 2160.0
     }
   ],
   "weekly": [
-    {
-      "key": "2006-W30",
-      "price": 21.0,
-      "volume": 602.0
-    },
     {
       "key": "2006-W31",
       "price": 23.92,
@@ -12568,14 +12563,14 @@
       "key": "2025-W48",
       "price": 7.93,
       "volume": 840.0
+    },
+    {
+      "key": "2026-W30",
+      "price": 35.14,
+      "volume": 2160.0
     }
   ],
   "monthly": [
-    {
-      "key": "2006-07",
-      "price": 21.0,
-      "volume": 602.0
-    },
     {
       "key": "2006-08",
       "price": 24.51,
@@ -13375,13 +13370,18 @@
       "key": "2025-11",
       "price": 14.93,
       "volume": 2406.0
+    },
+    {
+      "key": "2026-07",
+      "price": 35.14,
+      "volume": 2160.0
     }
   ],
   "yearly": [
     {
       "key": "2006",
       "price": 23.37,
-      "volume": 7407200.0
+      "volume": 7406598.0
     },
     {
       "key": "2007",
@@ -13477,42 +13477,37 @@
       "key": "2025",
       "price": 28.31,
       "volume": 4362129.0
+    },
+    {
+      "key": "2026",
+      "price": 35.14,
+      "volume": 2160.0
     }
   ],
   "market_compare": {
-    "month": "2025-11",
+    "month": "2026-07",
     "markets_volume": [
       {
-        "market": "台北一",
-        "price": 18.7,
-        "volume": 1546.0
+        "market": "台中市",
+        "price": 35.2,
+        "volume": 2100.0
       },
       {
         "market": "台北二",
-        "price": 8.96,
-        "volume": 720.0
-      },
-      {
-        "market": "台中市",
-        "price": 4.0,
-        "volume": 140.0
+        "price": 33.0,
+        "volume": 60.0
       }
     ],
     "markets_price": [
       {
-        "market": "台中市",
-        "price": 4.0,
-        "volume": 140.0
-      },
-      {
         "market": "台北二",
-        "price": 8.96,
-        "volume": 720.0
+        "price": 33.0,
+        "volume": 60.0
       },
       {
-        "market": "台北一",
-        "price": 18.7,
-        "volume": 1546.0
+        "market": "台中市",
+        "price": 35.2,
+        "volume": 2100.0
       }
     ]
   }
