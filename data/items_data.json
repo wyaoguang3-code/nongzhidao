@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-29T11:01:25.033933+08:00",
+  "updated_at": "2026-07-29T11:17:05.897492+08:00",
   "items": {
     "water-spinach": {
       "latest_price": null,
@@ -14000,7 +14000,7 @@
       ]
     },
     "tomato": {
-      "latest_price": 78.59,
+      "latest_price": 76.47,
       "latest_date": "2026-07-29",
       "trend_7d": [
         {
@@ -14029,7 +14029,7 @@
         },
         {
           "date": "2026-07-29",
-          "price": 78.59
+          "price": 76.47
         }
       ],
       "top_markets": [
@@ -14059,7 +14059,7 @@
           "volume": 4800.0
         }
       ],
-      "coverage": 109,
+      "coverage": 111,
       "variants": [
         {
           "sub_type": "其他",
@@ -14160,9 +14160,9 @@
         },
         {
           "sub_type": "牛番茄",
-          "latest_price": 78.97,
+          "latest_price": 76.91,
           "latest_date": "2026-07-29",
-          "coverage": 67,
+          "coverage": 68,
           "raw_latest_rows": [
             {
               "roc_date": "115/07/29",
@@ -14223,6 +14223,18 @@
               "avg_price": 87.2,
               "volume": 4800.0,
               "volume_raw": "4,800"
+            },
+            {
+              "roc_date": "115/07/29",
+              "date": "2026-07-29",
+              "market_no": "400",
+              "market": "台中市",
+              "product_code": "FJ3",
+              "product_main": "番茄",
+              "product_sub": "牛番茄",
+              "avg_price": 50.5,
+              "volume": 4297.0,
+              "volume_raw": "4,297"
             },
             {
               "roc_date": "115/07/29",
@@ -14336,6 +14348,18 @@
                   "avg_price": 87.2,
                   "volume": 4800.0,
                   "volume_raw": "4,800"
+                },
+                {
+                  "roc_date": "115/07/29",
+                  "date": "2026-07-29",
+                  "market_no": "400",
+                  "market": "台中市",
+                  "product_code": "FJ3",
+                  "product_main": "番茄",
+                  "product_sub": "牛番茄",
+                  "avg_price": 50.5,
+                  "volume": 4297.0,
+                  "volume_raw": "4,297"
                 },
                 {
                   "roc_date": "115/07/29",
@@ -14569,48 +14593,41 @@
         },
         {
           "sub_type": "粉柿",
-          "latest_price": 12.4,
-          "latest_date": "2026-07-28",
-          "coverage": 10,
+          "latest_price": 27.9,
+          "latest_date": "2026-07-29",
+          "coverage": 11,
           "raw_latest_rows": [
             {
-              "roc_date": "115/07/28",
-              "date": "2026-07-28",
-              "market_no": "104",
-              "market": "台北二",
-              "product_code": "FJ2",
-              "product_main": "番茄",
-              "product_sub": "粉柿",
-              "avg_price": 6.0,
-              "volume": 150.0,
-              "volume_raw": "150"
-            },
-            {
-              "roc_date": "115/07/28",
-              "date": "2026-07-28",
-              "market_no": "241",
-              "market": "三重區",
-              "product_code": "FJ2",
-              "product_main": "番茄",
-              "product_sub": "粉柿",
-              "avg_price": 20.3,
-              "volume": 130.0,
-              "volume_raw": "130"
-            },
-            {
-              "roc_date": "115/07/28",
-              "date": "2026-07-28",
+              "roc_date": "115/07/29",
+              "date": "2026-07-29",
               "market_no": "400",
               "market": "台中市",
               "product_code": "FJ2",
               "product_main": "番茄",
               "product_sub": "粉柿",
-              "avg_price": 12.0,
-              "volume": 170.0,
-              "volume_raw": "170"
+              "avg_price": 27.9,
+              "volume": 200.0,
+              "volume_raw": "200"
             }
           ],
           "recent_raw_by_date": [
+            {
+              "date": "2026-07-29",
+              "rows": [
+                {
+                  "roc_date": "115/07/29",
+                  "date": "2026-07-29",
+                  "market_no": "400",
+                  "market": "台中市",
+                  "product_code": "FJ2",
+                  "product_main": "番茄",
+                  "product_sub": "粉柿",
+                  "avg_price": 27.9,
+                  "volume": 200.0,
+                  "volume_raw": "200"
+                }
+              ]
+            },
             {
               "date": "2026-07-28",
               "rows": [
@@ -14678,47 +14695,6 @@
                   "avg_price": 17.2,
                   "volume": 60.0,
                   "volume_raw": "60"
-                }
-              ]
-            },
-            {
-              "date": "2026-07-25",
-              "rows": [
-                {
-                  "roc_date": "115/07/25",
-                  "date": "2026-07-25",
-                  "market_no": "104",
-                  "market": "台北二",
-                  "product_code": "FJ2",
-                  "product_main": "番茄",
-                  "product_sub": "粉柿",
-                  "avg_price": 50.0,
-                  "volume": 20.0,
-                  "volume_raw": "20"
-                },
-                {
-                  "roc_date": "115/07/25",
-                  "date": "2026-07-25",
-                  "market_no": "220",
-                  "market": "板橋區",
-                  "product_code": "FJ2",
-                  "product_main": "番茄",
-                  "product_sub": "粉柿",
-                  "avg_price": 6.5,
-                  "volume": 80.0,
-                  "volume_raw": "80"
-                },
-                {
-                  "roc_date": "115/07/25",
-                  "date": "2026-07-25",
-                  "market_no": "400",
-                  "market": "台中市",
-                  "product_code": "FJ2",
-                  "product_main": "番茄",
-                  "product_sub": "粉柿",
-                  "avg_price": 8.2,
-                  "volume": 360.0,
-                  "volume_raw": "360"
                 }
               ]
             }
