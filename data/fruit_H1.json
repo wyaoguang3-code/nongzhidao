@@ -1,17 +1,12 @@
 {
   "code": "H1",
   "name": "柚子",
-  "updated_at": "2026-08-01T15:42:01.394526+08:00",
+  "updated_at": "2026-08-02T15:03:49.309179+08:00",
   "latest_price": {
-    "date": "2026-08-01",
-    "price": 60.0
+    "date": "2026-08-02",
+    "price": 26.09
   },
   "daily": [
-    {
-      "date": "2006-08-07",
-      "price": 22.35,
-      "volume": 30245.0
-    },
     {
       "date": "2006-08-08",
       "price": 17.48,
@@ -10336,13 +10331,18 @@
       "date": "2026-08-01",
       "price": 60.0,
       "volume": 18.0
+    },
+    {
+      "date": "2026-08-02",
+      "price": 26.09,
+      "volume": 342.0
     }
   ],
   "weekly": [
     {
       "key": "2006-W32",
-      "price": 22.6,
-      "volume": 59668.0
+      "price": 22.86,
+      "volume": 29423.0
     },
     {
       "key": "2006-W33",
@@ -12561,15 +12561,15 @@
     },
     {
       "key": "2026-W31",
-      "price": 37.15,
-      "volume": 5306.0
+      "price": 36.48,
+      "volume": 5648.0
     }
   ],
   "monthly": [
     {
       "key": "2006-08",
-      "price": 24.58,
-      "volume": 736952.0
+      "price": 24.68,
+      "volume": 706707.0
     },
     {
       "key": "2006-09",
@@ -13373,15 +13373,15 @@
     },
     {
       "key": "2026-08",
-      "price": 60.0,
-      "volume": 18.0
+      "price": 27.79,
+      "volume": 360.0
     }
   ],
   "yearly": [
     {
       "key": "2006",
-      "price": 23.36,
-      "volume": 7323445.0
+      "price": 23.37,
+      "volume": 7293200.0
     },
     {
       "key": "2007",
@@ -13480,24 +13480,34 @@
     },
     {
       "key": "2026",
-      "price": 36.93,
-      "volume": 8198.0
+      "price": 36.5,
+      "volume": 8540.0
     }
   ],
   "market_compare": {
     "month": "2026-08",
     "markets_volume": [
       {
+        "market": "台北一",
+        "price": 22.5,
+        "volume": 210.0
+      },
+      {
         "market": "三重區",
-        "price": 60.0,
-        "volume": 18.0
+        "price": 35.18,
+        "volume": 150.0
       }
     ],
     "markets_price": [
       {
+        "market": "台北一",
+        "price": 22.5,
+        "volume": 210.0
+      },
+      {
         "market": "三重區",
-        "price": 60.0,
-        "volume": 18.0
+        "price": 35.18,
+        "volume": 150.0
       }
     ]
   }
