@@ -1,10 +1,10 @@
 {
   "code": "103##06",
   "name": "白菜",
-  "updated_at": "2026-07-29T14:02:57.549294+08:00",
+  "updated_at": "2026-08-12T14:00:36.821355+08:00",
   "source": "https://agrstat.moa.gov.tw/sdweb/public/trade/TradeCoa.aspx",
   "params": {
-    "date_range": "105/01 - 115/06",
+    "date_range": "105/01 - 115/07",
     "cycle": "年月",
     "ie_type": "出口",
     "currency": "新台幣",
@@ -3192,6 +3192,10 @@
         "115-06": {
           "w": 2.0,
           "v": 155.0
+        },
+        "115-07": {
+          "w": 3.0,
+          "v": 318.0
         }
       }
     },
