@@ -1,10 +1,10 @@
 {
   "code": "T1",
   "name": "西瓜 大西瓜",
-  "updated_at": "2026-09-01T08:03:13.820165+08:00",
+  "updated_at": "2026-09-01T08:17:46.279006+08:00",
   "latest_price": {
     "date": "2026-09-01",
-    "price": 12.7
+    "price": 18.11
   },
   "daily": [
     {
@@ -35169,8 +35169,8 @@
     },
     {
       "date": "2026-09-01",
-      "price": 12.7,
-      "volume": 42567.0
+      "price": 18.11,
+      "volume": 113559.0
     }
   ],
   "weekly": [
@@ -40391,8 +40391,8 @@
     },
     {
       "key": "2026-W36",
-      "price": 12.95,
-      "volume": 43767.0
+      "price": 18.15,
+      "volume": 114759.0
     }
   ],
   "monthly": [
@@ -41598,8 +41598,8 @@
     },
     {
       "key": "2026-09",
-      "price": 12.7,
-      "volume": 42567.0
+      "price": 18.11,
+      "volume": 113559.0
     }
   ],
   "yearly": [
@@ -41705,17 +41705,27 @@
     },
     {
       "key": "2026",
-      "price": 16.8,
-      "volume": 27526357.0
+      "price": 16.81,
+      "volume": 27597349.0
     }
   ],
   "market_compare": {
     "month": "2026-09",
     "markets_volume": [
       {
+        "market": "三重區",
+        "price": 20.7,
+        "volume": 56942.0
+      },
+      {
         "market": "台北一",
         "price": 12.7,
         "volume": 42567.0
+      },
+      {
+        "market": "高雄市",
+        "price": 24.0,
+        "volume": 14050.0
       }
     ],
     "markets_price": [
@@ -41723,6 +41733,16 @@
         "market": "台北一",
         "price": 12.7,
         "volume": 42567.0
+      },
+      {
+        "market": "三重區",
+        "price": 20.7,
+        "volume": 56942.0
+      },
+      {
+        "market": "高雄市",
+        "price": 24.0,
+        "volume": 14050.0
       }
     ]
   }
