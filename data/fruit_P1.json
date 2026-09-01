@@ -1,17 +1,12 @@
 {
   "code": "P1",
   "name": "珍珠芭樂",
-  "updated_at": "2026-08-31T14:19:19.167395+08:00",
+  "updated_at": "2026-09-01T14:24:20.301710+08:00",
   "latest_price": {
-    "date": "2026-08-31",
-    "price": 57.2
+    "date": "2026-09-01",
+    "price": 58.11
   },
   "daily": [
-    {
-      "date": "2006-09-06",
-      "price": 39.71,
-      "volume": 73700.0
-    },
     {
       "date": "2006-09-07",
       "price": 40.66,
@@ -35354,8 +35349,8 @@
     },
     {
       "date": "2026-08-27",
-      "price": 73.15,
-      "volume": 93689.0
+      "price": 72.91,
+      "volume": 94729.0
     },
     {
       "date": "2026-08-28",
@@ -35376,13 +35371,18 @@
       "date": "2026-08-31",
       "price": 57.2,
       "volume": 1884.0
+    },
+    {
+      "date": "2026-09-01",
+      "price": 58.11,
+      "volume": 104125.0
     }
   ],
   "weekly": [
     {
       "key": "2006-W36",
-      "price": 40.73,
-      "volume": 393455.0
+      "price": 40.97,
+      "volume": 319755.0
     },
     {
       "key": "2006-W37",
@@ -40591,20 +40591,20 @@
     },
     {
       "key": "2026-W35",
-      "price": 69.77,
-      "volume": 363029.0
+      "price": 69.72,
+      "volume": 364069.0
     },
     {
       "key": "2026-W36",
-      "price": 57.2,
-      "volume": 1884.0
+      "price": 58.09,
+      "volume": 106009.0
     }
   ],
   "monthly": [
     {
       "key": "2006-09",
-      "price": 39.76,
-      "volume": 1982803.0
+      "price": 39.77,
+      "volume": 1909103.0
     },
     {
       "key": "2006-10",
@@ -41799,14 +41799,19 @@
     {
       "key": "2026-08",
       "price": 60.12,
-      "volume": 2111059.0
+      "volume": 2112099.0
+    },
+    {
+      "key": "2026-09",
+      "price": 58.11,
+      "volume": 104125.0
     }
   ],
   "yearly": [
     {
       "key": "2006",
-      "price": 27.05,
-      "volume": 13093731.0
+      "price": 26.97,
+      "volume": 13020031.0
     },
     {
       "key": "2007",
@@ -41905,144 +41910,114 @@
     },
     {
       "key": "2026",
-      "price": 34.9,
-      "volume": 26510531.0
+      "price": 34.99,
+      "volume": 26615696.0
     }
   ],
   "market_compare": {
-    "month": "2026-08",
+    "month": "2026-09",
     "markets_volume": [
       {
         "market": "台北一",
-        "price": 75.66,
-        "volume": 555887.0
-      },
-      {
-        "market": "台中市",
-        "price": 45.72,
-        "volume": 457726.0
+        "price": 62.0,
+        "volume": 29125.0
       },
       {
         "market": "三重區",
-        "price": 58.79,
-        "volume": 433238.0
+        "price": 56.6,
+        "volume": 27123.0
+      },
+      {
+        "market": "台中市",
+        "price": 54.0,
+        "volume": 21515.0
       },
       {
         "market": "台北二",
-        "price": 68.82,
-        "volume": 282092.0
+        "price": 64.2,
+        "volume": 10789.0
       },
       {
         "market": "板橋區",
-        "price": 58.02,
-        "volume": 83122.0
-      },
-      {
-        "market": "宜蘭市",
-        "price": 68.22,
-        "volume": 77300.0
-      },
-      {
-        "market": "嘉義市",
-        "price": 38.67,
-        "volume": 70400.0
-      },
-      {
-        "market": "台東市",
-        "price": 52.43,
-        "volume": 38708.0
-      },
-      {
-        "market": "豐原區",
-        "price": 32.55,
-        "volume": 36126.0
-      },
-      {
-        "market": "鳳山區",
-        "price": 42.01,
-        "volume": 31860.0
-      },
-      {
-        "market": "桃 農",
-        "price": 28.98,
-        "volume": 25663.0
+        "price": 59.7,
+        "volume": 7518.0
       },
       {
         "market": "高雄市",
-        "price": 51.03,
-        "volume": 18127.0
+        "price": 50.1,
+        "volume": 3668.0
       },
       {
-        "market": "東勢區",
-        "price": 27.31,
-        "volume": 810.0
+        "market": "嘉義市",
+        "price": 60.0,
+        "volume": 1700.0
+      },
+      {
+        "market": "鳳山區",
+        "price": 42.5,
+        "volume": 1430.0
+      },
+      {
+        "market": "桃 農",
+        "price": 46.8,
+        "volume": 819.0
+      },
+      {
+        "market": "豐原區",
+        "price": 48.6,
+        "volume": 438.0
       }
     ],
     "markets_price": [
       {
-        "market": "東勢區",
-        "price": 27.31,
-        "volume": 810.0
+        "market": "鳳山區",
+        "price": 42.5,
+        "volume": 1430.0
       },
       {
         "market": "桃 農",
-        "price": 28.98,
-        "volume": 25663.0
+        "price": 46.8,
+        "volume": 819.0
       },
       {
         "market": "豐原區",
-        "price": 32.55,
-        "volume": 36126.0
-      },
-      {
-        "market": "嘉義市",
-        "price": 38.67,
-        "volume": 70400.0
-      },
-      {
-        "market": "鳳山區",
-        "price": 42.01,
-        "volume": 31860.0
-      },
-      {
-        "market": "台中市",
-        "price": 45.72,
-        "volume": 457726.0
+        "price": 48.6,
+        "volume": 438.0
       },
       {
         "market": "高雄市",
-        "price": 51.03,
-        "volume": 18127.0
+        "price": 50.1,
+        "volume": 3668.0
       },
       {
-        "market": "台東市",
-        "price": 52.43,
-        "volume": 38708.0
-      },
-      {
-        "market": "板橋區",
-        "price": 58.02,
-        "volume": 83122.0
+        "market": "台中市",
+        "price": 54.0,
+        "volume": 21515.0
       },
       {
         "market": "三重區",
-        "price": 58.79,
-        "volume": 433238.0
+        "price": 56.6,
+        "volume": 27123.0
       },
       {
-        "market": "宜蘭市",
-        "price": 68.22,
-        "volume": 77300.0
+        "market": "板橋區",
+        "price": 59.7,
+        "volume": 7518.0
       },
       {
-        "market": "台北二",
-        "price": 68.82,
-        "volume": 282092.0
+        "market": "嘉義市",
+        "price": 60.0,
+        "volume": 1700.0
       },
       {
         "market": "台北一",
-        "price": 75.66,
-        "volume": 555887.0
+        "price": 62.0,
+        "volume": 29125.0
+      },
+      {
+        "market": "台北二",
+        "price": 64.2,
+        "volume": 10789.0
       }
     ]
   }
