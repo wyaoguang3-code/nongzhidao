@@ -1,17 +1,12 @@
 {
   "code": "MD1",
   "name": "香菇 (濕香菇)",
-  "updated_at": "2026-09-04T15:17:51.369126+08:00",
+  "updated_at": "2026-09-05T15:05:35.922289+08:00",
   "latest_price": {
-    "date": "2026-09-04",
-    "price": 141.46
+    "date": "2026-09-05",
+    "price": 135.75
   },
   "daily": [
-    {
-      "date": "2006-09-10",
-      "price": 76.29,
-      "volume": 3963.0
-    },
     {
       "date": "2006-09-12",
       "price": 75.69,
@@ -30771,14 +30766,14 @@
       "date": "2026-09-04",
       "price": 141.46,
       "volume": 3342.0
+    },
+    {
+      "date": "2026-09-05",
+      "price": 135.75,
+      "volume": 3184.0
     }
   ],
   "weekly": [
-    {
-      "key": "2006-W36",
-      "price": 76.29,
-      "volume": 3963.0
-    },
     {
       "key": "2006-W37",
       "price": 74.78,
@@ -35991,15 +35986,15 @@
     },
     {
       "key": "2026-W36",
-      "price": 137.73,
-      "volume": 13241.0
+      "price": 137.34,
+      "volume": 16425.0
     }
   ],
   "monthly": [
     {
       "key": "2006-09",
-      "price": 75.05,
-      "volume": 70564.0
+      "price": 74.98,
+      "volume": 66601.0
     },
     {
       "key": "2006-10",
@@ -37198,15 +37193,15 @@
     },
     {
       "key": "2026-09",
-      "price": 137.73,
-      "volume": 13241.0
+      "price": 137.34,
+      "volume": 16425.0
     }
   ],
   "yearly": [
     {
       "key": "2006",
-      "price": 74.07,
-      "volume": 423425.0
+      "price": 74.05,
+      "volume": 419462.0
     },
     {
       "key": "2007",
@@ -37305,8 +37300,8 @@
     },
     {
       "key": "2026",
-      "price": 100.94,
-      "volume": 841596.0
+      "price": 101.07,
+      "volume": 844780.0
     }
   ],
   "market_compare": {
@@ -37314,75 +37309,95 @@
     "markets_volume": [
       {
         "market": "台北一",
-        "price": 160.79,
-        "volume": 4833.0
+        "price": 159.88,
+        "volume": 5919.0
       },
       {
         "market": "台北二",
-        "price": 158.29,
-        "volume": 4128.0
+        "price": 156.15,
+        "volume": 5256.0
       },
       {
         "market": "板橋區",
-        "price": 45.54,
-        "volume": 1999.0
+        "price": 45.43,
+        "volume": 2323.0
       },
       {
         "market": "高雄市",
         "price": 120.0,
-        "volume": 1040.0
+        "volume": 1300.0
       },
       {
         "market": "桃 農",
-        "price": 152.63,
-        "volume": 903.0
+        "price": 147.77,
+        "volume": 1185.0
       },
       {
         "market": "台中市",
-        "price": 115.38,
-        "volume": 242.0
+        "price": 116.3,
+        "volume": 302.0
       },
       {
         "market": "豐原區",
         "price": 120.0,
-        "volume": 96.0
+        "volume": 128.0
+      },
+      {
+        "market": "三重區",
+        "price": 152.0,
+        "volume": 6.0
+      },
+      {
+        "market": "屏東市",
+        "price": 133.3,
+        "volume": 6.0
       }
     ],
     "markets_price": [
       {
         "market": "板橋區",
-        "price": 45.54,
-        "volume": 1999.0
+        "price": 45.43,
+        "volume": 2323.0
       },
       {
         "market": "台中市",
-        "price": 115.38,
-        "volume": 242.0
+        "price": 116.3,
+        "volume": 302.0
       },
       {
         "market": "豐原區",
         "price": 120.0,
-        "volume": 96.0
+        "volume": 128.0
       },
       {
         "market": "高雄市",
         "price": 120.0,
-        "volume": 1040.0
+        "volume": 1300.0
+      },
+      {
+        "market": "屏東市",
+        "price": 133.3,
+        "volume": 6.0
       },
       {
         "market": "桃 農",
-        "price": 152.63,
-        "volume": 903.0
+        "price": 147.77,
+        "volume": 1185.0
+      },
+      {
+        "market": "三重區",
+        "price": 152.0,
+        "volume": 6.0
       },
       {
         "market": "台北二",
-        "price": 158.29,
-        "volume": 4128.0
+        "price": 156.15,
+        "volume": 5256.0
       },
       {
         "market": "台北一",
-        "price": 160.79,
-        "volume": 4833.0
+        "price": 159.88,
+        "volume": 5919.0
       }
     ]
   }
