@@ -1,17 +1,12 @@
 {
   "code": "SG1",
   "name": "大蒜 (硬梗)",
-  "updated_at": "2026-09-23T14:11:24.453123+08:00",
+  "updated_at": "2026-09-24T14:11:48.618606+08:00",
   "latest_price": {
-    "date": "2026-09-22",
-    "price": 68.4
+    "date": "2026-09-24",
+    "price": 37.02
   },
   "daily": [
-    {
-      "date": "2006-09-29",
-      "price": 36.2,
-      "volume": 1548.0
-    },
     {
       "date": "2006-09-30",
       "price": 37.2,
@@ -31486,13 +31481,23 @@
       "date": "2026-09-22",
       "price": 68.4,
       "volume": 3663.0
+    },
+    {
+      "date": "2026-09-23",
+      "price": 59.6,
+      "volume": 458.0
+    },
+    {
+      "date": "2026-09-24",
+      "price": 37.02,
+      "volume": 631.0
     }
   ],
   "weekly": [
     {
       "key": "2006-W39",
-      "price": 36.73,
-      "volume": 5035.0
+      "price": 36.96,
+      "volume": 3487.0
     },
     {
       "key": "2006-W40",
@@ -36706,15 +36711,15 @@
     },
     {
       "key": "2026-W39",
-      "price": 68.4,
-      "volume": 3663.0
+      "price": 63.39,
+      "volume": 4752.0
     }
   ],
   "monthly": [
     {
       "key": "2006-09",
-      "price": 36.67,
-      "volume": 2898.0
+      "price": 37.2,
+      "volume": 1350.0
     },
     {
       "key": "2006-10",
@@ -37913,15 +37918,15 @@
     },
     {
       "key": "2026-09",
-      "price": 65.88,
-      "volume": 12200.0
+      "price": 64.3,
+      "volume": 13289.0
     }
   ],
   "yearly": [
     {
       "key": "2006",
-      "price": 40.46,
-      "volume": 392221.0
+      "price": 40.48,
+      "volume": 390673.0
     },
     {
       "key": "2007",
@@ -38020,8 +38025,8 @@
     },
     {
       "key": "2026",
-      "price": 44.48,
-      "volume": 360348.0
+      "price": 44.49,
+      "volume": 361437.0
     }
   ],
   "market_compare": {
@@ -38029,30 +38034,30 @@
     "markets_volume": [
       {
         "market": "屏東市",
-        "price": 64.57,
-        "volume": 12010.0
+        "price": 64.0,
+        "volume": 12899.0
+      },
+      {
+        "market": "鳳山區",
+        "price": 4.77,
+        "volume": 240.0
       },
       {
         "market": "桃 農",
         "price": 185.0,
         "volume": 150.0
-      },
-      {
-        "market": "鳳山區",
-        "price": 13.6,
-        "volume": 40.0
       }
     ],
     "markets_price": [
       {
         "market": "鳳山區",
-        "price": 13.6,
-        "volume": 40.0
+        "price": 4.77,
+        "volume": 240.0
       },
       {
         "market": "屏東市",
-        "price": 64.57,
-        "volume": 12010.0
+        "price": 64.0,
+        "volume": 12899.0
       },
       {
         "market": "桃 農",
