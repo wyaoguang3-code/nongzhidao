@@ -1,10 +1,10 @@
 {
   "code": "R1",
   "name": "愛文芒果",
-  "updated_at": "2026-09-30T14:49:21.005647+08:00",
+  "updated_at": "2026-10-01T14:42:47.643438+08:00",
   "latest_price": {
-    "date": "2026-09-30",
-    "price": 136.5
+    "date": "2026-10-01",
+    "price": 130.07
   },
   "daily": [
     {
@@ -21426,6 +21426,11 @@
       "date": "2026-09-30",
       "price": 136.5,
       "volume": 1350.0
+    },
+    {
+      "date": "2026-10-01",
+      "price": 130.07,
+      "volume": 1355.0
     }
   ],
   "weekly": [
@@ -25136,8 +25141,8 @@
     },
     {
       "key": "2026-W40",
-      "price": 108.72,
-      "volume": 8829.0
+      "price": 111.56,
+      "volume": 10184.0
     }
   ],
   "monthly": [
@@ -26120,6 +26125,11 @@
       "key": "2026-09",
       "price": 102.67,
       "volume": 184065.0
+    },
+    {
+      "key": "2026-10",
+      "price": 130.07,
+      "volume": 1355.0
     }
   ],
   "yearly": [
@@ -26225,84 +26235,44 @@
     },
     {
       "key": "2026",
-      "price": 59.27,
-      "volume": 17220149.0
+      "price": 59.28,
+      "volume": 17221504.0
     }
   ],
   "market_compare": {
-    "month": "2026-09",
+    "month": "2026-10",
     "markets_volume": [
       {
         "market": "台北二",
-        "price": 106.54,
-        "volume": 57754.0
-      },
-      {
-        "market": "宜蘭市",
-        "price": 91.73,
-        "volume": 55600.0
+        "price": 143.5,
+        "volume": 684.0
       },
       {
         "market": "台北一",
-        "price": 128.19,
-        "volume": 44181.0
+        "price": 118.7,
+        "volume": 575.0
       },
       {
         "market": "三重區",
-        "price": 72.8,
-        "volume": 18557.0
-      },
-      {
-        "market": "台中市",
-        "price": 81.28,
-        "volume": 4625.0
-      },
-      {
-        "market": "板橋區",
-        "price": 73.98,
-        "volume": 3078.0
-      },
-      {
-        "market": "台東市",
-        "price": 96.8,
-        "volume": 270.0
+        "price": 102.5,
+        "volume": 96.0
       }
     ],
     "markets_price": [
       {
         "market": "三重區",
-        "price": 72.8,
-        "volume": 18557.0
-      },
-      {
-        "market": "板橋區",
-        "price": 73.98,
-        "volume": 3078.0
-      },
-      {
-        "market": "台中市",
-        "price": 81.28,
-        "volume": 4625.0
-      },
-      {
-        "market": "宜蘭市",
-        "price": 91.73,
-        "volume": 55600.0
-      },
-      {
-        "market": "台東市",
-        "price": 96.8,
-        "volume": 270.0
-      },
-      {
-        "market": "台北二",
-        "price": 106.54,
-        "volume": 57754.0
+        "price": 102.5,
+        "volume": 96.0
       },
       {
         "market": "台北一",
-        "price": 128.19,
-        "volume": 44181.0
+        "price": 118.7,
+        "volume": 575.0
+      },
+      {
+        "market": "台北二",
+        "price": 143.5,
+        "volume": 684.0
       }
     ]
   }
