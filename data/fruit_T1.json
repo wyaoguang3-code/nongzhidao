@@ -1,17 +1,12 @@
 {
   "code": "T1",
   "name": "西瓜 大西瓜",
-  "updated_at": "2026-09-30T13:03:04.733632+08:00",
+  "updated_at": "2026-10-01T08:03:04.847310+08:00",
   "latest_price": {
-    "date": "2026-09-30",
-    "price": 15.9
+    "date": "2026-10-01",
+    "price": 12.2
   },
   "daily": [
-    {
-      "date": "2006-10-06",
-      "price": 12.92,
-      "volume": 90478.0
-    },
     {
       "date": "2006-10-07",
       "price": 12.79,
@@ -35169,15 +35164,20 @@
     },
     {
       "date": "2026-09-30",
-      "price": 15.9,
-      "volume": 85210.0
+      "price": 15.96,
+      "volume": 86170.0
+    },
+    {
+      "date": "2026-10-01",
+      "price": 12.2,
+      "volume": 9150.0
     }
   ],
   "weekly": [
     {
       "key": "2006-W40",
-      "price": 12.87,
-      "volume": 144938.0
+      "price": 12.78,
+      "volume": 54460.0
     },
     {
       "key": "2006-W41",
@@ -40391,15 +40391,15 @@
     },
     {
       "key": "2026-W40",
-      "price": 15.25,
-      "volume": 215593.0
+      "price": 15.15,
+      "volume": 225703.0
     }
   ],
   "monthly": [
     {
       "key": "2006-10",
-      "price": 11.32,
-      "volume": 2082211.0
+      "price": 11.25,
+      "volume": 1991733.0
     },
     {
       "key": "2006-11",
@@ -41594,14 +41594,19 @@
     {
       "key": "2026-09",
       "price": 16.29,
-      "volume": 1812248.0
+      "volume": 1813208.0
+    },
+    {
+      "key": "2026-10",
+      "price": 12.2,
+      "volume": 9150.0
     }
   ],
   "yearly": [
     {
       "key": "2006",
-      "price": 11.12,
-      "volume": 4956081.0
+      "price": 11.08,
+      "volume": 4865603.0
     },
     {
       "key": "2007",
@@ -41701,123 +41706,23 @@
     {
       "key": "2026",
       "price": 16.78,
-      "volume": 29329908.0
+      "volume": 29340018.0
     }
   ],
   "market_compare": {
-    "month": "2026-09",
+    "month": "2026-10",
     "markets_volume": [
       {
-        "market": "鳳山區",
-        "price": 15.11,
-        "volume": 414450.0
-      },
-      {
         "market": "台北一",
-        "price": 12.43,
-        "volume": 411296.0
-      },
-      {
-        "market": "三重區",
-        "price": 19.21,
-        "volume": 380803.0
-      },
-      {
-        "market": "台中市",
-        "price": 16.33,
-        "volume": 343370.0
-      },
-      {
-        "market": "高雄市",
-        "price": 20.28,
-        "volume": 126460.0
-      },
-      {
-        "market": "嘉義市",
-        "price": 21.35,
-        "volume": 48000.0
-      },
-      {
-        "market": "板橋區",
-        "price": 18.11,
-        "volume": 35261.0
-      },
-      {
-        "market": "台東市",
-        "price": 22.22,
-        "volume": 26130.0
-      },
-      {
-        "market": "台北二",
-        "price": 16.09,
-        "volume": 15928.0
-      },
-      {
-        "market": "宜蘭市",
-        "price": 15.0,
-        "volume": 9550.0
-      },
-      {
-        "market": "豐原區",
-        "price": 15.0,
-        "volume": 1000.0
+        "price": 12.2,
+        "volume": 9150.0
       }
     ],
     "markets_price": [
       {
         "market": "台北一",
-        "price": 12.43,
-        "volume": 411296.0
-      },
-      {
-        "market": "宜蘭市",
-        "price": 15.0,
-        "volume": 9550.0
-      },
-      {
-        "market": "豐原區",
-        "price": 15.0,
-        "volume": 1000.0
-      },
-      {
-        "market": "鳳山區",
-        "price": 15.11,
-        "volume": 414450.0
-      },
-      {
-        "market": "台北二",
-        "price": 16.09,
-        "volume": 15928.0
-      },
-      {
-        "market": "台中市",
-        "price": 16.33,
-        "volume": 343370.0
-      },
-      {
-        "market": "板橋區",
-        "price": 18.11,
-        "volume": 35261.0
-      },
-      {
-        "market": "三重區",
-        "price": 19.21,
-        "volume": 380803.0
-      },
-      {
-        "market": "高雄市",
-        "price": 20.28,
-        "volume": 126460.0
-      },
-      {
-        "market": "嘉義市",
-        "price": 21.35,
-        "volume": 48000.0
-      },
-      {
-        "market": "台東市",
-        "price": 22.22,
-        "volume": 26130.0
+        "price": 12.2,
+        "volume": 9150.0
       }
     ]
   }
