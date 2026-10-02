@@ -1,10 +1,10 @@
 {
   "code": "SH2",
   "name": "綠竹筍",
-  "updated_at": "2026-10-01T14:04:42.711133+08:00",
+  "updated_at": "2026-10-02T14:04:22.267348+08:00",
   "latest_price": {
-    "date": "2026-10-01",
-    "price": 92.55
+    "date": "2026-10-02",
+    "price": 150.15
   },
   "daily": [
     {
@@ -29251,6 +29251,11 @@
       "date": "2026-10-01",
       "price": 92.55,
       "volume": 433.0
+    },
+    {
+      "date": "2026-10-02",
+      "price": 150.15,
+      "volume": 1936.0
     }
   ],
   "weekly": [
@@ -34451,8 +34456,8 @@
     },
     {
       "key": "2026-W40",
-      "price": 74.55,
-      "volume": 9117.0
+      "price": 87.79,
+      "volume": 11053.0
     }
   ],
   "monthly": [
@@ -35658,8 +35663,8 @@
     },
     {
       "key": "2026-10",
-      "price": 92.55,
-      "volume": 433.0
+      "price": 139.62,
+      "volume": 2369.0
     }
   ],
   "yearly": [
@@ -35765,8 +35770,8 @@
     },
     {
       "key": "2026",
-      "price": 117.12,
-      "volume": 1258646.0
+      "price": 117.17,
+      "volume": 1260582.0
     }
   ],
   "market_compare": {
@@ -35774,35 +35779,45 @@
     "markets_volume": [
       {
         "market": "台北一",
-        "price": 83.2,
-        "volume": 323.0
+        "price": 151.58,
+        "volume": 1855.0
       },
       {
         "market": "台北二",
-        "price": 125.0,
-        "volume": 100.0
+        "price": 99.36,
+        "volume": 474.0
       },
       {
         "market": "台中市",
         "price": 70.0,
-        "volume": 10.0
+        "volume": 24.0
+      },
+      {
+        "market": "三重區",
+        "price": 50.0,
+        "volume": 16.0
       }
     ],
     "markets_price": [
       {
-        "market": "台中市",
-        "price": 70.0,
-        "volume": 10.0
+        "market": "三重區",
+        "price": 50.0,
+        "volume": 16.0
       },
       {
-        "market": "台北一",
-        "price": 83.2,
-        "volume": 323.0
+        "market": "台中市",
+        "price": 70.0,
+        "volume": 24.0
       },
       {
         "market": "台北二",
-        "price": 125.0,
-        "volume": 100.0
+        "price": 99.36,
+        "volume": 474.0
+      },
+      {
+        "market": "台北一",
+        "price": 151.58,
+        "volume": 1855.0
       }
     ]
   }
