@@ -1,17 +1,12 @@
 {
   "code": "45",
   "name": "草莓",
-  "updated_at": "2026-11-02T16:30:12.567150+08:00",
+  "updated_at": "2026-11-03T14:33:17.412588+08:00",
   "latest_price": {
-    "date": "2026-11-01",
-    "price": 230.0
+    "date": "2026-11-03",
+    "price": 182.09
   },
   "daily": [
-    {
-      "date": "2006-11-08",
-      "price": 100.0,
-      "volume": 22.0
-    },
     {
       "date": "2006-11-10",
       "price": 79.74,
@@ -17031,13 +17026,18 @@
       "date": "2026-11-01",
       "price": 230.0,
       "volume": 10.0
+    },
+    {
+      "date": "2026-11-03",
+      "price": 182.09,
+      "volume": 93.0
     }
   ],
   "weekly": [
     {
       "key": "2006-W45",
-      "price": 87.52,
-      "volume": 141.0
+      "price": 85.21,
+      "volume": 119.0
     },
     {
       "key": "2006-W46",
@@ -20263,13 +20263,18 @@
       "key": "2026-W44",
       "price": 202.56,
       "volume": 117.0
+    },
+    {
+      "key": "2026-W45",
+      "price": 182.09,
+      "volume": 93.0
     }
   ],
   "monthly": [
     {
       "key": "2006-11",
-      "price": 72.09,
-      "volume": 10186.0
+      "price": 72.03,
+      "volume": 10164.0
     },
     {
       "key": "2006-12",
@@ -21138,15 +21143,15 @@
     },
     {
       "key": "2026-11",
-      "price": 230.0,
-      "volume": 10.0
+      "price": 186.74,
+      "volume": 103.0
     }
   ],
   "yearly": [
     {
       "key": "2006",
       "price": 70.9,
-      "volume": 192919.0
+      "volume": 192897.0
     },
     {
       "key": "2007",
@@ -21246,23 +21251,43 @@
     {
       "key": "2026",
       "price": 130.66,
-      "volume": 1539447.0
+      "volume": 1539540.0
     }
   ],
   "market_compare": {
     "month": "2026-11",
     "markets_volume": [
       {
+        "market": "三重區",
+        "price": 189.3,
+        "volume": 66.0
+      },
+      {
         "market": "台北二",
-        "price": 230.0,
-        "volume": 10.0
+        "price": 167.9,
+        "volume": 33.0
+      },
+      {
+        "market": "高雄市",
+        "price": 300.0,
+        "volume": 4.0
       }
     ],
     "markets_price": [
       {
         "market": "台北二",
-        "price": 230.0,
-        "volume": 10.0
+        "price": 167.9,
+        "volume": 33.0
+      },
+      {
+        "market": "三重區",
+        "price": 189.3,
+        "volume": 66.0
+      },
+      {
+        "market": "高雄市",
+        "price": 300.0,
+        "volume": 4.0
       }
     ]
   }

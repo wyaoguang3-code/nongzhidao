@@ -1,17 +1,12 @@
 {
   "code": "A1",
   "name": "香蕉",
-  "updated_at": "2026-11-02T17:53:38.002016+08:00",
+  "updated_at": "2026-11-03T14:42:24.508738+08:00",
   "latest_price": {
-    "date": "2026-11-02",
-    "price": 26.0
+    "date": "2026-11-03",
+    "price": 31.49
   },
   "daily": [
-    {
-      "date": "2006-11-08",
-      "price": 16.86,
-      "volume": 127104.0
-    },
     {
       "date": "2006-11-09",
       "price": 16.58,
@@ -35659,20 +35654,25 @@
     },
     {
       "date": "2026-11-01",
-      "price": 31.81,
-      "volume": 81875.0
+      "price": 31.73,
+      "volume": 87685.0
     },
     {
       "date": "2026-11-02",
       "price": 26.0,
       "volume": 3800.0
+    },
+    {
+      "date": "2026-11-03",
+      "price": 31.49,
+      "volume": 102108.0
     }
   ],
   "weekly": [
     {
       "key": "2006-W45",
-      "price": 16.83,
-      "volume": 637158.0
+      "price": 16.82,
+      "volume": 510054.0
     },
     {
       "key": "2006-W46",
@@ -40882,19 +40882,19 @@
     {
       "key": "2026-W44",
       "price": 30.65,
-      "volume": 531399.0
+      "volume": 537209.0
     },
     {
       "key": "2026-W45",
-      "price": 26.0,
-      "volume": 3800.0
+      "price": 31.29,
+      "volume": 105908.0
     }
   ],
   "monthly": [
     {
       "key": "2006-11",
-      "price": 16.36,
-      "volume": 2605721.0
+      "price": 16.33,
+      "volume": 2478617.0
     },
     {
       "key": "2006-12",
@@ -42093,15 +42093,15 @@
     },
     {
       "key": "2026-11",
-      "price": 31.55,
-      "volume": 85675.0
+      "price": 31.49,
+      "volume": 193593.0
     }
   ],
   "yearly": [
     {
       "key": "2006",
-      "price": 16.29,
-      "volume": 5874680.0
+      "price": 16.28,
+      "volume": 5747576.0
     },
     {
       "key": "2007",
@@ -42201,7 +42201,7 @@
     {
       "key": "2026",
       "price": 31.45,
-      "volume": 23492507.0
+      "volume": 23600425.0
     }
   ],
   "market_compare": {
@@ -42209,105 +42209,125 @@
     "markets_volume": [
       {
         "market": "台中市",
-        "price": 33.2,
-        "volume": 23736.0
+        "price": 32.5,
+        "volume": 51771.0
       },
       {
         "market": "台北一",
-        "price": 33.0,
-        "volume": 14210.0
+        "price": 32.67,
+        "volume": 31985.0
       },
       {
         "market": "三重區",
-        "price": 27.3,
-        "volume": 11343.0
+        "price": 27.87,
+        "volume": 26612.0
       },
       {
         "market": "台北二",
-        "price": 38.5,
-        "volume": 9373.0
-      },
-      {
-        "market": "嘉義市",
-        "price": 27.86,
-        "volume": 7100.0
-      },
-      {
-        "market": "豐原區",
-        "price": 27.2,
-        "volume": 6938.0
-      },
-      {
-        "market": "鳳山區",
-        "price": 29.7,
-        "volume": 5980.0
+        "price": 38.9,
+        "volume": 18704.0
       },
       {
         "market": "板橋區",
-        "price": 28.4,
-        "volume": 5775.0
+        "price": 29.66,
+        "volume": 13575.0
+      },
+      {
+        "market": "豐原區",
+        "price": 27.57,
+        "volume": 12891.0
+      },
+      {
+        "market": "鳳山區",
+        "price": 29.9,
+        "volume": 12020.0
+      },
+      {
+        "market": "嘉義市",
+        "price": 26.75,
+        "volume": 11600.0
+      },
+      {
+        "market": "宜蘭市",
+        "price": 30.0,
+        "volume": 8500.0
       },
       {
         "market": "高雄市",
-        "price": 39.3,
-        "volume": 1050.0
+        "price": 40.19,
+        "volume": 3345.0
+      },
+      {
+        "market": "台東市",
+        "price": 32.1,
+        "volume": 1560.0
       },
       {
         "market": "桃 農",
-        "price": 38.1,
-        "volume": 170.0
+        "price": 31.17,
+        "volume": 1030.0
       }
     ],
     "markets_price": [
       {
+        "market": "嘉義市",
+        "price": 26.75,
+        "volume": 11600.0
+      },
+      {
         "market": "豐原區",
-        "price": 27.2,
-        "volume": 6938.0
+        "price": 27.57,
+        "volume": 12891.0
       },
       {
         "market": "三重區",
-        "price": 27.3,
-        "volume": 11343.0
-      },
-      {
-        "market": "嘉義市",
-        "price": 27.86,
-        "volume": 7100.0
+        "price": 27.87,
+        "volume": 26612.0
       },
       {
         "market": "板橋區",
-        "price": 28.4,
-        "volume": 5775.0
+        "price": 29.66,
+        "volume": 13575.0
       },
       {
         "market": "鳳山區",
-        "price": 29.7,
-        "volume": 5980.0
+        "price": 29.9,
+        "volume": 12020.0
       },
       {
-        "market": "台北一",
-        "price": 33.0,
-        "volume": 14210.0
-      },
-      {
-        "market": "台中市",
-        "price": 33.2,
-        "volume": 23736.0
+        "market": "宜蘭市",
+        "price": 30.0,
+        "volume": 8500.0
       },
       {
         "market": "桃 農",
-        "price": 38.1,
-        "volume": 170.0
+        "price": 31.17,
+        "volume": 1030.0
+      },
+      {
+        "market": "台東市",
+        "price": 32.1,
+        "volume": 1560.0
+      },
+      {
+        "market": "台中市",
+        "price": 32.5,
+        "volume": 51771.0
+      },
+      {
+        "market": "台北一",
+        "price": 32.67,
+        "volume": 31985.0
       },
       {
         "market": "台北二",
-        "price": 38.5,
-        "volume": 9373.0
+        "price": 38.9,
+        "volume": 18704.0
       },
       {
         "market": "高雄市",
-        "price": 39.3,
-        "volume": 1050.0
+        "price": 40.19,
+        "volume": 3345.0
       }
     ]
   }

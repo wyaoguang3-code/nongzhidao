@@ -1,10 +1,10 @@
 {
   "code": "H1",
   "name": "柚子",
-  "updated_at": "2026-11-02T21:24:34.872620+08:00",
+  "updated_at": "2026-11-03T15:18:39.133553+08:00",
   "latest_price": {
-    "date": "2026-11-01",
-    "price": 12.4
+    "date": "2026-11-03",
+    "price": 12.8
   },
   "daily": [
     {
@@ -10356,6 +10356,11 @@
       "date": "2026-11-01",
       "price": 12.4,
       "volume": 1345.0
+    },
+    {
+      "date": "2026-11-03",
+      "price": 12.8,
+      "volume": 180.0
     }
   ],
   "weekly": [
@@ -12583,6 +12588,11 @@
       "key": "2026-W44",
       "price": 10.87,
       "volume": 8415.0
+    },
+    {
+      "key": "2026-W45",
+      "price": 12.8,
+      "volume": 180.0
     }
   ],
   "monthly": [
@@ -13393,8 +13403,8 @@
     },
     {
       "key": "2026-11",
-      "price": 12.4,
-      "volume": 1345.0
+      "price": 12.45,
+      "volume": 1525.0
     }
   ],
   "yearly": [
@@ -13501,21 +13511,21 @@
     {
       "key": "2026",
       "price": 22.74,
-      "volume": 6005037.0
+      "volume": 6005217.0
     }
   ],
   "market_compare": {
     "month": "2026-11",
     "markets_volume": [
       {
+        "market": "台北一",
+        "price": 14.52,
+        "volume": 825.0
+      },
+      {
         "market": "嘉義市",
         "price": 10.0,
         "volume": 700.0
-      },
-      {
-        "market": "台北一",
-        "price": 15.0,
-        "volume": 645.0
       }
     ],
     "markets_price": [
@@ -13526,8 +13536,8 @@
       },
       {
         "market": "台北一",
-        "price": 15.0,
-        "volume": 645.0
+        "price": 14.52,
+        "volume": 825.0
       }
     ]
   }
