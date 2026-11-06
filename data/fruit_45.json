@@ -1,10 +1,10 @@
 {
   "code": "45",
   "name": "草莓",
-  "updated_at": "2026-11-05T14:40:57.436053+08:00",
+  "updated_at": "2026-11-06T14:42:32.954111+08:00",
   "latest_price": {
-    "date": "2026-11-05",
-    "price": 105.0
+    "date": "2026-11-06",
+    "price": 194.5
   },
   "daily": [
     {
@@ -17036,6 +17036,11 @@
       "date": "2026-11-05",
       "price": 105.0,
       "volume": 26.0
+    },
+    {
+      "date": "2026-11-06",
+      "price": 194.5,
+      "volume": 30.0
     }
   ],
   "weekly": [
@@ -20271,8 +20276,8 @@
     },
     {
       "key": "2026-W45",
-      "price": 168.64,
-      "volume": 184.0
+      "price": 172.26,
+      "volume": 214.0
     }
   ],
   "monthly": [
@@ -21148,8 +21153,8 @@
     },
     {
       "key": "2026-11",
-      "price": 171.8,
-      "volume": 194.0
+      "price": 174.84,
+      "volume": 224.0
     }
   ],
   "yearly": [
@@ -21256,7 +21261,7 @@
     {
       "key": "2026",
       "price": 130.66,
-      "volume": 1539631.0
+      "volume": 1539661.0
     }
   ],
   "market_compare": {
@@ -21264,8 +21269,8 @@
     "markets_volume": [
       {
         "market": "三重區",
-        "price": 160.09,
-        "volume": 101.0
+        "price": 152.96,
+        "volume": 116.0
       },
       {
         "market": "台北二",
@@ -21280,14 +21285,19 @@
       {
         "market": "高雄市",
         "price": 300.0,
-        "volume": 4.0
+        "volume": 16.0
+      },
+      {
+        "market": "台北一",
+        "price": 220.0,
+        "volume": 3.0
       }
     ],
     "markets_price": [
       {
         "market": "三重區",
-        "price": 160.09,
-        "volume": 101.0
+        "price": 152.96,
+        "volume": 116.0
       },
       {
         "market": "台北二",
@@ -21300,9 +21310,14 @@
         "volume": 30.0
       },
       {
+        "market": "台北一",
+        "price": 220.0,
+        "volume": 3.0
+      },
+      {
         "market": "高雄市",
         "price": 300.0,
-        "volume": 4.0
+        "volume": 16.0
       }
     ]
   }
