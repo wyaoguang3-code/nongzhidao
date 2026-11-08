@@ -1,10 +1,10 @@
 {
   "code": "R1",
   "name": "愛文芒果",
-  "updated_at": "2026-11-07T15:07:00.674522+08:00",
+  "updated_at": "2026-11-08T14:57:07.823632+08:00",
   "latest_price": {
-    "date": "2026-10-28",
-    "price": 115.0
+    "date": "2026-11-08",
+    "price": 60.0
   },
   "daily": [
     {
@@ -21511,6 +21511,11 @@
       "date": "2026-10-28",
       "price": 115.0,
       "volume": 12.0
+    },
+    {
+      "date": "2026-11-08",
+      "price": 60.0,
+      "volume": 5.0
     }
   ],
   "weekly": [
@@ -25238,6 +25243,11 @@
       "key": "2026-W44",
       "price": 116.67,
       "volume": 18.0
+    },
+    {
+      "key": "2026-W45",
+      "price": 60.0,
+      "volume": 5.0
     }
   ],
   "monthly": [
@@ -26220,6 +26230,11 @@
       "key": "2026-10",
       "price": 156.08,
       "volume": 10092.0
+    },
+    {
+      "key": "2026-11",
+      "price": 60.0,
+      "volume": 5.0
     }
   ],
   "yearly": [
@@ -26321,53 +26336,23 @@
     {
       "key": "2026",
       "price": 59.33,
-      "volume": 17230241.0
+      "volume": 17230246.0
     }
   ],
   "market_compare": {
-    "month": "2026-10",
+    "month": "2026-11",
     "markets_volume": [
       {
-        "market": "台北二",
-        "price": 157.6,
-        "volume": 5740.0
-      },
-      {
         "market": "台北一",
-        "price": 159.1,
-        "volume": 3901.0
-      },
-      {
-        "market": "三重區",
-        "price": 121.43,
-        "volume": 367.0
-      },
-      {
-        "market": "台中市",
-        "price": 63.7,
-        "volume": 84.0
+        "price": 60.0,
+        "volume": 5.0
       }
     ],
     "markets_price": [
       {
-        "market": "台中市",
-        "price": 63.7,
-        "volume": 84.0
-      },
-      {
-        "market": "三重區",
-        "price": 121.43,
-        "volume": 367.0
-      },
-      {
-        "market": "台北二",
-        "price": 157.6,
-        "volume": 5740.0
-      },
-      {
         "market": "台北一",
-        "price": 159.1,
-        "volume": 3901.0
+        "price": 60.0,
+        "volume": 5.0
       }
     ]
   }
