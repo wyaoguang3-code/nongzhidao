@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12T08:31:25.059717+08:00",
+  "updated_at": "2026-11-12T08:46:22.711418+08:00",
   "items": {
     "water-spinach": {
       "latest_price": null,
@@ -14000,7 +14000,7 @@
       ]
     },
     "tomato": {
-      "latest_price": 81.01,
+      "latest_price": 79.81,
       "latest_date": "2026-11-12",
       "trend_7d": [
         {
@@ -14029,7 +14029,7 @@
         },
         {
           "date": "2026-11-12",
-          "price": 81.01
+          "price": 79.81
         }
       ],
       "top_markets": [
@@ -14047,9 +14047,14 @@
           "market": "溪湖鎮",
           "price": 75.23,
           "volume": 558.0
+        },
+        {
+          "market": "豐原區",
+          "price": 60.1,
+          "volume": 260.0
         }
       ],
-      "coverage": 133,
+      "coverage": 134,
       "variants": [
         {
           "sub_type": "其他",
@@ -14092,10 +14097,22 @@
         },
         {
           "sub_type": "牛番茄",
-          "latest_price": 87.29,
+          "latest_price": 85.5,
           "latest_date": "2026-11-12",
-          "coverage": 80,
+          "coverage": 81,
           "raw_latest_rows": [
+            {
+              "roc_date": "115/11/12",
+              "date": "2026-11-12",
+              "market_no": "420",
+              "market": "豐原區",
+              "product_code": "FJ3",
+              "product_main": "番茄",
+              "product_sub": "牛番茄",
+              "avg_price": 60.1,
+              "volume": 260.0,
+              "volume_raw": "260"
+            },
             {
               "roc_date": "115/11/12",
               "date": "2026-11-12",
@@ -14137,6 +14154,18 @@
             {
               "date": "2026-11-12",
               "rows": [
+                {
+                  "roc_date": "115/11/12",
+                  "date": "2026-11-12",
+                  "market_no": "420",
+                  "market": "豐原區",
+                  "product_code": "FJ3",
+                  "product_main": "番茄",
+                  "product_sub": "牛番茄",
+                  "avg_price": 60.1,
+                  "volume": 260.0,
+                  "volume_raw": "260"
+                },
                 {
                   "roc_date": "115/11/12",
                   "date": "2026-11-12",
